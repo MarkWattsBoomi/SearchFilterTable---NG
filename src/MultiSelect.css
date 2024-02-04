@@ -1,0 +1,78 @@
+.multiselect {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    position: relative;
+  }
+
+  .multiselect:focus,
+  .multiselect:focus-visible {
+    outline: none;
+  }
+  
+  .selectBox {
+    position: relative;
+    margin: auto;
+  }
+  
+  .selectBox select {
+    width: 100%;
+    font-weight: 500;
+    box-shadow: none;
+  }
+  
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .checkboxScroller{
+    overflow: auto;
+    width: fit-content;
+    max-width: 500px;
+    max-height: 400px;
+    top: 100%;
+    position: absolute;
+  }
+  
+  .checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+    flex-direction: column;
+    position: relative;
+    width: fit-content;
+    overflow: visible;
+    z-index: 1000;
+    background-color: rgb(254, 254, 254);
+  }
+
+  .checkbox-row {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 0;
+  }
+
+  .checkbox-checkbox-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .checkbox-label-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .checkbox-row-label {
+    white-space: nowrap;
+  }
+  
+  
