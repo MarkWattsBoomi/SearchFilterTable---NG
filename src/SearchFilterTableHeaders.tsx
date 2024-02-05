@@ -42,7 +42,7 @@ export class SearchFilterTableHeaders extends React.Component<any, any> {
     onDragEnter(e: any) {
         e.preventDefault();
         e.stopPropagation();
-        const tgtFieldName = e.currentTarget.getAttribute('data-fieldName');
+        const tgtFieldName = e.currentTarget.getAttribute('data-fieldname');
         const srcFieldName = this.draggedFieldName ;
         if (!srcFieldName || this.draggedFieldName === tgtFieldName) {
             e.dataTransfer.dropEffect = 'none';
@@ -57,7 +57,7 @@ export class SearchFilterTableHeaders extends React.Component<any, any> {
     onDragLeave(e: any) {
         e.preventDefault();
         e.stopPropagation();
-        const tgtFieldName = e.currentTarget.getAttribute('data-fieldName');
+        const tgtFieldName = e.currentTarget.getAttribute('data-fieldname');
         this.headers.get(tgtFieldName).dragLeave();
         // e.currentTarget.parentElement.classList.remove('sft-column-header-wrapper-droppable');
     }
@@ -66,7 +66,7 @@ export class SearchFilterTableHeaders extends React.Component<any, any> {
         e.preventDefault();
         e.stopPropagation();
         const srcFieldName = e.dataTransfer.getData('column');
-        const tgtFieldName = e.currentTarget.getAttribute('data-fieldName');
+        const tgtFieldName = e.currentTarget.getAttribute('data-fieldname');
 
         // e.dataTransfer.dropEffect="move";
     }
@@ -76,7 +76,7 @@ export class SearchFilterTableHeaders extends React.Component<any, any> {
         e.preventDefault();
         e.stopPropagation();
         const srcFieldName = e.dataTransfer.getData('column');
-        const tgtFieldName = e.currentTarget.getAttribute('data-fieldName');
+        const tgtFieldName = e.currentTarget.getAttribute('data-fieldname');
         this.draggedFieldName = undefined;
         e.dataTransfer.clearData();
         e.currentTarget.parentElement.classList.remove('sft-column-header-wrapper-droppable');

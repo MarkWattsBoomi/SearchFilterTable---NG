@@ -107,12 +107,15 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
         });
 
         const opts: any[] = [];
+        let selected: number = options[0];
         options.forEach((a: number) => {
+            if(root.maxPageRows === a){
+                selected=a;
+            }
             opts.push(
                 <option
                     key={a}
                     value={a}
-                    selected={root.maxPageRows === a}
                 >
                     {a}
                 </option>,
@@ -122,6 +125,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
         const perPage: any = (
             <select
                 className={'sft-footer-select'}
+                value={selected}
                 onChange={this.maxPerPageChanged}
                 ref={(element: any) => {this.maxPerPage = element; }}
             >

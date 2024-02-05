@@ -2,6 +2,15 @@ import * as React from 'react';
 import {SFTCommonFunctions} from './CommonFunctions';
 import {SFT} from './SearchFilterTable';
 import { FlowOutcome } from 'fcmlib/lib/FlowOutcome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
+import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
+import { faDownload} from '@fortawesome/free-solid-svg-icons/faDownload';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons/faEllipsisVertical';
+import { faFilter } from '@fortawesome/free-solid-svg-icons/faFilter';
+import { faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons/faFilterCircleXmark';
+import { faListCheck } from '@fortawesome/free-solid-svg-icons/faListCheck';
 
 export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
 
@@ -48,12 +57,14 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 <div
                     className="sft-ribbon-search-button-wrapper"
                     onClick={(e: any) => {e.stopPropagation(); root.doExport(root.rowMap); }}
+                    key={'exportAll'}
                 >
-                    <span
+                    <FontAwesomeIcon 
+                        role="button"
+                        icon={faDownload}
                         key={'exportAll'}
-                        className={'glyphicon glyphicon-floppy-save sft-ribbon-search-button-icon'}
-                        title={'Export All'}
-
+                        className={'sft-ribbon-search-button-icon'}
+                        title={'Export Shown'}
                     />
                     {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
                         <span
@@ -72,12 +83,16 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 <div
                     className="sft-ribbon-search-button-wrapper"
                     onClick={(e: any) => {e.stopPropagation(); root.doExport(root.currentRowMap); }}
+                    key={'exportShown'}
                 >
-                    <span
+                    <FontAwesomeIcon 
+                        role="button"
+                        icon={faDownload}
                         key={'exportShown'}
-                        className={'glyphicon glyphicon-floppy-save sft-ribbon-search-button-icon'}
+                        className={'sft-ribbon-search-button-icon'}
                         title={'Export Shown'}
                     />
+                    
                     {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
                         <span
                             className="sft-ribbon-search-button-label"
@@ -121,12 +136,15 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 <div
                     className="sft-ribbon-search-button-wrapper"
                     onClick={(e: any) => {root.showInfo(); }}
+                    key={'info'}
                 >
 
-                    <span
-                        key={'colpick'}
-                        className={'glyphicon sft-ribbon-search-button-icon glyphicon-' + (root.component.attributes?.InfoIcon ? root.component.attributes.InfoIcon : 'question-sign')}
-                        title={'Infornation'}
+                    <FontAwesomeIcon 
+                        role="button"
+                        icon={faCircleInfo}
+                        key={'info'}
+                        className={'sft-ribbon-search-button-icon'}
+                        title={'Show Info'}
                     />
                     {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
                         <span
@@ -145,11 +163,13 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 <div
                     className="sft-ribbon-search-button-wrapper"
                     onClick={(e: any) => {root.showColumnPicker(); }}
+                    key={'colpick'}
                 >
-
-                    <span
+                    <FontAwesomeIcon 
+                        role="button"
+                        icon={faEllipsisVertical}
                         key={'colpick'}
-                        className={'glyphicon sft-ribbon-search-button-icon glyphicon-' + (root.component.attributes?.ColumnsIcon ? root.component.attributes.ColumnsIcon : 'option-vertical')}
+                        className={'sft-ribbon-search-button-icon'}
                         title={'Select columns'}
                     />
                     {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
@@ -169,10 +189,13 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 <div
                     className="sft-ribbon-search-button-wrapper"
                     onClick={(e: any) => {e.stopPropagation(); root.doExport(root.selectedRowMap); }}
+                    key={'exportSelected'}
                 >
-                    <span
+                    <FontAwesomeIcon 
+                        role="button"
+                        icon={faListCheck}
                         key={'exportSelected'}
-                        className={'glyphicon glyphicon-floppy-save sft-ribbon-search-button-icon'}
+                        className={'sft-ribbon-search-button-icon sft-ribbon-search-icon-clear'}
                         title={'Export Selected'}
                     />
                     {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
@@ -192,10 +215,13 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 <div
                     className="sft-ribbon-search-button-wrapper sft-ribbon-search-button-clear"
                     onClick={this.clearFilters}
+                    key={'clearFilters'}
                 >
-                    <span
+                    <FontAwesomeIcon 
+                        role="button"
+                        icon={faFilterCircleXmark}
                         key={'clearFilters'}
-                        className={'glyphicon glyphicon-trash sft-ribbon-search-button-icon sft-ribbon-search-button-icon-clear'}
+                        className={'sft-ribbon-search-button-icon sft-ribbon-search-icon-clear'}
                         title={'Clear Filters'}
                     />
                 </div>
@@ -293,9 +319,12 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                     <div
                         className="sft-ribbon-search-wrapper"
                     >
-                        <span
-                            className="glyphicon glyphicon-search sft-ribbon-search-icon sft-ribbon-search-icon-search"
+                        <FontAwesomeIcon 
+                            icon={faMagnifyingGlass}
+                            role="button"
+                            className="sft-ribbon-search-icon sft-ribbon-search-icon-search"
                             onClick={this.filterCommitted}
+                            title="Search"
                         />
                         <input
                             className="sft-ribbon-search-input"
@@ -307,19 +336,23 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                             placeholder='Search table'
                             title="Search Criteria"
                         />
-                        <span
-                            className="glyphicon glyphicon-remove sft-ribbon-search-icon sft-ribbon-search-icon-clear"
+                        <FontAwesomeIcon 
+                            icon={faBan}
                             role="button"
+                            className="sft-ribbon-search-icon sft-ribbon-search-icon-clear"
                             onClick={this.clearSearch}
+                            title="Clear"
                         />
                     </div>
                     <div
                         className="sft-ribbon-search-button-wrapper"
                         onClick={this.showSearch}
                     >
-                        <span
+                        <FontAwesomeIcon 
+                            role="button"
+                            icon={faFilter}
                             key={'showSearch'}
-                            className={'glyphicon glyphicon-filter sft-ribbon-search-button-icon sft-ribbon-search-icon-advanced'}
+                            className={'sft-ribbon-search-button-icon sft-ribbon-search-icon-advanced'}
                             title={'Advanced Search'}
                         />
                     </div>

@@ -85,6 +85,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
             cols.push(
                 <td
                     className="sft-table-cell sft-table-cell-check"
+                    key="#CHECK#"
                 >
                     <input
                         className="sft-checkbox"
@@ -92,6 +93,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
                         onClick={(event: any) => {root.toggleSelect(event, this.props.id); }}
                         checked={root.selectedRowMap.has(this.props.id)}
                         title={"Select Row"}
+                        onChange={(e: any)=>{return}}
                     />
                 </td>,
             );
@@ -100,12 +102,14 @@ export class SearchFilterTableRow extends React.Component<any, any> {
                 cols.push(
                     <td
                         className="sft-table-cell"
+                        key="#CHECK#"
                     >
                         <input
                             className="sft-radio"
                             type="radio"
                             checked={root.selectedRow===objData.externalId}
                             title={"Select Row"}
+                            onChange={(e: any)=>{return}}
                         />
                     </td>,
                 );
@@ -117,6 +121,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
                 if (anyoutcomes) {
                     cols.push(
                         <td
+                            key="#BUTTONS#"
                             className="sft-table-cell"
                         >
                             <div
@@ -140,6 +145,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
 
                 cols.push(
                         <td
+                            key={col.developerName}
                             className={"sft-table-cell " + cellResult.cellClass}
                         >
                             {val}

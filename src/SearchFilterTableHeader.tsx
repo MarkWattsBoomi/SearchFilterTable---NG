@@ -62,7 +62,7 @@ export class SearchFilterTableHeader extends React.Component<any, any> {
                     onDragOver={(e) => {parent.onDragOver(e); }}
                     onDrop={(e) => {parent.onDrop(e); }}
                     onClick={(e) => {root.filters.sortClicked(col.developerName)}}
-                    data-fieldName={col.developerName}
+                    data-fieldname={col.developerName}
                 >
                     <div
                         className="sft-column-header-top"
