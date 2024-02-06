@@ -315,14 +315,14 @@ export class SFTCommonFunctions {
     
     // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
     // the values, if {{}} ere prepopulated in preLoad
-    static async makeOutcomeButton(comp: SFT, outcome: FlowOutcome, suffix: string, objectData: FlowObjectData, dissabled: boolean) : Promise<any> {
+    static makeOutcomeButton(comp: SFT, outcome: FlowOutcome, suffix: string, objectData: FlowObjectData, dissabled: boolean) : React.JSX.Element {
         let icon: any;
         let show: boolean = false;
         if(outcome.attributes?.iconValue?.value?.length > 0){
             let flds: []
             let iconName: string
             let iconValue: string = outcome.attributes?.iconValue?.value;
-            iconValue = await comp.component.inflateValue(iconValue);
+            //iconValue = await comp.component.inflateValue(iconValue);
             if(suffix && suffix.length>0){
                 let path = iconValue.substring(0,iconValue.lastIndexOf("."));
                 let ext: string = iconValue.substring(iconValue.lastIndexOf("."));

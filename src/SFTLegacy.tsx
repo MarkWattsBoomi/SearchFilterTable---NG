@@ -4,12 +4,11 @@ import { SFT } from './SearchFilterTable';
 declare const manywho: any;
 
 class SearchFilterTable extends FCMLegacy {
-
-    sft: SFT;
-
+    
     render() {
         return(
             <SFT
+                key={this.id}
                 parent={this}
                 ref={(element: SFT) => {this.childComponent = element}}
             />

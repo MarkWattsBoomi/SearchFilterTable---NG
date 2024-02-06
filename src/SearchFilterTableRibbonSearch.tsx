@@ -17,8 +17,8 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
     searchInput: HTMLInputElement;
     previousFilter: string = '';
     currentFilter: string;
-    leftButtons: any[];
-    rightButtons: any[];
+    leftButtons: any[] = [];
+    rightButtons: any[] = [];
     clearFiltersButton: any;
     deBounce: boolean = false;
 
@@ -35,13 +35,15 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         this.currentFilter = root.filters.globalCriteria;
     }
 
-    async componentDidMount() {
-        await this.generateButtons();
+    componentDidMount() {
+        this.generateButtons();
     }
 
-    async generateButtons(): Promise<Boolean> {
+
+    async generateButtons() : Promise<void> {
+    
         if(this.deBounce === true) {
-            return false;
+            return;
         }
         else {
             this.deBounce = true;
@@ -49,6 +51,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         const root: SFT = this.props.root;
         this.leftButtons = [];
         this.rightButtons = [];
+        
         const canExport: boolean = (root.component.getAttribute('canExport', 'true').toLowerCase() === 'true');
 
         // ad export if allowed
@@ -230,9 +233,9 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         else {
             this.clearFiltersButton = undefined;
         }
+        
         this.deBounce = false;
         this.forceUpdate();
-        return true;
     }
 
     clearSearch(e: any) {
@@ -293,10 +296,10 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         root.manageFilters();
     }
 
-    async clearFilters(e: any) {
+    clearFilters(e: any) {
         const root: SFT = this.props.root;
         root.filters.clearAll();
-        await root.buildRibbon();
+        //root.buildRibbon();
     }
 
     render() {

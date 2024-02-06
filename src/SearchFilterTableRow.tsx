@@ -27,7 +27,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
         for (let pos = 0 ; pos < keys.length ; pos++) {
             if (root.component.outcomes[keys[pos]].isBulkAction === false) {
                 if(!root.supressedOutcomes.has(root.component.outcomes[keys[pos]].developerName)) {
-                    if (await SFTCommonFunctions.assessRowOutcomeRule(root.component.outcomes[keys[pos]], objData, root) === true) {
+                    if (SFTCommonFunctions.assessRowOutcomeRule(root.component.outcomes[keys[pos]], objData, root) === true) {
                         enabledOutcomes.push(keys[pos]);
                     }
                 }
@@ -39,7 +39,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
             }
         }
         this.setState({enabledOutcomes});
-        root.forceUpdate();
+        //root.forceUpdate();
     }
 
     selectRow(e: any) {

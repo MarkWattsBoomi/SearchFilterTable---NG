@@ -329,7 +329,6 @@ export class SFT extends React.Component<any,any> {
         // get the column header for key column if exists
         this.headers?.forceUpdate();
         localStorage.setItem('sft-filters-' + this.component.id, this.filters.getForStorage());
-        // this.buildRibbon();
         switch (event) {
             case eFilterEvent.sort:
                 if (this.filters.get(key).sort !== eSortDirection.none) {
@@ -479,7 +478,7 @@ export class SFT extends React.Component<any,any> {
                 }
             }
             if(outcome.attributes.iconValue && outcome.attributes.iconValue.value.length>0){
-                outcome.attributes.iconValue.set(await this.component.inflateValue(outcome.attributes.iconValue.value));
+                outcome.attributes.iconValue.value = await this.component.inflateValue(outcome.attributes.iconValue.value);
             }
         }
         //now parse all columnRules
@@ -1039,7 +1038,7 @@ export class SFT extends React.Component<any,any> {
                 </tr>
             );
         }
-        await this.buildRibbon();
+        this.buildRibbon();
         this.buildFooter();
         this.forceUpdate();
     }
@@ -1047,12 +1046,8 @@ export class SFT extends React.Component<any,any> {
     //////////////////////////////////////////////////////
     // builds title bar buttons based on attached outcomes
     //////////////////////////////////////////////////////
-    async buildRibbon() {
-        let res: Boolean = await this.ribbon?.generateButtons();
-        if ( res === true){
-            this.forceUpdate();
-        };
-        
+    buildRibbon() {
+        this.ribbon?.generateButtons();        
     }
 
     //////////////////////////////////////////////////////
@@ -1431,6 +1426,7 @@ export class SFT extends React.Component<any,any> {
         return  (
             <div
                 id={this.component.id}
+                key={this.component.id}
                 className={classes}
                 style={style}
                 onContextMenu={this.showContextMenu}
