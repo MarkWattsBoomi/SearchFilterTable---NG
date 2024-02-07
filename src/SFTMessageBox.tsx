@@ -1,6 +1,7 @@
-import { FlowObjectData, FlowOutcome } from "flow-component-model";
 import * as React from "react";
 import "./SFTForms.css";
+import { FlowObjectData } from "fcmlib/lib/FlowObjectData";
+import { FlowOutcome } from "fcmlib/lib/FlowOutcome";
 declare var manywho: any;
 
 export class SFTMessageBox extends React.Component<any,any> {
