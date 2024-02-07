@@ -7,7 +7,8 @@
     "build": "esbuild ./src/SFTNew.tsx --outfile=./build/sft_ng.js --bundle  --format=esm --target=chrome58,firefox57,safari11,edge16",
     "startLegacy": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
     "buildLegacy": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg.js --bundle  --format=esm --target=chrome58,firefox57,safari11,edge16",
-    "buildLegacyDebug": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg_db.js --bundle  --format=esm --target=chrome58,firefox57,safari11,edge16"
+    "buildLegacyDebug": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg_db.js --bundle  --format=esm --target=chrome58,firefox57,safari11,edge16",
+    "buildAll": "npm run build & npm run buildLegacy"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
