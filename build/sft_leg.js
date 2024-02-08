@@ -13538,6 +13538,7 @@ var SFT3 = class extends React22.Component {
     this.columnRules = await ColumnRules.parse(this.component.getAttribute("ColumnRules", "{}"), this);
     await this.preLoad();
     await this.buildCoreTable();
+    this.forceUpdate();
     this.loaded = true;
   }
   showInfo() {
