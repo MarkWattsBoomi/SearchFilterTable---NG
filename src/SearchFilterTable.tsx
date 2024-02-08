@@ -407,17 +407,17 @@ export class SFT extends React.Component<any,any> {
 
     // stores / deletes a ref to the column headers
     setRibbon(element: SearchFilterTableRibbon | SearchFilterTableRibbonSearch) {
-        this.ribbon = element;
+        if(element) this.ribbon = element;
     }
 
     // stores / deletes a ref to the column headers
     setHeaders(element: SearchFilterTableHeaders) {
-        this.headers = element;
+        if(element)this.headers = element;
     }
 
     // stores / deletes a ref to the footer component
     setFooter(element: SearchFilterTableFooter | SearchFilterTableFooterNav) {
-        this.footer = element;
+        if(element)this.footer = element;
     }
 
     
@@ -616,71 +616,63 @@ export class SFT extends React.Component<any,any> {
         }
 
         let inlineSearch: boolean = true;
-        switch (this.component.getAttribute('RibbonStyle', 'ribbon')) {
+        if(!this.ribbonElement) {
+            switch (this.component.getAttribute('RibbonStyle', 'ribbon')) {
 
-            case 'search':
-                this.ribbonElement = (
-                    <SearchFilterTableRibbonSearch
-                        root={this}
-                        ref={(element: SearchFilterTableRibbonSearch) => {this.setRibbon(element); }}
-                    />
-                );
-                inlineSearch = false;
-                break;
+                case 'search':
+                    this.ribbonElement = (
+                        <SearchFilterTableRibbonSearch
+                            key="ribbon"
+                            root={this}
+                            ref={(element: SearchFilterTableRibbonSearch) => {this.setRibbon(element); }}
+                        />
+                    );
+                    inlineSearch = false;
+                    break;
 
-            case 'ribbon':
-            default:
-                this.ribbonElement = (
-                    <SearchFilterTableRibbon
-                        root={this}
-                        ref={(element: SearchFilterTableRibbon) => {this.setRibbon(element); }}
-                    />
-                );
-                break;
+                case 'ribbon':
+                default:
+                    this.ribbonElement = (
+                        <SearchFilterTableRibbon
+                            key="ribbon"
+                            root={this}
+                            ref={(element: SearchFilterTableRibbon) => {this.setRibbon(element); }}
+                        />
+                    );
+                    break;
+            }
         }
 
-        /*
-        if (this.component.label?.length > 0) {
-            this.titleElement = (
-                <div
-                    className="sft-title"
-                >
-                    <span
-                        className="sft-title-label"
-                    >
-                        {this.component.label}
-                    </span>
-                </div>
+        if(!this.headersElement){
+            this.headersElement = (
+                <SearchFilterTableHeaders
+                    root={this}
+                    inlineSearch={inlineSearch}
+                    ref={(element: SearchFilterTableHeaders) => {this.setHeaders(element); }}
+                />
             );
         }
-*/
 
-        this.headersElement = (
-            <SearchFilterTableHeaders
-                root={this}
-                inlineSearch={inlineSearch}
-                ref={(element: SearchFilterTableHeaders) => {this.setHeaders(element); }}
-            />
-        );
+        if(!this.footerElement){
+            switch (this.component.getAttribute('FooterStyle', 'default')) {
+                case "default":
+                    this.footerElement = (
+                        <SearchFilterTableFooter
+                            root={this}
+                            ref={(element: SearchFilterTableFooter) => {this.setFooter(element); }}
+                        />
+                    );
+                    break;
 
-        switch (this.component.getAttribute('FooterStyle', 'default')) {
-            case "default":
-                this.footerElement = (
-                    <SearchFilterTableFooter
-                        root={this}
-                        ref={(element: SearchFilterTableFooter) => {this.setFooter(element); }}
-                    />
-                );
-                break;
-
-            case "nav":
-                this.footerElement = (
-                    <SearchFilterTableFooterNav
-                        root={this}
-                        ref={(element: SearchFilterTableFooterNav) => {this.setFooter(element); }}
-                    />
-                );
-                break; 
+                case "nav":
+                    this.footerElement = (
+                        <SearchFilterTableFooterNav
+                            root={this}
+                            ref={(element: SearchFilterTableFooterNav) => {this.setFooter(element); }}
+                        />
+                    );
+                    break; 
+            }
         }
         
 
@@ -697,7 +689,7 @@ export class SFT extends React.Component<any,any> {
         //load selectedSingleItem
         await this.loadSingleSelected();
         // we just loaded the core row data, trigger the filters to generate and sort the currentRowMap
-        this.filterRows();
+        await this.filterRows();
     }
 
     async loadModelData() {

@@ -12060,7 +12060,8 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
       "div",
       {
         className: "sft-ribbon-search",
-        style
+        style,
+        key: "ribbon"
       },
       title,
       /* @__PURE__ */ React17.createElement(
@@ -13533,15 +13534,18 @@ var SFT3 = class extends React22.Component {
   }
   // stores / deletes a ref to the column headers
   setRibbon(element) {
-    this.ribbon = element;
+    if (element)
+      this.ribbon = element;
   }
   // stores / deletes a ref to the column headers
   setHeaders(element) {
-    this.headers = element;
+    if (element)
+      this.headers = element;
   }
   // stores / deletes a ref to the footer component
   setFooter(element) {
-    this.footer = element;
+    if (element)
+      this.footer = element;
   }
   async loadUserColumns() {
     let userFieldsVal = "";
@@ -13709,65 +13713,73 @@ var SFT3 = class extends React22.Component {
       await this.saveUserColumns();
     }
     let inlineSearch = true;
-    switch (this.component.getAttribute("RibbonStyle", "ribbon")) {
-      case "search":
-        this.ribbonElement = /* @__PURE__ */ React22.createElement(
-          SearchFilterTableRibbonSearch,
-          {
-            root: this,
-            ref: (element) => {
-              this.setRibbon(element);
+    if (!this.ribbonElement) {
+      switch (this.component.getAttribute("RibbonStyle", "ribbon")) {
+        case "search":
+          this.ribbonElement = /* @__PURE__ */ React22.createElement(
+            SearchFilterTableRibbonSearch,
+            {
+              key: "ribbon",
+              root: this,
+              ref: (element) => {
+                this.setRibbon(element);
+              }
             }
-          }
-        );
-        inlineSearch = false;
-        break;
-      case "ribbon":
-      default:
-        this.ribbonElement = /* @__PURE__ */ React22.createElement(
-          SearchFilterTableRibbon,
-          {
-            root: this,
-            ref: (element) => {
-              this.setRibbon(element);
+          );
+          inlineSearch = false;
+          break;
+        case "ribbon":
+        default:
+          this.ribbonElement = /* @__PURE__ */ React22.createElement(
+            SearchFilterTableRibbon,
+            {
+              key: "ribbon",
+              root: this,
+              ref: (element) => {
+                this.setRibbon(element);
+              }
             }
-          }
-        );
-        break;
-    }
-    this.headersElement = /* @__PURE__ */ React22.createElement(
-      SearchFilterTableHeaders,
-      {
-        root: this,
-        inlineSearch,
-        ref: (element) => {
-          this.setHeaders(element);
-        }
+          );
+          break;
       }
-    );
-    switch (this.component.getAttribute("FooterStyle", "default")) {
-      case "default":
-        this.footerElement = /* @__PURE__ */ React22.createElement(
-          SearchFilterTableFooter,
-          {
-            root: this,
-            ref: (element) => {
-              this.setFooter(element);
-            }
+    }
+    if (!this.headersElement) {
+      this.headersElement = /* @__PURE__ */ React22.createElement(
+        SearchFilterTableHeaders,
+        {
+          root: this,
+          inlineSearch,
+          ref: (element) => {
+            this.setHeaders(element);
           }
-        );
-        break;
-      case "nav":
-        this.footerElement = /* @__PURE__ */ React22.createElement(
-          SearchFilterTableFooterNav,
-          {
-            root: this,
-            ref: (element) => {
-              this.setFooter(element);
+        }
+      );
+    }
+    if (!this.footerElement) {
+      switch (this.component.getAttribute("FooterStyle", "default")) {
+        case "default":
+          this.footerElement = /* @__PURE__ */ React22.createElement(
+            SearchFilterTableFooter,
+            {
+              root: this,
+              ref: (element) => {
+                this.setFooter(element);
+              }
             }
-          }
-        );
-        break;
+          );
+          break;
+        case "nav":
+          this.footerElement = /* @__PURE__ */ React22.createElement(
+            SearchFilterTableFooterNav,
+            {
+              root: this,
+              ref: (element) => {
+                this.setFooter(element);
+              }
+            }
+          );
+          break;
+      }
     }
     if (this.rowRememberColumn) {
       this.lastRememberedRow = sessionStorage.getItem("sft-lastrow-" + this.component.id);
@@ -13775,7 +13787,7 @@ var SFT3 = class extends React22.Component {
     await this.saveSelected();
     const end3 = /* @__PURE__ */ new Date();
     await this.loadSingleSelected();
-    this.filterRows();
+    await this.filterRows();
   }
   async loadModelData() {
     let JSONStateName = this.component.getAttribute("JSONModelValue");

@@ -325,6 +325,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
             <div
                 className="sft-ribbon-search"
                 style={style}
+                key="ribbon"
             >
                 {title}
                 <div
