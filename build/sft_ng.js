@@ -12046,12 +12046,23 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     if (root.titleElement) {
       style.marginTop = "0.5rem";
     }
+    let title;
+    if (root.title && root.title.length > 0) {
+      title = /* @__PURE__ */ React17.createElement(
+        "div",
+        {
+          className: "sft-ribbon-title-wrapper"
+        },
+        root.title
+      );
+    }
     return /* @__PURE__ */ React17.createElement(
       "div",
       {
         className: "sft-ribbon-search",
         style
       },
+      title,
       /* @__PURE__ */ React17.createElement(
         "div",
         {
@@ -13364,6 +13375,7 @@ var SFT3 = class extends React22.Component {
         break;
     }
     this.iconSuffix = this.component.getAttribute("iconSuffixValue", "");
+    this.title = this.component.label;
     this.maxPageRows = parseInt(localStorage.getItem("sft-max-" + this.component.id) || this.component.getAttribute("PaginationSize", void 0) || "10");
     localStorage.setItem("sft-max-" + this.component.id, this.maxPageRows.toString());
     this.rowRememberColumn = this.component.getAttribute("RetainRowColumn");
@@ -13595,6 +13607,7 @@ var SFT3 = class extends React22.Component {
       });
     }
     this.supressedOutcomes.set("OnSelect", true);
+    this.title = await this.component.inflateValue(this.title);
     this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
     if (this.paginationMode === 2 /* external */) {
       if (this.externalPage) {
@@ -13613,7 +13626,7 @@ var SFT3 = class extends React22.Component {
   // also builds the display column map
   ///////////////////////////////////////////////////////////////////////////////////////////
   async buildCoreTable() {
-    var _a, _b, _c;
+    var _a, _b;
     this.colMap = /* @__PURE__ */ new Map();
     let cols;
     let colMap = /* @__PURE__ */ new Map();
@@ -13721,21 +13734,6 @@ var SFT3 = class extends React22.Component {
           }
         );
         break;
-    }
-    if (((_c = this.component.label) == null ? void 0 : _c.length) > 0) {
-      this.titleElement = /* @__PURE__ */ React22.createElement(
-        "div",
-        {
-          className: "sft-title"
-        },
-        /* @__PURE__ */ React22.createElement(
-          "span",
-          {
-            className: "sft-title-label"
-          },
-          this.component.label
-        )
-      );
     }
     this.headersElement = /* @__PURE__ */ React22.createElement(
       SearchFilterTableHeaders,

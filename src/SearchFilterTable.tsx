@@ -154,6 +154,9 @@ export class SFT extends React.Component<any,any> {
     //beta
     db: GenericDB;
 
+    // title value
+    title: string;
+
     constructor(props: any) {
         super(props);
         this.component = this.props.parent;
@@ -225,6 +228,7 @@ export class SFT extends React.Component<any,any> {
         }
 
         this.iconSuffix=this.component.getAttribute("iconSuffixValue","");
+        this.title=this.component.label;
 
         this.maxPageRows = parseInt(localStorage.getItem('sft-max-' + this.component.id) || this.component.getAttribute('PaginationSize', undefined) || '10');
         localStorage.setItem('sft-max-' + this.component.id, this.maxPageRows.toString());
@@ -492,7 +496,7 @@ export class SFT extends React.Component<any,any> {
         this.supressedOutcomes.set("OnSelect",true);
         
         //other inflations
-        
+        this.title = await this.component.inflateValue(this.title);
         this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
 
         if(this.paginationMode===ePaginationMode.external){
@@ -635,6 +639,7 @@ export class SFT extends React.Component<any,any> {
                 break;
         }
 
+        /*
         if (this.component.label?.length > 0) {
             this.titleElement = (
                 <div
@@ -648,6 +653,7 @@ export class SFT extends React.Component<any,any> {
                 </div>
             );
         }
+*/
 
         this.headersElement = (
             <SearchFilterTableHeaders

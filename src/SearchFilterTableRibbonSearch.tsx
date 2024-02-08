@@ -311,11 +311,22 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
             style.marginTop = '0.5rem';
         }
 
+        let title: any;
+        if(root.title && root.title.length > 0) {
+            title=(
+                <div
+                    className="sft-ribbon-title-wrapper"
+                >
+                    {root.title}
+                </div>
+            );
+        }
         return (
             <div
                 className="sft-ribbon-search"
                 style={style}
             >
+                {title}
                 <div
                     className="sft-ribbon-search-left-wrapper"
                 >
