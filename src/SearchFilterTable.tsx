@@ -259,8 +259,9 @@ export class SFT extends React.Component<any,any> {
         this.columnRules = await ColumnRules.parse(this.component.getAttribute('ColumnRules', '{}'), this);
         await this.preLoad();
         await this.buildCoreTable();
-        this.forceUpdate();
         this.loaded = true;
+        this.forceUpdate();
+        
     }
 
 

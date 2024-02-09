@@ -7272,6 +7272,7 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
     var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o;
     let icon3;
     let show = false;
+    let retries = 0;
     if (((_c = (_b = (_a = outcome.attributes) == null ? void 0 : _a.iconValue) == null ? void 0 : _b.value) == null ? void 0 : _c.length) > 0) {
       let flds;
       let iconName;
@@ -7293,7 +7294,10 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
           className: imgClass,
           src: iconName,
           onError: (e) => {
-            e.currentTarget.src = iconValue;
+            retries++;
+            if (retries < 2) {
+              e.currentTarget.src = iconValue;
+            }
           },
           title: outcome.label || outcome.developerName
         }
@@ -13538,8 +13542,8 @@ var SFT3 = class extends React22.Component {
     this.columnRules = await ColumnRules.parse(this.component.getAttribute("ColumnRules", "{}"), this);
     await this.preLoad();
     await this.buildCoreTable();
-    this.forceUpdate();
     this.loaded = true;
+    this.forceUpdate();
   }
   showInfo() {
     const content = /* @__PURE__ */ React22.createElement(
@@ -13855,7 +13859,7 @@ var SFT3 = class extends React22.Component {
     }
     let inlineSearch = true;
     if (!this.ribbonElement) {
-      switch (this.component.getAttribute("RibbonStyle", "ribbon")) {
+      switch (this.component.getAttribute("RibbonStyle", "search")) {
         case "search":
           this.ribbonElement = /* @__PURE__ */ React22.createElement(
             SearchFilterTableRibbonSearch,

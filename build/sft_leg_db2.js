@@ -237,20 +237,20 @@ var require_react_development = __commonJS({
         {
           Object.freeze(emptyObject);
         }
-        function Component17(props, context, updater) {
+        function Component18(props, context, updater) {
           this.props = props;
           this.context = context;
           this.refs = emptyObject;
           this.updater = updater || ReactNoopUpdateQueue;
         }
-        Component17.prototype.isReactComponent = {};
-        Component17.prototype.setState = function(partialState, callback) {
+        Component18.prototype.isReactComponent = {};
+        Component18.prototype.setState = function(partialState, callback) {
           if (typeof partialState !== "object" && typeof partialState !== "function" && partialState != null) {
             throw new Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
           }
           this.updater.enqueueSetState(this, partialState, callback, "setState");
         };
-        Component17.prototype.forceUpdate = function(callback) {
+        Component18.prototype.forceUpdate = function(callback) {
           this.updater.enqueueForceUpdate(this, callback, "forceUpdate");
         };
         {
@@ -259,7 +259,7 @@ var require_react_development = __commonJS({
             replaceState: ["replaceState", "Refactor your code to use setState instead (see https://github.com/facebook/react/issues/3236)."]
           };
           var defineDeprecationWarning = function(methodName, info) {
-            Object.defineProperty(Component17.prototype, methodName, {
+            Object.defineProperty(Component18.prototype, methodName, {
               get: function() {
                 warn("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
                 return void 0;
@@ -274,7 +274,7 @@ var require_react_development = __commonJS({
         }
         function ComponentDummy() {
         }
-        ComponentDummy.prototype = Component17.prototype;
+        ComponentDummy.prototype = Component18.prototype;
         function PureComponent(props, context, updater) {
           this.props = props;
           this.context = context;
@@ -283,7 +283,7 @@ var require_react_development = __commonJS({
         }
         var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
         pureComponentPrototype.constructor = PureComponent;
-        assign(pureComponentPrototype, Component17.prototype);
+        assign(pureComponentPrototype, Component18.prototype);
         pureComponentPrototype.isPureReactComponent = true;
         function createRef() {
           var refObject = {
@@ -509,7 +509,7 @@ var require_react_development = __commonJS({
           }
           return element;
         };
-        function createElement23(type, config2, children) {
+        function createElement24(type, config2, children) {
           var propName;
           var props = {};
           var key = null;
@@ -1348,8 +1348,8 @@ var require_react_development = __commonJS({
             return describeNativeComponentFrame(fn, false);
           }
         }
-        function shouldConstruct(Component18) {
-          var prototype = Component18.prototype;
+        function shouldConstruct(Component19) {
+          var prototype = Component19.prototype;
           return !!(prototype && prototype.isReactComponent);
         }
         function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
@@ -1608,7 +1608,7 @@ var require_react_development = __commonJS({
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement23.apply(this, arguments);
+          var element = createElement24.apply(this, arguments);
           if (element == null) {
             return element;
           }
@@ -1855,7 +1855,7 @@ var require_react_development = __commonJS({
           only: onlyChild
         };
         exports.Children = Children;
-        exports.Component = Component17;
+        exports.Component = Component18;
         exports.Fragment = REACT_FRAGMENT_TYPE;
         exports.Profiler = REACT_PROFILER_TYPE;
         exports.PureComponent = PureComponent;
@@ -3271,14 +3271,14 @@ var require_react_development2 = __commonJS({
         {
           Object.freeze(emptyObject);
         }
-        function Component17(props, context, updater) {
+        function Component18(props, context, updater) {
           this.props = props;
           this.context = context;
           this.refs = emptyObject;
           this.updater = updater || ReactNoopUpdateQueue;
         }
-        Component17.prototype.isReactComponent = {};
-        Component17.prototype.setState = function(partialState, callback) {
+        Component18.prototype.isReactComponent = {};
+        Component18.prototype.setState = function(partialState, callback) {
           if (!(typeof partialState === "object" || typeof partialState === "function" || partialState == null)) {
             {
               throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
@@ -3286,7 +3286,7 @@ var require_react_development2 = __commonJS({
           }
           this.updater.enqueueSetState(this, partialState, callback, "setState");
         };
-        Component17.prototype.forceUpdate = function(callback) {
+        Component18.prototype.forceUpdate = function(callback) {
           this.updater.enqueueForceUpdate(this, callback, "forceUpdate");
         };
         {
@@ -3295,7 +3295,7 @@ var require_react_development2 = __commonJS({
             replaceState: ["replaceState", "Refactor your code to use setState instead (see https://github.com/facebook/react/issues/3236)."]
           };
           var defineDeprecationWarning = function(methodName, info) {
-            Object.defineProperty(Component17.prototype, methodName, {
+            Object.defineProperty(Component18.prototype, methodName, {
               get: function() {
                 warn("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
                 return void 0;
@@ -3310,7 +3310,7 @@ var require_react_development2 = __commonJS({
         }
         function ComponentDummy() {
         }
-        ComponentDummy.prototype = Component17.prototype;
+        ComponentDummy.prototype = Component18.prototype;
         function PureComponent(props, context, updater) {
           this.props = props;
           this.context = context;
@@ -3319,7 +3319,7 @@ var require_react_development2 = __commonJS({
         }
         var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
         pureComponentPrototype.constructor = PureComponent;
-        _assign(pureComponentPrototype, Component17.prototype);
+        _assign(pureComponentPrototype, Component18.prototype);
         pureComponentPrototype.isPureReactComponent = true;
         function createRef() {
           var refObject = {
@@ -3443,7 +3443,7 @@ var require_react_development2 = __commonJS({
           }
           return element;
         };
-        function createElement23(type, config2, children) {
+        function createElement24(type, config2, children) {
           var propName;
           var props = {};
           var key = null;
@@ -4164,7 +4164,7 @@ var require_react_development2 = __commonJS({
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement23.apply(this, arguments);
+          var element = createElement24.apply(this, arguments);
           if (element == null) {
             return element;
           }
@@ -4231,7 +4231,7 @@ var require_react_development2 = __commonJS({
           only: onlyChild
         };
         exports.Children = Children;
-        exports.Component = Component17;
+        exports.Component = Component18;
         exports.Fragment = REACT_FRAGMENT_TYPE;
         exports.Profiler = REACT_PROFILER_TYPE;
         exports.PureComponent = PureComponent;
@@ -5624,15 +5624,18 @@ var FCMLegacy = class extends FCMCore {
   }
   //static getDerivedStateFromProps(nextProps: Readonly<any>, prevState: any): void {
   UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
-    var _a, _b;
     if (nextProps.id !== this.id) {
       this.loadModel(nextProps);
-      (_a = this.childComponent) === null || _a === void 0 ? void 0 : _a.componentDidMount();
+      if (this.childComponent && this.componentDidMount) {
+        this.componentDidMount();
+      }
     } else {
       let model = manywho.model.getComponent(this.id, this.flowKey);
       if (model) {
         this.loadModel(nextProps);
-        (_b = this.childComponent) === null || _b === void 0 ? void 0 : _b.componentDidMount();
+        if (this.childComponent && this.componentDidMount) {
+          this.componentDidMount();
+        }
       }
     }
   }
@@ -5837,7 +5840,7 @@ var FCMLegacy = class extends FCMCore {
 };
 
 // src/SFTLegacy.tsx
-var React23 = __toESM(require_react());
+var React24 = __toESM(require_react());
 
 // src/SearchFilterTable.tsx
 var React22 = __toESM(require_react());
@@ -11723,13 +11726,13 @@ function styleToObject(style) {
     return acc;
   }, {});
 }
-function convert(createElement23, element) {
+function convert(createElement24, element) {
   var extraProps = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
   if (typeof element === "string") {
     return element;
   }
   var children = (element.children || []).map(function(child) {
-    return convert(createElement23, child);
+    return convert(createElement24, child);
   });
   var mixins = Object.keys(element.attributes || {}).reduce(function(acc, key) {
     var val = element.attributes[key];
@@ -11754,7 +11757,7 @@ function convert(createElement23, element) {
   });
   var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties(extraProps, _excluded);
   mixins.attrs["style"] = _objectSpread22(_objectSpread22({}, mixins.attrs["style"]), existingStyle);
-  return createElement23.apply(void 0, [element.tag, _objectSpread22(_objectSpread22({}, mixins.attrs), remaining)].concat(_toConsumableArray2(children)));
+  return createElement24.apply(void 0, [element.tag, _objectSpread22(_objectSpread22({}, mixins.attrs), remaining)].concat(_toConsumableArray2(children)));
 }
 var PRODUCTION2 = false;
 try {
@@ -12183,12 +12186,24 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     if (root.titleElement) {
       style.marginTop = "0.5rem";
     }
+    let title;
+    if (root.title && root.title.length > 0) {
+      title = /* @__PURE__ */ React17.createElement(
+        "div",
+        {
+          className: "sft-ribbon-title-wrapper"
+        },
+        root.title
+      );
+    }
     return /* @__PURE__ */ React17.createElement(
       "div",
       {
         className: "sft-ribbon-search",
-        style
+        style,
+        key: "ribbon"
       },
+      title,
       /* @__PURE__ */ React17.createElement(
         "div",
         {
@@ -13501,6 +13516,7 @@ var SFT3 = class extends React22.Component {
         break;
     }
     this.iconSuffix = this.component.getAttribute("iconSuffixValue", "");
+    this.title = this.component.label;
     this.maxPageRows = parseInt(localStorage.getItem("sft-max-" + this.component.id) || this.component.getAttribute("PaginationSize", void 0) || "10");
     localStorage.setItem("sft-max-" + this.component.id, this.maxPageRows.toString());
     this.rowRememberColumn = this.component.getAttribute("RetainRowColumn");
@@ -13522,6 +13538,7 @@ var SFT3 = class extends React22.Component {
     this.columnRules = await ColumnRules.parse(this.component.getAttribute("ColumnRules", "{}"), this);
     await this.preLoad();
     await this.buildCoreTable();
+    this.forceUpdate();
     this.loaded = true;
   }
   showInfo() {
@@ -13658,15 +13675,18 @@ var SFT3 = class extends React22.Component {
   }
   // stores / deletes a ref to the column headers
   setRibbon(element) {
-    this.ribbon = element;
+    if (element)
+      this.ribbon = element;
   }
   // stores / deletes a ref to the column headers
   setHeaders(element) {
-    this.headers = element;
+    if (element)
+      this.headers = element;
   }
   // stores / deletes a ref to the footer component
   setFooter(element) {
-    this.footer = element;
+    if (element)
+      this.footer = element;
   }
   async loadUserColumns() {
     let userFieldsVal = "";
@@ -13732,6 +13752,7 @@ var SFT3 = class extends React22.Component {
       });
     }
     this.supressedOutcomes.set("OnSelect", true);
+    this.title = await this.component.inflateValue(this.title);
     this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
     if (this.paginationMode === 2 /* external */) {
       if (this.externalPage) {
@@ -13750,7 +13771,7 @@ var SFT3 = class extends React22.Component {
   // also builds the display column map
   ///////////////////////////////////////////////////////////////////////////////////////////
   async buildCoreTable() {
-    var _a, _b, _c;
+    var _a, _b;
     this.colMap = /* @__PURE__ */ new Map();
     let cols;
     let colMap = /* @__PURE__ */ new Map();
@@ -13833,80 +13854,73 @@ var SFT3 = class extends React22.Component {
       await this.saveUserColumns();
     }
     let inlineSearch = true;
-    switch (this.component.getAttribute("RibbonStyle", "ribbon")) {
-      case "search":
-        this.ribbonElement = /* @__PURE__ */ React22.createElement(
-          SearchFilterTableRibbonSearch,
-          {
-            root: this,
-            ref: (element) => {
-              this.setRibbon(element);
+    if (!this.ribbonElement) {
+      switch (this.component.getAttribute("RibbonStyle", "ribbon")) {
+        case "search":
+          this.ribbonElement = /* @__PURE__ */ React22.createElement(
+            SearchFilterTableRibbonSearch,
+            {
+              key: "ribbon",
+              root: this,
+              ref: (element) => {
+                this.setRibbon(element);
+              }
             }
-          }
-        );
-        inlineSearch = false;
-        break;
-      case "ribbon":
-      default:
-        this.ribbonElement = /* @__PURE__ */ React22.createElement(
-          SearchFilterTableRibbon,
-          {
-            root: this,
-            ref: (element) => {
-              this.setRibbon(element);
+          );
+          inlineSearch = false;
+          break;
+        case "ribbon":
+        default:
+          this.ribbonElement = /* @__PURE__ */ React22.createElement(
+            SearchFilterTableRibbon,
+            {
+              key: "ribbon",
+              root: this,
+              ref: (element) => {
+                this.setRibbon(element);
+              }
             }
-          }
-        );
-        break;
+          );
+          break;
+      }
     }
-    if (((_c = this.component.label) == null ? void 0 : _c.length) > 0) {
-      this.titleElement = /* @__PURE__ */ React22.createElement(
-        "div",
+    if (!this.headersElement) {
+      this.headersElement = /* @__PURE__ */ React22.createElement(
+        SearchFilterTableHeaders,
         {
-          className: "sft-title"
-        },
-        /* @__PURE__ */ React22.createElement(
-          "span",
-          {
-            className: "sft-title-label"
-          },
-          this.component.label
-        )
+          root: this,
+          inlineSearch,
+          ref: (element) => {
+            this.setHeaders(element);
+          }
+        }
       );
     }
-    this.headersElement = /* @__PURE__ */ React22.createElement(
-      SearchFilterTableHeaders,
-      {
-        root: this,
-        inlineSearch,
-        ref: (element) => {
-          this.setHeaders(element);
-        }
+    if (!this.footerElement) {
+      switch (this.component.getAttribute("FooterStyle", "default")) {
+        case "default":
+          this.footerElement = /* @__PURE__ */ React22.createElement(
+            SearchFilterTableFooter,
+            {
+              root: this,
+              ref: (element) => {
+                this.setFooter(element);
+              }
+            }
+          );
+          break;
+        case "nav":
+          this.footerElement = /* @__PURE__ */ React22.createElement(
+            SearchFilterTableFooterNav,
+            {
+              root: this,
+              ref: (element) => {
+                this.setFooter(element);
+              }
+            }
+          );
+          break;
       }
-    );
-    switch (this.component.getAttribute("FooterStyle", "default")) {
-      case "default":
-        this.footerElement = /* @__PURE__ */ React22.createElement(
-          SearchFilterTableFooter,
-          {
-            root: this,
-            ref: (element) => {
-              this.setFooter(element);
-            }
-          }
-        );
-        break;
-      case "nav":
-        this.footerElement = /* @__PURE__ */ React22.createElement(
-          SearchFilterTableFooterNav,
-          {
-            root: this,
-            ref: (element) => {
-              this.setFooter(element);
-            }
-          }
-        );
-        break;
     }
     if (this.rowRememberColumn) {
       this.lastRememberedRow = sessionStorage.getItem("sft-lastrow-" + this.component.id);
@@ -13914,7 +13928,7 @@ var SFT3 = class extends React22.Component {
     await this.saveSelected();
     const end3 = /* @__PURE__ */ new Date();
     await this.loadSingleSelected();
-    this.filterRows();
+    await this.filterRows();
   }
   async loadModelData() {
     let JSONStateName = this.component.getAttribute("JSONModelValue");
@@ -14640,10 +14654,91 @@ var SFT3 = class extends React22.Component {
   }
 };
 
+// src/SFTMessageBox.tsx
+var React23 = __toESM(require_react());
+var SFTMessageBox = class extends React23.Component {
+  constructor(props) {
+    super(props);
+    this.content = /* @__PURE__ */ React23.createElement(
+      "img",
+      {
+        src: "https://files-manywho-com.s3.amazonaws.com/8f6d2e19-efc9-4ebc-b70e-616396f7184e/loading-icon-transparent-background-12.jpg"
+      }
+    );
+    this.validate = this.validate.bind(this);
+    this.makeObjectData = this.makeObjectData.bind(this);
+    this.props.sft.form = this;
+  }
+  async componentDidMount() {
+    let sft = this.props.sft;
+    this.forceUpdate();
+  }
+  validate() {
+    let valid = true;
+    return valid;
+  }
+  async makeObjectData() {
+    return null;
+  }
+  render() {
+    let outcome = this.props.outcome;
+    let form = this.props.form;
+    let icon3 = "glyphicon glyphicon-" + (form.icon || "exclamation-sign") + " sft-dlg-icon";
+    let msgStr = "Deletion is a permanent action.  Please confirm ?";
+    msgStr = form.message || msgStr;
+    let msgRows = [];
+    let msgLines = msgStr.split("/n");
+    msgLines.forEach((line) => {
+      msgRows.push(
+        /* @__PURE__ */ React23.createElement(
+          "span",
+          {
+            className: "sft-dlg-row"
+          },
+          line.trim()
+        )
+      );
+    });
+    this.content = /* @__PURE__ */ React23.createElement(
+      "div",
+      {
+        className: "sft-dlg"
+      },
+      /* @__PURE__ */ React23.createElement(
+        "div",
+        {
+          className: "sft-dlg-body"
+        },
+        /* @__PURE__ */ React23.createElement(
+          "div",
+          {
+            className: "sft-dlg-body-icon"
+          },
+          /* @__PURE__ */ React23.createElement("span", { className: icon3 })
+        ),
+        /* @__PURE__ */ React23.createElement(
+          "div",
+          {
+            className: "sft-dlg-body-message"
+          },
+          msgRows
+        )
+      )
+    );
+    return this.content;
+  }
+};
+manywho.component.register("SFTMessageBox", SFTMessageBox);
+
 // src/SFTLegacy.tsx
 var SearchFilterTable = class extends FCMLegacy {
+  componentDidMount() {
+    if (this.childComponent && this.childComponent.componentDidMount) {
+      this.childComponent.componentDidMount();
+    }
+  }
   render() {
-    return /* @__PURE__ */ React23.createElement(
+    return /* @__PURE__ */ React24.createElement(
       SFT3,
       {
         key: this.id,
@@ -14656,6 +14751,7 @@ var SearchFilterTable = class extends FCMLegacy {
   }
 };
 manywho.component.register("SearchFilterTable", SearchFilterTable);
+manywho.component.register("SFTMessageBox", SFTMessageBox);
 /*! Bundled license information:
 
 react/cjs/react.development.js:
