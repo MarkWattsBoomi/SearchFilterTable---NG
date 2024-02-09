@@ -318,6 +318,7 @@ export class SFTCommonFunctions {
     static makeOutcomeButton(comp: SFT, outcome: FlowOutcome, suffix: string, objectData: FlowObjectData, dissabled: boolean) : React.JSX.Element {
         let icon: any;
         let show: boolean = false;
+        let retries: number = 0;
         if(outcome.attributes?.iconValue?.value?.length > 0){
             let flds: []
             let iconName: string
@@ -339,7 +340,12 @@ export class SFTCommonFunctions {
                 <img 
                     className={imgClass}
                     src={iconName}
-                    onError={(e: any)=>{e.currentTarget.src=iconValue}}
+                    onError={(e: any)=>{
+                        retries++;
+                        if(retries<2){
+                            e.currentTarget.src=iconValue
+                        } 
+                    }}
                     title={outcome.label || outcome.developerName}
                 />
             );
