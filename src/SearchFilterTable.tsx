@@ -618,7 +618,7 @@ export class SFT extends React.Component<any,any> {
 
         let inlineSearch: boolean = true;
         if(!this.ribbonElement) {
-            switch (this.component.getAttribute('RibbonStyle', 'ribbon')) {
+            switch (this.component.getAttribute('RibbonStyle', 'search')) {
 
                 case 'search':
                     this.ribbonElement = (
