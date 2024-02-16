@@ -389,4 +389,62 @@ export class SFTCommonFunctions {
         }
         return button;
     }
+
+    // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
+    // the values, if {{}} ere prepopulated in preLoad
+    static makeCoreButton(label: string, toolTip: string, iconValue: string, defaultIcon: any, suffix: string, callback: any, key: string, display: string) : React.JSX.Element {
+        
+        let retries: number = 0;
+        let icon: any;
+
+        if(iconValue?.length > 0){
+            let flds: []
+            let iconName: string
+            if(suffix && suffix.length>0){
+                let path = iconValue.substring(0,iconValue.lastIndexOf("."));
+                let ext: string = iconValue.substring(iconValue.lastIndexOf("."));
+                iconName = path + "_" + suffix.toLowerCase() + ext;
+            }
+            else {
+                iconName=iconValue;
+            }
+            let imgClass: string = "sft-ribbon-search-button-image";
+            icon=(
+                <img 
+                    className={imgClass}
+                    src={iconName}
+                    onError={(e: any)=>{
+                        retries++;
+                        if(retries<2){
+                            e.currentTarget.src=iconValue
+                        } 
+                    }}
+                    title={toolTip}
+                />
+            );
+        }
+        else {
+            icon=defaultIcon;
+        }
+
+        let button: any = (
+            <div
+                key={key}
+                className={'sft-ribbon-search-button-wrapper ' + key}
+                onClick={callback}
+            >
+                {icon}
+                {display && display.indexOf('text') >= 0 ?
+                    <span
+                        className="sft-ribbon-search-button-label"
+                    >
+                        {label}
+                    </span> :
+                    null
+                }
+            </div>
+        );
+        
+        return button;
+    }
 }

@@ -157,6 +157,12 @@ export class SFT extends React.Component<any,any> {
     // title value
     title: string;
 
+    //core buttons
+    filterIcon: string;
+    clearFilterIcon: string;
+    downloadIcon: string;
+    colpickIcon: string;
+
     constructor(props: any) {
         super(props);
         this.component = this.props.parent;
@@ -229,6 +235,10 @@ export class SFT extends React.Component<any,any> {
 
         this.iconSuffix=this.component.getAttribute("iconSuffixValue","");
         this.title=this.component.label;
+        this.filterIcon=this.component.getAttribute("filterIcon","");
+        this.clearFilterIcon=this.component.getAttribute("clearFilterIcon","");
+        this.downloadIcon=this.component.getAttribute("exportIcon","");
+        this.colpickIcon=this.component.getAttribute("colpickIcon","");
 
         this.maxPageRows = parseInt(localStorage.getItem('sft-max-' + this.component.id) || this.component.getAttribute('PaginationSize', undefined) || '10');
         localStorage.setItem('sft-max-' + this.component.id, this.maxPageRows.toString());
@@ -500,6 +510,10 @@ export class SFT extends React.Component<any,any> {
         //other inflations
         this.title = await this.component.inflateValue(this.title);
         this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
+        this.filterIcon = await this.component.inflateValue(this.filterIcon);
+        this.clearFilterIcon = await this.component.inflateValue(this.clearFilterIcon);
+        this.downloadIcon = await this.component.inflateValue(this.downloadIcon);
+        this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
 
         if(this.paginationMode===ePaginationMode.external){
             if(this.externalPage) {

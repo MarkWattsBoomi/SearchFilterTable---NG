@@ -57,54 +57,41 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         // ad export if allowed
         if (canExport === true) {
             this.rightButtons.push(
-                <div
-                    className="sft-ribbon-search-button-wrapper"
-                    onClick={(e: any) => {e.stopPropagation(); root.doExport(root.rowMap); }}
-                    key={'exportAll'}
-                >
+                SFTCommonFunctions.makeCoreButton(
+                    'Export All',
+                    'Export All',
+                    root.downloadIcon,
                     <FontAwesomeIcon 
                         role="button"
                         icon={faDownload}
                         key={'exportAll'}
-                        className={'sft-ribbon-search-button-icon'}
-                        title={'Export Shown'}
-                    />
-                    {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
-                        <span
-                            className="sft-ribbon-search-button-label"
-                        >
-                            {'Export All'}
-                        </span> :
-                        null
-                    }
-                </div>,
+                        className={'sft-ribbon-search-button-icon'}                      
+                    />,
+                    root.iconSuffix,
+                    (e: any) => {e.stopPropagation(); root.doExport(root.rowMap); },
+                    'exportAll',
+                    root.component.attributes?.RibbonDisplay
+                )
             );
         }
 
         if (root.rowMap.size > root.currentRowMap.size && canExport === true) {
             this.rightButtons.push(
-                <div
-                    className="sft-ribbon-search-button-wrapper"
-                    onClick={(e: any) => {e.stopPropagation(); root.doExport(root.currentRowMap); }}
-                    key={'exportShown'}
-                >
+                SFTCommonFunctions.makeCoreButton(
+                    'Export Shown',
+                    'Export Shown',
+                    root.downloadIcon,
                     <FontAwesomeIcon 
                         role="button"
                         icon={faDownload}
                         key={'exportShown'}
-                        className={'sft-ribbon-search-button-icon'}
-                        title={'Export Shown'}
-                    />
-                    
-                    {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
-                        <span
-                            className="sft-ribbon-search-button-label"
-                        >
-                            {'Export Shown'}
-                        </span> :
-                        null
-                    }
-                </div>,
+                        className={'sft-ribbon-search-button-icon'}                      
+                    />,
+                    root.iconSuffix,
+                    (e: any) => {e.stopPropagation(); root.doExport(root.currentRowMap); },
+                    'exportShown',
+                    root.component.attributes?.RibbonDisplay
+                )
             );
         }
 
@@ -163,71 +150,61 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
 
         if (root.dynamicColumns === true) {
             this.rightButtons.push(
-                <div
-                    className="sft-ribbon-search-button-wrapper"
-                    onClick={(e: any) => {root.showColumnPicker(); }}
-                    key={'colpick'}
-                >
+                SFTCommonFunctions.makeCoreButton(
+                    'Select columns',
+                    'Select columns',
+                    root.colpickIcon,
                     <FontAwesomeIcon 
                         role="button"
                         icon={faEllipsisVertical}
-                        key={'colpick'}
-                        className={'sft-ribbon-search-button-icon'}
-                        title={'Select columns'}
-                    />
-                    {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
-                        <span
-                            className="sft-ribbon-search-button-label"
-                        >
-                            {'Column Picker'}
-                        </span> :
-                        null
-                    }
-                </div>,
+                        className={'sft-ribbon-search-button-icon'}                      
+                    />,
+                    root.iconSuffix,
+                    (e: any) => {root.showColumnPicker(); },
+                    'colpick',
+                    root.component.attributes?.RibbonDisplay
+                )
             );
         }
 
         if (root.selectedRowMap.size > 0 && canExport === true) {
             this.leftButtons.push(
-                <div
-                    className="sft-ribbon-search-button-wrapper"
-                    onClick={(e: any) => {e.stopPropagation(); root.doExport(root.selectedRowMap); }}
-                    key={'exportSelected'}
-                >
+                SFTCommonFunctions.makeCoreButton(
+                    'Export Selected',
+                    'Export Selected',
+                    root.downloadIcon,
                     <FontAwesomeIcon 
-                        role="button"
                         icon={faListCheck}
                         key={'exportSelected'}
-                        className={'sft-ribbon-search-button-icon sft-ribbon-search-icon-clear'}
-                        title={'Export Selected'}
-                    />
-                    {!root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf('text') >= 0 ?
-                        <span
-                            className="sft-ribbon-search-button-label"
-                        >
-                            {'Export Selected'}
-                        </span> :
-                        null
-                    }
-                </div>,
+                        className={'sft-ribbon-search-button-icon'}
+                        title={'Export Selected'}                        
+                    />,
+                    root.iconSuffix,
+                    (e: any) => {e.stopPropagation(); root.doExport(root.selectedRowMap); },
+                    'exportSelected',
+                    root.component.attributes?.RibbonDisplay
+
+                )
             );
         }
 
         if (root.filters.isFiltered()) {
             this.clearFiltersButton = (
-                <div
-                    className="sft-ribbon-search-button-wrapper sft-ribbon-search-button-clear"
-                    onClick={this.clearFilters}
-                    key={'clearFilters'}
-                >
+                SFTCommonFunctions.makeCoreButton(
+                    'Clear Filters',
+                    'Clear Filters',
+                    root.clearFilterIcon,
                     <FontAwesomeIcon 
-                        role="button"
                         icon={faFilterCircleXmark}
                         key={'clearFilters'}
-                        className={'sft-ribbon-search-button-icon sft-ribbon-search-icon-clear'}
-                        title={'Clear Filters'}
-                    />
-                </div>
+                        className={'sft-ribbon-search-button-icon'}                      
+                    />,
+                    root.iconSuffix,
+                    this.clearFilters,
+                    'clearFilters',
+                    root.component.attributes?.RibbonDisplay
+
+                )
             );
         }
         else {
@@ -359,18 +336,23 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                             title="Clear"
                         />
                     </div>
-                    <div
-                        className="sft-ribbon-search-button-wrapper"
-                        onClick={this.showSearch}
-                    >
-                        <FontAwesomeIcon 
-                            role="button"
-                            icon={faFilter}
-                            key={'showSearch'}
-                            className={'sft-ribbon-search-button-icon sft-ribbon-search-icon-advanced'}
-                            title={'Advanced Search'}
-                        />
-                    </div>
+                    {
+                        SFTCommonFunctions.makeCoreButton(
+                            "Advanced Search",
+                            "Advanced Search",
+                            root.filterIcon,
+                            <FontAwesomeIcon 
+                                role="button"
+                                icon={faFilter}
+                                key={'showSearch'}
+                                className={'sft-ribbon-search-button-icon'}                     
+                            />,
+                            root.iconSuffix,
+                            this.showSearch,
+                            'showSearch',
+                            root.component.attributes?.RibbonDisplay
+                        )
+                    }
                     {this.clearFiltersButton}
                 </div>
                 <div

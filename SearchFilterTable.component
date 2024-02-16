@@ -9,7 +9,6 @@
     "DateFormat": "Date format.  UTC, JSON, LOCALE(*)",
     "QuickCheck": "QuickCheck.  Adds a checkbox to the column on boolean cols for quick filtering.",
     "ColumnRules": "Column Rules.  Allows seting special functions on columns.  See the GitHub documentation.",
-    "ColumnsIcon": "Column picker icon.  The glyphicon to use for the column picker button.",
     "LoadingIcon": "Loading Icon.  The url of an image to show while loading.",
     "RibbonStyle": "Ribbon Style.  The display style of the header ribbon. ribbon or search(*).",
     "FooterStyle": "Footer Style,  The display style of the footer.  default(*) or nav",
@@ -33,7 +32,11 @@
     "iconSuffixValue":"Icon Suffix Value.  A string or {{field->prop}} to use to inflate an icon.",
     "showRadio":"Show a radio per row in single select mode",
     "greyDissabled":"Grey out dissabled outcomes rather than hide",
-    "FooterStyle":"Footer Style.  default(*) or nav"
+    "FooterStyle":"Footer Style.  default(*) or nav",
+    "exportIcon":"Export Icon",
+    "filterIcon":"Filter Icon",
+    "clearFilterIcon":"Clear Filter Icon",
+    "colpickIcon":"Column Picker Icon"
   },
   "configurationEditors": [
     "LABEL",
