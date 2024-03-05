@@ -4887,7 +4887,7 @@ var FlowObjectData = class _FlowObjectData {
     const data = {
       developerName,
       externalId: "",
-      internalId: manywho.utils.guid(),
+      internalId: crypto.randomUUID(),
       isSelected: false,
       order: 0,
       properties: [],
@@ -5457,7 +5457,6 @@ var FCMCore = class extends import_react.default.Component {
       let response = yield fetch(uri, request);
       if (response.status === 200) {
         results = yield response.json();
-        console.log("Fetch Complete");
       } else {
         const errorText = yield response.text();
         console.log("Fetch Failed - " + errorText);
@@ -14769,7 +14768,9 @@ manywho.component.register("SFTMessageBox", SFTMessageBox);
 var SearchFilterTable = class extends FCMLegacy {
   componentDidMount() {
     if (this.childComponent && this.childComponent.componentDidMount) {
-      this.childComponent.componentDidMount();
+      if (this.contentValue || this.objectData || this.getAttribute("JSONModelValue")) {
+        this.childComponent.componentDidMount();
+      }
     }
   }
   render() {

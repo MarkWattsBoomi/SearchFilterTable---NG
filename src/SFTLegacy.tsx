@@ -8,7 +8,9 @@ class SearchFilterTable extends FCMLegacy {
     
     componentDidMount() {
         if(this.childComponent && this.childComponent.componentDidMount){
-            this.childComponent.componentDidMount();
+            if(this.contentValue || this.objectData || (this.getAttribute("JSONModelValue"))){
+                this.childComponent.componentDidMount();
+            }
         }
     }
 

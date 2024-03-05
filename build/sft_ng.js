@@ -4795,7 +4795,7 @@ var FlowObjectData = class _FlowObjectData {
     const data = {
       developerName,
       externalId: "",
-      internalId: manywho.utils.guid(),
+      internalId: crypto.randomUUID(),
       isSelected: false,
       order: 0,
       properties: [],
@@ -5353,7 +5353,6 @@ var FCMCore = class extends import_react.default.Component {
       let response = yield fetch(uri, request);
       if (response.status === 200) {
         results = yield response.json();
-        console.log("Fetch Complete");
       } else {
         const errorText = yield response.text();
         console.log("Fetch Failed - " + errorText);
@@ -5539,74 +5538,80 @@ var FCMNew = class extends FCMCore {
     super(props);
     this.flowBaseUri = window.location.origin;
   }
+  UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
+    this.loadModel(nextProps);
+    if (this.componentDidMount) {
+      this.componentDidMount();
+    }
+  }
   loadModel(props) {
     var _a, _b, _c;
-    this.authenticationToken = this.props.authenticationToken;
-    this.attributes = this.props.element.attributes;
-    this.className = this.props.element.className;
-    this.colSpan = this.props.element.colSpan;
-    this.column = this.props.element.column;
+    this.authenticationToken = props.authenticationToken;
+    this.attributes = props.element.attributes;
+    this.className = props.element.className;
+    this.colSpan = props.element.colSpan;
+    this.column = props.element.column;
     this.columns = [];
-    (_a = this.props.element.columns) === null || _a === void 0 ? void 0 : _a.forEach((col) => {
+    (_a = props.element.columns) === null || _a === void 0 ? void 0 : _a.forEach((col) => {
       this.columns.push(new FlowDisplayColumn(col));
     });
     this.columns.sort((a, b) => {
       return a.order - b.order;
     });
-    this.componentScriptURL = this.props.element.componentScriptURL;
-    this.componentStyleSheetURL = this.props.element.componentStyleSheetURL;
-    this.content = this.props.element.content;
-    this.contentType = eContentType[this.props.element.contentType];
-    this.contentValue = this.props.element.contentValue;
-    this.developerName = this.props.element.developerName;
+    this.componentScriptURL = props.element.componentScriptURL;
+    this.componentStyleSheetURL = props.element.componentStyleSheetURL;
+    this.content = props.element.content;
+    this.contentType = eContentType[props.element.contentType];
+    this.contentValue = props.element.contentValue;
+    this.developerName = props.element.developerName;
     this.fields = {};
-    this.fileDataRequest = this.props.element.fileDataRequest;
-    this.hasEvents = this.props.element.hasEvents;
-    this.hasSubmitted = this.props.hasSubmitted;
-    this.height = this.props.element.height;
-    this.helpInfo = this.props.element.helpInfo;
-    this.hintValue = this.props.element.hintValue;
-    this.id = this.props.element.id;
-    this.imageUri = this.props.element.imageUri;
-    this.isEditable = this.props.element.isEditable;
-    this.isEnabled = this.props.element.isEnabled;
-    this.isMultiSelect = this.props.element.isMultiSelect;
-    this.isRequired = this.props.element.isRequired;
-    this.isSearchable = this.props.element.isSearchable;
-    this.isSearchableDisplayColumns = this.props.element.isSearchableDisplayColumns;
-    this.isValid = this.props.element.isValid;
-    this.isVisible = this.props.element.isVisible;
-    this.label = this.props.element.label;
-    this.maxSize = this.props.element.maxSize;
-    this.objectData = new FlowObjectDataArray(this.props.element.objectData);
-    this.objectDataRequest = this.props.element.objectDataRequest;
-    this.order = this.props.element.order;
+    this.fileDataRequest = props.element.fileDataRequest;
+    this.hasEvents = props.element.hasEvents;
+    this.hasSubmitted = props.hasSubmitted;
+    this.height = props.element.height;
+    this.helpInfo = props.element.helpInfo;
+    this.hintValue = props.element.hintValue;
+    this.id = props.element.id;
+    this.imageUri = props.element.imageUri;
+    this.isEditable = props.element.isEditable;
+    this.isEnabled = props.element.isEnabled;
+    this.isMultiSelect = props.element.isMultiSelect;
+    this.isRequired = props.element.isRequired;
+    this.isSearchable = props.element.isSearchable;
+    this.isSearchableDisplayColumns = props.element.isSearchableDisplayColumns;
+    this.isValid = props.element.isValid;
+    this.isVisible = props.element.isVisible;
+    this.label = props.element.label;
+    this.maxSize = props.element.maxSize;
+    this.objectData = new FlowObjectDataArray(props.element.objectData);
+    this.objectDataRequest = props.element.objectDataRequest;
+    this.order = props.element.order;
     this.outcomes = {};
-    (_b = this.props.outcomes) === null || _b === void 0 ? void 0 : _b.forEach((outcome) => {
+    (_b = props.outcomes) === null || _b === void 0 ? void 0 : _b.forEach((outcome) => {
       let oc = new FlowOutcome(outcome);
       if (oc.pageObjectBindingId === this.id) {
         this.outcomes[oc.developerName] = oc;
       }
     });
-    (_c = this.props.element.outcomes) === null || _c === void 0 ? void 0 : _c.forEach((outcome) => {
+    (_c = props.element.outcomes) === null || _c === void 0 ? void 0 : _c.forEach((outcome) => {
       let oc = new FlowOutcome(outcome);
       if (oc.pageObjectBindingId === this.id) {
         this.outcomes[oc.developerName] = oc;
       }
     });
-    this.pageContainerId = this.props.element.pageContainerId;
-    this.pageSize = this.props.element.pageSize || 20;
-    this.row = this.props.element.row;
-    this.rowSpan = this.props.element.rowSpan;
-    this.selectedItems = this.props.element.selectedItems;
-    this.size = this.props.element.size;
-    this.stateId = this.props.stateId;
-    this.tags = this.props.element.tags;
-    this.tenantId = this.props.tenantId;
-    this.type = this.props.element.type;
-    this.validationMessage = this.props.element.validationMessage;
-    this.validations = this.props.element.validations;
-    this.width = this.props.element.width;
+    this.pageContainerId = props.element.pageContainerId;
+    this.pageSize = props.element.pageSize || 20;
+    this.row = props.element.row;
+    this.rowSpan = props.element.rowSpan;
+    this.selectedItems = props.element.selectedItems;
+    this.size = props.element.size;
+    this.stateId = props.stateId;
+    this.tags = props.element.tags;
+    this.tenantId = props.tenantId;
+    this.type = props.element.type;
+    this.validationMessage = props.element.validationMessage;
+    this.validations = props.element.validations;
+    this.width = props.element.width;
   }
   redraw() {
     this.componentDidMount();
