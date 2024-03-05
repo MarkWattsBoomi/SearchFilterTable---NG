@@ -205,6 +205,7 @@
   border: none;
   background-color: #eee;
   z-index: 1020;
+  padding-left: 0 !important;
 }
 .sft-checkbox {
   display: block !important;
@@ -241,7 +242,7 @@
   position: sticky;
   top: 0;
   cursor: default !important;
-  padding-left: 5px !important;
+  padding-left: 5px;
   background-color: #eee;
   padding: 0 0.5rem 0 0.5rem;
   border: none;
@@ -256,9 +257,11 @@
 }
 .sft-column-headers th:first-of-type {
   border-radius: 5px 0 0 5px;
+  border-left: 1px solid #ccc;
 }
 .sft-column-headers th:last-of-type {
   border-radius: 0 5px 5px 0;
+  border-right: 1px solid #ccc;
 }
 .sft-column-header-wrapper {
   display: flex;

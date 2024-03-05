@@ -118,7 +118,7 @@ export class SearchFilterTableHeaders extends React.Component<any, any> {
                 headers.push(
                     <th
                         key="checks"
-                        className="sft-check-header"
+                        className="sft-check-header sft-column-header "
                         ref={(element: any) => {this.setHeader('checks', element); }}
                     >
                         <span style={{display: "none"}}>Toggle Selection</span>

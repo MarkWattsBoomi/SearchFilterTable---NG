@@ -8760,7 +8760,7 @@ var SearchFilterTableHeaders = class extends React14.Component {
             "th",
             {
               key: "checks",
-              className: "sft-check-header",
+              className: "sft-check-header sft-column-header ",
               ref: (element) => {
                 this.setHeader("checks", element);
               }

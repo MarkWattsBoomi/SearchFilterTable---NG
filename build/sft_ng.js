@@ -7205,6 +7205,57 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
     }
     return button;
   }
+  // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
+  // the values, if {{}} ere prepopulated in preLoad
+  static makeCoreButton(label, toolTip, iconValue, defaultIcon, suffix, callback, key, display) {
+    let retries = 0;
+    let icon3;
+    if ((iconValue == null ? void 0 : iconValue.length) > 0) {
+      let flds;
+      let iconName;
+      if (suffix && suffix.length > 0) {
+        let path = iconValue.substring(0, iconValue.lastIndexOf("."));
+        let ext = iconValue.substring(iconValue.lastIndexOf("."));
+        iconName = path + "_" + suffix.toLowerCase() + ext;
+      } else {
+        iconName = iconValue;
+      }
+      let imgClass = "sft-ribbon-search-button-image";
+      icon3 = /* @__PURE__ */ React6.createElement(
+        "img",
+        {
+          className: imgClass,
+          src: iconName,
+          onError: (e) => {
+            retries++;
+            if (retries < 2) {
+              e.currentTarget.src = iconValue;
+            }
+          },
+          title: toolTip
+        }
+      );
+    } else {
+      icon3 = defaultIcon;
+    }
+    let button = /* @__PURE__ */ React6.createElement(
+      "div",
+      {
+        key,
+        className: "sft-ribbon-search-button-wrapper " + key,
+        onClick: callback
+      },
+      icon3,
+      display && display.indexOf("text") >= 0 ? /* @__PURE__ */ React6.createElement(
+        "span",
+        {
+          className: "sft-ribbon-search-button-label"
+        },
+        label
+      ) : null
+    );
+    return button;
+  }
 };
 
 // src/ColumnRule.tsx
@@ -8569,7 +8620,7 @@ var SearchFilterTableHeaders = class extends React14.Component {
             "th",
             {
               key: "checks",
-              className: "sft-check-header",
+              className: "sft-check-header sft-column-header ",
               ref: (element) => {
                 this.setHeader("checks", element);
               }
@@ -11780,7 +11831,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     this.generateButtons();
   }
   async generateButtons() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     if (this.deBounce === true) {
       return;
     } else {
@@ -11792,65 +11843,51 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     const canExport = root.component.getAttribute("canExport", "true").toLowerCase() === "true";
     if (canExport === true) {
       this.rightButtons.push(
-        /* @__PURE__ */ React17.createElement(
-          "div",
-          {
-            className: "sft-ribbon-search-button-wrapper",
-            onClick: (e) => {
-              e.stopPropagation();
-              root.doExport(root.rowMap);
-            },
-            key: "exportAll"
-          },
+        SFTCommonFunctions.makeCoreButton(
+          "Export All",
+          "Export All",
+          root.downloadIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
               role: "button",
               icon: import_faDownload.faDownload,
               key: "exportAll",
-              className: "sft-ribbon-search-button-icon",
-              title: "Export Shown"
+              className: "sft-ribbon-search-button-icon"
             }
           ),
-          !((_a = root.component.attributes) == null ? void 0 : _a.RibbonDisplay) || ((_b = root.component.attributes.RibbonDisplay) == null ? void 0 : _b.indexOf("text")) >= 0 ? /* @__PURE__ */ React17.createElement(
-            "span",
-            {
-              className: "sft-ribbon-search-button-label"
-            },
-            "Export All"
-          ) : null
+          root.iconSuffix,
+          (e) => {
+            e.stopPropagation();
+            root.doExport(root.rowMap);
+          },
+          "exportAll",
+          (_a = root.component.attributes) == null ? void 0 : _a.RibbonDisplay
         )
       );
     }
     if (root.rowMap.size > root.currentRowMap.size && canExport === true) {
       this.rightButtons.push(
-        /* @__PURE__ */ React17.createElement(
-          "div",
-          {
-            className: "sft-ribbon-search-button-wrapper",
-            onClick: (e) => {
-              e.stopPropagation();
-              root.doExport(root.currentRowMap);
-            },
-            key: "exportShown"
-          },
+        SFTCommonFunctions.makeCoreButton(
+          "Export Shown",
+          "Export Shown",
+          root.downloadIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
               role: "button",
               icon: import_faDownload.faDownload,
               key: "exportShown",
-              className: "sft-ribbon-search-button-icon",
-              title: "Export Shown"
+              className: "sft-ribbon-search-button-icon"
             }
           ),
-          !((_c = root.component.attributes) == null ? void 0 : _c.RibbonDisplay) || ((_d = root.component.attributes.RibbonDisplay) == null ? void 0 : _d.indexOf("text")) >= 0 ? /* @__PURE__ */ React17.createElement(
-            "span",
-            {
-              className: "sft-ribbon-search-button-label"
-            },
-            "Export Shown"
-          ) : null
+          root.iconSuffix,
+          (e) => {
+            e.stopPropagation();
+            root.doExport(root.currentRowMap);
+          },
+          "exportShown",
+          (_b = root.component.attributes) == null ? void 0 : _b.RibbonDisplay
         )
       );
     }
@@ -11874,7 +11911,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
         }
       }
     }
-    if (((_e = root.component.content) == null ? void 0 : _e.length) > 0) {
+    if (((_c = root.component.content) == null ? void 0 : _c.length) > 0) {
       this.rightButtons.push(
         /* @__PURE__ */ React17.createElement(
           "div",
@@ -11895,7 +11932,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
               title: "Show Info"
             }
           ),
-          !((_f = root.component.attributes) == null ? void 0 : _f.RibbonDisplay) || ((_g = root.component.attributes.RibbonDisplay) == null ? void 0 : _g.indexOf("text")) >= 0 ? /* @__PURE__ */ React17.createElement(
+          !((_d = root.component.attributes) == null ? void 0 : _d.RibbonDisplay) || ((_e = root.component.attributes.RibbonDisplay) == null ? void 0 : _e.indexOf("text")) >= 0 ? /* @__PURE__ */ React17.createElement(
             "span",
             {
               className: "sft-ribbon-search-button-label"
@@ -11907,85 +11944,69 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     }
     if (root.dynamicColumns === true) {
       this.rightButtons.push(
-        /* @__PURE__ */ React17.createElement(
-          "div",
-          {
-            className: "sft-ribbon-search-button-wrapper",
-            onClick: (e) => {
-              root.showColumnPicker();
-            },
-            key: "colpick"
-          },
+        SFTCommonFunctions.makeCoreButton(
+          "Select columns",
+          "Select columns",
+          root.colpickIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
               role: "button",
               icon: import_faEllipsisVertical.faEllipsisVertical,
-              key: "colpick",
-              className: "sft-ribbon-search-button-icon",
-              title: "Select columns"
+              className: "sft-ribbon-search-button-icon"
             }
           ),
-          !((_h = root.component.attributes) == null ? void 0 : _h.RibbonDisplay) || ((_i = root.component.attributes.RibbonDisplay) == null ? void 0 : _i.indexOf("text")) >= 0 ? /* @__PURE__ */ React17.createElement(
-            "span",
-            {
-              className: "sft-ribbon-search-button-label"
-            },
-            "Column Picker"
-          ) : null
+          root.iconSuffix,
+          (e) => {
+            root.showColumnPicker();
+          },
+          "colpick",
+          (_f = root.component.attributes) == null ? void 0 : _f.RibbonDisplay
         )
       );
     }
     if (root.selectedRowMap.size > 0 && canExport === true) {
       this.leftButtons.push(
-        /* @__PURE__ */ React17.createElement(
-          "div",
-          {
-            className: "sft-ribbon-search-button-wrapper",
-            onClick: (e) => {
-              e.stopPropagation();
-              root.doExport(root.selectedRowMap);
-            },
-            key: "exportSelected"
-          },
+        SFTCommonFunctions.makeCoreButton(
+          "Export Selected",
+          "Export Selected",
+          root.downloadIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
-              role: "button",
               icon: import_faListCheck.faListCheck,
               key: "exportSelected",
-              className: "sft-ribbon-search-button-icon sft-ribbon-search-icon-clear",
+              className: "sft-ribbon-search-button-icon",
               title: "Export Selected"
             }
           ),
-          !((_j = root.component.attributes) == null ? void 0 : _j.RibbonDisplay) || ((_k = root.component.attributes.RibbonDisplay) == null ? void 0 : _k.indexOf("text")) >= 0 ? /* @__PURE__ */ React17.createElement(
-            "span",
-            {
-              className: "sft-ribbon-search-button-label"
-            },
-            "Export Selected"
-          ) : null
+          root.iconSuffix,
+          (e) => {
+            e.stopPropagation();
+            root.doExport(root.selectedRowMap);
+          },
+          "exportSelected",
+          (_g = root.component.attributes) == null ? void 0 : _g.RibbonDisplay
         )
       );
     }
     if (root.filters.isFiltered()) {
-      this.clearFiltersButton = /* @__PURE__ */ React17.createElement(
-        "div",
-        {
-          className: "sft-ribbon-search-button-wrapper sft-ribbon-search-button-clear",
-          onClick: this.clearFilters,
-          key: "clearFilters"
-        },
+      this.clearFiltersButton = SFTCommonFunctions.makeCoreButton(
+        "Clear Filters",
+        "Clear Filters",
+        root.clearFilterIcon,
         /* @__PURE__ */ React17.createElement(
           FontAwesomeIcon,
           {
-            role: "button",
             icon: import_faFilterCircleXmark.faFilterCircleXmark,
             key: "clearFilters",
-            className: "sft-ribbon-search-button-icon sft-ribbon-search-icon-clear",
-            title: "Clear Filters"
+            className: "sft-ribbon-search-button-icon"
           }
-        )
+        ),
+        root.iconSuffix,
+        this.clearFilters,
+        "clearFilters",
+        (_h = root.component.attributes) == null ? void 0 : _h.RibbonDisplay
       );
     } else {
       this.clearFiltersButton = void 0;
@@ -12045,6 +12066,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     root.filters.clearAll();
   }
   render() {
+    var _a;
     const root = this.props.root;
     const style = {};
     if (root.titleElement) {
@@ -12117,22 +12139,23 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
             }
           )
         ),
-        /* @__PURE__ */ React17.createElement(
-          "div",
-          {
-            className: "sft-ribbon-search-button-wrapper",
-            onClick: this.showSearch
-          },
+        SFTCommonFunctions.makeCoreButton(
+          "Advanced Search",
+          "Advanced Search",
+          root.filterIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
               role: "button",
               icon: import_faFilter.faFilter,
               key: "showSearch",
-              className: "sft-ribbon-search-button-icon sft-ribbon-search-icon-advanced",
-              title: "Advanced Search"
+              className: "sft-ribbon-search-button-icon"
             }
-          )
+          ),
+          root.iconSuffix,
+          this.showSearch,
+          "showSearch",
+          (_a = root.component.attributes) == null ? void 0 : _a.RibbonDisplay
         ),
         this.clearFiltersButton
       ),
@@ -13381,6 +13404,10 @@ var SFT3 = class extends React22.Component {
     }
     this.iconSuffix = this.component.getAttribute("iconSuffixValue", "");
     this.title = this.component.label;
+    this.filterIcon = this.component.getAttribute("filterIcon", "");
+    this.clearFilterIcon = this.component.getAttribute("clearFilterIcon", "");
+    this.downloadIcon = this.component.getAttribute("exportIcon", "");
+    this.colpickIcon = this.component.getAttribute("colpickIcon", "");
     this.maxPageRows = parseInt(localStorage.getItem("sft-max-" + this.component.id) || this.component.getAttribute("PaginationSize", void 0) || "10");
     localStorage.setItem("sft-max-" + this.component.id, this.maxPageRows.toString());
     this.rowRememberColumn = this.component.getAttribute("RetainRowColumn");
@@ -13402,8 +13429,8 @@ var SFT3 = class extends React22.Component {
     this.columnRules = await ColumnRules.parse(this.component.getAttribute("ColumnRules", "{}"), this);
     await this.preLoad();
     await this.buildCoreTable();
-    this.forceUpdate();
     this.loaded = true;
+    this.forceUpdate();
   }
   showInfo() {
     const content = /* @__PURE__ */ React22.createElement(
@@ -13618,6 +13645,10 @@ var SFT3 = class extends React22.Component {
     this.supressedOutcomes.set("OnSelect", true);
     this.title = await this.component.inflateValue(this.title);
     this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
+    this.filterIcon = await this.component.inflateValue(this.filterIcon);
+    this.clearFilterIcon = await this.component.inflateValue(this.clearFilterIcon);
+    this.downloadIcon = await this.component.inflateValue(this.downloadIcon);
+    this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
     if (this.paginationMode === 2 /* external */) {
       if (this.externalPage) {
         let pg = await this.component.inflateValue(this.externalPage);
