@@ -40,8 +40,6 @@
   },
   "configurationEditors": [
     "LABEL",
-    "WIDTH",
-    "HEIGHT",
     "MULTISELECT",
     "SEARCHABLE",
     "STATE_VALUE",

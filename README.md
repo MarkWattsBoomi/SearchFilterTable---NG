@@ -1,14 +1,8 @@
 ![SFT Image](https://github.com/MarkWattsBoomi/SearchFilterTable/blob/main/sft.png)
-![SFT Image](https://github.com/MarkWattsBoomi/SearchFilterTable/blob/main/searchribbon.png)
 
 This module provides table implementation with advanced sorting and filtering features. 
 
-The latest version can be included in your player from this location: -
-
-```
-https://master-boomi-flow-assets-prod-us-east-1.s3.amazonaws.com/e1dbcceb-070c-4ce6-95b0-ba282aaf4f48/sft.js
-https://master-boomi-flow-assets-prod-us-east-1.s3.amazonaws.com/e1dbcceb-070c-4ce6-95b0-ba282aaf4f48/sft.css
-```
+The importable component file is in the root of the project, the js & css files are in the build folder.
 
 # Class Names
 
@@ -37,11 +31,7 @@ Support for outcome modal popups.
 
 Support for remembering the row that triggered an outcome and to bring that same row into view on any page on re-render.
 
-Only supports model data from a list NOT A SERVICE
-
-## Height
-
-Sets the display height of the table.
+Supports model data from a list, a JSON string or a service(beta*)
 
 Required !!
 
@@ -49,14 +39,14 @@ Required !!
 
 Optional
 
-If set then a title bar is drawn above the table containing the label value
+If set then a title bar is drawn to the left of the search box.
 
 
 ## Datasource
 
 Set the datasource to a list of objects.
 
-BETA !! or a service.
+If using the JSON string datasource option this list tells the component the type definition.
 
 
 ## State
@@ -72,19 +62,20 @@ It must be a list, single object state is handled by the "RowLevelState" attribu
 
 Any outcome attached to the component is dealt with in this way: -
 
-* If the outcome is set as "Appears At Top" then it will become a button in the top title bar or its context menu otherwise it becomes a button on the tree node or its context menu.
+* If the outcome is set as "Appears At Top" then it will become a button in the top title bar or its context menu otherwise it becomes a button on the row or its context menu.
 
-* If the outcome has its "When this outcome is selected" option set to either "Save Changes" or "Partially Save Changes" and is attached 
-to a tree node then the current node is set as the state value when triggered.
+* If the outcome has its "When this outcome is selected" option set to either "Save Changes" or "Partially Save Changes" and is attached to a row then the current row is set into the "RowLevelState" value when triggered.
 
 * If the outcome has an "icon" attribute then this value is used to specify the icon, otherwise a default "+" icon is used.  Note: Icons are 
 bootstrap glyphicons without the "glyphicon-" prefix e.g. "trash","edit" etc.
+
+* if the outcome has an "iconValue" attribute set then this overrides the icon value.
 
 * If the outcome has a "Label" set then this is used as the tooltip otherwise the outcome's name is used.
 
 * "OnSelect" is a special case and is attached to the action of clicking a table row.
 
-* If the outcome's developer name begins with "CM" (case insensitive) then the outcome is added to either the main tree or the current node's context menu rather than as a button.
+* If the outcome's developer name begins with "CM" (case insensitive) then the outcome is added to the current row's context menu rather than as a button.
 
 * All outcomes including "OnSelect" are optional.
 
@@ -92,7 +83,7 @@ bootstrap glyphicons without the "glyphicon-" prefix e.g. "trash","edit" etc.
 
 * If the outcome has an attribute of "RequireSelected"="true" then it will only be shown if one or more items are tagged.
 
-* Outcomes flagged as "RequireSelected" are placed at the left end of the ribbon bar, others are placed on the right end.
+* Other outcome rules can be specified in the "rule" attribute.
 
 
 
@@ -166,6 +157,8 @@ to the file name.
 
 If the suffixed icon is not found then it reverts to the un-suffixed name.
 
+Curly notation is supported e.g. {{MyObject->PropertyName}}
+
 !! make sure the icon exists or it will loop to infinity. 
 
 ### RequiresSelected
@@ -219,12 +212,6 @@ form =
 Sets the display columns for the table.
 
 
-### Width & Height
-
-If specified then these are applied as pixel values.
-
-Always provide a height or the component will have a 0 height table area.
-
 ### Content
 
 If specified then this will be used as the content of the info popup dialog and cause the info button to be shown on the toolbar.
@@ -234,8 +221,11 @@ If specified then this will be used as the content of the info popup dialog and 
 
 ### height
 
-allows passing a string to use as the component's height e.g. "600px" or "60vh".
+allows passing a string to use as the component's height e.g. "-webkit-fill-available", "600px" or "60vh".
 
+### width
+
+allows passing a string to use as the component's width e.g. "-webkit-fill-available","600px" or "60vw".
 
 ### PaginationSize
 
@@ -258,13 +248,13 @@ sets if all columns are exported or only those shown / selected by user.  defaul
 The name of a value in Flow to use for the single row level state.
 
 As opposed to the main state value which is a list containing all/any selected rows, 
-the RowLevelState value will always hold the value of any row which triggered an outcome.
+the RowLevelState value will always hold the value of any row which was selected or triggered an outcome.
 
 ### RibbonStyle
 
 This tells the component which ribbon style to use.
 
-The options are "ribbon" (default) or "search"
+The options are "ribbon"  or "search"(*default)
 
 ### RibbonDisplay
 
@@ -310,12 +300,42 @@ These can then be persisted into a database with the user's login and the name o
 
 If there are no columns in the string it will default to the Display Columns of the table and immediatly set that value into the state.
 
-
-### ColumnsIcon
+### filterIcon
 
 Optional.
 
-The name of a glyphicon to show on the column picker button if it will be shown.
+The uri of an image to show on the filter button, if it will be shown.
+
+defaults to funnel glyphicon.
+
+supports curly notation.
+
+### clearFilterIcon
+
+Optional.
+
+The uri of an image to show on the clear filters button, if it will be shown.
+
+defaults to X glyphicon.
+
+supports curly notation.
+
+
+### exportIcon
+
+Optional.
+
+The uri of an image to show on the export button, if it will be shown.
+
+defaults to export glyphicon.
+
+supports curly notation.
+
+### ColumnsIcon
+
+The uri of an image to show on the column picker button, if it will be shown.
+
+supports curly notation.
 
 defaults to option-vertical.
 
