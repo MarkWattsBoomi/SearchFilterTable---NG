@@ -1,4 +1,4 @@
-![SFT Image](https://github.com/MarkWattsBoomi/SearchFilterTable/blob/main/sft.png)
+![SFT Image](https://github.com/MarkWattsBoomi/SearchFilterTable---NG/blob/main/sft.png)
 
 This module provides table implementation with advanced sorting and filtering features. 
 
