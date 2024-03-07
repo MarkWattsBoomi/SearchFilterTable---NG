@@ -5631,6 +5631,8 @@ var FCMLegacy = class extends FCMCore {
       } else {
         if (this.childComponent && this.componentUpdated) {
           this.componentUpdated(false);
+        } else if (this.childComponent && this.componentDidMount) {
+          this.componentDidMount();
         }
       }
     } else {
@@ -5643,6 +5645,8 @@ var FCMLegacy = class extends FCMCore {
         } else {
           if (this.childComponent && this.componentUpdated) {
             this.componentUpdated(false);
+          } else if (this.childComponent && this.componentDidMount) {
+            this.componentDidMount();
           }
         }
       }

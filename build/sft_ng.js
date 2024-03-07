@@ -5539,13 +5539,17 @@ var FCMNew = class extends FCMCore {
     this.flowBaseUri = window.location.origin;
   }
   UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
-    this.loadModel(nextProps);
-    if (this.componentDidMount) {
-      this.componentDidMount();
+    if (this.loadModel(nextProps)) {
+      if (this.childComponent && this.componentDidMount) {
+        this.componentDidMount();
+      }
     }
+  }
+  componentUpdated(changeDetected) {
   }
   loadModel(props) {
     var _a, _b, _c;
+    let hasChanged = false;
     this.authenticationToken = props.authenticationToken;
     this.attributes = props.element.attributes;
     this.className = props.element.className;
@@ -5562,6 +5566,9 @@ var FCMNew = class extends FCMCore {
     this.componentStyleSheetURL = props.element.componentStyleSheetURL;
     this.content = props.element.content;
     this.contentType = eContentType[props.element.contentType];
+    if (this.contentValue !== props.element.contentValue) {
+      hasChanged = true;
+    }
     this.contentValue = props.element.contentValue;
     this.developerName = props.element.developerName;
     this.fields = {};
@@ -5571,6 +5578,9 @@ var FCMNew = class extends FCMCore {
     this.height = props.element.height;
     this.helpInfo = props.element.helpInfo;
     this.hintValue = props.element.hintValue;
+    if (this.id !== props.element.id) {
+      hasChanged = true;
+    }
     this.id = props.element.id;
     this.imageUri = props.element.imageUri;
     this.isEditable = props.element.isEditable;
@@ -5583,7 +5593,21 @@ var FCMNew = class extends FCMCore {
     this.isVisible = props.element.isVisible;
     this.label = props.element.label;
     this.maxSize = props.element.maxSize;
-    this.objectData = new FlowObjectDataArray(props.element.objectData);
+    let newObjData = new FlowObjectDataArray(props.element.objectData);
+    if (this.objectData) {
+      if (newObjData) {
+        if (JSON.stringify(this.objectData) !== JSON.stringify(newObjData)) {
+          hasChanged = true;
+        }
+      } else {
+        hasChanged = true;
+      }
+    } else {
+      if (newObjData) {
+        hasChanged = true;
+      }
+    }
+    this.objectData = newObjData;
     this.objectDataRequest = props.element.objectDataRequest;
     this.order = props.element.order;
     this.outcomes = {};
@@ -5612,6 +5636,7 @@ var FCMNew = class extends FCMCore {
     this.validationMessage = props.element.validationMessage;
     this.validations = props.element.validations;
     this.width = props.element.width;
+    return hasChanged;
   }
   redraw() {
     this.componentDidMount();
@@ -13436,6 +13461,21 @@ var SFT3 = class extends React22.Component {
     await this.buildCoreTable();
     this.loaded = true;
     this.forceUpdate();
+  }
+  async componentUpdated(changeDetected) {
+    let JSONStateName = this.component.getAttribute("JSONModelValue");
+    let modelTypeName = this.component.getAttribute("ModelTypeName", "GetOpportunities RESPONSE - Opportunity");
+    let model;
+    if (JSONStateName) {
+      let jsonField = await this.component.getValue(JSONStateName);
+      let jsonString = jsonField.value;
+      if (jsonString && jsonString.length > 0) {
+        model = FlowObjectDataArray.fromJSONString(jsonField.value, this.component.getAttribute("JSONModelPrimaryKey"), this.component.columns, modelTypeName);
+        if (model.items.length !== this.rowMap.size) {
+          this.componentDidMount();
+        }
+      }
+    }
   }
   showInfo() {
     const content = /* @__PURE__ */ React22.createElement(
