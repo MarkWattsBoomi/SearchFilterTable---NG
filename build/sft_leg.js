@@ -5624,24 +5624,38 @@ var FCMLegacy = class extends FCMCore {
   //static getDerivedStateFromProps(nextProps: Readonly<any>, prevState: any): void {
   UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
     if (nextProps.id !== this.id) {
-      this.loadModel(nextProps);
-      if (this.childComponent && this.componentDidMount) {
-        this.componentDidMount();
+      if (this.loadModel(nextProps)) {
+        if (this.childComponent && this.componentDidMount) {
+          this.componentDidMount();
+        }
+      } else {
+        if (this.childComponent && this.componentUpdated) {
+          this.componentUpdated(false);
+        }
       }
     } else {
       let model = manywho.model.getComponent(this.id, this.flowKey);
       if (model) {
-        this.loadModel(nextProps);
-        if (this.childComponent && this.componentDidMount) {
-          this.componentDidMount();
+        if (this.loadModel(nextProps)) {
+          if (this.childComponent && this.componentDidMount) {
+            this.componentDidMount();
+          }
+        } else {
+          if (this.childComponent && this.componentUpdated) {
+            this.componentUpdated(false);
+          }
         }
       }
     }
   }
-  componentWillUnmount() {
+  componentUpdated(changeDetected) {
   }
   loadModel(props) {
     var _a;
+    let hasChanged = false;
+    if (this.id !== props.id) {
+      hasChanged = true;
+    }
     this.id = props.id;
     this.flowKey = props.flowKey;
     const model = manywho.model.getComponent(this.id, this.flowKey);
@@ -5661,6 +5675,9 @@ var FCMLegacy = class extends FCMCore {
     this.componentStyleSheetURL = model.componentStyleSheetURL;
     this.content = model.content;
     this.contentType = eContentType[model.contentType];
+    if (this.contentValue !== model.contentValue) {
+      hasChanged = true;
+    }
     this.contentValue = model.contentValue;
     this.developerName = model.developerName;
     this.fields = {};
@@ -5681,7 +5698,21 @@ var FCMLegacy = class extends FCMCore {
     this.isVisible = model.isVisible;
     this.label = model.label;
     this.maxSize = model.maxSize;
-    this.objectData = new FlowObjectDataArray(model.objectData);
+    let newObjData = new FlowObjectDataArray(model.objectData);
+    if (this.objectData) {
+      if (newObjData) {
+        if (JSON.stringify(this.objectData) !== JSON.stringify(newObjData)) {
+          hasChanged = true;
+        }
+      } else {
+        hasChanged = true;
+      }
+    } else {
+      if (newObjData) {
+        hasChanged = true;
+      }
+    }
+    this.objectData = newObjData;
     this.objectDataRequest = model.objectDataRequest;
     this.order = model.order;
     this.outcomes = {};
@@ -5710,49 +5741,8 @@ var FCMLegacy = class extends FCMCore {
     this.validationMessage = model.validationMessage;
     this.validations = model.validations;
     this.width = model.width;
+    return hasChanged;
   }
-  /*
-      onBeforeSend(xhr: XMLHttpRequest, request: any) {
-          if(request)
-          {
-              const oc: string = request.mapElementInvokeRequest.selectedOutcomeId;
-              const oct: string = (manywho as any).eventManager.outcomeBeingTriggered;
-              if(oc){
-                  if(!oct || oct !== oc)
-                  {
-                      (manywho as any).eventManager.outcomeBeingTriggered = oc;
-                  }
-              }
-              if(!this.currentMapElementId) {
-                  this.currentMapElementId = request.currentMapElementId;
-              }
-              
-          }
-          else
-          {
-              (manywho as any).eventManager.outcomeBeingTriggered = undefined;
-          }
-      }
-  
-      
-  
-      async onDone(xhr: any, request: any) {
-          //this handles the new subflow concept.
-          //the flow could have moved to a sub flow and if so we need to reload all data
-          //console.log("fbc onDone start " + new Date().getTime());
-          if ((xhr as any).invokeType === 'FORWARD') {
-              manywho.model.parseEngineResponse(xhr, this.flowKey);
-              let model = manywho.model.getComponent(this.id, this.flowKey);
-              if(model) {
-                  this.loadModel({id: this.id, flowKey: this.flowKey});
-                  this.setStateValue(this.getStateValue());
-              }
-              if(!this.currentMapElementId || xhr.currentMapElementId === this.currentMapElementId){
-                  this.redraw();
-              }
-          }
-      }
-  */
   setStateValue(value) {
     this.stateValue = value;
     const flowModel = manywho.model.getComponent(this.id, this.flowKey);
@@ -13571,6 +13561,21 @@ var SFT3 = class extends React22.Component {
     this.loaded = true;
     this.forceUpdate();
   }
+  async componentUpdated(changeDetected) {
+    let JSONStateName = this.component.getAttribute("JSONModelValue");
+    let modelTypeName = this.component.getAttribute("ModelTypeName", "GetOpportunities RESPONSE - Opportunity");
+    let model;
+    if (JSONStateName) {
+      let jsonField = await this.component.getValue(JSONStateName);
+      let jsonString = jsonField.value;
+      if (jsonString && jsonString.length > 0) {
+        model = FlowObjectDataArray.fromJSONString(jsonField.value, this.component.getAttribute("JSONModelPrimaryKey"), this.component.columns, modelTypeName);
+        if (model.items.length !== this.rowMap.size) {
+          this.componentDidMount();
+        }
+      }
+    }
+  }
   showInfo() {
     const content = /* @__PURE__ */ React22.createElement(
       "div",
@@ -14771,6 +14776,11 @@ var SearchFilterTable = class extends FCMLegacy {
       if (this.contentValue || this.objectData || this.getAttribute("JSONModelValue")) {
         this.childComponent.componentDidMount();
       }
+    }
+  }
+  componentUpdated(changeDetected) {
+    if (this.childComponent && this.childComponent.componentUpdated) {
+      this.childComponent.componentUpdated();
     }
   }
   render() {
