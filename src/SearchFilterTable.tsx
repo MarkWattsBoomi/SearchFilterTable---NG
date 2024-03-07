@@ -274,6 +274,22 @@ export class SFT extends React.Component<any,any> {
         
     }
 
+    async componentUpdated(changeDetected: boolean) {
+        let JSONStateName: string = this.component.getAttribute('JSONModelValue');
+        let modelTypeName: string = this.component.getAttribute('ModelTypeName',"GetOpportunities RESPONSE - Opportunity");
+        let model: FlowObjectDataArray;
+        if(JSONStateName) {
+            let jsonField: FlowValue = await this.component.getValue(JSONStateName);
+            let jsonString: string = jsonField.value as string;
+            if(jsonString && jsonString.length > 0) {
+                model = FlowObjectDataArray.fromJSONString(jsonField.value as string, this.component.getAttribute('JSONModelPrimaryKey'), this.component.columns, modelTypeName);
+                
+                if(model.items.length !== this.rowMap.size) {
+                    this.componentDidMount();
+                }
+            }
+        }
+    }
 
     showInfo() {
         

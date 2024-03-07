@@ -14,6 +14,12 @@ class SearchFilterTable extends FCMLegacy {
         }
     }
 
+    componentUpdated(changeDetected: boolean){
+        if(this.childComponent && this.childComponent.componentUpdated){
+            this.childComponent.componentUpdated();
+        }
+    }
+
     render() {
         return(
             <SFT

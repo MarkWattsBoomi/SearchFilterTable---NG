@@ -17,7 +17,7 @@ It allows outcomes to be attached at table and row level.
 Columns are auto formatted based on type.
 
 Text columns containing a url are handled as specials: -
-   Url's detected as an image are displayed as a thumbnail which clicked opens in a new tab.
+   Url's detected as an image are displayed as a thumbnail which, when clicked, opens in a new tab.
    Others are simply hyperlinks.
 
 Text columns containing a dataUri are handled as specials: -
