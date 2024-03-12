@@ -278,6 +278,7 @@ export class SFT extends React.Component<any,any> {
         let JSONStateName: string = this.component.getAttribute('JSONModelValue');
         let modelTypeName: string = this.component.getAttribute('ModelTypeName',"GetOpportunities RESPONSE - Opportunity");
         let model: FlowObjectDataArray;
+        let redraw: boolean = false;
         if(JSONStateName) {
             let jsonField: FlowValue = await this.component.getValue(JSONStateName);
             let jsonString: string = jsonField.value as string;
@@ -285,9 +286,23 @@ export class SFT extends React.Component<any,any> {
                 model = FlowObjectDataArray.fromJSONString(jsonField.value as string, this.component.getAttribute('JSONModelPrimaryKey'), this.component.columns, modelTypeName);
                 
                 if(model.items.length !== this.rowMap.size) {
-                    this.componentDidMount();
+                    redraw=true;
                 }
             }
+        }
+        if (this.component.attributes.UserColumnsValue && this.component.attributes.UserColumnsValue !== 'LOCAL_STORAGE') {
+            const userFields: FlowValue = await this.component.getValue(this.component.attributes.UserColumnsValue);
+            if (userFields && (userFields.value as string).length > 0) {
+                let userFieldsVal = (userFields.value as string).replaceAll(" ","");
+                let currentCols = this.userColumns.join(",").replaceAll(" ","");
+                if(userFieldsVal !== currentCols){
+                    redraw=true;
+                }
+            }
+        }
+
+        if(redraw === true) {
+            this.componentDidMount();
         }
     }
 
