@@ -194,7 +194,6 @@
   position: relative;
 }
 .sft-check-header {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -204,13 +203,11 @@
   padding: 0 0.5rem 0 0.5rem;
   border: none;
   background-color: #eee;
-  z-index: 1020;
+  z-index: 1020 !important;
   padding-left: 0 !important;
 }
 .sft-checkbox {
   display: block !important;
-  -webkit-appearance: revert !important;
-  -moz-appearance: revert !important;
   appearance: revert !important;
   content: unset !important;
   margin: auto !important;
@@ -219,8 +216,6 @@
 }
 .sft-radio {
   display: block !important;
-  -webkit-appearance: revert !important;
-  -moz-appearance: revert !important;
   appearance: revert !important;
   content: unset !important;
   margin: auto !important;
@@ -238,7 +233,6 @@
   display: none !important;
 }
 .sft-column-header {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   cursor: default !important;
@@ -382,10 +376,9 @@
   white-space: nowrap;
 }
 .sft-table-cell-check {
-  position: -webkit-sticky;
   position: sticky;
   left: 0;
-  z-index: 1010;
+  z-index: 900;
   background-color: transparent;
   border: none;
   box-sizing: content-box;
@@ -482,9 +475,6 @@
 }
 .sft-footer-perpage-label {
   margin: auto 1rem auto 0;
-  -webkit-user-select: none;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
   user-select: none;
 }
 .sft-footer-perpage-dropdown {
@@ -493,7 +483,6 @@
   flex-grow: 1;
 }
 .sft-footer-select {
-  -moz-appearance: revert;
   appearance: revert;
   -webkit-appearance: listbox;
   width: fit-content !important;
@@ -582,8 +571,15 @@
 .sft-ribbon-search-left-wrapper {
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
+  flex-grow: 0;
   margin: auto auto auto 0;
+  align-items: flex-start;
+}
+.sft-ribbon-search-partitions-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  margin: auto auto auto 2rem;
   align-items: flex-start;
 }
 .sft-ribbon-search-right-wrapper {
@@ -620,7 +616,6 @@
   margin-right: 0.5rem !important;
   font-size: 0.8rem !important;
   line-height: 1.6 !important;
-  -moz-appearance: initial !important;
   appearance: initial !important;
   -webkit-appearance: searchfield !important;
   padding: 0 0.5rem 0 0.5rem !important;
@@ -668,6 +663,31 @@
   margin-top: 0.2rem;
   font-size: 1rem;
   color: #666;
+}
+.sft-ribbon-search-partitions {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: none;
+}
+.sft-ribbon-search-partition {
+  border: 1px solid #ccc;
+  padding: 0 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.sft-ribbon-search-partition-selected {
+  border: 1px solid #ccc;
+  background-color: #033d58;
+  color: #fefefe;
+}
+.sft-ribbon-search-partition:last-of-type {
+  margin-right: 0;
 }
 .sft-fmf-row {
   display: flex;
@@ -744,8 +764,6 @@
 }
 .sft-fmf-row-criteria-checkbox {
   display: block !important;
-  -webkit-appearance: revert !important;
-  -moz-appearance: revert !important;
   appearance: revert !important;
   content: unset !important;
   margin: auto !important;
@@ -818,13 +836,9 @@
   flex-direction: row;
 }
 .sft-quick-check {
-  margin-left: 0.5rem !important;
-  margin-bottom: auto !important;
-  margin-right: 0 !important;
-  margin-top: 0 !important;
+  margin: auto 0 auto 0.5rem !important;
 }
 .sft-header-sticky {
-  position: -webkit-sticky;
   position: sticky;
   z-index: 1020;
   width: 5rem;
@@ -835,7 +849,7 @@
   background-color: red;
 }
 .bad-row {
-  background-color: rgb(255, 236, 236) !important;
+  background-color: rgb(255 236 236) !important;
 }
 .sft table {
   border-collapse: separate;
@@ -1159,13 +1173,9 @@
 }
 .sft-footer-pagination-label {
   margin: auto 1rem auto 0;
-  -webkit-user-select: none;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
   user-select: none;
 }
 .sft-footer-pagination-select {
-  -moz-appearance: revert;
   appearance: revert;
   -webkit-appearance: listbox;
   width: fit-content !important;
@@ -1189,9 +1199,6 @@
 }
 .sft-footer-nav-label {
   margin: auto 1rem auto 0;
-  -webkit-user-select: none;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
   user-select: none;
 }
 .sft-nav-chev {
@@ -1211,9 +1218,6 @@
   border-radius: 0.5rem;
   font-weight: 600;
   margin-right: 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
   user-select: none;
 }
 .sft-nav-pg-selected {

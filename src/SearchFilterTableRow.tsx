@@ -35,7 +35,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
         }
         if(root.lastRememberedRow){
             if(objData.properties[root.rowRememberColumn]?.value === root.lastRememberedRow){
-                this.rowElement.scrollIntoView({inline: "center", block: "center", behavior: "auto"});
+                this.rowElement.scrollIntoView({inline: "nearest", block: "start", behavior: "auto"});
             }
         }
         this.setState({enabledOutcomes});

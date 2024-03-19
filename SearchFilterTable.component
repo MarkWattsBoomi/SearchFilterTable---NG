@@ -36,7 +36,8 @@
     "exportIcon":"Export Icon",
     "filterIcon":"Filter Icon",
     "clearFilterIcon":"Clear Filter Icon",
-    "colpickIcon":"Column Picker Icon"
+    "colpickIcon":"Column Picker Icon",
+    "partitionColumn":"Partition On. The name of a column to partition the table on"
   },
   "configurationEditors": [
     "LABEL",

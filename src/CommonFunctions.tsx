@@ -372,6 +372,7 @@ export class SFTCommonFunctions {
         if(show===true){
             button = (
             <div
+                key={outcome.id}
                 className={'sft-ribbon-search-button-wrapper ' + (outcome.attributes?.classes?.value)}
                 onClick={(e: any) => {if(!dissabled){e.stopPropagation(); comp.doOutcome(outcome.developerName, objectData);} }}
             >

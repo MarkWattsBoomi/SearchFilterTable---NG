@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {CellItem} from './CellItem';
-import {SFTColumnCriteria} from './ColumnCriteria';
+import {SFTColumnCriteria, eColumnComparator} from './ColumnCriteria';
 import {SFTColumnFilters,  eFilterEvent, eSortDirection } from './ColumnFilters';
 import {ColumnPickerForm} from './ColumnPickerForm';
 import { ColumnRule, ColumnRules } from './ColumnRule';
@@ -29,6 +29,8 @@ import { FlowObjectData } from 'fcmlib/lib/FlowObjectData';
 import { FlowObjectDataArray } from 'fcmlib/lib/FlowObjectDataArray';
 import { eContentType } from 'fcmlib/lib/FCMNew';
 import { FlowObjectDataProperty } from 'fcmlib/lib/FlowObjectDataProperty';
+import { SFTColumnFilter } from './ColumnFilter';
+import { SpreadsheetExporter } from './SpreadsheetExporter';
 
 // declare const manywho: IManywho;
 declare const manywho: any;
@@ -56,6 +58,10 @@ export class SFT extends React.Component<any,any> {
     // this contains the display time subset of rowMap which is filtered & sorted, it changes with each query etc,  Used to build the actual rows
     currentRowMap: Map<string, any> = new Map();
     // currentRowMap: Array<string> = [];//Map<string,any> = new Map();
+
+    // this contains the partitioned pages
+    partitionedRowMaps: Map<string, Map<string, any>> = new Map();
+    selectedPartition: string;
 
     // this holds the max items per page
     maxPageRows: number = 5;
@@ -178,6 +184,7 @@ export class SFT extends React.Component<any,any> {
 
         this.filtersChanged = this.filtersChanged.bind(this);
         this.globalFilterChanged = this.globalFilterChanged.bind(this);
+        this.partitionFilterChanged = this.partitionFilterChanged.bind(this);
         this.manageFilters = this.manageFilters.bind(this);
         this.applyFilters = this.applyFilters.bind(this);
         this.cancelFilters = this.cancelFilters.bind(this);
@@ -301,7 +308,7 @@ export class SFT extends React.Component<any,any> {
             }
         }
 
-        if(redraw === true) {
+        if(redraw === true && this.loaded) {
             this.componentDidMount();
         }
     }
@@ -393,12 +400,32 @@ export class SFT extends React.Component<any,any> {
 
     bringColumnIntoView(col: any) {
         let header: any =  this.headers.headers.get(col);
-        header?.th?.scrollIntoView({inline: "center", block: "center", behavior: "auto"});
+        header?.th?.scrollIntoView({inline: "nearest", block: "start", behavior: "auto"});
     }
 
     globalFilterChanged(value: string) {
         // do some other search
         this.filters.globalCriteria = value;
+        this.filtersChanged('', eFilterEvent.filter);
+    }
+
+    partitionFilterChanged(key: string) {
+        this.selectedPartition = key;
+        let partitionField: string = this.component.getAttribute("partitionColumn");
+        if(this.selectedPartition){
+            this.filters.items.set(
+                partitionField, 
+                new SFTColumnFilter(
+                    partitionField,
+                    this.filters, 
+                    undefined, 
+                    [new SFTColumnCriteria(eColumnComparator.equalTo, this.selectedPartition)]
+                )
+            )
+        }
+        else {
+            this.filters.filterClear(partitionField); 
+        }
         this.filtersChanged('', eFilterEvent.filter);
     }
 
@@ -736,6 +763,7 @@ export class SFT extends React.Component<any,any> {
         //load selectedSingleItem
         await this.loadSingleSelected();
         // we just loaded the core row data, trigger the filters to generate and sort the currentRowMap
+        await this.loadModelData();
         await this.filterRows();
     }
 
@@ -800,6 +828,17 @@ export class SFT extends React.Component<any,any> {
             });
             await this.saveSelected();
         }
+        let partition = this.component.getAttribute("partitionColumn");
+        this.partitionedRowMaps= new Map();
+        if(partition && this.colMap.has(partition)){
+            this.rowMap.forEach((row: RowItem) => {
+                let div: CellItem = row.columns.get(partition);
+                if(!this.partitionedRowMaps.has(div.originalValue)){
+                    this.partitionedRowMaps.set(div.originalValue, new Map());
+                }
+                this.partitionedRowMaps.get(div.originalValue).set(row.id, row.id);
+            });
+        }
     }
 
     // filters the currentRowMap
@@ -831,7 +870,8 @@ export class SFT extends React.Component<any,any> {
             }
         }   
         else {
-            await this.loadModelData();
+            // why doing this ???
+            ///await this.loadModelData();
             this.currentRowMap = new Map();
             if (this.rowMap.size > 0) {
                 this.currentRowMap = this.filters.filter(this.rowMap);
@@ -982,7 +1022,10 @@ export class SFT extends React.Component<any,any> {
                 this.selectedRowMap.set(key, '');
             });
         } else {
-            this.selectedRowMap.clear();
+            this.currentRowMap.forEach((item: RowItem, key: string) => {
+                this.selectedRowMap.delete(key);
+            });
+            //this.selectedRowMap.clear();
         }
 
         this.rows.forEach((row: SearchFilterTableRow) => {
@@ -1364,7 +1407,33 @@ export class SFT extends React.Component<any,any> {
         else {
             cols = this.colMap;
         }
-        ModelExporter.export(cols, opdata, 'export.csv');
+        SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, "test");
+        //ModelExporter.export(cols, opdata, 'export.csv');
+        if (this.component.outcomes['OnExport']) {
+            this.component.triggerOutcome('OnExport');
+        }
+    }
+
+    async doSpreadsheet(data: Map<string, RowItem>) {
+        const opdata: Map<string, RowItem> = new Map();
+        this.selectedRowMap.forEach((item, key) => {
+            opdata.set(key, this.rowMap.get(key));
+        });
+
+        let cols: Map<string,FlowDisplayColumn>;
+        if(this.component.getAttribute("exportUserColumns","false").toLowerCase() === 'true'){
+            cols = new Map();
+            this.userColumns.forEach((cname: string) => {
+                if(this.colMap.has(cname)){
+                    cols.set(cname, this.colMap.get(cname));
+                }
+            });
+        }
+        else {
+            cols = this.colMap;
+        }
+        SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, "test.xlsx");
+        
         if (this.component.outcomes['OnExport']) {
             this.component.triggerOutcome('OnExport');
         }

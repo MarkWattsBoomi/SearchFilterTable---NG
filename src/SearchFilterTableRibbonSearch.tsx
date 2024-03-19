@@ -19,12 +19,14 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
     currentFilter: string;
     leftButtons: any[] = [];
     rightButtons: any[] = [];
+    partitions: any[] = [];
     clearFiltersButton: any;
     deBounce: boolean = false;
 
     constructor(props: any) {
         super(props);
         this.generateButtons = this.generateButtons.bind(this);
+        this.generatePartitions = this.generatePartitions.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
         this.showSearch = this.showSearch.bind(this);
         this.clearFilters = this.clearFilters.bind(this);
@@ -210,7 +212,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         else {
             this.clearFiltersButton = undefined;
         }
-        
+        this.generatePartitions();
         this.deBounce = false;
         this.forceUpdate();
     }
@@ -231,6 +233,13 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
             const root: SFT = this.props.root;
             root.globalFilterChanged(this.currentFilter);
         }
+    }
+
+    filterPartition(e: any, key: string){
+        e.preventDefault();
+        e.stopPropagation();
+        const root: SFT = this.props.root;
+        root.partitionFilterChanged(key);
     }
 
     filterKeyDown(e: any) {
@@ -277,6 +286,46 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         const root: SFT = this.props.root;
         root.filters.clearAll();
         //root.buildRibbon();
+    }
+
+    generatePartitions() {
+        const sft: SFT = this.props.root;
+        
+        this.partitions = [];
+        
+        if(sft.partitionedRowMaps && sft.partitionedRowMaps.size > 0){
+            let classes: string = "sft-ribbon-search-partition";
+            if(!sft.selectedPartition){
+                classes += " sft-ribbon-search-partition-selected"
+            }
+            this.partitions.push(
+                <div
+                    key="_all"
+                    className={classes}
+                    onClick={(e: any) => {this.filterPartition(e, null)}}
+                >
+                    All
+                </div>
+            );
+
+            sft.partitionedRowMaps.forEach((partition: Map<string,any>, key: string) =>{
+                let classes: string = "sft-ribbon-search-partition";
+                if(sft.selectedPartition===key){
+                    classes += " sft-ribbon-search-partition-selected"
+                }
+                this.partitions.push(
+                    <div
+                        key={key}
+                        className={classes}
+                        onClick={(e: any) => {this.filterPartition(e, key)}}
+                    >
+                        <span>
+                            {key.toLowerCase()}
+                        </span>
+                    </div>
+                );
+            });
+        }
     }
 
     render() {
@@ -354,6 +403,15 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                         )
                     }
                     {this.clearFiltersButton}
+                </div>
+                <div
+                    className="sft-ribbon-search-partitions-wrapper"
+                >
+                    <div
+                        className="sft-ribbon-search-partitions"
+                    >
+                        {this.partitions}
+                    </div>
                 </div>
                 <div
                     className="sft-ribbon-search-right-wrapper"
