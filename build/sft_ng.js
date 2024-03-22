@@ -37725,12 +37725,15 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     }
   }
   showSearch(e) {
-    const root = this.props.root;
-    root.manageFilters();
+    const sft = this.props.root;
+    sft.manageFilters();
   }
   clearFilters(e) {
-    const root = this.props.root;
-    root.filters.clearAll();
+    const sft = this.props.root;
+    if (sft.selectedPartition) {
+      sft.selectedPartition = void 0;
+    }
+    sft.filters.clearAll();
   }
   generatePartitions() {
     const sft = this.props.root;
@@ -40282,7 +40285,7 @@ var SFT3 = class extends React22.Component {
     } else {
       cols = this.colMap;
     }
-    SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, "test.xlsx");
+    SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, "test");
     if (this.component.outcomes["OnExport"]) {
       this.component.triggerOutcome("OnExport");
     }

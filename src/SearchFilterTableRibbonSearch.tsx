@@ -278,14 +278,16 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
     }
 
     showSearch(e: any) {
-        const root: SFT = this.props.root;
-        root.manageFilters();
+        const sft: SFT = this.props.root;
+        sft.manageFilters();
     }
 
     clearFilters(e: any) {
-        const root: SFT = this.props.root;
-        root.filters.clearAll();
-        //root.buildRibbon();
+        const sft: SFT = this.props.root;
+        if(sft.selectedPartition){
+            sft.selectedPartition=undefined;
+        }
+        sft.filters.clearAll();
     }
 
     generatePartitions() {
