@@ -19,6 +19,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
     currentFilter: string;
     leftButtons: any[] = [];
     rightButtons: any[] = [];
+    farRightButtons: any[] = [];
     partitions: any[] = [];
     clearFiltersButton: any;
     deBounce: boolean = false;
@@ -53,7 +54,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         const root: SFT = this.props.root;
         this.leftButtons = [];
         this.rightButtons = [];
-        
+        this.farRightButtons = [];
         const canExport: boolean = (root.component.getAttribute('canExport', 'true').toLowerCase() === 'true');
 
         // ad export if allowed
@@ -108,16 +109,30 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 const showOutcome: boolean = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root);
                 if(root.component.getAttribute("greyDissabled","false").toLowerCase()==="true"){
                     let btn: any = SFTCommonFunctions.makeOutcomeButton(root,outcome,root.iconSuffix,undefined,!showOutcome);
-                    this.rightButtons.push(
-                        btn
-                    );
+                    if(outcome.order>200){
+                        this.farRightButtons.push(
+                            btn
+                        );
+                    }
+                    else{
+                        this.rightButtons.push(
+                            btn
+                        );
+                    }
                 }
                 else {
                     if (showOutcome === true) {
                         let btn: any = SFTCommonFunctions.makeOutcomeButton(root,outcome,root.iconSuffix,undefined,false);
-                        this.rightButtons.push(
-                            btn
-                        );
+                        if(outcome.order>200){
+                            this.farRightButtons.push(
+                                btn
+                            );
+                        }
+                        else{
+                            this.rightButtons.push(
+                                btn
+                            );
+                        }
                     }
                 }
             }
@@ -423,6 +438,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                     >
                         {this.leftButtons}
                         {this.rightButtons}
+                        {this.farRightButtons}
                     </div>
                 </div>
             </div>

@@ -37475,6 +37475,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     this.previousFilter = "";
     this.leftButtons = [];
     this.rightButtons = [];
+    this.farRightButtons = [];
     this.partitions = [];
     this.deBounce = false;
     this.generateButtons = this.generateButtons.bind(this);
@@ -37500,6 +37501,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     const root = this.props.root;
     this.leftButtons = [];
     this.rightButtons = [];
+    this.farRightButtons = [];
     const canExport = root.component.getAttribute("canExport", "true").toLowerCase() === "true";
     if (canExport === true) {
       this.rightButtons.push(
@@ -37558,15 +37560,27 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
         const showOutcome = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root);
         if (root.component.getAttribute("greyDissabled", "false").toLowerCase() === "true") {
           let btn = SFTCommonFunctions.makeOutcomeButton(root, outcome, root.iconSuffix, void 0, !showOutcome);
-          this.rightButtons.push(
-            btn
-          );
-        } else {
-          if (showOutcome === true) {
-            let btn = SFTCommonFunctions.makeOutcomeButton(root, outcome, root.iconSuffix, void 0, false);
+          if (outcome.order > 200) {
+            this.farRightButtons.push(
+              btn
+            );
+          } else {
             this.rightButtons.push(
               btn
             );
+          }
+        } else {
+          if (showOutcome === true) {
+            let btn = SFTCommonFunctions.makeOutcomeButton(root, outcome, root.iconSuffix, void 0, false);
+            if (outcome.order > 200) {
+              this.farRightButtons.push(
+                btn
+              );
+            } else {
+              this.rightButtons.push(
+                btn
+              );
+            }
           }
         }
       }
@@ -37894,7 +37908,8 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
             className: "sft-ribbon-search-buttons-wrapper"
           },
           this.leftButtons,
-          this.rightButtons
+          this.rightButtons,
+          this.farRightButtons
         )
       )
     );

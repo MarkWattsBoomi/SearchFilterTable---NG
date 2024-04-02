@@ -47,6 +47,7 @@
 .sft-footer-nav-label {
     margin: auto 1rem auto 0;
     user-select: none;
+    font-size: 0.9rem;
 }
 
 .sft-nav-chev {
