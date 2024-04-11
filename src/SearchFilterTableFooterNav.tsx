@@ -71,135 +71,139 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
         let pag: string;
         switch(true) {
             case parent.paginationMode===ePaginationMode.external:
-                showing="";
+                //showing="";
                 pag=parent.externalPaginationPage.toString();
+                break;
+            case parent.component.getAttribute("summaryMode","default").toLowerCase()==="none":
+                //showing = '';
+                pag = 'page ' + (parent.currentRowPage + 1) + ' of ' + parent.currentRowPages.length;
                 break;
             case parent.component.getAttribute("summaryMode","default").toLowerCase()==="simple" || parent.component.isMultiSelect===false:
                 showing = 'Showing ' + parent.currentRowMap.size + ' items of ' + parent.rowMap.size;
                 pag = 'page ' + (parent.currentRowPage + 1) + ' of ' + parent.currentRowPages.length;
                 break;
+            
             default:
                 showing = 'Selected ' + parent.selectedRowMap.size + ' of ' + parent.currentRowMap.size + ' items from a total dataset of ' + parent.rowMap.size;
                 pag = 'page ' + (parent.currentRowPage + 1) + ' of ' + parent.currentRowPages.length;
                 break;   
         }
 
-        let pageCount: number = parent.currentRowPages.length;
-        let currentPage: number = parent.currentRowPage + 1;
         let pageNav: any[] = [];
-        let prevClass: string = "sft-nav-chev"
-        if(currentPage===1) {
-            prevClass += " sft-nav-chev-dissabled"
-        }
-        pageNav.push(
-            <FontAwesomeIcon 
-                icon={faAngleDoubleLeft}
-                className={prevClass}
-                title="First page"
-                onClick={this.firstPage}
-            />
-        );
-        pageNav.push(
-            <FontAwesomeIcon 
-                icon={faChevronLeft}
-                className={prevClass}
-                title="Previous page"
-                onClick={this.previousPage}
-            />
-        );
+        let itemsPerPage: any;
 
-        let pagePageNav: any[] = [];
-        
-        for(let pg: number = 1 ; pg<=pageCount ; pg++){
-            if(pg === currentPage) {
-                pagePageNav.push(
-                    <span
-                        className="sft-nav-pg  sft-nav-pg-selected"
-                        onClick={(e: any) => {this.gotoPage(pg)}}
-                    >
-                        {pg}
-                    </span>
-                );
+        if(parent.paginationMode !== ePaginationMode.none){
+            let pageCount: number = parent.currentRowPages.length;
+            let currentPage: number = parent.currentRowPage + 1;
+            
+            let prevClass: string = "sft-nav-chev"
+            if(currentPage===1) {
+                prevClass += " sft-nav-chev-dissabled"
             }
-            else {
-                pagePageNav.push(
-                    <span
-                        className="sft-nav-pg"
-                        onClick={(e: any) => {this.gotoPage(pg)}}
-                    >
-                        {pg}
-                    </span>
-                );
-            }
-        }
+            pageNav.push(
+                <FontAwesomeIcon 
+                    icon={faAngleDoubleLeft}
+                    className={prevClass}
+                    title="First page"
+                    onClick={this.firstPage}
+                />
+            );
+            pageNav.push(
+                <FontAwesomeIcon 
+                    icon={faChevronLeft}
+                    className={prevClass}
+                    title="Previous page"
+                    onClick={this.previousPage}
+                />
+            );
 
-        if(pagePageNav.length > 7 ){
-            if(currentPage>4) {
-                //offset to crop up to up to 
-                let chop: number = currentPage-4;
-                if(chop>0){
-                    //chop them out
-                    pagePageNav.splice(0,chop);
-                    //insert the elipse
-                    pagePageNav.splice(0,0,(
+            let pagePageNav: any[] = [];
+            
+            for(let pg: number = 1 ; pg<=pageCount ; pg++){
+                if(pg === currentPage) {
+                    pagePageNav.push(
+                        <span
+                            className="sft-nav-pg  sft-nav-pg-selected"
+                            onClick={(e: any) => {this.gotoPage(pg)}}
+                        >
+                            {pg}
+                        </span>
+                    );
+                }
+                else {
+                    pagePageNav.push(
                         <span
                             className="sft-nav-pg"
+                            onClick={(e: any) => {this.gotoPage(pg)}}
                         >
-                            ...
+                            {pg}
                         </span>
-                    ));
+                    );
                 }
             }
-        }
-        if(pagePageNav.length >= 8 ){
-            // how many above me should absolutely survive - allows for if current page is below 5
-            let preserve: number = 5-currentPage;
-            //offset to start cropping
-            let offset: number = currentPage+preserve+(currentPage>4?1:0);
-            //how many to crop, excluding last
-            let chop: number = (pagePageNav.length-1)-offset;
-            //chop them out
-            pagePageNav.splice(offset,chop);
-            //insert the elipse
-            pagePageNav.splice(pagePageNav.length-1,0,(
-                <span
-                    className="sft-nav-pg"
-                >
-                    ...
-                </span>
-            ));
-        }
-        
-        pageNav = pageNav.concat(pagePageNav);
-        
 
-        let nextClass: string = "sft-nav-chev"
-        if(currentPage >= pageCount) {
-            nextClass += " sft-nav-chev-dissabled"
-        }
-        pageNav.push(
-            <FontAwesomeIcon 
-                icon={faChevronRight}
-                className={nextClass}
-                title="Next page"
-                onClick={this.nextPage}
-            />
-        );
-        pageNav.push(
-            <FontAwesomeIcon 
-                icon={faAngleDoubleRight}
-                className={nextClass}
-                title="Last page"
-                onClick={this.lastPage}
-            />
-        );
+            if(pagePageNav.length > 7 ){
+                if(currentPage>4) {
+                    //offset to crop up to up to 
+                    let chop: number = currentPage-4;
+                    if(chop>0){
+                        //chop them out
+                        pagePageNav.splice(0,chop);
+                        //insert the elipse
+                        pagePageNav.splice(0,0,(
+                            <span
+                                className="sft-nav-pg"
+                            >
+                                ...
+                            </span>
+                        ));
+                    }
+                }
+            }
+            if(pagePageNav.length >= 8 ){
+                // how many above me should absolutely survive - allows for if current page is below 5
+                let preserve: number = 5-currentPage;
+                //offset to start cropping
+                let offset: number = currentPage+preserve+(currentPage>4?1:0);
+                //how many to crop, excluding last
+                let chop: number = (pagePageNav.length-1)-offset;
+                //chop them out
+                pagePageNav.splice(offset,chop);
+                //insert the elipse
+                pagePageNav.splice(pagePageNav.length-1,0,(
+                    <span
+                        className="sft-nav-pg"
+                    >
+                        ...
+                    </span>
+                ));
+            }
+            
+            pageNav = pageNav.concat(pagePageNav);
+            
 
-        
+            let nextClass: string = "sft-nav-chev"
+            if(currentPage >= pageCount) {
+                nextClass += " sft-nav-chev-dissabled"
+            }
+            pageNav.push(
+                <FontAwesomeIcon 
+                    icon={faChevronRight}
+                    className={nextClass}
+                    title="Next page"
+                    onClick={this.nextPage}
+                />
+            );
+            pageNav.push(
+                <FontAwesomeIcon 
+                    icon={faAngleDoubleRight}
+                    className={nextClass}
+                    title="Last page"
+                    onClick={this.lastPage}
+                />
+            );
 
-        return(
-            <div
-                className="sft-footer"
-            >
+            itemsPerPage=(
                 <div
                     className="sft-footer-pagination"
                 >
@@ -218,6 +222,21 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                         <option value={100} selected={parent.maxPageRows === 100}>100</option>
                     </select>
                 </div>
+            );
+        }
+
+        let footerStyle: React.CSSProperties = {};
+        if(!itemsPerPage && !showing && pageNav.length===0) {
+            footerStyle.display="none"
+        }
+        
+
+        return(
+            <div
+                className="sft-footer"
+                style={footerStyle}
+            >
+                {itemsPerPage}
                 <div
                     className="sft-footer-events"
                 ></div>

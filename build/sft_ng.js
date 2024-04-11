@@ -38866,8 +38866,10 @@ var SearchFilterTableFooterNav = class extends React21.Component {
     let pag;
     switch (true) {
       case parent.paginationMode === 2 /* external */:
-        showing = "";
         pag = parent.externalPaginationPage.toString();
+        break;
+      case parent.component.getAttribute("summaryMode", "default").toLowerCase() === "none":
+        pag = "page " + (parent.currentRowPage + 1) + " of " + parent.currentRowPages.length;
         break;
       case (parent.component.getAttribute("summaryMode", "default").toLowerCase() === "simple" || parent.component.isMultiSelect === false):
         showing = "Showing " + parent.currentRowMap.size + " items of " + parent.rowMap.size;
@@ -38878,126 +38880,123 @@ var SearchFilterTableFooterNav = class extends React21.Component {
         pag = "page " + (parent.currentRowPage + 1) + " of " + parent.currentRowPages.length;
         break;
     }
-    let pageCount = parent.currentRowPages.length;
-    let currentPage = parent.currentRowPage + 1;
     let pageNav = [];
-    let prevClass = "sft-nav-chev";
-    if (currentPage === 1) {
-      prevClass += " sft-nav-chev-dissabled";
-    }
-    pageNav.push(
-      /* @__PURE__ */ React21.createElement(
-        FontAwesomeIcon,
-        {
-          icon: import_faAngleDoubleLeft.faAngleDoubleLeft,
-          className: prevClass,
-          title: "First page",
-          onClick: this.firstPage
-        }
-      )
-    );
-    pageNav.push(
-      /* @__PURE__ */ React21.createElement(
-        FontAwesomeIcon,
-        {
-          icon: import_faChevronLeft.faChevronLeft,
-          className: prevClass,
-          title: "Previous page",
-          onClick: this.previousPage
-        }
-      )
-    );
-    let pagePageNav = [];
-    for (let pg = 1; pg <= pageCount; pg++) {
-      if (pg === currentPage) {
-        pagePageNav.push(
-          /* @__PURE__ */ React21.createElement(
-            "span",
-            {
-              className: "sft-nav-pg  sft-nav-pg-selected",
-              onClick: (e) => {
-                this.gotoPage(pg);
-              }
-            },
-            pg
-          )
-        );
-      } else {
-        pagePageNav.push(
-          /* @__PURE__ */ React21.createElement(
-            "span",
-            {
-              className: "sft-nav-pg",
-              onClick: (e) => {
-                this.gotoPage(pg);
-              }
-            },
-            pg
-          )
-        );
+    let itemsPerPage;
+    if (parent.paginationMode !== 0 /* none */) {
+      let pageCount = parent.currentRowPages.length;
+      let currentPage = parent.currentRowPage + 1;
+      let prevClass = "sft-nav-chev";
+      if (currentPage === 1) {
+        prevClass += " sft-nav-chev-dissabled";
       }
-    }
-    if (pagePageNav.length > 7) {
-      if (currentPage > 4) {
-        let chop = currentPage - 4;
-        if (chop > 0) {
-          pagePageNav.splice(0, chop);
-          pagePageNav.splice(0, 0, /* @__PURE__ */ React21.createElement(
-            "span",
-            {
-              className: "sft-nav-pg"
-            },
-            "..."
-          ));
+      pageNav.push(
+        /* @__PURE__ */ React21.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faAngleDoubleLeft.faAngleDoubleLeft,
+            className: prevClass,
+            title: "First page",
+            onClick: this.firstPage
+          }
+        )
+      );
+      pageNav.push(
+        /* @__PURE__ */ React21.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faChevronLeft.faChevronLeft,
+            className: prevClass,
+            title: "Previous page",
+            onClick: this.previousPage
+          }
+        )
+      );
+      let pagePageNav = [];
+      for (let pg = 1; pg <= pageCount; pg++) {
+        if (pg === currentPage) {
+          pagePageNav.push(
+            /* @__PURE__ */ React21.createElement(
+              "span",
+              {
+                className: "sft-nav-pg  sft-nav-pg-selected",
+                onClick: (e) => {
+                  this.gotoPage(pg);
+                }
+              },
+              pg
+            )
+          );
+        } else {
+          pagePageNav.push(
+            /* @__PURE__ */ React21.createElement(
+              "span",
+              {
+                className: "sft-nav-pg",
+                onClick: (e) => {
+                  this.gotoPage(pg);
+                }
+              },
+              pg
+            )
+          );
         }
       }
-    }
-    if (pagePageNav.length >= 8) {
-      let preserve = 5 - currentPage;
-      let offset = currentPage + preserve + (currentPage > 4 ? 1 : 0);
-      let chop = pagePageNav.length - 1 - offset;
-      pagePageNav.splice(offset, chop);
-      pagePageNav.splice(pagePageNav.length - 1, 0, /* @__PURE__ */ React21.createElement(
-        "span",
-        {
-          className: "sft-nav-pg"
-        },
-        "..."
-      ));
-    }
-    pageNav = pageNav.concat(pagePageNav);
-    let nextClass = "sft-nav-chev";
-    if (currentPage >= pageCount) {
-      nextClass += " sft-nav-chev-dissabled";
-    }
-    pageNav.push(
-      /* @__PURE__ */ React21.createElement(
-        FontAwesomeIcon,
-        {
-          icon: import_faChevronRight.faChevronRight,
-          className: nextClass,
-          title: "Next page",
-          onClick: this.nextPage
+      if (pagePageNav.length > 7) {
+        if (currentPage > 4) {
+          let chop = currentPage - 4;
+          if (chop > 0) {
+            pagePageNav.splice(0, chop);
+            pagePageNav.splice(0, 0, /* @__PURE__ */ React21.createElement(
+              "span",
+              {
+                className: "sft-nav-pg"
+              },
+              "..."
+            ));
+          }
         }
-      )
-    );
-    pageNav.push(
-      /* @__PURE__ */ React21.createElement(
-        FontAwesomeIcon,
-        {
-          icon: import_faAngleDoubleRight.faAngleDoubleRight,
-          className: nextClass,
-          title: "Last page",
-          onClick: this.lastPage
-        }
-      )
-    );
-    return /* @__PURE__ */ React21.createElement(
-      "div",
-      {
-        className: "sft-footer"
-      },
-      /* @__PURE__ */ React21.createElement(
+      }
+      if (pagePageNav.length >= 8) {
+        let preserve = 5 - currentPage;
+        let offset = currentPage + preserve + (currentPage > 4 ? 1 : 0);
+        let chop = pagePageNav.length - 1 - offset;
+        pagePageNav.splice(offset, chop);
+        pagePageNav.splice(pagePageNav.length - 1, 0, /* @__PURE__ */ React21.createElement(
+          "span",
+          {
+            className: "sft-nav-pg"
+          },
+          "..."
+        ));
+      }
+      pageNav = pageNav.concat(pagePageNav);
+      let nextClass = "sft-nav-chev";
+      if (currentPage >= pageCount) {
+        nextClass += " sft-nav-chev-dissabled";
+      }
+      pageNav.push(
+        /* @__PURE__ */ React21.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faChevronRight.faChevronRight,
+            className: nextClass,
+            title: "Next page",
+            onClick: this.nextPage
+          }
+        )
+      );
+      pageNav.push(
+        /* @__PURE__ */ React21.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faAngleDoubleRight.faAngleDoubleRight,
+            className: nextClass,
+            title: "Last page",
+            onClick: this.lastPage
+          }
+        )
+      );
+      itemsPerPage = /* @__PURE__ */ React21.createElement(
         "div",
         {
           className: "sft-footer-pagination"
@@ -39020,7 +39019,19 @@ var SearchFilterTableFooterNav = class extends React21.Component {
           /* @__PURE__ */ React21.createElement("option", { value: 50, selected: parent.maxPageRows === 50 }, "50"),
           /* @__PURE__ */ React21.createElement("option", { value: 100, selected: parent.maxPageRows === 100 }, "100")
         )
-      ),
+      );
+    }
+    let footerStyle = {};
+    if (!itemsPerPage && !showing && pageNav.length === 0) {
+      footerStyle.display = "none";
+    }
+    return /* @__PURE__ */ React21.createElement(
+      "div",
+      {
+        className: "sft-footer",
+        style: footerStyle
+      },
+      itemsPerPage,
       /* @__PURE__ */ React21.createElement(
         "div",
         {
