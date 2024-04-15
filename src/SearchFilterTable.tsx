@@ -307,9 +307,13 @@ export class SFT extends React.Component<any,any> {
                 }
             }
         }
-
-        if(redraw === true && this.loaded) {
-            this.componentDidMount();
+        if(this.loaded){
+            if(redraw === true) {
+                this.componentDidMount();
+            }
+            else{
+                this.saveSelected();
+            }
         }
     }
 

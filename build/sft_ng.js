@@ -39320,8 +39320,12 @@ var SFT3 = class extends React22.Component {
         }
       }
     }
-    if (redraw === true && this.loaded) {
-      this.componentDidMount();
+    if (this.loaded) {
+      if (redraw === true) {
+        this.componentDidMount();
+      } else {
+        this.saveSelected();
+      }
     }
   }
   showInfo() {
