@@ -38322,7 +38322,7 @@ var SearchFilterTableRow = class extends React18.Component {
   }
   isUrlImage(url) {
     url += "";
-    if (url.endsWith("jpg") || url.endsWith("jpeg") || url.endsWith("jfif") || url.endsWith("png") || url.endsWith("bmp") || url.endsWith("ico") || url.endsWith("gif")) {
+    if (url.endsWith("jpg") || url.endsWith("jpeg") || url.endsWith("jfif") || url.endsWith("png") || url.endsWith("bmp") || url.endsWith("ico") || url.endsWith("webp") || url.endsWith("gif")) {
       return true;
     } else {
       return false;
