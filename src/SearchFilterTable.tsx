@@ -31,6 +31,8 @@ import { eContentType } from 'fcmlib/lib/FCMNew';
 import { FlowObjectDataProperty } from 'fcmlib/lib/FlowObjectDataProperty';
 import { SFTColumnFilter } from './ColumnFilter';
 import { SpreadsheetExporter } from './SpreadsheetExporter';
+import { SFTCSVFile, STFCSVImporter } from './CSVImporter';
+import { Workbook } from 'exceljs';
 
 // declare const manywho: IManywho;
 declare const manywho: any;
@@ -201,6 +203,9 @@ export class SFT extends React.Component<any,any> {
         this.maxPerPageChanged = this.maxPerPageChanged.bind(this);
 
         this.doExport = this.doExport.bind(this);
+        this.doSpreadsheet = this.doSpreadsheet.bind(this);
+
+        this.doImport = this.doImport.bind(this);
 
         this.playAudio = this.playAudio.bind(this);
         this.playVideo = this.playVideo.bind(this);
@@ -1359,7 +1364,15 @@ export class SFT extends React.Component<any,any> {
                     );
                     this.forceUpdate();
                     break;
-
+                
+                //is it the import outcome?
+                case this.component.getAttribute('importCSVOutcome',"") !== ""  && 
+                    this.component.outcomes[this.component.getAttribute('importCSVOutcome')] !== undefined && 
+                    this.component.getAttribute('importCSVOutcome',"")===outcomeName:
+                    this.doImport();
+                    break;
+            
+                
                 default:
                     this.component.triggerOutcome(outcomeName);
                     break;
@@ -1440,6 +1453,20 @@ export class SFT extends React.Component<any,any> {
         
         if (this.component.outcomes['OnExport']) {
             this.component.triggerOutcome('OnExport');
+        }
+    }
+
+    async doImport() {
+        let csv: SFTCSVFile = await STFCSVImporter.loadCSV();
+        if(csv) {
+            let objDataArr: FlowObjectDataArray = csv.toFlowObjectDataArray(this.component.getAttribute("ModelTypeName","Object"));
+            let existingState: FlowObjectDataArray = this.component.objectData;
+            objDataArr.items.forEach((item: FlowObjectData) => {
+                existingState.addItem(item);
+            });
+            this.component.setStateValue(existingState);
+            this.component.objectData = existingState;
+            this.buildCoreTable();
         }
     }
 

@@ -12,9 +12,9 @@
           "esnext",
           "es2015"
         ],
-      "skipLibCheck": true,
+      "skipLibCheck": true
   },
   "include": [
       "./src/**/*"
-  ],
+  ]
 }

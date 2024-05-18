@@ -56,7 +56,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         this.rightButtons = [];
         this.farRightButtons = [];
         const canExport: boolean = (root.component.getAttribute('canExport', 'true').toLowerCase() === 'true');
-
+        
         // ad export if allowed
         if (canExport === true) {
             this.rightButtons.push(
@@ -77,6 +77,8 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 )
             );
         }
+        
+        
 
         if (root.rowMap.size > root.currentRowMap.size && canExport === true) {
             this.rightButtons.push(
@@ -104,7 +106,12 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
 
             const outcome: FlowOutcome = arrOutcomes[pos];
 
-            if (outcome.isBulkAction && outcome.developerName !== 'OnSelect' && outcome.developerName !== 'OnChange' && !outcome.developerName.toLowerCase().startsWith('cm')) {
+            if (
+                outcome.isBulkAction && 
+                outcome.developerName !== 'OnSelect' && 
+                outcome.developerName !== 'OnChange' && 
+                !outcome.developerName.toLowerCase().startsWith('cm')
+            ) {
 
                 const showOutcome: boolean = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root);
                 if(root.component.getAttribute("greyDissabled","false").toLowerCase()==="true"){
