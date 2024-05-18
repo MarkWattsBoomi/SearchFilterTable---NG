@@ -39171,6 +39171,113 @@ var SpreadsheetExporter = class {
           // }*/
 };
 
+// src/CSVImporter.ts
+var SFTCSVCell = class {
+  constructor(value) {
+    this.value = value;
+  }
+};
+var SFTCSVRow = class {
+  constructor() {
+    this.cells = /* @__PURE__ */ new Map();
+  }
+};
+var SFTCSVFile = class {
+  ingestFile(file) {
+    this.headers = [];
+    this.rows = [];
+    this.badRows = [];
+    let srcCols;
+    let srcRows = file.split("\r\n");
+    if (srcRows.length > 0) {
+      srcCols = srcRows[0].split(",");
+      srcCols.forEach((srcCol) => {
+        srcCol = srcCol.replace(/^\"(.+)\"$/, "$1");
+        this.headers.push(new SFTCSVCell(srcCol));
+      });
+    }
+    for (let rowPos = 1; rowPos < srcRows.length; rowPos++) {
+      srcCols = srcRows[rowPos].split(",");
+      if (srcCols.length === this.headers.length) {
+        let newRow = new SFTCSVRow();
+        for (let cellPos = 0; cellPos < srcCols.length; cellPos++) {
+          let srcCol = srcCols[cellPos].replace(/^\"(.+)\"$/, "$1");
+          newRow.cells.set(this.headers[cellPos].value, new SFTCSVCell(srcCol));
+        }
+        this.rows.push(newRow);
+      } else {
+        this.badRows.push("Row " + rowPos + " " + srcRows[rowPos]);
+      }
+    }
+  }
+  toFlowObjectDataArray(objectDataTypeName) {
+    let objDataArray = new FlowObjectDataArray();
+    this.rows.forEach((row) => {
+      let objData = FlowObjectData.newInstance(objectDataTypeName);
+      this.headers.forEach((header) => {
+        objData.addProperty(FlowObjectDataProperty.newInstance(header.value, eContentType.ContentString, row.cells.get(header.value).value));
+      });
+      objDataArray.addItem(objData);
+    });
+    return objDataArray;
+  }
+};
+var STFCSVImporter = class _STFCSVImporter {
+  static async loadCSV() {
+    let pickerOpts = {
+      types: [
+        {
+          description: "CSV Files",
+          accept: {
+            "text/csv": [".csv"]
+          }
+        }
+      ],
+      excludeAcceptAllOption: true,
+      multiple: false
+    };
+    try {
+      let handle = await window.showOpenFilePicker(pickerOpts);
+      if (handle[0].kind === "file") {
+        let file = await handle[0].getFile();
+        let data = await _STFCSVImporter.fileReadAsText(file);
+        let csv = new SFTCSVFile();
+        csv.ingestFile(data);
+        return csv;
+      }
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+  static async fileReadAsBinary(file) {
+    const reader = new FileReader();
+    return new Promise((resolve, reject) => {
+      reader.onerror = () => {
+        reader.abort();
+        reject(new DOMException("Problem reading file"));
+      };
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  }
+  static async fileReadAsText(file) {
+    const reader = new FileReader();
+    return new Promise((resolve, reject) => {
+      reader.onerror = () => {
+        reader.abort();
+        reject(new DOMException("Problem reading file"));
+      };
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsText(file);
+    });
+  }
+};
+
 // src/SearchFilterTable.tsx
 var SFT3 = class extends React22.Component {
   constructor(props) {
@@ -39234,6 +39341,8 @@ var SFT3 = class extends React22.Component {
     this.gotoPage = this.gotoPage.bind(this);
     this.maxPerPageChanged = this.maxPerPageChanged.bind(this);
     this.doExport = this.doExport.bind(this);
+    this.doSpreadsheet = this.doSpreadsheet.bind(this);
+    this.doImport = this.doImport.bind(this);
     this.playAudio = this.playAudio.bind(this);
     this.playVideo = this.playVideo.bind(this);
     this.showColumnPicker = this.showColumnPicker.bind(this);
@@ -40270,6 +40379,9 @@ var SFT3 = class extends React22.Component {
           );
           this.forceUpdate();
           break;
+        case (this.component.getAttribute("importCSVOutcome", "") !== "" && this.component.outcomes[this.component.getAttribute("importCSVOutcome")] !== void 0 && this.component.getAttribute("importCSVOutcome", "") === outcomeName):
+          this.doImport();
+          break;
         default:
           this.component.triggerOutcome(outcomeName);
           break;
@@ -40339,6 +40451,19 @@ var SFT3 = class extends React22.Component {
     SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, "test.xlsx");
     if (this.component.outcomes["OnExport"]) {
       this.component.triggerOutcome("OnExport");
+    }
+  }
+  async doImport() {
+    let csv = await STFCSVImporter.loadCSV();
+    if (csv) {
+      let objDataArr = csv.toFlowObjectDataArray(this.component.getAttribute("ModelTypeName", "Object"));
+      let existingState = this.component.objectData;
+      objDataArr.items.forEach((item) => {
+        existingState.addItem(item);
+      });
+      this.component.setStateValue(existingState);
+      this.component.objectData = existingState;
+      this.buildCoreTable();
     }
   }
   playVideo(title, dataUri, mimetype) {

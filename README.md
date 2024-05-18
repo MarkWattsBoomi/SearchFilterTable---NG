@@ -555,6 +555,23 @@ Boolean
 
 Grey out dissabled outcomes rather than hide them based on column rules
 
+## importCSVOutcome
+String.
+
+The name of an outcome to signify that CSV import of rows is enabled.
+
+This outcome will never be actually triggered.
+
+It just tells the table to show the buttoon and allows setting the icon & position etc.
+
+If defined a new "Import RowsW button appears.
+
+On click will show a local file picker.
+
+Pick a CSV and the rows will be tuned into object dats items with the properties named per first row column names.
+
+These items will be added to the datasource, checking them adds them to the state.
+
 
 ## Styling
 
