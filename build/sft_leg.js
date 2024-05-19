@@ -39536,6 +39536,7 @@ var SFT3 = class extends React22.Component {
       if (redraw === true) {
         this.componentDidMount();
       } else {
+        await this.preLoad();
         this.saveSelected();
       }
     }

@@ -317,6 +317,7 @@ export class SFT extends React.Component<any,any> {
                 this.componentDidMount();
             }
             else{
+                await this.preLoad();
                 this.saveSelected();
             }
         }

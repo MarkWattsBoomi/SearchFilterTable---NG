@@ -564,7 +564,7 @@ This outcome will never be actually triggered.
 
 It just tells the table to show the buttoon and allows setting the icon & position etc.
 
-If defined a new "Import RowsW button appears.
+If defined a new "Import Rows button appears.
 
 On click will show a local file picker.
 
