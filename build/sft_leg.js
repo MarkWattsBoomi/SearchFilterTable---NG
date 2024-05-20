@@ -39320,6 +39320,7 @@ var SFTCSVFile = class {
       this.headers.forEach((header) => {
         objData.addProperty(FlowObjectDataProperty.newInstance(header.value, eContentType.ContentString, row.cells.get(header.value).value));
       });
+      objData.isSelected = true;
       objDataArray.addItem(objData);
     });
     return objDataArray;

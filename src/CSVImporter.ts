@@ -68,6 +68,7 @@ export class SFTCSVFile {
             this.headers.forEach((header: SFTCSVCell) => {
                 objData.addProperty(FlowObjectDataProperty.newInstance(header.value,eContentType.ContentString, row.cells.get(header.value).value));
             });
+            objData.isSelected = true;
             objDataArray.addItem(objData);
         });
         return objDataArray;
