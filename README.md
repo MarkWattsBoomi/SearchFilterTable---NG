@@ -564,13 +564,27 @@ This outcome will never be actually triggered.
 
 It just tells the table to show the buttoon and allows setting the icon & position etc.
 
-If defined a new "Import Rows button appears.
+If defined a new button appears.
 
 On click will show a local file picker.
 
-Pick a CSV and the rows will be tuned into object dats items with the properties named per first row column names.
+Pick a CSV and the rows will be turned into object data items with the properties named per first row column names.
 
-These items will be added to the datasource, checking them adds them to the state.
+These items will be added to the datasource, checking them adds them to the state if multi-select else they are auto selected.
+
+
+## exportCSVSampleOutcome
+String.
+
+The name of an outcome to signify that an export of the table's display columns as a CSV template is enabled.
+
+This outcome will never be actually triggered.
+
+It just tells the table to show the buttoon and allows setting the icon & position etc.
+
+If defined a new button appears.
+
+On click generate a CSV file from the tables display columns developerNames and push it to the client.
 
 
 ## Styling

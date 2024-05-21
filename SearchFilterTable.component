@@ -38,7 +38,8 @@
     "clearFilterIcon":"Clear Filter Icon",
     "colpickIcon":"Column Picker Icon",
     "partitionColumn":"Partition On. The name of a column to partition the table on",
-    "importCSVOutcome":"CSV Import outcome name"
+    "importCSVOutcome":"CSV Import outcome name",
+    "exportCSVSampleOutcome":"CSV Sample Export outcome name"
   },
   "configurationEditors": [
     "LABEL",

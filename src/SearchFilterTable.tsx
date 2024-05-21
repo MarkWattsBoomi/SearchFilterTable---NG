@@ -206,6 +206,7 @@ export class SFT extends React.Component<any,any> {
         this.doSpreadsheet = this.doSpreadsheet.bind(this);
 
         this.doImport = this.doImport.bind(this);
+        this.doExportSample = this.doExportSample.bind(this);
 
         this.playAudio = this.playAudio.bind(this);
         this.playVideo = this.playVideo.bind(this);
@@ -1373,6 +1374,11 @@ export class SFT extends React.Component<any,any> {
                     this.doImport();
                     break;
             
+                case this.component.getAttribute('exportCSVSampleOutcome',"") !== ""  && 
+                    this.component.outcomes[this.component.getAttribute('exportCSVSampleOutcome')] !== undefined && 
+                    this.component.getAttribute('exportCSVSampleOutcome',"")===outcomeName:
+                    this.doExportSample();
+                    break;
                 
                 default:
                     this.component.triggerOutcome(outcomeName);
@@ -1469,6 +1475,11 @@ export class SFT extends React.Component<any,any> {
             this.component.objectData = existingState;
             this.buildCoreTable();
         }
+    }
+
+    async doExportSample() {
+
+        SFTCSVFile.downloadTemplate(this.component.columns)
     }
 
     playVideo(title: string, dataUri: string, mimetype: string) {

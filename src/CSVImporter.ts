@@ -6,6 +6,7 @@ import { FlowObjectDataArray } from "fcmlib/lib/FlowObjectDataArray";
 import { FlowObjectData } from "fcmlib/lib/FlowObjectData";
 import { FlowObjectDataProperty } from "fcmlib/lib/FlowObjectDataProperty";
 import { eContentType } from "fcmlib/lib/FCMNew";
+import { FlowDisplayColumn } from "fcmlib/lib/FlowDisplayColumn";
 
 export class SFTCSVCell {
     value: string;
@@ -59,6 +60,35 @@ export class SFTCSVFile {
             }
         }
 
+    }
+
+    static downloadTemplate(cols: FlowDisplayColumn[]) {
+        let file: string = '';
+        let body: string = '';
+        let headers: string = '';
+        let row: string = '';
+
+        cols?.forEach((item: FlowDisplayColumn) => {
+            if (headers.length > 0) {
+                headers += ",";
+            }
+            headers += "\"" + item.developerName + "\"";
+        });
+        
+        let BOM = "\uFEFF";
+        file = BOM + headers + body;
+        
+        const blob = new Blob([file], { type: 'text/csv;charset=utf-8' });
+        const link = document.createElement('a');
+        if (link.download !== undefined) { 
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', "sample.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     }
 
     toFlowObjectDataArray(objectDataTypeName: string) : FlowObjectDataArray {

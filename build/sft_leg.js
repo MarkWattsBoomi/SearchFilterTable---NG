@@ -39313,6 +39313,31 @@ var SFTCSVFile = class {
       }
     }
   }
+  static downloadTemplate(cols) {
+    let file = "";
+    let body = "";
+    let headers = "";
+    let row = "";
+    cols?.forEach((item) => {
+      if (headers.length > 0) {
+        headers += ",";
+      }
+      headers += '"' + item.developerName + '"';
+    });
+    let BOM = "\uFEFF";
+    file = BOM + headers + body;
+    const blob = new Blob([file], { type: "text/csv;charset=utf-8" });
+    const link = document.createElement("a");
+    if (link.download !== void 0) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", "sample.csv");
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
   toFlowObjectDataArray(objectDataTypeName) {
     let objDataArray = new FlowObjectDataArray();
     this.rows.forEach((row) => {
@@ -39447,6 +39472,7 @@ var SFT3 = class extends React22.Component {
     this.doExport = this.doExport.bind(this);
     this.doSpreadsheet = this.doSpreadsheet.bind(this);
     this.doImport = this.doImport.bind(this);
+    this.doExportSample = this.doExportSample.bind(this);
     this.playAudio = this.playAudio.bind(this);
     this.playVideo = this.playVideo.bind(this);
     this.showColumnPicker = this.showColumnPicker.bind(this);
@@ -40487,6 +40513,9 @@ var SFT3 = class extends React22.Component {
         case (this.component.getAttribute("importCSVOutcome", "") !== "" && this.component.outcomes[this.component.getAttribute("importCSVOutcome")] !== void 0 && this.component.getAttribute("importCSVOutcome", "") === outcomeName):
           this.doImport();
           break;
+        case (this.component.getAttribute("exportCSVSampleOutcome", "") !== "" && this.component.outcomes[this.component.getAttribute("exportCSVSampleOutcome")] !== void 0 && this.component.getAttribute("exportCSVSampleOutcome", "") === outcomeName):
+          this.doExportSample();
+          break;
         default:
           this.component.triggerOutcome(outcomeName);
           break;
@@ -40570,6 +40599,9 @@ var SFT3 = class extends React22.Component {
       this.component.objectData = existingState;
       this.buildCoreTable();
     }
+  }
+  async doExportSample() {
+    SFTCSVFile.downloadTemplate(this.component.columns);
   }
   playVideo(title, dataUri, mimetype) {
     this.messageBox.showDialog(
