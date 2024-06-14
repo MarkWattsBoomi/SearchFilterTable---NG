@@ -586,6 +586,14 @@ If defined a new button appears.
 
 On click generate a CSV file from the tables display columns developerNames and push it to the client.
 
+## partitionColumn
+
+The name of a column to partition the data by.
+
+This will then show an array of toggle buttons beside the search box, one button per unique column value + an "All" button.
+
+Clicking a button filters data on that value.
+
 
 ## Styling
 
