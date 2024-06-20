@@ -171,6 +171,8 @@ export class SFT extends React.Component<any,any> {
     downloadIcon: string;
     colpickIcon: string;
 
+    mounting: boolean = false;
+
     constructor(props: any) {
         super(props);
         this.component = this.props.parent;
@@ -264,6 +266,8 @@ export class SFT extends React.Component<any,any> {
     }
 
     async componentDidMount() {
+        if(this.mounting === true) {return}
+        this.mounting = true;
         console.log(this.component.developerName + "=" + this.component.id);
         // will get this from a component attribute
         this.loaded=false;
@@ -283,6 +287,7 @@ export class SFT extends React.Component<any,any> {
         await this.preLoad();
         await this.buildCoreTable();
         this.loaded = true;
+        this.mounting = false;
         this.forceUpdate();
         
     }
@@ -319,9 +324,63 @@ export class SFT extends React.Component<any,any> {
             }
             else{
                 await this.preLoad();
+                this.buildRibbon();
                 this.saveSelected();
+                this.forceUpdate();
             }
         }
+    }
+
+    async preLoad() : Promise<any> {
+        //preload any column rule values & inflate any props
+        //let flds: Map<string,FlowValue> = new Map();
+        //let alreadyDone: string[] = [];
+        let outcomes: string[] = Array.from(Object.keys(this.component.outcomes));
+        for(let pos = 0 ; pos < outcomes.length ; pos++) {
+            let outcome: FlowOutcome = this.component.outcomes[outcomes[pos]];
+            if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
+                try {
+                    const rule = JSON.parse(outcome.attributes.rule.value);
+                    rule.field = await this.component.inflateValue(rule.field);
+                }
+                catch (e) {
+                    console.log('The rule on outcome ' + outcome.developerName + ' is invalid');
+                }
+            }
+            if(outcome.attributes.iconValue && outcome.attributes.iconValue.value.length>0){
+                let val: string = await this.component.inflateValue(outcome.attributes.iconValue.value);
+                this.component.outcomes[outcomes[pos]].attributes.iconValue.value = val;
+                //console.log(outcome.attributes.iconValue.value);
+            }
+        }
+        //now parse all columnRules
+        if(this.columnRules && this.columnRules.size > 0) {
+            this.columnRules.forEach((rule: ColumnRule) => {
+                if(rule.mode?.toLowerCase() === "outcome") {
+                    this.supressedOutcomes.set(rule.outcomeName,true);
+                }
+            });
+        }
+        this.supressedOutcomes.set("OnSelect",true);
+        
+        //other inflations
+        this.title = await this.component.inflateValue(this.title);
+        this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
+        this.filterIcon = await this.component.inflateValue(this.filterIcon);
+        this.clearFilterIcon = await this.component.inflateValue(this.clearFilterIcon);
+        this.downloadIcon = await this.component.inflateValue(this.downloadIcon);
+        this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
+
+        if(this.paginationMode===ePaginationMode.external){
+            if(this.externalPage) {
+                let pg: string = await this.component.inflateValue(this.externalPage);
+                this.externalPaginationPage = parseInt(pg);
+                if(isNaN(this.externalPaginationPage)){this.externalPaginationPage=1}
+            }
+        }
+
+        //console.log(JSON.stringify(outcomes));
+        return true;
     }
 
     showInfo() {
@@ -546,53 +605,7 @@ export class SFT extends React.Component<any,any> {
         }
     }
 
-    async preLoad() : Promise<any> {
-        //preload any column rule values & inflate any props
-        //let flds: Map<string,FlowValue> = new Map();
-        //let alreadyDone: string[] = [];
-        let outcomes: FlowOutcome[] = Array.from(Object.values(this.component.outcomes));
-        for(let pos = 0 ; pos < outcomes.length ; pos++) {
-            let outcome: FlowOutcome = outcomes[pos];
-            if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
-                try {
-                    const rule = JSON.parse(outcome.attributes.rule.value);
-                    rule.field = await this.component.inflateValue(rule.field);
-                }
-                catch (e) {
-                    console.log('The rule on outcome ' + outcome.developerName + ' is invalid');
-                }
-            }
-            if(outcome.attributes.iconValue && outcome.attributes.iconValue.value.length>0){
-                outcome.attributes.iconValue.value = await this.component.inflateValue(outcome.attributes.iconValue.value);
-            }
-        }
-        //now parse all columnRules
-        if(this.columnRules && this.columnRules.size > 0) {
-            this.columnRules.forEach((rule: ColumnRule) => {
-                if(rule.mode?.toLowerCase() === "outcome") {
-                    this.supressedOutcomes.set(rule.outcomeName,true);
-                }
-            });
-        }
-        this.supressedOutcomes.set("OnSelect",true);
-        
-        //other inflations
-        this.title = await this.component.inflateValue(this.title);
-        this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
-        this.filterIcon = await this.component.inflateValue(this.filterIcon);
-        this.clearFilterIcon = await this.component.inflateValue(this.clearFilterIcon);
-        this.downloadIcon = await this.component.inflateValue(this.downloadIcon);
-        this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
-
-        if(this.paginationMode===ePaginationMode.external){
-            if(this.externalPage) {
-                let pg: string = await this.component.inflateValue(this.externalPage);
-                this.externalPaginationPage = parseInt(pg);
-                if(isNaN(this.externalPaginationPage)){this.externalPaginationPage=1}
-            }
-        }
-        return true;
-    }
+    
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     // reads the model

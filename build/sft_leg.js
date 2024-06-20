@@ -39449,6 +39449,7 @@ var SFT3 = class extends React22.Component {
     this.retries = 0;
     this.loaded = false;
     this.supressedOutcomes = /* @__PURE__ */ new Map();
+    this.mounting = false;
     this.component = this.props.parent;
     this.showContextMenu = this.showContextMenu.bind(this);
     this.hideContextMenu = this.hideContextMenu.bind(this);
@@ -39518,6 +39519,10 @@ var SFT3 = class extends React22.Component {
     }
   }
   async componentDidMount() {
+    if (this.mounting === true) {
+      return;
+    }
+    this.mounting = true;
     console.log(this.component.developerName + "=" + this.component.id);
     this.loaded = false;
     this.maxPageRows = parseInt(localStorage.getItem("sft-max-" + this.component.id || this.component.getAttribute("PaginationSize", void 0) || "10"));
@@ -39532,6 +39537,7 @@ var SFT3 = class extends React22.Component {
     await this.preLoad();
     await this.buildCoreTable();
     this.loaded = true;
+    this.mounting = false;
     this.forceUpdate();
   }
   async componentUpdated(changeDetected) {
@@ -39564,9 +39570,53 @@ var SFT3 = class extends React22.Component {
         this.componentDidMount();
       } else {
         await this.preLoad();
+        this.buildRibbon();
         this.saveSelected();
+        this.forceUpdate();
       }
     }
+  }
+  async preLoad() {
+    let outcomes = Array.from(Object.keys(this.component.outcomes));
+    for (let pos = 0; pos < outcomes.length; pos++) {
+      let outcome = this.component.outcomes[outcomes[pos]];
+      if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
+        try {
+          const rule = JSON.parse(outcome.attributes.rule.value);
+          rule.field = await this.component.inflateValue(rule.field);
+        } catch (e) {
+          console.log("The rule on outcome " + outcome.developerName + " is invalid");
+        }
+      }
+      if (outcome.attributes.iconValue && outcome.attributes.iconValue.value.length > 0) {
+        let val = await this.component.inflateValue(outcome.attributes.iconValue.value);
+        this.component.outcomes[outcomes[pos]].attributes.iconValue.value = val;
+      }
+    }
+    if (this.columnRules && this.columnRules.size > 0) {
+      this.columnRules.forEach((rule) => {
+        if (rule.mode?.toLowerCase() === "outcome") {
+          this.supressedOutcomes.set(rule.outcomeName, true);
+        }
+      });
+    }
+    this.supressedOutcomes.set("OnSelect", true);
+    this.title = await this.component.inflateValue(this.title);
+    this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
+    this.filterIcon = await this.component.inflateValue(this.filterIcon);
+    this.clearFilterIcon = await this.component.inflateValue(this.clearFilterIcon);
+    this.downloadIcon = await this.component.inflateValue(this.downloadIcon);
+    this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
+    if (this.paginationMode === 2 /* external */) {
+      if (this.externalPage) {
+        let pg = await this.component.inflateValue(this.externalPage);
+        this.externalPaginationPage = parseInt(pg);
+        if (isNaN(this.externalPaginationPage)) {
+          this.externalPaginationPage = 1;
+        }
+      }
+    }
+    return true;
   }
   showInfo() {
     const content = /* @__PURE__ */ React22.createElement(
@@ -39769,47 +39819,6 @@ var SFT3 = class extends React22.Component {
     } else {
       localStorage.setItem("sft_" + this.component.id + "_cols", userCols);
     }
-  }
-  async preLoad() {
-    let outcomes = Array.from(Object.values(this.component.outcomes));
-    for (let pos = 0; pos < outcomes.length; pos++) {
-      let outcome = outcomes[pos];
-      if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
-        try {
-          const rule = JSON.parse(outcome.attributes.rule.value);
-          rule.field = await this.component.inflateValue(rule.field);
-        } catch (e) {
-          console.log("The rule on outcome " + outcome.developerName + " is invalid");
-        }
-      }
-      if (outcome.attributes.iconValue && outcome.attributes.iconValue.value.length > 0) {
-        outcome.attributes.iconValue.value = await this.component.inflateValue(outcome.attributes.iconValue.value);
-      }
-    }
-    if (this.columnRules && this.columnRules.size > 0) {
-      this.columnRules.forEach((rule) => {
-        if (rule.mode?.toLowerCase() === "outcome") {
-          this.supressedOutcomes.set(rule.outcomeName, true);
-        }
-      });
-    }
-    this.supressedOutcomes.set("OnSelect", true);
-    this.title = await this.component.inflateValue(this.title);
-    this.iconSuffix = await this.component.inflateValue(this.iconSuffix);
-    this.filterIcon = await this.component.inflateValue(this.filterIcon);
-    this.clearFilterIcon = await this.component.inflateValue(this.clearFilterIcon);
-    this.downloadIcon = await this.component.inflateValue(this.downloadIcon);
-    this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
-    if (this.paginationMode === 2 /* external */) {
-      if (this.externalPage) {
-        let pg = await this.component.inflateValue(this.externalPage);
-        this.externalPaginationPage = parseInt(pg);
-        if (isNaN(this.externalPaginationPage)) {
-          this.externalPaginationPage = 1;
-        }
-      }
-    }
-    return true;
   }
   ///////////////////////////////////////////////////////////////////////////////////////////
   // reads the model
