@@ -34191,7 +34191,7 @@ var SearchFilterTableHeader = class extends React13.Component {
       }
       quickCheck = root.filters.getQuickCheck(col.developerName);
     }
-    let cls = "sft-column-header";
+    let cls = "sft-column-header sft-column-header-" + col.developerName;
     if (this.props.sticky) {
       cls += " sft-header-sticky";
     }

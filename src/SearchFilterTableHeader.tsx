@@ -40,7 +40,7 @@ export class SearchFilterTableHeader extends React.Component<any, any> {
             }
             quickCheck = root.filters.getQuickCheck(col.developerName);
         }
-        let cls: string = "sft-column-header";
+        let cls: string = "sft-column-header sft-column-header-"+col.developerName;
         if(this.props.sticky) {
             cls += " sft-header-sticky"
         }
