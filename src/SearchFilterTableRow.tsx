@@ -416,7 +416,8 @@ export class SearchFilterTableRow extends React.Component<any, any> {
             url.endsWith('bmp') ||
             url.endsWith('ico') ||
             url.endsWith('webp') ||
-            url.endsWith('gif')
+            url.endsWith('gif') ||
+            url.endsWith('svg')
         ) { return true; } else {
             return false;
         }
