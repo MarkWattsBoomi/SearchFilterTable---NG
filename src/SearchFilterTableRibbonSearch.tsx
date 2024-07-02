@@ -11,6 +11,7 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons/faEllipsis
 import { faFilter } from '@fortawesome/free-solid-svg-icons/faFilter';
 import { faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons/faFilterCircleXmark';
 import { faListCheck } from '@fortawesome/free-solid-svg-icons/faListCheck';
+import { FlowValue } from 'fcmlib/lib/FlowValue';
 
 export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
 
@@ -21,6 +22,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
     rightButtons: any[] = [];
     farRightButtons: any[] = [];
     partitions: any[] = [];
+    topRowComponents: any[] = [];
     clearFiltersButton: any;
     deBounce: boolean = false;
 
@@ -28,18 +30,21 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         super(props);
         this.generateButtons = this.generateButtons.bind(this);
         this.generatePartitions = this.generatePartitions.bind(this);
+        this.generateComponents = this.generateComponents.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
         this.showSearch = this.showSearch.bind(this);
         this.clearFilters = this.clearFilters.bind(this);
         this.filterKeyDown = this.filterKeyDown.bind(this);
         this.filterChanged = this.filterChanged.bind(this);
         this.filterCommitted = this.filterCommitted.bind(this);
+        this.trcChange = this.trcChange.bind(this);
         const root: SFT = this.props.root;
         this.currentFilter = root.filters.globalCriteria;
     }
 
     componentDidMount() {
         this.generateButtons();
+        this.generateComponents();
     }
 
 
@@ -312,6 +317,15 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         sft.filters.clearAll();
     }
 
+    async trcChange(e: any, comp: any){
+        const sft: SFT = this.props.root;
+        let val: FlowValue = comp.value;
+        val.value = e.currentTarget.value;
+        sft.component.setValues(val);
+        this.generateComponents();
+        this.forceUpdate();
+    }
+
     generatePartitions() {
         const sft: SFT = this.props.root;
         
@@ -346,6 +360,56 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                         <span>
                             {key.toLowerCase()}
                         </span>
+                    </div>
+                );
+            });
+        }
+    }
+
+    generateComponents() {
+        const sft: SFT = this.props.root;
+        
+        this.topRowComponents = [];
+        
+        if(sft.topRowComponents && sft.topRowComponents.length > 0){
+            sft.topRowComponents.forEach((comp: any) =>{
+                let classes: string = "sft-ribbon-search-trc";
+                let element: any;
+                switch(comp.type){
+                    case "select":
+                        let opts: any[] = [];
+                        comp.options.forEach((opt: any) => {
+                            opts.push(
+                                <option
+                                    key={opt.value}
+                                    value={opt.value}
+                                >
+                                    {opt.label}
+                                </option>
+                            );
+                        });
+                        element=(
+                            <select
+                                value={(comp.value as FlowValue).value as any}
+                                className='sft-ribbon-search-trc-select'
+                                onChange={ (e: any) => {this.trcChange(e, comp) }}
+                            >
+                                {opts}
+                            </select>
+                        );
+                    break;
+                }
+                this.topRowComponents.push(
+                    <div
+                        key={comp.label}
+                        className={classes}
+                    >
+                        <span
+                            className='sft-ribbon-search-trc-label'
+                        >
+                            {comp.label}
+                        </span>
+                        {element}
                     </div>
                 );
             });
@@ -435,6 +499,15 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                         className="sft-ribbon-search-partitions"
                     >
                         {this.partitions}
+                    </div>
+                </div>
+                <div
+                    className="sft-ribbon-search-trc-wrapper"
+                >
+                    <div
+                        className="sft-ribbon-search-trcs"
+                    >
+                        {this.topRowComponents}
                     </div>
                 </div>
                 <div

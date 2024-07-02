@@ -594,6 +594,31 @@ This will then show an array of toggle buttons beside the search box, one button
 
 Clicking a button filters data on that value.
 
+## TopRowComponents
+A JSON string defining one or more components to add to the search bar.
+
+You can add a combo box, for example, that can update a flow value.
+
+e.g.
+```
+[
+  {
+    "label":"Period",
+    "type":"select",
+    "options": [
+        {"label":"3 Months", "value": 3},
+        {"label":"6 Months", "value": 6},
+        {"label":"9 Months", "value": 9}
+    ],
+    "state":"drdMonths"
+  }
+]
+```
+This will show a select with those 3 options, the pre-selected one comes from the flow state value 'drdMonths' 
+and will update it on change. 
+
+Supports curley notation in attribute value e.g. {{someFlowField}}
+
 
 ## Styling
 

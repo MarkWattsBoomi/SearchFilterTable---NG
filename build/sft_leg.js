@@ -34497,6 +34497,7 @@ var SearchFilterTableRibbon = class extends React15.Component {
   constructor(props) {
     super(props);
     this.generateButtons = this.generateButtons.bind(this);
+    this.generateComponents = this.generateComponents.bind(this);
   }
   async componentDidMount() {
     await this.generateButtons();
@@ -34686,6 +34687,8 @@ var SearchFilterTableRibbon = class extends React15.Component {
     }
     this.forceUpdate();
     return true;
+  }
+  generateComponents() {
   }
   render() {
     const root = this.props.root;
@@ -37580,20 +37583,24 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     this.rightButtons = [];
     this.farRightButtons = [];
     this.partitions = [];
+    this.topRowComponents = [];
     this.deBounce = false;
     this.generateButtons = this.generateButtons.bind(this);
     this.generatePartitions = this.generatePartitions.bind(this);
+    this.generateComponents = this.generateComponents.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
     this.showSearch = this.showSearch.bind(this);
     this.clearFilters = this.clearFilters.bind(this);
     this.filterKeyDown = this.filterKeyDown.bind(this);
     this.filterChanged = this.filterChanged.bind(this);
     this.filterCommitted = this.filterCommitted.bind(this);
+    this.trcChange = this.trcChange.bind(this);
     const root = this.props.root;
     this.currentFilter = root.filters.globalCriteria;
   }
   componentDidMount() {
     this.generateButtons();
+    this.generateComponents();
   }
   async generateButtons() {
     if (this.deBounce === true) {
@@ -37852,6 +37859,14 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     }
     sft.filters.clearAll();
   }
+  async trcChange(e, comp) {
+    const sft = this.props.root;
+    let val = comp.value;
+    val.value = e.currentTarget.value;
+    sft.component.setValues(val);
+    this.generateComponents();
+    this.forceUpdate();
+  }
   generatePartitions() {
     const sft = this.props.root;
     this.partitions = [];
@@ -37889,6 +37904,61 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
               }
             },
             /* @__PURE__ */ React17.createElement("span", null, key.toLowerCase())
+          )
+        );
+      });
+    }
+  }
+  generateComponents() {
+    const sft = this.props.root;
+    this.topRowComponents = [];
+    if (sft.topRowComponents && sft.topRowComponents.length > 0) {
+      sft.topRowComponents.forEach((comp) => {
+        let classes = "sft-ribbon-search-trc";
+        let element;
+        switch (comp.type) {
+          case "select":
+            let opts = [];
+            comp.options.forEach((opt) => {
+              opts.push(
+                /* @__PURE__ */ React17.createElement(
+                  "option",
+                  {
+                    key: opt.value,
+                    value: opt.value
+                  },
+                  opt.label
+                )
+              );
+            });
+            element = /* @__PURE__ */ React17.createElement(
+              "select",
+              {
+                value: comp.value.value,
+                className: "sft-ribbon-search-trc-select",
+                onChange: (e) => {
+                  this.trcChange(e, comp);
+                }
+              },
+              opts
+            );
+            break;
+        }
+        this.topRowComponents.push(
+          /* @__PURE__ */ React17.createElement(
+            "div",
+            {
+              key: comp.label,
+              className: classes
+            },
+            /* @__PURE__ */ React17.createElement(
+              "span",
+              {
+                className: "sft-ribbon-search-trc-label"
+              },
+              comp.label
+            ),
+            element
           )
         );
       });
@@ -37998,6 +38068,19 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
             className: "sft-ribbon-search-partitions"
           },
           this.partitions
+        )
+      ),
+      /* @__PURE__ */ React17.createElement(
+        "div",
+        {
+          className: "sft-ribbon-search-trc-wrapper"
+        },
+        /* @__PURE__ */ React17.createElement(
+          "div",
+          {
+            className: "sft-ribbon-search-trcs"
+          },
+          this.topRowComponents
         )
       ),
       /* @__PURE__ */ React17.createElement(
@@ -39607,6 +39690,19 @@ var SFT3 = class extends React22.Component {
     this.clearFilterIcon = await this.component.inflateValue(this.clearFilterIcon);
     this.downloadIcon = await this.component.inflateValue(this.downloadIcon);
     this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
+    this.topRowComponents = this.component.getAttribute("TopRowComponents");
+    this.topRowComponents = await this.component.inflateValue(this.topRowComponents);
+    try {
+      this.topRowComponents = JSON.parse(this.topRowComponents);
+      for (let pos = 0; pos < this.topRowComponents.length; pos++) {
+        this.topRowComponents[pos].state = await this.component.inflateValue(this.topRowComponents[pos].state);
+        this.topRowComponents[pos].value = await this.component.getValue(this.topRowComponents[pos].state);
+      }
+      ;
+    } catch (e) {
+      console.log("Failed to parse 'TopRowComponents'");
+      this.topRowComponents = [];
+    }
     if (this.paginationMode === 2 /* external */) {
       if (this.externalPage) {
         let pg = await this.component.inflateValue(this.externalPage);
@@ -40289,6 +40385,7 @@ var SFT3 = class extends React22.Component {
   //////////////////////////////////////////////////////
   buildRibbon() {
     this.ribbon?.generateButtons();
+    this.ribbon?.generateComponents();
   }
   //////////////////////////////////////////////////////
   // forces the footer to update

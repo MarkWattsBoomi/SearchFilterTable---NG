@@ -11,6 +11,7 @@ export class SearchFilterTableRibbon extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.generateButtons = this.generateButtons.bind(this);
+        this.generateComponents = this.generateComponents.bind(this);
     }
 
     async componentDidMount() {
@@ -194,6 +195,8 @@ export class SearchFilterTableRibbon extends React.Component<any, any> {
         this.forceUpdate();
         return true;
     }
+
+    generateComponents() {}
 
     render() {
 

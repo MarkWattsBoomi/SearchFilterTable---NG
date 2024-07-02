@@ -39,7 +39,8 @@
     "colpickIcon":"Column Picker Icon",
     "partitionColumn":"Partition On. The name of a column to partition the table on",
     "importCSVOutcome":"CSV Import outcome name",
-    "exportCSVSampleOutcome":"CSV Sample Export outcome name"
+    "exportCSVSampleOutcome":"CSV Sample Export outcome name",
+    "TopRowComponents":"JSON definition of search bar components"
   },
   "configurationEditors": [
     "LABEL",
