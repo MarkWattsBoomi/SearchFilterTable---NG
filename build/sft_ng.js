@@ -28917,21 +28917,6 @@ var require_exceljs_min = __commonJS({
   }
 });
 
-// src/SFTNew.tsx
-var React23 = __toESM(require_react());
-
-// src/SearchFilterTable.tsx
-var React22 = __toESM(require_react());
-
-// src/CellItem.ts
-var CellItem = class {
-  constructor(name, value) {
-    this.name = name;
-    this.originalValue = value;
-    this.newValue = value;
-  }
-};
-
 // node_modules/fcmlib/lib/FlowObjectDataProperty.js
 var FlowObjectDataProperty = class _FlowObjectDataProperty {
   constructor(property) {
@@ -29908,6 +29893,33 @@ var FCMCore = class extends import_react.default.Component {
 };
 
 // node_modules/fcmlib/lib/FCMNew.js
+var __awaiter2 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
 var eContentType;
 (function(eContentType2) {
   eContentType2[eContentType2["unknown"] = 0] = "unknown";
@@ -29921,6 +29933,227 @@ var eContentType;
   eContentType2[eContentType2["ContentDateTime"] = 8] = "ContentDateTime";
   eContentType2[eContentType2["ContentEncrypted"] = 9] = "ContentEncrypted";
 })(eContentType || (eContentType = {}));
+var FCMNew = class extends FCMCore {
+  setPageComponentState(componentName, value) {
+    throw new Error("Method not implemented.");
+  }
+  getPageComponentDataSource(componentName) {
+    throw new Error("Method not implemented.");
+  }
+  requestObjectData(request) {
+    throw new Error("Method not implemented.");
+  }
+  constructor(props) {
+    super(props);
+    this.flowBaseUri = window.location.origin;
+  }
+  /*
+      UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
+          if(this.loadModel(nextProps)){
+              if(this.childComponent && this.componentDidMount) {
+                  this.componentDidMount();
+              }
+          }
+      }
+  */
+  componentUpdated(changeDetected) {
+  }
+  loadModel(props) {
+    var _a, _b, _c;
+    let hasChanged = false;
+    this.authenticationToken = props.authenticationToken;
+    this.attributes = props.element.attributes;
+    this.className = props.element.className;
+    this.colSpan = props.element.colSpan;
+    this.column = props.element.column;
+    this.columns = [];
+    (_a = props.element.columns) === null || _a === void 0 ? void 0 : _a.forEach((col) => {
+      this.columns.push(new FlowDisplayColumn(col));
+    });
+    this.columns.sort((a2, b) => {
+      return a2.order - b.order;
+    });
+    this.componentScriptURL = props.element.componentScriptURL;
+    this.componentStyleSheetURL = props.element.componentStyleSheetURL;
+    this.content = props.element.content;
+    this.contentType = eContentType[props.element.contentType];
+    if (this.contentValue !== props.element.contentValue) {
+      hasChanged = true;
+    }
+    this.contentValue = props.element.contentValue;
+    this.developerName = props.element.developerName;
+    this.fields = {};
+    this.fileDataRequest = props.element.fileDataRequest;
+    this.hasEvents = props.element.hasEvents;
+    this.hasSubmitted = props.hasSubmitted;
+    this.height = props.element.height;
+    this.helpInfo = props.element.helpInfo;
+    this.hintValue = props.element.hintValue;
+    if (this.id !== props.element.id) {
+      hasChanged = true;
+    }
+    this.id = props.element.id;
+    this.imageUri = props.element.imageUri;
+    this.isEditable = props.element.isEditable;
+    this.isEnabled = props.element.isEnabled;
+    this.isMultiSelect = props.element.isMultiSelect;
+    this.isRequired = props.element.isRequired;
+    this.isSearchable = props.element.isSearchable;
+    this.isSearchableDisplayColumns = props.element.isSearchableDisplayColumns;
+    this.isValid = props.element.isValid;
+    this.isVisible = props.element.isVisible;
+    this.label = props.element.label;
+    this.maxSize = props.element.maxSize;
+    let newObjData = new FlowObjectDataArray(props.element.objectData);
+    if (this.objectData) {
+      if (newObjData) {
+        if (JSON.stringify(this.objectData) !== JSON.stringify(newObjData)) {
+          hasChanged = true;
+        }
+      } else {
+        hasChanged = true;
+      }
+    } else {
+      if (newObjData) {
+        hasChanged = true;
+      }
+    }
+    this.objectData = newObjData;
+    this.objectDataRequest = props.element.objectDataRequest;
+    this.order = props.element.order;
+    this.outcomes = {};
+    (_b = props.outcomes) === null || _b === void 0 ? void 0 : _b.forEach((outcome) => {
+      let oc = new FlowOutcome(outcome);
+      if (oc.pageObjectBindingId === this.id) {
+        this.outcomes[oc.developerName] = oc;
+      }
+    });
+    (_c = props.element.outcomes) === null || _c === void 0 ? void 0 : _c.forEach((outcome) => {
+      let oc = new FlowOutcome(outcome);
+      if (oc.pageObjectBindingId === this.id) {
+        this.outcomes[oc.developerName] = oc;
+      }
+    });
+    this.pageContainerId = props.element.pageContainerId;
+    this.pageSize = props.element.pageSize || 20;
+    this.row = props.element.row;
+    this.rowSpan = props.element.rowSpan;
+    this.selectedItems = props.element.selectedItems;
+    this.size = props.element.size;
+    this.stateId = props.stateId;
+    this.tags = props.element.tags;
+    this.tenantId = props.tenantId;
+    this.type = props.element.type;
+    this.validationMessage = props.element.validationMessage;
+    this.validations = props.element.validations;
+    this.width = props.element.width;
+    return hasChanged;
+  }
+  redraw() {
+    this.componentDidMount();
+  }
+  triggerOutcome(outcomeName) {
+    return __awaiter2(this, void 0, void 0, function* () {
+      if (this.outcomes[outcomeName]) {
+        let trigger = {
+          outcomeId: this.outcomes[outcomeName].id,
+          invokeType: "FORWARD"
+        };
+        this.props.execute(trigger);
+      }
+    });
+  }
+  /*
+  getStateValue(): string | boolean | number | Date | FlowObjectData | FlowObjectDataArray | undefined {
+      // is it a complex type or simple?
+      switch(this.contentType) {
+          case eContentType.ContentObject:
+              return this.objectData.items[0];
+          case eContentType.ContentList:
+              return this.objectData;
+          case eContentType.ContentBoolean:
+              return this.contentValue?.toLowerCase()==="true";
+          case eContentType.ContentNumber:
+              let num: number = parseFloat(this.contentValue);
+              if(!isNaN(num)){
+                  return num;
+              }
+              else {
+                  return undefined;
+              }
+          case eContentType.ContentDateTime:
+              let dt: Date = new Date(this.contentValue);
+              if(!isNaN(dt.getTime())){
+                  return dt;
+              }
+              else {
+                  return undefined;
+              }
+          default:
+              return this.contentValue;
+      }
+  }
+  */
+  setStateValue(value) {
+    this.stateValue = value;
+    let element = {
+      elementId: this.id,
+      elementPartial: {},
+      triggersPageCondition: this.hasEvents
+    };
+    switch (this.contentType) {
+      case eContentType.ContentObject:
+        element.elementPartial.objectData = value.iFlowObjectDataArray(true);
+        element.elementPartial.selectedItems = element.elementPartial.objectData;
+        break;
+      case eContentType.ContentList:
+        element.elementPartial.objectData = value.iFlowObjectDataArray(true);
+        element.elementPartial.selectedItems = element.elementPartial.objectData;
+        break;
+      case eContentType.ContentBoolean:
+        element.elementPartial.contentValue = value === true ? "true" : "false";
+        break;
+      case eContentType.ContentNumber:
+        element.elementPartial.contentValue = "" + value;
+        break;
+      case eContentType.ContentDateTime:
+        element.elementPartial.contentValue = isNaN(value.getTime()) ? "" : value.toISOString();
+        break;
+      default:
+        element.elementPartial.contentValue = "" + value;
+        break;
+    }
+    this.props.updateElement(element);
+  }
+  getUserEmail() {
+    let email = "admin@manywho.com";
+    if (this.authenticationToken && this.authenticationToken.length > 0) {
+      try {
+        let tokStr = window.atob(this.authenticationToken.split(".")[1]);
+        let json = JSON.parse(tokStr);
+        email = json.email;
+      } catch (e) {
+        console.log("Error parsing token");
+      }
+    }
+    return email;
+  }
+};
+
+// src/SFTNew.tsx
+var React23 = __toESM(require_react());
+
+// src/SearchFilterTable.tsx
+var React22 = __toESM(require_react());
+
+// src/CellItem.ts
+var CellItem = class {
+  constructor(name, value) {
+    this.name = name;
+    this.originalValue = value;
+    this.newValue = value;
+  }
+};
 
 // src/ColumnCriteria.tsx
 var React2 = __toESM(require_react());
@@ -37380,7 +37613,7 @@ var FCMDragEvent = class _FCMDragEvent {
 // node_modules/fcmkit/lib/ModalDialog/FCMModal.js
 var import_faCircleXmark = __toESM(require_faCircleXmark());
 var React20 = __toESM(require_react());
-var __awaiter2 = function(thisArg, _arguments, P, generator) {
+var __awaiter3 = function(thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function(resolve) {
       resolve(value);
@@ -37462,7 +37695,7 @@ var FCMModal = class extends React20.Component {
     this.forceUpdate();
   }
   showDialog(icon2, title, content, buttons, onClose, clientStyle) {
-    return __awaiter2(this, void 0, void 0, function* () {
+    return __awaiter3(this, void 0, void 0, function* () {
       this.dialogVisible = true;
       this.dialogIcon = icon2;
       this.dialogTitle = title;
@@ -37474,7 +37707,7 @@ var FCMModal = class extends React20.Component {
     });
   }
   hideDialog(e) {
-    return __awaiter2(this, void 0, void 0, function* () {
+    return __awaiter3(this, void 0, void 0, function* () {
       this.dialogVisible = false;
       this.dialogIcon = void 0;
       this.dialogTitle = "";
@@ -38151,6 +38384,7 @@ var SFT3 = class extends React22.Component {
     this.loaded = false;
     this.supressedOutcomes = /* @__PURE__ */ new Map();
     this.mounting = false;
+    this.supressEvents = false;
     this.component = this.props.parent;
     this.showContextMenu = this.showContextMenu.bind(this);
     this.hideContextMenu = this.hideContextMenu.bind(this);
@@ -38220,7 +38454,10 @@ var SFT3 = class extends React22.Component {
     }
   }
   async componentDidMount() {
-    if (this.mounting === true) {
+    if (this.mounting === true || this.supressEvents === true) {
+      if (this.supressEvents === true) {
+        this.supressEvents = false;
+      }
       return;
     }
     this.mounting = true;
@@ -38932,6 +39169,7 @@ var SFT3 = class extends React22.Component {
       tItem.isSelected = true;
       selectedItems.addItem(tItem);
     });
+    this.supressEvents = true;
     this.component.setStateValue(selectedItems);
   }
   // load selected items from state
@@ -39469,348 +39707,8 @@ var SFT3 = class extends React22.Component {
   }
 };
 
-// node_modules/fcmlib/lib/EventManager.js
-if (!manywho.eventManager) {
-  manywho.eventManager = {};
-  manywho.eventManager.beforeSendListeners = {};
-  manywho.eventManager.doneListeners = {};
-  manywho.eventManager.initializedListeners = {};
-  manywho.eventManager.joinListeners = {};
-  manywho.eventManager.failListeners = {};
-  manywho.eventManager.outcomeBeingTriggered;
-  manywho.eventManager.history = [];
-  manywho.eventManager.beforeSend = (xhr, request) => {
-    if (xhr) {
-      if (window.hasOwnProperty("culture") && culture.length > 0) {
-        xhr.setRequestHeader("Culture", culture);
-      }
-    }
-    for (const key in manywho.eventManager.beforeSendListeners) {
-      manywho.eventManager.beforeSendListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.join = (xhr, request) => {
-    for (const key in manywho.eventManager.joinListeners) {
-      manywho.eventManager.joinListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.done = (xhr, request) => {
-    for (const key in manywho.eventManager.doneListeners) {
-      manywho.eventManager.doneListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.initialized = (xhr, request) => {
-    for (const key in manywho.eventManager.initializedListeners) {
-      manywho.eventManager.initializedListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.fail = (xhr, request) => {
-    for (const key in manywho.eventManager.failListeners) {
-      manywho.eventManager.failListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.addBeforeSendListener = (handler, componentId) => {
-    manywho.eventManager.beforeSendListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeBeforeSendListener = (componentId) => {
-    delete manywho.eventManager.beforeSendListeners[componentId];
-  };
-  manywho.eventManager.addInitializedListener = (handler, componentId) => {
-    manywho.eventManager.initializedListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeInitializedListener = (componentId) => {
-    delete manywho.eventManager.initializedListeners[componentId];
-  };
-  manywho.eventManager.addJoinListener = (handler, componentId) => {
-    manywho.eventManager.joinListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeJoinListener = (componentId) => {
-    delete manywho.eventManager.joinListeners[componentId];
-  };
-  manywho.eventManager.addDoneListener = (handler, componentId) => {
-    manywho.eventManager.doneListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeDoneListener = (componentId) => {
-    delete manywho.eventManager.doneListeners[componentId];
-  };
-  manywho.eventManager.addFailListener = (handler, componentId) => {
-    manywho.eventManager.failListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeFailListener = (componentId) => {
-    delete manywho.eventManager.failListeners[componentId];
-  };
-  manywho.settings.initialize(null, {
-    invoke: {
-      beforeSend: manywho.eventManager.beforeSend,
-      done: manywho.eventManager.done,
-      fail: manywho.eventManager.fail
-    },
-    initialization: {
-      beforeSend: manywho.eventManager.beforeSend,
-      done: manywho.eventManager.initialized,
-      fail: manywho.eventManager.fail
-    },
-    join: {
-      beforeSend: manywho.eventManager.beforeSend,
-      done: manywho.eventManager.join,
-      fail: manywho.eventManager.fail
-    }
-  });
-}
-
-// node_modules/fcmlib/lib/FCMLegacy.js
-var __awaiter3 = function(thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function(resolve) {
-      resolve(value);
-    });
-  }
-  return new (P || (P = Promise))(function(resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-};
-var FCMLegacy = class extends FCMCore {
-  constructor(props) {
-    var _a;
-    super(props);
-    this.flowBaseUri = ((_a = manywho.settings.global("platform")) === null || _a === void 0 ? void 0 : _a.uri) || window.location.origin;
-  }
-  //static getDerivedStateFromProps(nextProps: Readonly<any>, prevState: any): void {
-  UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
-    if (nextProps.id !== this.id) {
-      if (this.loadModel(nextProps)) {
-        if (this.childComponent && this.componentDidMount) {
-          this.componentDidMount();
-        }
-      } else {
-        if (this.childComponent && this.componentUpdated) {
-          this.componentUpdated(false);
-        } else if (this.childComponent && this.componentDidMount) {
-          this.componentDidMount();
-        }
-      }
-    } else {
-      let model = manywho.model.getComponent(this.id, this.flowKey);
-      if (model) {
-        if (this.loadModel(nextProps)) {
-          if (this.childComponent && this.componentDidMount) {
-            this.componentDidMount();
-          }
-        } else {
-          if (this.childComponent && this.componentUpdated) {
-            this.componentUpdated(false);
-          } else if (this.childComponent && this.componentDidMount) {
-            this.componentDidMount();
-          }
-        }
-      }
-    }
-  }
-  componentUpdated(changeDetected) {
-  }
-  loadModel(props) {
-    var _a;
-    let hasChanged = false;
-    if (this.id !== props.id) {
-      hasChanged = true;
-    }
-    this.id = props.id;
-    this.flowKey = props.flowKey;
-    const model = manywho.model.getComponent(this.id, this.flowKey);
-    this.authenticationToken = manywho.state.getAuthenticationToken(this.flowKey);
-    this.attributes = model.attributes;
-    this.className = model.className;
-    this.colSpan = model.colSpan;
-    this.column = model.column;
-    this.columns = [];
-    (_a = model.columns) === null || _a === void 0 ? void 0 : _a.forEach((col) => {
-      this.columns.push(new FlowDisplayColumn(col));
-    });
-    this.columns.sort((a2, b) => {
-      return a2.order - b.order;
-    });
-    this.componentScriptURL = model.componentScriptURL;
-    this.componentStyleSheetURL = model.componentStyleSheetURL;
-    this.content = model.content;
-    this.contentType = eContentType[model.contentType];
-    if (this.contentValue !== model.contentValue) {
-      hasChanged = true;
-    }
-    this.contentValue = model.contentValue;
-    this.developerName = model.developerName;
-    this.fields = {};
-    this.fileDataRequest = model.fileDataRequest;
-    this.hasEvents = model.hasEvents;
-    this.hasSubmitted = model.hasSubmitted;
-    this.height = model.height;
-    this.helpInfo = model.helpInfo;
-    this.hintValue = model.hintValue;
-    this.imageUri = model.imageUri;
-    this.isEditable = model.isEditable;
-    this.isEnabled = model.isEnabled;
-    this.isMultiSelect = model.isMultiSelect;
-    this.isRequired = model.isRequired;
-    this.isSearchable = model.isSearchable;
-    this.isSearchableDisplayColumns = model.isSearchableDisplayColumns;
-    this.isValid = model.isValid;
-    this.isVisible = model.isVisible;
-    this.label = model.label;
-    this.maxSize = model.maxSize;
-    let newObjData = new FlowObjectDataArray(model.objectData);
-    if (this.objectData) {
-      if (newObjData) {
-        if (JSON.stringify(this.objectData) !== JSON.stringify(newObjData)) {
-          hasChanged = true;
-        }
-      } else {
-        hasChanged = true;
-      }
-    } else {
-      if (newObjData) {
-        hasChanged = true;
-      }
-    }
-    this.objectData = newObjData;
-    this.objectDataRequest = model.objectDataRequest;
-    this.order = model.order;
-    this.outcomes = {};
-    manywho.model.getOutcomes(this.props.id, this.flowKey).forEach((outcome) => {
-      let oc = new FlowOutcome(outcome);
-      if (oc.pageObjectBindingId === this.id) {
-        this.outcomes[oc.developerName] = oc;
-      }
-    });
-    manywho.model.getOutcomes("", this.flowKey).forEach((outcome) => {
-      let oc = new FlowOutcome(outcome);
-      if (oc.pageObjectBindingId === this.id) {
-        this.outcomes[oc.developerName] = oc;
-      }
-    });
-    this.pageContainerId = model.pageContainerId;
-    this.pageSize = model.pageSize || 20;
-    this.row = model.row;
-    this.rowSpan = model.rowSpan;
-    this.selectedItems = model.selectedItems;
-    this.size = model.size;
-    this.stateId = manywho.utils.extractStateId(this.flowKey);
-    this.tags = model.tags;
-    this.tenantId = manywho.utils.extractTenantId(this.flowKey);
-    this.type = model.type;
-    this.validationMessage = model.validationMessage;
-    this.validations = model.validations;
-    this.width = model.width;
-    return hasChanged;
-  }
-  setStateValue(value) {
-    this.stateValue = value;
-    const flowModel = manywho.model.getComponent(this.id, this.flowKey);
-    let newState;
-    if (flowModel) {
-      switch (flowModel.contentType) {
-        case "ContentObject":
-          let objectData = null;
-          if (value) {
-            value.isSelected = true;
-            objectData = value.iFlowObjectDataArray();
-            objectData = JSON.parse(JSON.stringify(objectData));
-          }
-          newState = { "objectData": objectData };
-          manywho.state.setComponent(this.id, newState, this.flowKey, true);
-          break;
-        case "ContentList":
-          let objectDataArray = null;
-          if (value) {
-            objectDataArray = value.iFlowObjectDataArray();
-            objectDataArray = JSON.parse(JSON.stringify(objectDataArray));
-          }
-          newState = { "objectData": objectDataArray };
-          manywho.state.setComponent(this.id, newState, this.flowKey, true);
-          break;
-        case "ContentDate":
-          newState = { "contentValue": value.toISOString() };
-          manywho.state.setComponent(this.id, newState, this.flowKey, true);
-          break;
-        default:
-          newState = { "contentValue": value };
-          manywho.state.setComponent(this.id, newState, this.flowKey, true);
-          break;
-      }
-    }
-    if (this.hasEvents) {
-      manywho.component.handleEvent(this, manywho.model.getComponent(this.id, this.flowKey), this.flowKey, null);
-    }
-  }
-  triggerOutcome(outcomeName) {
-    return __awaiter3(this, void 0, void 0, function* () {
-      let oc;
-      if (this.outcomes[outcomeName]) {
-        oc = this.outcomes[outcomeName];
-      }
-      if (oc) {
-        yield manywho.component.onOutcome(oc, null, this.flowKey);
-      } else {
-        console.log("Could not find outcome " + outcomeName);
-      }
-      return Promise.resolve();
-    });
-  }
-  requestObjectData(request) {
-    return __awaiter3(this, void 0, void 0, function* () {
-      return yield manywho.engine.objectDataRequest(this.id, request, this.flowKey);
-    });
-  }
-  getPageComponentDataSource(componentName) {
-    let employees = manywho.model.getComponentByName(componentName, this.flowKey);
-    let newState = { "objectData": employees.objectData };
-    manywho.state.setComponent(employees.id, newState, this.flowKey, true);
-    let objDataArray = new FlowObjectDataArray(employees.objectData);
-    return objDataArray;
-  }
-  setPageComponentState(componentName, value) {
-    let employees = manywho.model.getComponentByName(componentName, this.flowKey);
-    manywho.state.setComponent(employees.id, value.iFlowObjectDataArray(true), this.flowKey, true);
-  }
-  getUserEmail() {
-    let email = "admin@manywho.com";
-    let token = manywho.state.getAuthenticationToken(this.flowKey);
-    if (token && token.length > 0) {
-      try {
-        let tokStr = window.atob(token.split(".")[1]);
-        let json = JSON.parse(tokStr);
-        email = json.email;
-      } catch (e) {
-        console.log("Error parsing token");
-      }
-    }
-    return email;
-  }
-};
-
 // src/SFTNew.tsx
-var SearchFilterTable = class extends FCMLegacy {
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount() {
-    this.childComponent.componentDidMount();
-  }
+var SearchFilterTable = class extends FCMNew {
   render() {
     return /* @__PURE__ */ React23.createElement(
       SFT3,
