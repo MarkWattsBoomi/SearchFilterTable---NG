@@ -175,6 +175,8 @@ export class SFT extends React.Component<any,any> {
 
     topRowComponents: any;
 
+    supressEvents: boolean = false;
+
     constructor(props: any) {
         super(props);
         this.component = this.props.parent;
@@ -268,7 +270,10 @@ export class SFT extends React.Component<any,any> {
     }
 
     async componentDidMount() {
-        if(this.mounting === true) {return}
+        if(this.mounting === true || this.supressEvents === true) {
+            if(this.supressEvents===true) {this.supressEvents=false}
+            return
+        }
         this.mounting = true;
         console.log(this.component.developerName + "=" + this.component.id);
         // will get this from a component attribute
@@ -1096,6 +1101,7 @@ export class SFT extends React.Component<any,any> {
             tItem.isSelected = true;
             selectedItems.addItem(tItem);
         });
+        this.supressEvents = true;
         this.component.setStateValue(selectedItems);
     }
 

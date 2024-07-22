@@ -2,7 +2,7 @@ import { FCMNew } from "fcmlib/lib/FCMNew";
 import * as React from 'react';
 import { SFT } from './SearchFilterTable';
 
-export default class CascadingCombos extends FCMNew {
+export default class SearchFilterTable extends FCMNew {
 
     render() {
         return(
