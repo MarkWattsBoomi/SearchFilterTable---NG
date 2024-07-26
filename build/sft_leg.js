@@ -31670,7 +31670,7 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
     if (outcome.attributes?.iconValue?.value?.length > 0) {
       let flds;
       let iconName;
-      let iconValue = outcome.attributes?.iconValue?.value;
+      let iconValue = comp.outcomeIcons.get(outcome.id);
       if (suffix && suffix.length > 0) {
         let path = iconValue.substring(0, iconValue.lastIndexOf("."));
         let ext = iconValue.substring(iconValue.lastIndexOf("."));
@@ -38577,7 +38577,7 @@ var SFT3 = class extends React22.Component {
     await this.buildCoreTable();
     this.loaded = true;
     this.mounting = false;
-    this.forceUpdate();
+    await this.buildTableRows();
   }
   async componentUpdated(changeDetected) {
     let JSONStateName = this.component.getAttribute("JSONModelValue");
@@ -38592,6 +38592,11 @@ var SFT3 = class extends React22.Component {
         if (model.items.length !== this.rowMap.size) {
           redraw = true;
         }
+      }
+    } else {
+      model = this.component.objectData;
+      if (JSON.stringify(model) != JSON.stringify(this.oldModel || {})) {
+        redraw = true;
       }
     }
     if (this.component.attributes.UserColumnsValue && this.component.attributes.UserColumnsValue !== "LOCAL_STORAGE") {
@@ -38616,6 +38621,7 @@ var SFT3 = class extends React22.Component {
     }
   }
   async preLoad() {
+    this.outcomeIcons = /* @__PURE__ */ new Map();
     let outcomes = Array.from(Object.keys(this.component.outcomes));
     for (let pos = 0; pos < outcomes.length; pos++) {
       let outcome = this.component.outcomes[outcomes[pos]];
@@ -38630,6 +38636,9 @@ var SFT3 = class extends React22.Component {
       if (outcome.attributes.iconValue && outcome.attributes.iconValue.value.length > 0) {
         let val = await this.component.inflateValue(outcome.attributes.iconValue.value);
         this.component.outcomes[outcomes[pos]].attributes.iconValue.value = val;
+        this.outcomeIcons.set(outcome.id, val);
+      } else {
+        this.outcomeIcons.set(outcome.id, outcome.attributes.icon.value);
       }
     }
     if (this.columnRules && this.columnRules.size > 0) {
@@ -39050,6 +39059,7 @@ var SFT3 = class extends React22.Component {
     } else {
       model = this.component.objectData;
     }
+    this.oldModel = model;
     if (model) {
       const stateSelectedItems = await this.loadSelected();
       const isSelectedColumn = this.component.getAttribute("IsSelectedColumn");

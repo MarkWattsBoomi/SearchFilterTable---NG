@@ -29921,17 +29921,17 @@ var __awaiter2 = function(thisArg, _arguments, P, generator) {
   });
 };
 var eContentType;
-(function(eContentType2) {
-  eContentType2[eContentType2["unknown"] = 0] = "unknown";
-  eContentType2[eContentType2["ContentString"] = 1] = "ContentString";
-  eContentType2[eContentType2["ContentNumber"] = 2] = "ContentNumber";
-  eContentType2[eContentType2["ContentObject"] = 3] = "ContentObject";
-  eContentType2[eContentType2["ContentBoolean"] = 4] = "ContentBoolean";
-  eContentType2[eContentType2["ContentList"] = 5] = "ContentList";
-  eContentType2[eContentType2["ContentPassword"] = 6] = "ContentPassword";
-  eContentType2[eContentType2["ContentContent"] = 7] = "ContentContent";
-  eContentType2[eContentType2["ContentDateTime"] = 8] = "ContentDateTime";
-  eContentType2[eContentType2["ContentEncrypted"] = 9] = "ContentEncrypted";
+(function(eContentType3) {
+  eContentType3[eContentType3["unknown"] = 0] = "unknown";
+  eContentType3[eContentType3["ContentString"] = 1] = "ContentString";
+  eContentType3[eContentType3["ContentNumber"] = 2] = "ContentNumber";
+  eContentType3[eContentType3["ContentObject"] = 3] = "ContentObject";
+  eContentType3[eContentType3["ContentBoolean"] = 4] = "ContentBoolean";
+  eContentType3[eContentType3["ContentList"] = 5] = "ContentList";
+  eContentType3[eContentType3["ContentPassword"] = 6] = "ContentPassword";
+  eContentType3[eContentType3["ContentContent"] = 7] = "ContentContent";
+  eContentType3[eContentType3["ContentDateTime"] = 8] = "ContentDateTime";
+  eContentType3[eContentType3["ContentEncrypted"] = 9] = "ContentEncrypted";
 })(eContentType || (eContentType = {}));
 var FCMNew = class extends FCMCore {
   setPageComponentState(componentName, value) {
@@ -29947,15 +29947,36 @@ var FCMNew = class extends FCMCore {
     super(props);
     this.flowBaseUri = window.location.origin;
   }
-  /*
-      UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
-          if(this.loadModel(nextProps)){
-              if(this.childComponent && this.componentDidMount) {
-                  this.componentDidMount();
-              }
-          }
+  UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
+    if (nextProps.element.id !== this.id) {
+      if (this.loadModel(nextProps)) {
+        if (this.childComponent && this.componentDidMount) {
+          this.componentDidMount();
+        }
+      } else {
+        if (this.childComponent && this.componentUpdated) {
+          this.componentUpdated(false);
+        } else if (this.childComponent && this.componentDidMount) {
+          this.componentDidMount();
+        }
       }
-  */
+    } else {
+      let newModel = new FlowObjectDataArray(nextProps.element.objectData);
+      if (JSON.stringify(this.objectData) != JSON.stringify(newModel)) {
+        if (this.loadModel(nextProps)) {
+          if (this.childComponent && this.componentDidMount) {
+            this.componentDidMount();
+          }
+        } else {
+          if (this.childComponent && this.componentUpdated) {
+            this.componentUpdated(false);
+          } else if (this.childComponent && this.componentDidMount) {
+            this.componentDidMount();
+          }
+        }
+      }
+    }
+  }
   componentUpdated(changeDetected) {
   }
   loadModel(props) {
@@ -31569,7 +31590,7 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
     if (outcome.attributes?.iconValue?.value?.length > 0) {
       let flds;
       let iconName;
-      let iconValue = outcome.attributes?.iconValue?.value;
+      let iconValue = comp.outcomeIcons.get(outcome.id);
       if (suffix && suffix.length > 0) {
         let path = iconValue.substring(0, iconValue.lastIndexOf("."));
         let ext = iconValue.substring(iconValue.lastIndexOf("."));
@@ -38476,7 +38497,7 @@ var SFT3 = class extends React22.Component {
     await this.buildCoreTable();
     this.loaded = true;
     this.mounting = false;
-    this.forceUpdate();
+    await this.buildTableRows();
   }
   async componentUpdated(changeDetected) {
     let JSONStateName = this.component.getAttribute("JSONModelValue");
@@ -38491,6 +38512,11 @@ var SFT3 = class extends React22.Component {
         if (model.items.length !== this.rowMap.size) {
           redraw = true;
         }
+      }
+    } else {
+      model = this.component.objectData;
+      if (JSON.stringify(model) != JSON.stringify(this.oldModel || {})) {
+        redraw = true;
       }
     }
     if (this.component.attributes.UserColumnsValue && this.component.attributes.UserColumnsValue !== "LOCAL_STORAGE") {
@@ -38515,6 +38541,7 @@ var SFT3 = class extends React22.Component {
     }
   }
   async preLoad() {
+    this.outcomeIcons = /* @__PURE__ */ new Map();
     let outcomes = Array.from(Object.keys(this.component.outcomes));
     for (let pos = 0; pos < outcomes.length; pos++) {
       let outcome = this.component.outcomes[outcomes[pos]];
@@ -38529,6 +38556,9 @@ var SFT3 = class extends React22.Component {
       if (outcome.attributes.iconValue && outcome.attributes.iconValue.value.length > 0) {
         let val = await this.component.inflateValue(outcome.attributes.iconValue.value);
         this.component.outcomes[outcomes[pos]].attributes.iconValue.value = val;
+        this.outcomeIcons.set(outcome.id, val);
+      } else {
+        this.outcomeIcons.set(outcome.id, outcome.attributes.icon.value);
       }
     }
     if (this.columnRules && this.columnRules.size > 0) {
@@ -38949,6 +38979,7 @@ var SFT3 = class extends React22.Component {
     } else {
       model = this.component.objectData;
     }
+    this.oldModel = model;
     if (model) {
       const stateSelectedItems = await this.loadSelected();
       const isSelectedColumn = this.component.getAttribute("IsSelectedColumn");
@@ -39709,6 +39740,45 @@ var SFT3 = class extends React22.Component {
 
 // src/SFTNew.tsx
 var SearchFilterTable = class extends FCMNew {
+  /*
+  UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
+      // if the component id changed always reload.
+      if (nextProps.element.id !== this.id) {
+          if(this.loadModel(nextProps)){
+              if(this.childComponent && this.componentDidMount) {
+                  this.componentDidMount();
+              }
+          }
+          else{
+              if(this.childComponent && this.componentUpdated) {
+                  this.componentUpdated(false);
+              }
+              else if(this.childComponent && this.componentDidMount) {
+                  this.componentDidMount();
+              }
+          }
+      }
+      else {
+          let newModel: FlowObjectDataArray = new FlowObjectDataArray(nextProps.element.objectData);
+          if(JSON.stringify(this.objectData) != JSON.stringify(newModel)){
+              if(this.loadModel(nextProps)){
+                  if(this.childComponent && this.componentDidMount) {
+                      this.componentDidMount();
+                  }
+              }
+              else {
+                  if(this.childComponent && this.componentUpdated) {
+                      this.componentUpdated(false);
+                  }
+                  else if(this.childComponent && this.componentDidMount) {
+                      this.componentDidMount();
+                  }
+              }
+          }
+          
+      }
+  }
+  */
   render() {
     return /* @__PURE__ */ React23.createElement(
       SFT3,
