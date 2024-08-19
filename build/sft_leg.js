@@ -38638,7 +38638,7 @@ var SFT3 = class extends React22.Component {
         this.component.outcomes[outcomes[pos]].attributes.iconValue.value = val;
         this.outcomeIcons.set(outcome.id, val);
       } else {
-        this.outcomeIcons.set(outcome.id, outcome.attributes.icon.value);
+        this.outcomeIcons.set(outcome.id, outcome.attributes.icon?.value);
       }
     }
     if (this.columnRules && this.columnRules.size > 0) {

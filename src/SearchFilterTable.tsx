@@ -377,7 +377,7 @@ export class SFT extends React.Component<any,any> {
                 this.outcomeIcons.set(outcome.id, val);
             }
             else{
-                this.outcomeIcons.set(outcome.id, outcome.attributes.icon.value);
+                this.outcomeIcons.set(outcome.id, outcome.attributes.icon?.value);
             }
         }
         //now parse all columnRules
