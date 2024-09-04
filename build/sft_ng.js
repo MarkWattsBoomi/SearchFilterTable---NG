@@ -38558,7 +38558,7 @@ var SFT3 = class extends React22.Component {
         this.component.outcomes[outcomes[pos]].attributes.iconValue.value = val;
         this.outcomeIcons.set(outcome.id, val);
       } else {
-        this.outcomeIcons.set(outcome.id, outcome.attributes.icon.value);
+        this.outcomeIcons.set(outcome.id, outcome.attributes.icon?.value);
       }
     }
     if (this.columnRules && this.columnRules.size > 0) {
@@ -38577,16 +38577,18 @@ var SFT3 = class extends React22.Component {
     this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
     this.topRowComponents = this.component.getAttribute("TopRowComponents");
     this.topRowComponents = await this.component.inflateValue(this.topRowComponents);
-    try {
-      this.topRowComponents = JSON.parse(this.topRowComponents);
-      for (let pos = 0; pos < this.topRowComponents.length; pos++) {
-        this.topRowComponents[pos].state = await this.component.inflateValue(this.topRowComponents[pos].state);
-        this.topRowComponents[pos].value = await this.component.getValue(this.topRowComponents[pos].state);
+    if (this.topRowComponents && this.topRowComponents.length > 0) {
+      try {
+        this.topRowComponents = JSON.parse(this.topRowComponents);
+        for (let pos = 0; pos < this.topRowComponents.length; pos++) {
+          this.topRowComponents[pos].state = await this.component.inflateValue(this.topRowComponents[pos].state);
+          this.topRowComponents[pos].value = await this.component.getValue(this.topRowComponents[pos].state);
+        }
+        ;
+      } catch (e) {
+        console.log("Failed to parse 'TopRowComponents'");
+        this.topRowComponents = [];
       }
-      ;
-    } catch (e) {
-      console.log("Failed to parse 'TopRowComponents'");
-      this.topRowComponents = [];
     }
     if (this.paginationMode === 2 /* external */) {
       if (this.externalPage) {
