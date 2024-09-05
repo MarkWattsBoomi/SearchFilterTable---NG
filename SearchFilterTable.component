@@ -64,8 +64,8 @@
   "key": "searchfiltertable",
   "legacyScriptURL": "http://localhost:8080/sft.js",
   "legacyStyleSheetURL": "http://localhost:8080/sft.css",
-  "scriptURL": null,
-  "styleSheetURL": null,
+  "scriptURL": "http://localhost:8080/sft.js",
+  "styleSheetURL": "http://localhost:8080/sft.css",
   "whoCreated": {
     "email": "markwatts@boomi.com",
     "firstName": "Mark",
