@@ -40,7 +40,8 @@
     "partitionColumn":"Partition On. The name of a column to partition the table on",
     "importCSVOutcome":"CSV Import outcome name",
     "exportCSVSampleOutcome":"CSV Sample Export outcome name",
-    "TopRowComponents":"JSON definition of search bar components"
+    "TopRowComponents":"JSON definition of search bar components",
+    "exportFileName":"Name for exported file"
   },
   "configurationEditors": [
     "LABEL",

@@ -38553,6 +38553,7 @@ var SFT3 = class extends React22.Component {
     if (this.rowRememberColumn) {
       this.lastRememberedRow = sessionStorage.getItem("sft-lastrow-" + this.component.id);
     }
+    this.exportFileName = this.component.getAttribute("exportFileName", "export");
   }
   async componentDidMount() {
     if (this.mounting === true || this.supressEvents === true) {
@@ -38657,6 +38658,7 @@ var SFT3 = class extends React22.Component {
     this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
     this.topRowComponents = this.component.getAttribute("TopRowComponents");
     this.topRowComponents = await this.component.inflateValue(this.topRowComponents);
+    this.exportFileName = await this.component.inflateValue(this.exportFileName);
     if (this.topRowComponents && this.topRowComponents.length > 0) {
       try {
         this.topRowComponents = JSON.parse(this.topRowComponents);
@@ -39636,7 +39638,7 @@ var SFT3 = class extends React22.Component {
     } else {
       cols = this.colMap;
     }
-    SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, "test");
+    SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, this.exportFileName);
     if (this.component.outcomes["OnExport"]) {
       this.component.triggerOutcome("OnExport");
     }

@@ -183,6 +183,8 @@ export class SFT extends React.Component<any,any> {
 
     outcomeIcons: Map<string,string>;
 
+    exportFileName: string;
+
     constructor(props: any) {
         super(props);
         this.component = this.props.parent;
@@ -273,6 +275,7 @@ export class SFT extends React.Component<any,any> {
             this.lastRememberedRow = sessionStorage.getItem('sft-lastrow-' + this.component.id);
         }
         
+        this.exportFileName=this.component.getAttribute("exportFileName","export");
     }
 
     async componentDidMount() {
@@ -399,6 +402,7 @@ export class SFT extends React.Component<any,any> {
         this.colpickIcon = await this.component.inflateValue(this.colpickIcon);
         this.topRowComponents = this.component.getAttribute("TopRowComponents");
         this.topRowComponents = await this.component.inflateValue(this.topRowComponents);
+        this.exportFileName = await this.component.inflateValue(this.exportFileName);
         if(this.topRowComponents && this.topRowComponents.length>0){
             try {
                 this.topRowComponents = JSON.parse(this.topRowComponents);
@@ -1490,7 +1494,7 @@ export class SFT extends React.Component<any,any> {
         else {
             cols = this.colMap;
         }
-        SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, "test");
+        SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, this.exportFileName);
         //ModelExporter.export(cols, opdata, 'export.csv');
         if (this.component.outcomes['OnExport']) {
             this.component.triggerOutcome('OnExport');
