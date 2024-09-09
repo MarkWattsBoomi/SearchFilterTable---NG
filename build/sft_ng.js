@@ -35961,6 +35961,7 @@ var SearchFilterTableFooter = class extends React13.Component {
       firstPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
+          key: "fp",
           icon: import_faBackwardFast.faBackwardFast,
           className: "sft-footer-pagination-button",
           title: "First page",
@@ -35970,6 +35971,7 @@ var SearchFilterTableFooter = class extends React13.Component {
       prevPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
+          key: "pp",
           icon: import_faBackwardStep.faBackwardStep,
           className: "sft-footer-pagination-button",
           title: "Previous page",
@@ -35980,6 +35982,7 @@ var SearchFilterTableFooter = class extends React13.Component {
       firstPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
+          key: "fp",
           icon: import_faBackwardFast.faBackwardFast,
           className: "sft-footer-pagination-button sft-footer-pagination-button-disabled"
         }
@@ -35987,6 +35990,7 @@ var SearchFilterTableFooter = class extends React13.Component {
       prevPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
+          key: "pp",
           icon: import_faBackwardStep.faBackwardStep,
           className: "sft-footer-pagination-button sft-footer-pagination-button-disabled"
         }
@@ -35996,6 +36000,7 @@ var SearchFilterTableFooter = class extends React13.Component {
       lastPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
+          key: "lp",
           icon: import_faForwardFast.faForwardFast,
           className: "sft-footer-pagination-button",
           title: "Last page",
@@ -36005,6 +36010,7 @@ var SearchFilterTableFooter = class extends React13.Component {
       nextPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
+          key: "np",
           icon: import_faForwardStep.faForwardStep,
           className: "sft-footer-pagination-button",
           title: "Next page",
@@ -36015,6 +36021,7 @@ var SearchFilterTableFooter = class extends React13.Component {
       lastPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
+          key: "lp",
           icon: import_faForwardFast.faForwardFast,
           className: "sft-footer-pagination-button sft-footer-pagination-button-disabled"
         }
@@ -36022,6 +36029,7 @@ var SearchFilterTableFooter = class extends React13.Component {
       nextPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
+          key: "np",
           icon: import_faForwardStep.faForwardStep,
           className: "sft-footer-pagination-button sft-footer-pagination-button-disabled"
         }
@@ -36098,6 +36106,7 @@ var SearchFilterTableFooter = class extends React13.Component {
         prevPage = /* @__PURE__ */ React13.createElement(
           FontAwesomeIcon,
           {
+            key: "pp",
             icon: import_faBackwardStep.faBackwardStep,
             className: "sft-footer-pagination-button",
             title: "Previous page",
@@ -36107,6 +36116,7 @@ var SearchFilterTableFooter = class extends React13.Component {
         nextPage = /* @__PURE__ */ React13.createElement(
           FontAwesomeIcon,
           {
+            key: "np",
             icon: import_faForwardStep.faForwardStep,
             className: "sft-footer-pagination-button",
             title: "Next page",

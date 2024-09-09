@@ -49,6 +49,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
         if (root.currentRowPage > 0) {
             firstPage = (
                 <FontAwesomeIcon 
+                    key="fp"
                     icon={faBackwardFast}
                     className="sft-footer-pagination-button"
                     title="First page"
@@ -57,6 +58,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
             );
             prevPage = (
                 <FontAwesomeIcon 
+                    key="pp"
                     icon={faBackwardStep}
                     className="sft-footer-pagination-button"
                     title="Previous page"
@@ -66,6 +68,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
         } else {
             firstPage = (
                 <FontAwesomeIcon 
+                    key="fp"
                     icon={faBackwardFast}
                     className="sft-footer-pagination-button sft-footer-pagination-button-disabled"
                     
@@ -73,6 +76,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
             );
             prevPage = (
                 <FontAwesomeIcon 
+                    key="pp"
                     icon={faBackwardStep}
                     className="sft-footer-pagination-button sft-footer-pagination-button-disabled"
                 />
@@ -82,6 +86,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
         if (root.currentRowPage < (root.currentRowPages.length - 1)) {
             lastPage = (
                 <FontAwesomeIcon 
+                    key="lp"
                     icon={faForwardFast}
                     className="sft-footer-pagination-button"
                     title="Last page"
@@ -90,6 +95,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
             );
             nextPage = (
                 <FontAwesomeIcon 
+                    key="np"
                     icon={faForwardStep}
                     className="sft-footer-pagination-button"
                     title="Next page"
@@ -99,12 +105,14 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
         } else {
             lastPage = (
                 <FontAwesomeIcon 
+                    key="lp"
                     icon={faForwardFast}
                     className="sft-footer-pagination-button sft-footer-pagination-button-disabled"
                 />
             );
             nextPage = (
                 <FontAwesomeIcon 
+                    key="np"
                     icon={faForwardStep}
                     className="sft-footer-pagination-button sft-footer-pagination-button-disabled"
                 />
@@ -179,6 +187,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
             case ePaginationMode.external:
                 prevPage = (
                     <FontAwesomeIcon 
+                        key="pp"
                         icon={faBackwardStep}
                         className="sft-footer-pagination-button"
                         title="Previous page"
@@ -187,6 +196,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
                 );
                 nextPage = (
                     <FontAwesomeIcon 
+                        key="np"
                         icon={faForwardStep}
                         className="sft-footer-pagination-button"
                         title="Next page"
