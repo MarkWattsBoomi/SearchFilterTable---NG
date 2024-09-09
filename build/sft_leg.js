@@ -2693,6 +2693,146 @@ var require_prop_types = __commonJS({
   }
 });
 
+// node_modules/@fortawesome/free-solid-svg-icons/faCirclePlus.js
+var require_faCirclePlus = __commonJS({
+  "node_modules/@fortawesome/free-solid-svg-icons/faCirclePlus.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var prefix = "fas";
+    var iconName = "circle-plus";
+    var width = 512;
+    var height = 512;
+    var aliases = ["plus-circle"];
+    var unicode = "f055";
+    var svgPathData = "M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z";
+    exports.definition = {
+      prefix,
+      iconName,
+      icon: [
+        width,
+        height,
+        aliases,
+        unicode,
+        svgPathData
+      ]
+    };
+    exports.faCirclePlus = exports.definition;
+    exports.prefix = prefix;
+    exports.iconName = iconName;
+    exports.width = width;
+    exports.height = height;
+    exports.ligatures = aliases;
+    exports.unicode = unicode;
+    exports.svgPathData = svgPathData;
+    exports.aliases = aliases;
+  }
+});
+
+// node_modules/@fortawesome/free-regular-svg-icons/faCircleXmark.js
+var require_faCircleXmark = __commonJS({
+  "node_modules/@fortawesome/free-regular-svg-icons/faCircleXmark.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var prefix = "far";
+    var iconName = "circle-xmark";
+    var width = 512;
+    var height = 512;
+    var aliases = [61532, "times-circle", "xmark-circle"];
+    var unicode = "f057";
+    var svgPathData = "M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z";
+    exports.definition = {
+      prefix,
+      iconName,
+      icon: [
+        width,
+        height,
+        aliases,
+        unicode,
+        svgPathData
+      ]
+    };
+    exports.faCircleXmark = exports.definition;
+    exports.prefix = prefix;
+    exports.iconName = iconName;
+    exports.width = width;
+    exports.height = height;
+    exports.ligatures = aliases;
+    exports.unicode = unicode;
+    exports.svgPathData = svgPathData;
+    exports.aliases = aliases;
+  }
+});
+
+// node_modules/@fortawesome/free-solid-svg-icons/faCaretDown.js
+var require_faCaretDown = __commonJS({
+  "node_modules/@fortawesome/free-solid-svg-icons/faCaretDown.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var prefix = "fas";
+    var iconName = "caret-down";
+    var width = 320;
+    var height = 512;
+    var aliases = [];
+    var unicode = "f0d7";
+    var svgPathData = "M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z";
+    exports.definition = {
+      prefix,
+      iconName,
+      icon: [
+        width,
+        height,
+        aliases,
+        unicode,
+        svgPathData
+      ]
+    };
+    exports.faCaretDown = exports.definition;
+    exports.prefix = prefix;
+    exports.iconName = iconName;
+    exports.width = width;
+    exports.height = height;
+    exports.ligatures = aliases;
+    exports.unicode = unicode;
+    exports.svgPathData = svgPathData;
+    exports.aliases = aliases;
+  }
+});
+
+// node_modules/@fortawesome/free-solid-svg-icons/faCaretUp.js
+var require_faCaretUp = __commonJS({
+  "node_modules/@fortawesome/free-solid-svg-icons/faCaretUp.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var prefix = "fas";
+    var iconName = "caret-up";
+    var width = 320;
+    var height = 512;
+    var aliases = [];
+    var unicode = "f0d8";
+    var svgPathData = "M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z";
+    exports.definition = {
+      prefix,
+      iconName,
+      icon: [
+        width,
+        height,
+        aliases,
+        unicode,
+        svgPathData
+      ]
+    };
+    exports.faCaretUp = exports.definition;
+    exports.prefix = prefix;
+    exports.iconName = iconName;
+    exports.width = width;
+    exports.height = height;
+    exports.ligatures = aliases;
+    exports.unicode = unicode;
+    exports.svgPathData = svgPathData;
+    exports.aliases = aliases;
+  }
+});
+
 // node_modules/@fortawesome/free-solid-svg-icons/faMagnifyingGlass.js
 var require_faMagnifyingGlass = __commonJS({
   "node_modules/@fortawesome/free-solid-svg-icons/faMagnifyingGlass.js"(exports) {
@@ -2717,6 +2857,146 @@ var require_faMagnifyingGlass = __commonJS({
       ]
     };
     exports.faMagnifyingGlass = exports.definition;
+    exports.prefix = prefix;
+    exports.iconName = iconName;
+    exports.width = width;
+    exports.height = height;
+    exports.ligatures = aliases;
+    exports.unicode = unicode;
+    exports.svgPathData = svgPathData;
+    exports.aliases = aliases;
+  }
+});
+
+// node_modules/@fortawesome/free-solid-svg-icons/faBackwardFast.js
+var require_faBackwardFast = __commonJS({
+  "node_modules/@fortawesome/free-solid-svg-icons/faBackwardFast.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var prefix = "fas";
+    var iconName = "backward-fast";
+    var width = 512;
+    var height = 512;
+    var aliases = [9198, "fast-backward"];
+    var unicode = "f049";
+    var svgPathData = "M493.6 445c-11.2 5.3-24.5 3.6-34.1-4.4L288 297.7 288 416c0 12.4-7.2 23.7-18.4 29s-24.5 3.6-34.1-4.4L64 297.7 64 416c0 17.7-14.3 32-32 32s-32-14.3-32-32L0 96C0 78.3 14.3 64 32 64s32 14.3 32 32l0 118.3L235.5 71.4c9.5-7.9 22.8-9.7 34.1-4.4S288 83.6 288 96l0 118.3L459.5 71.4c9.5-7.9 22.8-9.7 34.1-4.4S512 83.6 512 96l0 320c0 12.4-7.2 23.7-18.4 29z";
+    exports.definition = {
+      prefix,
+      iconName,
+      icon: [
+        width,
+        height,
+        aliases,
+        unicode,
+        svgPathData
+      ]
+    };
+    exports.faBackwardFast = exports.definition;
+    exports.prefix = prefix;
+    exports.iconName = iconName;
+    exports.width = width;
+    exports.height = height;
+    exports.ligatures = aliases;
+    exports.unicode = unicode;
+    exports.svgPathData = svgPathData;
+    exports.aliases = aliases;
+  }
+});
+
+// node_modules/@fortawesome/free-solid-svg-icons/faBackwardStep.js
+var require_faBackwardStep = __commonJS({
+  "node_modules/@fortawesome/free-solid-svg-icons/faBackwardStep.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var prefix = "fas";
+    var iconName = "backward-step";
+    var width = 320;
+    var height = 512;
+    var aliases = ["step-backward"];
+    var unicode = "f048";
+    var svgPathData = "M267.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29l0-320c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160L64 241 64 96c0-17.7-14.3-32-32-32S0 78.3 0 96L0 416c0 17.7 14.3 32 32 32s32-14.3 32-32l0-145 11.5 9.6 192 160z";
+    exports.definition = {
+      prefix,
+      iconName,
+      icon: [
+        width,
+        height,
+        aliases,
+        unicode,
+        svgPathData
+      ]
+    };
+    exports.faBackwardStep = exports.definition;
+    exports.prefix = prefix;
+    exports.iconName = iconName;
+    exports.width = width;
+    exports.height = height;
+    exports.ligatures = aliases;
+    exports.unicode = unicode;
+    exports.svgPathData = svgPathData;
+    exports.aliases = aliases;
+  }
+});
+
+// node_modules/@fortawesome/free-solid-svg-icons/faForwardFast.js
+var require_faForwardFast = __commonJS({
+  "node_modules/@fortawesome/free-solid-svg-icons/faForwardFast.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var prefix = "fas";
+    var iconName = "forward-fast";
+    var width = 512;
+    var height = 512;
+    var aliases = [9197, "fast-forward"];
+    var unicode = "f050";
+    var svgPathData = "M18.4 445c11.2 5.3 24.5 3.6 34.1-4.4L224 297.7 224 416c0 12.4 7.2 23.7 18.4 29s24.5 3.6 34.1-4.4L448 297.7 448 416c0 17.7 14.3 32 32 32s32-14.3 32-32l0-320c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 118.3L276.5 71.4c-9.5-7.9-22.8-9.7-34.1-4.4S224 83.6 224 96l0 118.3L52.5 71.4c-9.5-7.9-22.8-9.7-34.1-4.4S0 83.6 0 96L0 416c0 12.4 7.2 23.7 18.4 29z";
+    exports.definition = {
+      prefix,
+      iconName,
+      icon: [
+        width,
+        height,
+        aliases,
+        unicode,
+        svgPathData
+      ]
+    };
+    exports.faForwardFast = exports.definition;
+    exports.prefix = prefix;
+    exports.iconName = iconName;
+    exports.width = width;
+    exports.height = height;
+    exports.ligatures = aliases;
+    exports.unicode = unicode;
+    exports.svgPathData = svgPathData;
+    exports.aliases = aliases;
+  }
+});
+
+// node_modules/@fortawesome/free-solid-svg-icons/faForwardStep.js
+var require_faForwardStep = __commonJS({
+  "node_modules/@fortawesome/free-solid-svg-icons/faForwardStep.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var prefix = "fas";
+    var iconName = "forward-step";
+    var width = 320;
+    var height = 512;
+    var aliases = ["step-forward"];
+    var unicode = "f051";
+    var svgPathData = "M52.5 440.6c-9.5 7.9-22.8 9.7-34.1 4.4S0 428.4 0 416L0 96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4l192 160L256 241l0-145c0-17.7 14.3-32 32-32s32 14.3 32 32l0 320c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-145-11.5 9.6-192 160z";
+    exports.definition = {
+      prefix,
+      iconName,
+      icon: [
+        width,
+        height,
+        aliases,
+        unicode,
+        svgPathData
+      ]
+    };
+    exports.faForwardStep = exports.definition;
     exports.prefix = prefix;
     exports.iconName = iconName;
     exports.width = width;
@@ -2973,18 +3253,18 @@ var require_faListCheck = __commonJS({
   }
 });
 
-// node_modules/@fortawesome/free-regular-svg-icons/faCircleXmark.js
-var require_faCircleXmark = __commonJS({
-  "node_modules/@fortawesome/free-regular-svg-icons/faCircleXmark.js"(exports) {
+// node_modules/@fortawesome/free-regular-svg-icons/faCircleCheck.js
+var require_faCircleCheck = __commonJS({
+  "node_modules/@fortawesome/free-regular-svg-icons/faCircleCheck.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var prefix = "far";
-    var iconName = "circle-xmark";
+    var iconName = "circle-check";
     var width = 512;
     var height = 512;
-    var aliases = [61532, "times-circle", "xmark-circle"];
-    var unicode = "f057";
-    var svgPathData = "M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z";
+    var aliases = [61533, "check-circle"];
+    var unicode = "f058";
+    var svgPathData = "M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z";
     exports.definition = {
       prefix,
       iconName,
@@ -2996,7 +3276,7 @@ var require_faCircleXmark = __commonJS({
         svgPathData
       ]
     };
-    exports.faCircleXmark = exports.definition;
+    exports.faCircleCheck = exports.definition;
     exports.prefix = prefix;
     exports.iconName = iconName;
     exports.width = width;
@@ -30393,7 +30673,7 @@ var SFTColumnCriteria = class _SFTColumnCriteria {
 };
 
 // src/ColumnFilters.tsx
-var React4 = __toESM(require_react());
+var React5 = __toESM(require_react());
 
 // src/ColumnFilter.ts
 var SFTColumnFilter = class _SFTColumnFilter {
@@ -30492,2964 +30772,7 @@ var SFTColumnFilter = class _SFTColumnFilter {
 };
 
 // src/FilterConfigForm.tsx
-var React3 = __toESM(require_react());
-var FilterConfigForm = class extends React3.Component {
-  constructor(props) {
-    super(props);
-    this.filter = this.props.filter;
-    this.newCriteria = [];
-    this.filter.criteria.forEach((criteria) => {
-      this.newCriteria.push(criteria);
-    });
-    this.addCriteria = this.addCriteria.bind(this);
-  }
-  addCriteria() {
-    this.newCriteria.push(new SFTColumnCriteria(0 /* equalTo */, ""));
-    this.forceUpdate();
-  }
-  prepCriteriaValue(criteria) {
-    switch (criteria.comparator) {
-      case 9 /* in */:
-      case 10 /* notIn */:
-        criteria.value = /* @__PURE__ */ new Map();
-        break;
-      default:
-        if (typeof criteria.value !== "string") {
-          criteria.value = "";
-        }
-        break;
-    }
-  }
-  render() {
-    const rows = [];
-    if (this.newCriteria.length === 0) {
-      rows.push(
-        /* @__PURE__ */ React3.createElement(
-          "div",
-          {
-            className: "sft-fcf-row"
-          },
-          /* @__PURE__ */ React3.createElement(
-            "span",
-            {
-              className: "sft-fcf-label"
-            },
-            "No Criteria defined"
-          )
-        )
-      );
-    } else {
-      this.newCriteria.forEach((criteria) => {
-        const options = SFTColumnCriteria.getOptions(criteria.comparator, "sft-fmf-row-criteria-select-option", this.props.contentType);
-        let critBox;
-        let critBox2;
-        switch (criteria.comparator) {
-          case 9 /* in */:
-          case 10 /* notIn */:
-            critBox = this.props.root.getColumnUniques(this.props.developerName, criteria);
-            break;
-          case 4 /* between */:
-            critBox = /* @__PURE__ */ React3.createElement(
-              "input",
-              {
-                type: "text",
-                className: "sft-fmf-row-criteria-text",
-                defaultValue: criteria.value,
-                onChange: (e) => {
-                  criteria.value = e.target.value;
-                }
-              }
-            );
-            critBox2 = /* @__PURE__ */ React3.createElement(
-              "input",
-              {
-                type: "text",
-                className: "sft-fmf-row-criteria-text",
-                defaultValue: criteria.value2,
-                onChange: (e) => {
-                  criteria.value2 = e.target.value;
-                }
-              }
-            );
-            break;
-          default:
-            critBox = /* @__PURE__ */ React3.createElement(
-              "input",
-              {
-                type: "text",
-                className: "sft-fmf-row-criteria-text",
-                defaultValue: criteria.value,
-                onChange: (e) => {
-                  criteria.value = e.target.value;
-                }
-              }
-            );
-            break;
-        }
-        rows.push(
-          /* @__PURE__ */ React3.createElement(
-            "div",
-            {
-              className: "sft-fmf-row"
-            },
-            /* @__PURE__ */ React3.createElement(
-              "div",
-              {
-                className: "sft-fmf-row-labels"
-              },
-              /* @__PURE__ */ React3.createElement(
-                "div",
-                {
-                  className: "sft-fmf-row-caption-criteria"
-                },
-                "Comparator"
-              ),
-              /* @__PURE__ */ React3.createElement(
-                "div",
-                {
-                  className: "sft-fmf-row-caption"
-                },
-                "Value"
-              )
-            ),
-            /* @__PURE__ */ React3.createElement(
-              "div",
-              {
-                className: "sft-fmf-row-values"
-              },
-              /* @__PURE__ */ React3.createElement(
-                "div",
-                {
-                  className: "sft-fmf-row-criteria"
-                },
-                /* @__PURE__ */ React3.createElement(
-                  "select",
-                  {
-                    className: "sft-fmf-row-criteria-select",
-                    onChange: (e) => {
-                      criteria.comparator = parseInt(e.target.options[e.target.selectedIndex].value);
-                      this.prepCriteriaValue(criteria);
-                      this.forceUpdate();
-                    }
-                  },
-                  options
-                )
-              ),
-              /* @__PURE__ */ React3.createElement(
-                "div",
-                {
-                  className: "sft-fmf-row-value"
-                },
-                critBox,
-                critBox2
-              ),
-              /* @__PURE__ */ React3.createElement(
-                "button",
-                {
-                  className: "sft-ribbon-search-button-wrapper",
-                  title: "Remove criteria",
-                  onClick: (e) => {
-                    this.newCriteria = this.newCriteria.filter(
-                      (item) => item !== criteria
-                    );
-                    this.forceUpdate();
-                  }
-                },
-                /* @__PURE__ */ React3.createElement(
-                  "span",
-                  {
-                    className: "sft-ribbon-search-button-icon glyphicon glyphicon-remove-sign"
-                  }
-                )
-              )
-            )
-          )
-        );
-      });
-    }
-    rows.push(
-      /* @__PURE__ */ React3.createElement(
-        "div",
-        {
-          className: "sft-fcf-buttons"
-        },
-        /* @__PURE__ */ React3.createElement(
-          "span",
-          {
-            className: "sft-fcf-button glyphicon glyphicon-plus-sign",
-            title: "Add criteria",
-            onClick: this.addCriteria
-          }
-        )
-      )
-    );
-    return /* @__PURE__ */ React3.createElement(
-      "div",
-      {
-        className: "modal-dialog-content",
-        style: { width: "910px", display: "flex", flexDirection: "column", margin: "auto", padding: "2rem" }
-      },
-      rows
-    );
-  }
-};
-
-// node_modules/fcmkit/lib/ModalDialog/FCMModalButton.js
-var FCMModalButton = class {
-  constructor(label, handler) {
-    this.label = label;
-    this.handler = handler;
-  }
-};
-
-// src/ColumnFilters.tsx
-var SFTColumnFilters2 = class _SFTColumnFilters {
-  constructor(parent) {
-    this.items = /* @__PURE__ */ new Map();
-    this.quickChecks = /* @__PURE__ */ new Map();
-    this.suppressNotify = false;
-    this.parent = parent;
-    this.notify = this.notify.bind(this);
-    this.getSortIcon = this.getSortIcon.bind(this);
-    this.getFilterIcon = this.getFilterIcon.bind(this);
-    this.getQuickCheck = this.getQuickCheck.bind(this);
-    this.sortClicked = this.sortClicked.bind(this);
-    this.filterClicked = this.filterClicked.bind(this);
-    this.quickCheckClicked = this.quickCheckClicked.bind(this);
-    this.saveFilter = this.saveFilter.bind(this);
-    this.cancelFilter = this.cancelFilter.bind(this);
-    this.matchesCriteria = this.matchesCriteria.bind(this);
-  }
-  clone() {
-    const clone = new _SFTColumnFilters(this.parent);
-    clone.globalCriteria = this.globalCriteria;
-    this.items.forEach((item, key) => {
-      clone.items.set(key, item.clone());
-    });
-    return clone;
-  }
-  // stores / deletes a ref to the child dialog component
-  setDialog(element) {
-    this.dialog = element;
-  }
-  // this is called when individual filters change
-  notify(key, event) {
-    if (this.suppressNotify === false) {
-      this.parent.filtersChanged(key, event);
-    }
-  }
-  get(key) {
-    if (this.items.has(key)) {
-      return this.items.get(key);
-    } else {
-      return void 0;
-    }
-  }
-  has(key) {
-    if (this.items.has(key)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  isFiltered() {
-    let filtered = false;
-    this.items.forEach((item) => {
-      if (item.criteria.length > 0) {
-        filtered = true;
-      }
-    });
-    return filtered;
-  }
-  isFilteredOn(columnName) {
-    let filtered = false;
-    if (this.items.has(columnName)) {
-      if (this.items.get(columnName).criteria.length > 0) {
-        filtered = true;
-      }
-    }
-    return filtered;
-  }
-  clearAll() {
-    this.suppressNotify = true;
-    this.items.forEach((item) => {
-      item.clearFilters();
-    });
-    this.suppressNotify = false;
-    this.notify("", 2 /* filter */);
-  }
-  sortClicked(key) {
-    if (!this.items.has(key)) {
-      this.items.set(key, new SFTColumnFilter(key, this));
-    }
-    this.items.forEach((item) => {
-      if (item.key !== key) {
-        item.sortNone();
-      }
-    });
-    this.items.get(key).sortToggle();
-  }
-  // the filter button was pressed
-  filterClicked(key) {
-    const root = this.parent;
-    if (!this.items.has(key)) {
-      this.items.set(key, new SFTColumnFilter(key, this));
-    }
-    const col = this.parent.colMap.get(key);
-    this.parent.messageBox.showDialog(
-      null,
-      "Filter " + col.label,
-      /* @__PURE__ */ React4.createElement(
-        FilterConfigForm,
-        {
-          root,
-          parent: this,
-          key,
-          developerName: key,
-          filter: this.items.get(key),
-          contentType: col.contentType,
-          ref: (element) => {
-            this.setDialog(element);
-          }
-        }
-      ),
-      [new FCMModalButton("Apply", this.saveFilter), new FCMModalButton("Cancel", this.cancelFilter)]
-    );
-  }
-  filterClear(key) {
-    this.items.get(key).clearFilters();
-  }
-  saveFilter() {
-    const key = this.dialog.filter.key;
-    this.dialog.filter.criteria = this.dialog.newCriteria;
-    this.items.set(key, this.dialog.filter);
-    this.dialog = void 0;
-    this.parent.messageBox.hideDialog();
-    this.notify(key, 2 /* filter */);
-  }
-  cancelFilter() {
-    const key = this.dialog.filter.key;
-    this.dialog = void 0;
-    this.parent.messageBox.hideDialog();
-    this.notify(key, 2 /* filter */);
-  }
-  getSortIcon(key) {
-    if (this.items.has(key)) {
-      switch (this.items.get(key).sort) {
-        case 0 /* none */:
-          return /* @__PURE__ */ React4.createElement(
-            "div",
-            {
-              title: "Not sorted - click to toggle",
-              style: { display: "flex", flexDirection: "column" }
-            },
-            /* @__PURE__ */ React4.createElement(
-              "span",
-              {
-                className: "sft-column-header-flag  glyphicon glyphicon-triangle-top"
-              }
-            ),
-            /* @__PURE__ */ React4.createElement(
-              "span",
-              {
-                className: "sft-column-header-flag  glyphicon glyphicon-triangle-bottom"
-              }
-            )
-          );
-        case 1 /* ascending */:
-          return /* @__PURE__ */ React4.createElement(
-            "div",
-            {
-              onClick: (e) => {
-                this.sortClicked(key);
-              },
-              title: "Ascending - click to toggle",
-              style: { display: "flex", flexDirection: "column" }
-            },
-            /* @__PURE__ */ React4.createElement(
-              "span",
-              {
-                className: "sft-column-header-flag sft-column-header-flag-hot glyphicon glyphicon-triangle-top"
-              }
-            ),
-            /* @__PURE__ */ React4.createElement(
-              "span",
-              {
-                className: "sft-column-header-flag   glyphicon glyphicon-triangle-bottom"
-              }
-            )
-          );
-        case -1 /* descending */:
-          return /* @__PURE__ */ React4.createElement(
-            "div",
-            {
-              onClick: (e) => {
-                this.sortClicked(key);
-              },
-              title: "Descending - click to toggle",
-              style: { display: "flex", flexDirection: "column" }
-            },
-            /* @__PURE__ */ React4.createElement(
-              "span",
-              {
-                className: "sft-column-header-flag  glyphicon glyphicon-triangle-top"
-              }
-            ),
-            /* @__PURE__ */ React4.createElement(
-              "span",
-              {
-                className: "sft-column-header-flag sft-column-header-flag-hot glyphicon glyphicon-triangle-bottom"
-              }
-            )
-          );
-      }
-    } else {
-      return /* @__PURE__ */ React4.createElement(
-        "div",
-        {
-          onClick: (e) => {
-            this.sortClicked(key);
-          },
-          title: "Not sorted - click to toggle",
-          style: { display: "flex", flexDirection: "column" }
-        },
-        /* @__PURE__ */ React4.createElement(
-          "span",
-          {
-            className: "sft-column-header-flag  glyphicon glyphicon-triangle-top"
-          }
-        ),
-        /* @__PURE__ */ React4.createElement(
-          "span",
-          {
-            className: "sft-column-header-flag  glyphicon glyphicon-triangle-bottom"
-          }
-        )
-      );
-    }
-  }
-  getFilterIcon(key) {
-    if (this.items.has(key) && this.items.get(key).criteria?.length > 0) {
-      return /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement(
-        "span",
-        {
-          className: "sft-column-header-button sft-column-header-button-hot glyphicon glyphicon-search",
-          onClick: (e) => {
-            this.filterClicked(key);
-          },
-          title: "Change filter"
-        }
-      ), /* @__PURE__ */ React4.createElement(
-        "span",
-        {
-          className: "sft-column-header-button sft-column-header-button-hot glyphicon glyphicon-remove",
-          onClick: (e) => {
-            this.filterClear(key);
-          },
-          title: "Clear filter"
-        }
-      ));
-    } else {
-      return /* @__PURE__ */ React4.createElement(
-        "span",
-        {
-          className: "sft-column-header-button glyphicon glyphicon-search",
-          onClick: (e) => {
-            this.filterClicked(key);
-          }
-        }
-      );
-    }
-  }
-  getQuickCheck(columnName) {
-    if (this.parent.component.getAttribute("QuickCheck", "false") === "true" && this.parent.colMap.get(columnName)?.contentType === eContentType.ContentBoolean) {
-      const crit = this.items.get(columnName)?.criteria[0];
-      return /* @__PURE__ */ React4.createElement(
-        "input",
-        {
-          className: "sft-checkbox sft-quick-check",
-          type: "checkbox",
-          onChange: (e) => {
-            this.quickCheckClicked(columnName, e);
-          },
-          ref: (element) => {
-            this.quickChecks.set(columnName, element);
-          },
-          checked: crit?.value ? crit.value : false
-        }
-      );
-    } else {
-      return void 0;
-    }
-  }
-  quickCheckClicked(key, e) {
-    console.log("quick " + key);
-    if (e.currentTarget.checked === true) {
-      this.items.set(key, new SFTColumnFilter(key, this, 0 /* none */, [new SFTColumnCriteria(0 /* equalTo */, true)]));
-    } else {
-      this.items.get(key).clearFilters();
-    }
-    this.notify(key, 2 /* filter */);
-  }
-  // this will filter the passed source map based on the current filters and return a new map of matches.
-  filter(source) {
-    const matches = /* @__PURE__ */ new Map();
-    source.forEach((item, key) => {
-      if (this.matchesCriteria(item)) {
-        matches.set(key, void 0);
-      }
-    });
-    return matches;
-  }
-  matchesCriteria(value) {
-    const objData = value.objectData;
-    let matches = true;
-    let globalMatches;
-    if (this.globalCriteria && this.globalCriteria.length > 0) {
-      globalMatches = false;
-      const comparator = this.globalCriteria.toLowerCase();
-      value.columns.forEach((col) => {
-        const val = ("" + objData.properties[col.name].value)?.toLowerCase();
-        if (val.indexOf(comparator) >= 0) {
-          globalMatches = true;
-        }
-      });
-    }
-    this.items.forEach((item) => {
-      item.criteria.forEach((criteria) => {
-        let val;
-        let crit;
-        let crit2;
-        switch (objData.properties[item.key]?.contentType) {
-          case eContentType.ContentString:
-            val = objData.properties[item.key].value?.toLowerCase();
-            if (criteria.value instanceof Map) {
-              crit = criteria.value;
-            } else {
-              crit = criteria.value.toLowerCase();
-            }
-            break;
-          case eContentType.ContentNumber:
-            val = objData.properties[item.key].value;
-            crit = parseInt(criteria.value);
-            crit2 = parseInt(criteria.value2);
-            break;
-          case eContentType.ContentBoolean:
-            val = objData.properties[item.key].value;
-            crit = criteria.value;
-            break;
-          case eContentType.ContentDateTime:
-            val = new Date(objData.properties[item.key].value);
-            if (isNaN(val)) {
-              val = 0;
-            } else {
-              val = val.getTime();
-            }
-            crit = new Date(criteria.value);
-            if (isNaN(crit)) {
-              crit = 0;
-            } else {
-              crit = crit.getTime();
-            }
-            crit2 = new Date(criteria.value2);
-            if (isNaN(crit2)) {
-              crit2 = 0;
-            } else {
-              crit2 = crit2.getTime();
-            }
-            break;
-          default:
-            val = "";
-            crit = "";
-        }
-        let crits;
-        let matchArray;
-        switch (criteria.comparator) {
-          case 0 /* equalTo */:
-            if (val !== crit) {
-              matches = false;
-            }
-            break;
-          case 1 /* notEqualTo */:
-            if (val === crit) {
-              matches = false;
-            }
-            break;
-          case 7 /* contains */:
-            crits = crit.split(",");
-            matchArray = [];
-            crits.forEach((crit3) => {
-              if (val.indexOf(crit3.trim()) < 0) {
-                matchArray.push(false);
-              } else {
-                matchArray.push(true);
-              }
-            });
-            matches = matchArray.indexOf(true) >= 0;
-            break;
-          case 5 /* startsWith */:
-            if (!val.startsWith(crit)) {
-              matches = false;
-            }
-            break;
-          case 6 /* endsWith */:
-            if (!val.endsWith(crit)) {
-              matches = false;
-            }
-            break;
-          case 8 /* notContains */:
-            crits = crit.split(",");
-            matchArray = [];
-            crits.forEach((crit3) => {
-              if (val.indexOf(crit3.trim()) >= 0) {
-                matchArray.push(true);
-              }
-            });
-            matches = matchArray.indexOf(true) < 0;
-            break;
-          case 9 /* in */:
-            if (!crit.has(objData.properties[item.key].value)) {
-              matches = false;
-            }
-            break;
-          case 10 /* notIn */:
-            if (crit.has(objData.properties[item.key].value)) {
-              matches = false;
-            }
-            break;
-          case 3 /* lessThan */:
-            if (crit <= val) {
-              matches = false;
-            }
-            break;
-          case 2 /* greaterThan */:
-            if (crit >= val) {
-              matches = false;
-            }
-            break;
-          case 4 /* between */:
-            if (val < crit || val > crit2) {
-              matches = false;
-            }
-            break;
-          default:
-            matches = false;
-            break;
-        }
-      });
-    });
-    if (this.globalCriteria?.length > 0) {
-      if (globalMatches === true && matches === true) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return matches;
-    }
-  }
-  getSortColumn() {
-    let sortColumn;
-    this.items.forEach((col) => {
-      if (col.sort !== 0 /* none */) {
-        sortColumn = col;
-      }
-    });
-    return sortColumn;
-  }
-  // this will sort the passed map based on the current filter's sorts and return a new map
-  sort(items, source) {
-    const candidates = new Map(Array.from(source).filter((item) => {
-      if (items.has(item[0])) {
-        return true;
-      }
-    }));
-    const sortColumn = this.getSortColumn();
-    if (sortColumn) {
-      let sorted;
-      let sortPropertyName = sortColumn.key;
-      let colRule = this.parent.columnRules.get(sortColumn.key);
-      if (colRule) {
-        if (["url"].indexOf(colRule.mode) >= 0) {
-          if (colRule.label && colRule.label.startsWith("{{") && colRule.label.endsWith("}}")) {
-            sortPropertyName = colRule.label.replaceAll("{{", "").replaceAll("}}", "");
-          }
-        }
-      }
-      const colDef = this.parent.colMap.get(sortPropertyName);
-      sorted = Array.from(candidates);
-      if (colDef) {
-        if (sortColumn.sort !== 0 /* none */) {
-          switch (colDef?.contentType) {
-            case eContentType.ContentDateTime:
-              sorted.sort((a2, b) => {
-                const d1 = new Date(a2[1].objectData.properties[sortPropertyName].value);
-                const d2 = new Date(b[1].objectData.properties[sortPropertyName].value);
-                if (d1 < d2) {
-                  return -1;
-                }
-                if (d1 > d2) {
-                  return 1;
-                }
-                return 0;
-              });
-              break;
-            default:
-              const collator = new Intl.Collator(void 0, { numeric: true, sensitivity: "base" });
-              sorted.sort(
-                (a2, b) => {
-                  const v1 = a2[1].objectData.properties[sortPropertyName].value ? a2[1].objectData.properties[sortPropertyName].value : 0;
-                  const v2 = b[1].objectData.properties[sortPropertyName].value ? b[1].objectData.properties[sortPropertyName].value : 0;
-                  return collator.compare(v1, v2);
-                }
-              );
-              break;
-          }
-          if (sortColumn.sort === -1 /* descending */) {
-            sorted = sorted.reverse();
-          }
-        }
-        const results = new Map(sorted);
-        results.forEach((item, key) => {
-          results.set(key, void 0);
-        });
-        return results;
-      } else {
-        return items;
-      }
-    } else {
-      return items;
-    }
-  }
-  getForStorage() {
-    const filters = [];
-    this.items.forEach((item) => {
-      filters.push(item.getForStorage());
-    });
-    return JSON.stringify(filters);
-  }
-  loadFromStorage(filters) {
-    this.items = /* @__PURE__ */ new Map();
-    const src = JSON.parse(filters);
-    if (src) {
-      src.forEach((filter) => {
-        filter = JSON.parse(filter);
-        if (filter.key) {
-          this.items.set(filter.key, new SFTColumnFilter(filter.key, this, filter.sort, filter.criteria));
-        }
-      });
-    }
-  }
-  getForFSS() {
-    let filters = {};
-    let sort;
-    if (this.getSortColumn()) {
-      sort = {
-        developerName: this.getSortColumn().key,
-        direction: this.getSortColumn().sortAscending ? "ASC" : "DESC"
-      };
-      filters.sort = sort;
-    }
-    if (this.items.size > 0 || this.globalCriteria) {
-      filters.filters = [];
-      if (this.globalCriteria) {
-        filters.filters.push(
-          {
-            developerName: "stringSearch",
-            comparator: "CONTAINS",
-            value: this.globalCriteria
-          }
-        );
-      }
-      this.items.forEach((item) => {
-        filters.filters.push(item.getForFSS());
-      });
-    }
-    return JSON.stringify(filters);
-  }
-};
-
-// src/ColumnPickerForm.tsx
-var React5 = __toESM(require_react());
-var ColumnPickerForm = class extends React5.Component {
-  constructor(props) {
-    super(props);
-    this.selectedColumns = [];
-    this.toggleSelection = this.toggleSelection.bind(this);
-    const root = this.props.root;
-    root.userColumns.forEach((columnName) => {
-      this.selectedColumns.push(columnName);
-    });
-  }
-  toggleSelection(key, e) {
-    if (e.target.checked) {
-      if (this.selectedColumns.indexOf(key) < 0) {
-        this.selectedColumns.push(key);
-      }
-    } else {
-      this.selectedColumns.splice(this.selectedColumns.indexOf(key), 1);
-    }
-    this.forceUpdate();
-  }
-  render() {
-    const root = this.props.root;
-    const cols = [];
-    let rows = [];
-    let colArray = Array.from(root.colMap.values());
-    colArray.sort((a2, b) => {
-      if (a2.label > b.label) {
-        return 1;
-      }
-      if (a2.label < b.label) {
-        return -1;
-      }
-      return 0;
-    });
-    colArray.forEach((column) => {
-      if (rows.length > 11) {
-        cols.push(
-          /* @__PURE__ */ React5.createElement(
-            "div",
-            {
-              className: "sft-column-picker-column"
-            },
-            rows
-          )
-        );
-        rows = [];
-      }
-      rows.push(
-        /* @__PURE__ */ React5.createElement(
-          "div",
-          {
-            className: "sft-column-picker-row"
-          },
-          /* @__PURE__ */ React5.createElement(
-            "div",
-            {
-              className: "checkbox-checkbox-wrapper"
-            },
-            /* @__PURE__ */ React5.createElement(
-              "input",
-              {
-                id: column.developerName,
-                type: "checkbox",
-                className: "sft-checkbox",
-                checked: this.selectedColumns.indexOf(column.developerName) >= 0,
-                onChange: (e) => {
-                  this.toggleSelection(column.developerName, e);
-                }
-              }
-            )
-          ),
-          /* @__PURE__ */ React5.createElement(
-            "div",
-            {
-              className: "checkbox-label-wrapper"
-            },
-            /* @__PURE__ */ React5.createElement(
-              "label",
-              {
-                className: "checkbox-row-label",
-                htmlFor: column.developerName
-              },
-              column.label
-            )
-          )
-        )
-      );
-    });
-    if (rows.length > 0) {
-      cols.push(
-        /* @__PURE__ */ React5.createElement("div", null, rows)
-      );
-    }
-    return /* @__PURE__ */ React5.createElement(
-      "div",
-      {
-        className: "modal-dialog-content",
-        style: { maxHeight: "80vh", maxWidth: "80vw", display: "flex", flexDirection: "column", margin: "auto", padding: "0rem" }
-      },
-      /* @__PURE__ */ React5.createElement(
-        "div",
-        {
-          className: "sft-scroller",
-          style: { maxHeight: "80vh", maxWidth: "80vw" }
-        },
-        /* @__PURE__ */ React5.createElement(
-          "div",
-          {
-            className: "sft-column-picker-body"
-          },
-          cols
-        )
-      )
-    );
-  }
-};
-
-// src/ColumnRule.tsx
-var React7 = __toESM(require_react());
-
-// src/CommonFunctions.tsx
-var React6 = __toESM(require_react());
-var SFTCommonFunctions = class _SFTCommonFunctions {
-  static async getFlowValue() {
-  }
-  static async assessGlobalOutcomeRule(outcome, root) {
-    let result = true;
-    if (outcome.attributes["RequiresSelected"]?.value === "true") {
-      if (root.component.isMultiSelect === true) {
-        if (root.selectedRowMap.size < 1) {
-          result = false;
-        }
-      } else {
-        if (!root.selectedRow || root.selectedRow.length < 1) {
-          result = false;
-        }
-      }
-    }
-    if (outcome.attributes["RequiresRows"]?.value === "true" && root.rowMap.size < 1) {
-      result = false;
-    }
-    if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
-      try {
-        const rule = JSON.parse(outcome.attributes.rule.value);
-        let contentType;
-        let match;
-        let fld = rule.field;
-        let fld2 = rule.value;
-        let value = fld;
-        let compareTo = fld2;
-        while (match = RegExp(/{{([^}]*)}}/).exec(fld)) {
-          switch (match[1]) {
-            case "TENANT_ID":
-              contentType = eContentType.ContentString;
-              value = "MyTenentId";
-              break;
-            default:
-              const fldElements = match[1].split("->");
-              let val;
-              if (root.component.fields[fldElements[0]]) {
-                val = root.component.fields[fldElements[0]];
-              } else {
-                val = await root.component.getValue(fldElements[0]);
-              }
-              if (val) {
-                let od = val.value;
-                if (od) {
-                  if (fldElements.length > 1) {
-                    for (let epos = 1; epos < fldElements.length; epos++) {
-                      contentType = od.properties[fldElements[epos]]?.contentType;
-                      od = od.properties[fldElements[epos]].value;
-                    }
-                    value = od;
-                  } else {
-                    value = val.value;
-                    contentType = val.contentType;
-                  }
-                } else {
-                  value = val.value;
-                  contentType = val.contentType;
-                }
-              }
-              break;
-          }
-          fld = fld.replace(match[0], value);
-        }
-        while (match = RegExp(/{{([^}]*)}}/).exec(fld2)) {
-          switch (match[1]) {
-            case "TENANT_ID":
-              contentType = eContentType.ContentString;
-              value = "MyTenentId";
-              break;
-            default:
-              const fldElements = match[1].split("->");
-              let val;
-              if (root.component.fields[fldElements[0]]) {
-                val = root.component.fields[fldElements[0]];
-              } else {
-                val = await root.component.getValue(fldElements[0]);
-              }
-              if (val) {
-                let od = val.value;
-                if (od) {
-                  if (fldElements.length > 1) {
-                    for (let epos = 1; epos < fldElements.length; epos++) {
-                      contentType = od.properties[fldElements[epos]]?.contentType;
-                      od = od.properties[fldElements[epos]].value;
-                    }
-                    compareTo = od;
-                  } else {
-                    compareTo = val.value;
-                    contentType = val.contentType;
-                  }
-                } else {
-                  compareTo = val.value;
-                  contentType = val.contentType;
-                }
-              }
-              break;
-          }
-          fld2 = fld2.replace(match[0], value);
-        }
-        result = result && _SFTCommonFunctions.assessRule(value, rule.comparator, compareTo, contentType);
-      } catch (e) {
-        console.log("The rule on top level outcome " + outcome.developerName + " is invalid");
-      }
-    }
-    return result;
-  }
-  static assessRowOutcomeRule(outcome, row, root) {
-    let result = true;
-    if (!outcome) {
-      return false;
-    }
-    if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
-      try {
-        const rule = JSON.parse(outcome.attributes.rule.value);
-        let contentType;
-        let match;
-        let fld = rule.field;
-        let fld2 = rule.value;
-        let value = fld;
-        let compareTo = fld2;
-        while (match = RegExp(/{{([^}]*)}}/).exec(fld)) {
-          switch (match[1]) {
-            case "TENANT_ID":
-              contentType = eContentType.ContentString;
-              value = "MyTenentId";
-              break;
-            default:
-              const fldElements = match[1].split("->");
-              let val;
-              val = root.component.fields[fldElements[0]];
-              if (val) {
-                let od = val.value;
-                if (od) {
-                  if (fldElements.length > 1) {
-                    for (let epos = 1; epos < fldElements.length; epos++) {
-                      contentType = od.properties[fldElements[epos]]?.contentType;
-                      od = od.properties[fldElements[epos]].value;
-                    }
-                    value = od;
-                  } else {
-                    value = val.value;
-                    contentType = val.contentType;
-                  }
-                } else {
-                  value = val.value;
-                  contentType = val.contentType;
-                }
-              }
-              break;
-          }
-          fld = fld.replace(match[0], value);
-        }
-        while (match = RegExp(/{{([^}]*)}}/).exec(fld2)) {
-          switch (match[1]) {
-            case "TENANT_ID":
-              contentType = eContentType.ContentString;
-              value = "MyTenentId";
-              break;
-            default:
-              const fldElements = match[1].split("->");
-              let val;
-              val = root.component.fields[fldElements[0]];
-              if (val) {
-                let od = val.value;
-                if (od) {
-                  if (fldElements.length > 1) {
-                    for (let epos = 1; epos < fldElements.length; epos++) {
-                      contentType = od.properties[fldElements[epos]]?.contentType;
-                      od = od.properties[fldElements[epos]].value;
-                    }
-                    compareTo = od;
-                  } else {
-                    compareTo = val.value;
-                    contentType = val.contentType;
-                  }
-                } else {
-                  compareTo = val.value;
-                  contentType = val.contentType;
-                }
-              }
-              break;
-          }
-          fld2 = fld2.replace(match[0], value);
-        }
-        if (row.properties[fld]) {
-          const property = row.properties[fld];
-          result = _SFTCommonFunctions.assessRule(property.value, rule.comparator, compareTo, property.contentType);
-        } else {
-          result = _SFTCommonFunctions.assessRule(value, rule.comparator, compareTo, contentType);
-        }
-      } catch (e) {
-        console.log("The rule on row level outcome " + outcome.developerName + " is invalid");
-      }
-    }
-    return result;
-  }
-  static assessRule(value, comparator, compareTo, fieldType) {
-    let comparee;
-    let comparer;
-    let result = true;
-    switch (fieldType) {
-      case eContentType.ContentNumber:
-        comparee = parseInt(compareTo);
-        comparer = value;
-        break;
-      case eContentType.ContentDateTime:
-        comparee = new Date(compareTo);
-        comparer = value;
-        break;
-      case eContentType.ContentBoolean:
-        comparee = ("" + compareTo).toLowerCase() === "true";
-        comparer = value;
-        break;
-      case eContentType.ContentString:
-      default:
-        comparee = compareTo.toLowerCase().split(",");
-        if (comparee.length > 0) {
-          for (let pos = 0; pos < comparee.length; pos++) {
-            comparee[pos] = comparee[pos].trim();
-          }
-        }
-        if (["in", "not in"].indexOf(comparator.toLowerCase()) < 0) {
-          comparee = comparee[0];
-        }
-        comparer = value?.toLowerCase();
-        break;
-    }
-    switch (comparator.toLowerCase()) {
-      case "equals":
-        result = comparer === comparee;
-        break;
-      case "not equals":
-        result = comparer !== comparee;
-        break;
-      case "contains":
-        result = comparer.indexOf(comparee) >= 0;
-        break;
-      case "not contains":
-        result = comparer.indexOf(comparee) < 0;
-        break;
-      case "starts with":
-        result = ("" + comparer).startsWith(comparee);
-        break;
-      case "ends with":
-        result = ("" + comparer).endsWith(comparee);
-        break;
-      case "in":
-        result = comparee.indexOf(comparer) >= 0;
-        break;
-      case "not in":
-        result = comparee.indexOf(comparer) < 0;
-        break;
-      case "lt":
-        result = parseInt("" + comparer) < parseInt("" + comparee);
-        break;
-      case "lte":
-        result = parseInt("" + comparer) <= parseInt("" + comparee);
-        break;
-      case "gt":
-        result = parseInt("" + comparer) > parseInt("" + comparee);
-        break;
-      case "gte":
-        result = parseInt("" + comparer) >= parseInt("" + comparee);
-        break;
-    }
-    return result;
-  }
-  // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
-  // the values, if {{}} ere prepopulated in preLoad
-  static makeOutcomeButton(comp, outcome, suffix, objectData, dissabled) {
-    let icon2;
-    let show = false;
-    let retries = 0;
-    if (outcome.attributes?.iconValue?.value?.length > 0) {
-      let flds;
-      let iconName;
-      let iconValue = comp.outcomeIcons.get(outcome.id);
-      if (suffix && suffix.length > 0) {
-        let path = iconValue.substring(0, iconValue.lastIndexOf("."));
-        let ext = iconValue.substring(iconValue.lastIndexOf("."));
-        iconName = path + "_" + suffix.toLowerCase() + ext;
-      } else {
-        iconName = iconValue;
-      }
-      let imgClass = "sft-ribbon-search-button-image";
-      if (dissabled) {
-        imgClass += " sft-ribbon-search-button-image-grey";
-      }
-      icon2 = /* @__PURE__ */ React6.createElement(
-        "img",
-        {
-          className: imgClass,
-          src: iconName,
-          onError: (e) => {
-            retries++;
-            if (retries < 2) {
-              e.currentTarget.src = iconValue;
-            }
-          },
-          title: outcome.label || outcome.developerName
-        }
-      );
-      show = true;
-    } else {
-      if (outcome.attributes?.icon?.value?.length > 0 && outcome.attributes?.icon?.value !== "null") {
-        let iconClass = " sft-ribbon-search-button-icon";
-        if (dissabled) {
-          iconClass += "sft-ribbon-search-button-image-grey";
-        }
-        icon2 = /* @__PURE__ */ React6.createElement(
-          "span",
-          {
-            key: outcome.developerName,
-            className: "glyphicon glyphicon-" + (outcome.attributes["icon"]?.value || "plus") + " " + iconClass,
-            title: outcome.label || outcome.developerName
-          }
-        );
-        show = true;
-      }
-    }
-    let button;
-    if (show === true) {
-      button = /* @__PURE__ */ React6.createElement(
-        "div",
-        {
-          key: outcome.id,
-          className: "sft-ribbon-search-button-wrapper " + outcome.attributes?.classes?.value,
-          onClick: (e) => {
-            if (!dissabled) {
-              e.stopPropagation();
-              comp.doOutcome(outcome.developerName, objectData);
-            }
-          }
-        },
-        icon2,
-        !outcome.attributes?.display || outcome.attributes.display?.value.indexOf("text") >= 0 ? /* @__PURE__ */ React6.createElement(
-          "span",
-          {
-            className: "sft-ribbon-search-button-label"
-          },
-          outcome.label
-        ) : null
-      );
-    }
-    return button;
-  }
-  // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
-  // the values, if {{}} ere prepopulated in preLoad
-  static makeCoreButton(label, toolTip, iconValue, defaultIcon, suffix, callback, key, display) {
-    let retries = 0;
-    let icon2;
-    if (iconValue?.length > 0) {
-      let flds;
-      let iconName;
-      if (suffix && suffix.length > 0) {
-        let path = iconValue.substring(0, iconValue.lastIndexOf("."));
-        let ext = iconValue.substring(iconValue.lastIndexOf("."));
-        iconName = path + "_" + suffix.toLowerCase() + ext;
-      } else {
-        iconName = iconValue;
-      }
-      let imgClass = "sft-ribbon-search-button-image";
-      icon2 = /* @__PURE__ */ React6.createElement(
-        "img",
-        {
-          className: imgClass,
-          src: iconName,
-          onError: (e) => {
-            retries++;
-            if (retries < 2) {
-              e.currentTarget.src = iconValue;
-            }
-          },
-          title: toolTip
-        }
-      );
-    } else {
-      icon2 = defaultIcon;
-    }
-    let button = /* @__PURE__ */ React6.createElement(
-      "div",
-      {
-        key,
-        className: "sft-ribbon-search-button-wrapper " + key,
-        onClick: callback
-      },
-      icon2,
-      display && display.indexOf("text") >= 0 ? /* @__PURE__ */ React6.createElement(
-        "span",
-        {
-          className: "sft-ribbon-search-button-label"
-        },
-        label
-      ) : null
-    );
-    return button;
-  }
-};
-
-// src/ColumnRule.tsx
-var ColumnRules = class {
-  static async parse(ruleStr, parent) {
-    let match;
-    while (match = RegExp(/^{{([^}]*)}}/).exec(ruleStr)) {
-      const fldElements = match[1].split("->");
-      let val = await parent.component.getValue(fldElements[0]);
-      ruleStr = ruleStr.replace(match[0], val.value);
-    }
-    const rules = /* @__PURE__ */ new Map();
-    if (ruleStr && ruleStr.length > 0) {
-      let rObj;
-      try {
-        rObj = JSON.parse(ruleStr);
-        Object.keys(rObj).forEach((key) => {
-          rules.set(key, ColumnRule.parse(key, rObj[key], parent));
-        });
-      } catch (e) {
-        console.log("Column rules attribute badly formatted");
-      }
-    }
-    return rules;
-  }
-};
-var ColumnRule = class _ColumnRule {
-  constructor() {
-    this.timeZone = true;
-  }
-  static parse(key, rule, parent) {
-    const colRule = new _ColumnRule();
-    colRule.columnName = key;
-    colRule.mode = rule.mode?.toLowerCase();
-    colRule.parent = parent;
-    colRule.whiteSpace = rule.whitespace || "";
-    colRule.cssClass = rule.classes || "";
-    colRule.condition = rule.condition;
-    colRule.cellClass = rule.cellClass;
-    colRule.rowClass = rule.rowClass;
-    switch (colRule.mode) {
-      case "url":
-        colRule.target = rule.target || "_blank";
-        colRule.url = rule.url || "{{VALUE}}";
-        colRule.label = rule.label || void 0;
-        break;
-      case "dateformat":
-        colRule.dateFormat = rule.dateFormat;
-        colRule.timeZone = !(("" + rule.timeZone).toLowerCase() === "false");
-        break;
-      case "class":
-        colRule.componentClass = rule.componentClass || rule.className;
-      case "style":
-        break;
-      case "outcome":
-        colRule.outcomeName = rule.outcomeName;
-        break;
-      case "lookup":
-        colRule.lookupTable = /* @__PURE__ */ new Map();
-        if (rule.options) {
-          Object.keys(rule.options).forEach((key2) => {
-            colRule.lookupTable.set(key2, rule.options[key2]);
-          });
-        }
-        break;
-      case "format":
-        colRule.format = rule.format;
-        break;
-      case "currency":
-        colRule.currency = rule.currency;
-        break;
-      case "icon":
-        colRule.icon = rule.icon;
-        colRule.iconClass = rule.iconClass;
-        break;
-      default:
-        break;
-    }
-    return colRule;
-  }
-  getTextValue(property) {
-    let result = "";
-    const style = {};
-    switch (property.contentType) {
-      case eContentType.ContentBoolean:
-        if (property.value === true) {
-          result = "True";
-        } else {
-          result = "False";
-        }
-        break;
-      case eContentType.ContentNumber:
-        result = property.value.toString();
-        break;
-      default:
-        result = property.value;
-        break;
-    }
-    return result;
-  }
-  generateColumnContent(value, row, sft) {
-    const style = {};
-    let classes = "sft-table-cell-text";
-    if (this.whiteSpace) {
-      style.whiteSpace = this.whiteSpace;
-    }
-    if (this.cssClass) {
-      classes += " " + this.cssClass;
-    }
-    let applyRule = true;
-    if (this.condition) {
-      switch (this.condition.comparator.toLowerCase()) {
-        case "equals":
-          applyRule = value.value === this.condition.value;
-          break;
-        case "not equals":
-          applyRule = value.value !== this.condition.value;
-          break;
-        case "gt":
-          applyRule = value.value > this.condition.value;
-          break;
-      }
-    }
-    let label;
-    let match;
-    let content;
-    let rowClass = this.rowClass || "";
-    let cellClass = this.cellClass || "";
-    const matches = [];
-    if (applyRule === true || this.mode === "icon") {
-      rowClass = this.rowClass;
-      switch (this.mode) {
-        case "outcome":
-          label = this.label || value.value;
-          let show = SFTCommonFunctions.assessRowOutcomeRule(sft.component.outcomes[this.outcomeName], row, sft);
-          while (match = RegExp(/{{([^}]*)}}/).exec(label)) {
-            const prop = row.properties[match[1].replace("&amp;", "&")];
-            if (prop) {
-              const subs = this.getTextValue(prop);
-              label = label.replace(match[0], subs);
-            }
-          }
-          if (show) {
-            let toolTip = sft.component.outcomes[this.outcomeName].label;
-            content = /* @__PURE__ */ React7.createElement(
-              "span",
-              {
-                className: "sft-table-cell-href",
-                onClick: (e) => {
-                  sft.doOutcome(this.outcomeName, row);
-                },
-                title: toolTip
-              },
-              label
-            );
-          } else {
-            content = /* @__PURE__ */ React7.createElement("span", { className: classes, style }, label);
-          }
-          break;
-        case "url":
-          const href = this.url.replace("{{VALUE}}", value.value);
-          label = this.label || value.value;
-          while (match = RegExp(/{{([^}]*)}}/).exec(label)) {
-            const prop = row.properties[match[1].replace("&amp;", "&")];
-            if (prop) {
-              const subs = this.getTextValue(prop);
-              label = label.replace(match[0], subs);
-            }
-          }
-          content = /* @__PURE__ */ React7.createElement(
-            "a",
-            {
-              className: "sft-table-cell-href",
-              href,
-              target: this.target
-            },
-            label
-          );
-          break;
-        case "class":
-          const columnProps = {
-            id: row.internalId,
-            propertyId: value.typeElementPropertyId,
-            contentValue: value.value,
-            objectData: value.value,
-            flowKey: this.parent.component.id,
-            contentType: value.contentType,
-            contentFormat: value.contentFormat,
-            row,
-            sft: this.parent,
-            component: this.parent.component
-          };
-          content = React7.createElement(manywho.component.getByName(this.componentClass), columnProps);
-          break;
-        case "dateformat":
-          let result = "";
-          if (value) {
-            const dt = new Date(value.value);
-            if (!isNaN(dt.getTime()) && dt.getTime() > 0) {
-              if (this.timeZone === false) {
-                dt.setMinutes(dt.getMinutes() + dt.getTimezoneOffset());
-              }
-              switch (this.dateFormat.toLowerCase()) {
-                case "datetime":
-                  result = dt.toLocaleString("en-GB", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
-                  break;
-                case "date":
-                  result = dt.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
-                  break;
-                case "time":
-                  result = dt.toLocaleTimeString();
-                  break;
-                case "json":
-                  result = dt.toJSON();
-                  break;
-                case "iso":
-                  result = dt.toISOString();
-                  break;
-                case "utc":
-                  result = dt.toUTCString();
-                  break;
-                case "year":
-                  result = "" + dt.getFullYear();
-                  break;
-              }
-            }
-          }
-          content = /* @__PURE__ */ React7.createElement("span", { className: classes, style }, result);
-          break;
-        case "lookup":
-          let enval = value;
-          if (this.lookupTable.has(value)) {
-            enval = this.lookupTable.get(value);
-          }
-          content = /* @__PURE__ */ React7.createElement("span", { className: classes, style }, enval);
-          break;
-        case "percent":
-          let pc = parseInt("" + value?.value || "0") + "%";
-          content = /* @__PURE__ */ React7.createElement("span", { className: classes, style }, pc);
-          break;
-        case "format":
-          let res = this.format.replaceAll("{{value}}", value.value);
-          content = /* @__PURE__ */ React7.createElement("span", { className: classes, style }, res);
-          break;
-        case "currency":
-          var formatter = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: this.currency,
-            // These options are needed to round to whole numbers if that's what you want.
-            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-            maximumFractionDigits: 0
-            // (causes 2500.99 to be printed as $2,501)
-          });
-          let amt = formatter.format(value.value);
-          content = /* @__PURE__ */ React7.createElement("span", { className: classes, style }, amt);
-          break;
-        case "style":
-          content = /* @__PURE__ */ React7.createElement("span", { className: classes + " " + cellClass, style }, value.value);
-          break;
-        case "icon":
-          let iconClass = this.iconClass + " glyphicon glyphicon-";
-          if (applyRule) {
-            iconClass += (this.condition.icon || this.icon) + " " + this.condition.iconClass;
-            rowClass += " " + this.condition.rowClass;
-            cellClass += " " + this.condition.cellClass;
-          } else {
-            iconClass += this.icon;
-          }
-          content = /* @__PURE__ */ React7.createElement(
-            "span",
-            {
-              title: "" + value.value,
-              className: classes + " " + iconClass,
-              style
-            }
-          );
-          break;
-        default:
-          content = /* @__PURE__ */ React7.createElement("span", { className: classes, style }, value.value);
-          break;
-      }
-    } else {
-      content = /* @__PURE__ */ React7.createElement("span", { className: classes, style }, value.value);
-    }
-    return { content, cellClass, rowClass };
-  }
-};
-
-// src/FilterManagementForm.tsx
-var React10 = __toESM(require_react());
-
-// src/FilterFormManagementAddRow.tsx
-var React8 = __toESM(require_react());
-var FilterManagementFormAddRow = class extends React8.Component {
-  constructor(props) {
-    super(props);
-    this.fieldSelected = this.fieldSelected.bind(this);
-    this.addColumnCriteria = this.addColumnCriteria.bind(this);
-  }
-  fieldSelected(e) {
-    this.forceUpdate();
-  }
-  addColumnCriteria(e) {
-    const parent = this.props.parent;
-    if (this.fieldSelect && this.fieldSelect.options[this.fieldSelect.selectedIndex].value) {
-      parent.addCriteria(this.fieldSelect.options[this.fieldSelect.selectedIndex].value);
-    }
-  }
-  render() {
-    const parent = this.props.parent;
-    const criteria = this.props.criteria;
-    let fieldInput;
-    const fieldOptions = [];
-    fieldOptions.push(
-      /* @__PURE__ */ React8.createElement(
-        "option",
-        {
-          className: "sft-fmf-row-criteria-select-option",
-          value: null
-        },
-        "Please Select ..."
-      )
-    );
-    const collator = new Intl.Collator(void 0, { numeric: true, sensitivity: "base" });
-    const sorted = Array.from(parent.columns).filter((a2) => {
-      return !parent.newFilters.isFilteredOn(a2[1].developerName);
-    }).sort((a2, b) => {
-      return collator.compare(a2[1].label, b[1].label);
-    });
-    sorted.forEach((col) => {
-      fieldOptions.push(
-        /* @__PURE__ */ React8.createElement(
-          "option",
-          {
-            className: "sft-fmf-row-criteria-select-option",
-            value: col[1].developerName
-          },
-          " " + col[1].label + " "
-        )
-      );
-    });
-    fieldInput = /* @__PURE__ */ React8.createElement(
-      "select",
-      {
-        className: "sft-fmf-row-criteria-select",
-        onChange: this.fieldSelected,
-        ref: (element) => {
-          this.fieldSelect = element;
-        }
-      },
-      fieldOptions
-    );
-    let addButton;
-    if (this.fieldSelect && this.fieldSelect.options[this.fieldSelect.selectedIndex].value) {
-      addButton = /* @__PURE__ */ React8.createElement(
-        "button",
-        {
-          className: "sft-ribbon-search-button-wrapper",
-          onClick: this.addColumnCriteria
-        },
-        /* @__PURE__ */ React8.createElement(
-          "span",
-          {
-            className: "glyphicon glyphicon-plus sft-ribbon-search-button-icon"
-          }
-        )
-      );
-    }
-    return /* @__PURE__ */ React8.createElement(
-      "div",
-      {
-        className: "sft-fmf-row"
-      },
-      /* @__PURE__ */ React8.createElement(
-        "div",
-        {
-          className: "sft-fmf-row-labels"
-        },
-        /* @__PURE__ */ React8.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-caption"
-          },
-          "Column Name"
-        )
-      ),
-      /* @__PURE__ */ React8.createElement(
-        "div",
-        {
-          className: "sft-fmf-row-values"
-        },
-        /* @__PURE__ */ React8.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-title"
-          },
-          fieldInput
-        ),
-        /* @__PURE__ */ React8.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-buttons"
-          },
-          addButton
-        )
-      )
-    );
-  }
-};
-
-// src/FilterManagementFormRow.tsx
-var React9 = __toESM(require_react());
-var FilterManagementFormRow = class extends React9.Component {
-  constructor(props) {
-    super(props);
-    this.valueChanged = this.valueChanged.bind(this);
-    this.valueToChanged = this.valueToChanged.bind(this);
-    this.comparatorChanged = this.comparatorChanged.bind(this);
-    this.removeCriteria = this.removeCriteria.bind(this);
-  }
-  valueChanged(e) {
-    if (e.target.type === "checkbox") {
-      this.props.criteria.value = e.target.checked;
-    } else {
-      this.props.criteria.value = e.target.value;
-    }
-    this.forceUpdate();
-  }
-  valueToChanged(e) {
-    this.props.criteria.value2 = e.target.value;
-    this.forceUpdate();
-  }
-  comparatorChanged(e) {
-    if (this.comparatorElement && this.comparatorElement.options[this.comparatorElement.selectedIndex].value) {
-      const value = this.comparatorElement.options[this.comparatorElement.selectedIndex].value;
-      const comparator = parseInt(value);
-      this.props.criteria.comparator = comparator;
-      if (comparator !== 9 /* in */ && comparator !== 10 /* notIn */ && typeof this.props.criteria.value !== "string") {
-        this.props.criteria.value = "";
-        this.props.criteria.value2 = "";
-      } else {
-        if ((comparator === 9 /* in */ || comparator === 10 /* notIn */) && typeof this.props.criteria.value === "string") {
-          this.props.criteria.value = /* @__PURE__ */ new Map();
-        }
-        if (comparator !== 4 /* between */) {
-          this.props.criteria.value2 = "";
-        }
-      }
-      this.forceUpdate();
-    }
-  }
-  removeCriteria() {
-    this.props.parent.removeCriteria(this.props.filterId);
-  }
-  render() {
-    const parent = this.props.parent;
-    const filter = parent.newFilters.get(this.props.filterId);
-    const fieldDef = parent.columns.get(filter.key);
-    const criteria = this.props.criteria;
-    let fieldInput;
-    if (fieldDef) {
-      fieldInput = /* @__PURE__ */ React9.createElement("span", null, fieldDef.label);
-    } else {
-      const fieldOptions = [];
-      parent.columns.forEach((field) => {
-        fieldOptions.push(
-          /* @__PURE__ */ React9.createElement(
-            "option",
-            {
-              className: "sft-fmf-row-criteria-select-option",
-              value: field.developerName,
-              selected: field.developerName === fieldDef.developerName
-            },
-            field.label
-          )
-        );
-      });
-      fieldInput = /* @__PURE__ */ React9.createElement(
-        "select",
-        {
-          className: "sft-fmf-row-criteria-select"
-        },
-        fieldOptions
-      );
-    }
-    const criteriaOptions = SFTColumnCriteria.getOptions(criteria.comparator, "sft-fmf-row-criteria-select-option", fieldDef.contentType);
-    let input;
-    let input2;
-    let label1 = "Value";
-    let label2;
-    if (criteria.comparator === 9 /* in */ || criteria.comparator === 10 /* notIn */) {
-      input = this.props.parent.props.parent.getColumnUniques(fieldDef.developerName, criteria.value);
-    } else {
-      switch (fieldDef.contentType) {
-        case eContentType.ContentDateTime:
-          input = /* @__PURE__ */ React9.createElement(
-            "input",
-            {
-              className: "sft-fmf-row-criteria-date",
-              type: "date",
-              value: this.props.criteria.value,
-              onChange: this.valueChanged
-            }
-          );
-          if (criteria.comparator === 4 /* between */) {
-            input2 = /* @__PURE__ */ React9.createElement(
-              "div",
-              {
-                className: "sft-fmf-row-value"
-              },
-              /* @__PURE__ */ React9.createElement(
-                "input",
-                {
-                  className: "sft-fmf-row-criteria-date",
-                  type: "date",
-                  value: this.props.criteria.value2,
-                  onChange: this.valueToChanged
-                }
-              )
-            );
-            label1 = "From";
-            label2 = /* @__PURE__ */ React9.createElement(
-              "div",
-              {
-                className: "sft-fmf-row-caption"
-              },
-              "To"
-            );
-          }
-          break;
-        case eContentType.ContentNumber:
-          input = /* @__PURE__ */ React9.createElement(
-            "input",
-            {
-              className: "sft-fmf-row-criteria-number",
-              type: "number",
-              value: this.props.criteria.value,
-              onChange: this.valueChanged
-            }
-          );
-          if (criteria.comparator === 4 /* between */) {
-            input2 = /* @__PURE__ */ React9.createElement(
-              "div",
-              {
-                className: "sft-fmf-row-value"
-              },
-              /* @__PURE__ */ React9.createElement(
-                "input",
-                {
-                  className: "sft-fmf-row-criteria-number",
-                  type: "number",
-                  value: this.props.criteria.value2,
-                  onChange: this.valueToChanged
-                }
-              )
-            );
-            label1 = "From";
-            label2 = /* @__PURE__ */ React9.createElement(
-              "div",
-              {
-                className: "sft-fmf-row-caption"
-              },
-              "To"
-            );
-          }
-          break;
-        case eContentType.ContentBoolean:
-          input = /* @__PURE__ */ React9.createElement(
-            "input",
-            {
-              className: "sft-fmf-row-criteria-checkbox",
-              type: "checkbox",
-              checked: this.props.criteria.value,
-              onChange: this.valueChanged
-            }
-          );
-          break;
-        default:
-          input = /* @__PURE__ */ React9.createElement(
-            "input",
-            {
-              className: "sft-fmf-row-criteria-text",
-              type: "text",
-              value: this.props.criteria.value,
-              onChange: this.valueChanged
-            }
-          );
-          break;
-      }
-    }
-    return /* @__PURE__ */ React9.createElement(
-      "div",
-      {
-        className: "sft-fmf-row"
-      },
-      /* @__PURE__ */ React9.createElement(
-        "div",
-        {
-          className: "sft-fmf-row-labels"
-        },
-        /* @__PURE__ */ React9.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-caption"
-          },
-          "Column Name"
-        ),
-        /* @__PURE__ */ React9.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-caption-criteria"
-          },
-          "Comparator"
-        ),
-        /* @__PURE__ */ React9.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-caption"
-          },
-          label1
-        ),
-        label2
-      ),
-      /* @__PURE__ */ React9.createElement(
-        "div",
-        {
-          className: "sft-fmf-row-values"
-        },
-        /* @__PURE__ */ React9.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-title"
-          },
-          fieldInput
-        ),
-        /* @__PURE__ */ React9.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-criteria"
-          },
-          /* @__PURE__ */ React9.createElement(
-            "select",
-            {
-              className: "sft-fmf-row-criteria-select",
-              onChange: this.comparatorChanged,
-              ref: (element) => {
-                this.comparatorElement = element;
-              }
-            },
-            criteriaOptions
-          )
-        ),
-        /* @__PURE__ */ React9.createElement(
-          "div",
-          {
-            className: "sft-fmf-row-value"
-          },
-          input
-        ),
-        input2,
-        /* @__PURE__ */ React9.createElement(
-          "button",
-          {
-            className: "sft-ribbon-search-button-wrapper",
-            title: "Remove criteria",
-            onClick: this.removeCriteria
-          },
-          /* @__PURE__ */ React9.createElement(
-            "span",
-            {
-              className: "sft-ribbon-search-button-icon glyphicon glyphicon-remove-sign"
-            }
-          )
-        )
-      )
-    );
-  }
-};
-
-// src/FilterManagementForm.tsx
-var FilterManagementForm = class extends React10.Component {
-  constructor(props) {
-    super(props);
-    this.parent = this.props.parent;
-    this.columns = this.parent.colMap;
-    this.addCriteria = this.addCriteria.bind(this);
-    this.removeCriteria = this.removeCriteria.bind(this);
-    this.newFilters = this.parent.filters.clone();
-  }
-  addCriteria(fieldName) {
-    this.newFilters.items.set(fieldName, new SFTColumnFilter(fieldName, this.newFilters, 0 /* none */, [new SFTColumnCriteria(0 /* equalTo */, "", "")]));
-    this.forceUpdate();
-  }
-  removeCriteria(key) {
-    this.newFilters.items.delete(key);
-    this.forceUpdate();
-  }
-  render() {
-    const rows = [];
-    this.newFilters.items.forEach((filter, key) => {
-      filter.criteria.forEach((criteria) => {
-        rows.push(
-          /* @__PURE__ */ React10.createElement(
-            FilterManagementFormRow,
-            {
-              parent: this,
-              filterId: key,
-              criteria
-            }
-          )
-        );
-      });
-    });
-    rows.push(
-      /* @__PURE__ */ React10.createElement(
-        FilterManagementFormAddRow,
-        {
-          parent: this
-        }
-      )
-    );
-    return /* @__PURE__ */ React10.createElement(
-      "div",
-      {
-        className: "modal-dialog-content",
-        style: { width: "910px" }
-      },
-      rows
-    );
-  }
-};
-
-// src/MultiSelect.tsx
-var React11 = __toESM(require_react());
-var MultiSelect = class extends React11.Component {
-  constructor(props) {
-    super(props);
-    this.expanded = false;
-    this.showCheckboxes = this.showCheckboxes.bind(this);
-  }
-  showCheckboxes() {
-    const checkboxes = document.getElementById("checkboxes_" + this.props.id);
-    if (!this.expanded) {
-      checkboxes.style.display = "flex";
-      this.expanded = true;
-    } else {
-      checkboxes.style.display = "none";
-      this.expanded = false;
-    }
-  }
-  render() {
-    const checkBoxes = [];
-    const collator = new Intl.Collator(void 0, { numeric: true, sensitivity: "base" });
-    const sorted = Array.from(this.props.allItems.keys()).sort((a2, b) => collator.compare(a2, b));
-    sorted.forEach((item) => {
-      checkBoxes.push(
-        /* @__PURE__ */ React11.createElement(
-          "div",
-          {
-            className: "checkbox-row"
-          },
-          /* @__PURE__ */ React11.createElement(
-            "div",
-            {
-              className: "checkbox-checkbox-wrapper"
-            },
-            /* @__PURE__ */ React11.createElement(
-              "input",
-              {
-                type: "checkbox",
-                id: item,
-                key: item,
-                className: "sft-checkbox",
-                checked: this.props.selectedItems?.has(item),
-                onClick: (e) => {
-                  if (this.props.selectedItems?.has(item)) {
-                    this.props.selectedItems.delete(item);
-                  } else {
-                    this.props.selectedItems.set(item, item);
-                  }
-                  this.forceUpdate();
-                }
-              }
-            )
-          ),
-          /* @__PURE__ */ React11.createElement(
-            "div",
-            {
-              className: "checkbox-label-wrapper"
-            },
-            /* @__PURE__ */ React11.createElement(
-              "span",
-              {
-                className: "checkbox-row-label"
-              },
-              item
-            )
-          )
-        )
-      );
-    });
-    return /* @__PURE__ */ React11.createElement("div", { className: "multiselect" }, /* @__PURE__ */ React11.createElement(
-      "div",
-      {
-        className: "selectBox",
-        onClick: this.showCheckboxes
-      },
-      /* @__PURE__ */ React11.createElement("select", null, /* @__PURE__ */ React11.createElement("option", null, "Select an option")),
-      /* @__PURE__ */ React11.createElement(
-        "div",
-        {
-          className: "overSelect"
-        }
-      )
-    ), /* @__PURE__ */ React11.createElement(
-      "div",
-      {
-        className: "checkboxScroller"
-      },
-      /* @__PURE__ */ React11.createElement(
-        "div",
-        {
-          className: "checkboxes",
-          id: "checkboxes_" + this.props.id
-        },
-        checkBoxes
-      )
-    ));
-  }
-};
-
-// src/RowItem.ts
-var RowItem = class {
-  constructor() {
-    this.columns = /* @__PURE__ */ new Map();
-  }
-};
-
-// src/SearchFilterTableFooter.tsx
-var React12 = __toESM(require_react());
-var SearchFilterTableFooter = class extends React12.Component {
-  componentDidMount() {
-    this.forceUpdate();
-    this.maxPerPageChanged = this.maxPerPageChanged.bind(this);
-  }
-  maxPerPageChanged(e) {
-    const root = this.props.root;
-    root.maxPerPageChanged(parseInt(this.maxPerPage.options[this.maxPerPage.selectedIndex].value));
-  }
-  render() {
-    const root = this.props.root;
-    let summary;
-    let pag;
-    switch (true) {
-      case root.paginationMode === 2 /* external */:
-        summary = "";
-        pag = root.externalPaginationPage.toString();
-        break;
-      case (root.component.getAttribute("summaryMode", "default").toLowerCase() === "simple" || root.component.isMultiSelect === false):
-        summary = "Showing " + root.currentRowMap.size + " items of " + root.rowMap.size;
-        pag = "page " + (root.currentRowPage + 1) + " of " + root.currentRowPages.length;
-        break;
-      default:
-        summary = "Selected " + root.selectedRowMap.size + " of " + root.currentRowMap.size + " items from a total dataset of " + root.rowMap.size;
-        pag = "page " + (root.currentRowPage + 1) + " of " + root.currentRowPages.length;
-        break;
-    }
-    let firstPage;
-    let prevPage;
-    let nextPage;
-    let lastPage;
-    if (root.currentRowPage > 0) {
-      firstPage = /* @__PURE__ */ React12.createElement(
-        "span",
-        {
-          className: "glyphicon glyphicon-fast-backward sft-footer-pagination-button",
-          title: "First page",
-          onClick: root.firstPage
-        }
-      );
-      prevPage = /* @__PURE__ */ React12.createElement(
-        "span",
-        {
-          className: "glyphicon glyphicon-step-backward sft-footer-pagination-button",
-          title: "Previous page",
-          onClick: root.previousPage
-        }
-      );
-    } else {
-      firstPage = /* @__PURE__ */ React12.createElement(
-        "span",
-        {
-          className: "glyphicon glyphicon-fast-backward sft-footer-pagination-button sft-footer-pagination-button-disabled"
-        }
-      );
-      prevPage = /* @__PURE__ */ React12.createElement(
-        "span",
-        {
-          className: "glyphicon glyphicon-step-backward sft-footer-pagination-button sft-footer-pagination-button-disabled"
-        }
-      );
-    }
-    if (root.currentRowPage < root.currentRowPages.length - 1) {
-      lastPage = /* @__PURE__ */ React12.createElement(
-        "span",
-        {
-          className: "glyphicon glyphicon-fast-forward sft-footer-pagination-button",
-          title: "Last page",
-          onClick: root.lastPage
-        }
-      );
-      nextPage = /* @__PURE__ */ React12.createElement(
-        "span",
-        {
-          className: "glyphicon glyphicon-step-forward sft-footer-pagination-button",
-          title: "Next page",
-          onClick: root.nextPage
-        }
-      );
-    } else {
-      lastPage = /* @__PURE__ */ React12.createElement(
-        "span",
-        {
-          className: "glyphicon glyphicon-fast-forward sft-footer-pagination-button sft-footer-pagination-button-disabled"
-        }
-      );
-      nextPage = /* @__PURE__ */ React12.createElement(
-        "span",
-        {
-          className: "glyphicon glyphicon-step-forward sft-footer-pagination-button sft-footer-pagination-button-disabled"
-        }
-      );
-    }
-    let options = [];
-    options.push(10, 20, 50, 100);
-    if (options.indexOf(root.maxPageRows) < 0) {
-      options.push(root.maxPageRows);
-    }
-    options = options.sort((a2, b) => {
-      return a2 - b;
-    });
-    const opts = [];
-    let selected = options[0];
-    options.forEach((a2) => {
-      if (root.maxPageRows === a2) {
-        selected = a2;
-      }
-      opts.push(
-        /* @__PURE__ */ React12.createElement(
-          "option",
-          {
-            key: a2,
-            value: a2
-          },
-          a2
-        )
-      );
-    });
-    const perPage = /* @__PURE__ */ React12.createElement(
-      "select",
-      {
-        className: "sft-footer-select",
-        value: selected,
-        onChange: this.maxPerPageChanged,
-        ref: (element) => {
-          this.maxPerPage = element;
-        }
-      },
-      opts
-    );
-    let pagination;
-    let perPageBlock;
-    switch (root.paginationMode) {
-      case 1 /* local */:
-        pagination = /* @__PURE__ */ React12.createElement(
-          "div",
-          {
-            className: "sft-footer-pagination"
-          },
-          firstPage,
-          prevPage,
-          /* @__PURE__ */ React12.createElement("span", { className: "sft-footer-pagination-label" }, pag),
-          nextPage,
-          lastPage
-        );
-        perPageBlock = /* @__PURE__ */ React12.createElement(
-          "div",
-          {
-            className: "sft-footer-perpage"
-          },
-          /* @__PURE__ */ React12.createElement(
-            "div",
-            {
-              className: "sft-footer-perpage-label"
-            },
-            "Items per page"
-          ),
-          perPage
-        );
-        break;
-      case 2 /* external */:
-        prevPage = /* @__PURE__ */ React12.createElement(
-          "span",
-          {
-            className: "glyphicon glyphicon-step-backward sft-footer-pagination-button",
-            title: "Previous page",
-            onClick: root.previousPage
-          }
-        );
-        nextPage = /* @__PURE__ */ React12.createElement(
-          "span",
-          {
-            className: "glyphicon glyphicon-step-forward sft-footer-pagination-button",
-            title: "Next page",
-            onClick: root.nextPage
-          }
-        );
-        pagination = /* @__PURE__ */ React12.createElement(
-          "div",
-          {
-            className: "sft-footer-pagination"
-          },
-          prevPage,
-          /* @__PURE__ */ React12.createElement("span", { className: "sft-footer-pagination-label" }, pag),
-          nextPage
-        );
-        break;
-    }
-    return /* @__PURE__ */ React12.createElement(
-      "div",
-      {
-        className: "sft-footer"
-      },
-      perPageBlock,
-      /* @__PURE__ */ React12.createElement(
-        "div",
-        {
-          className: "sft-footer-spacer"
-        }
-      ),
-      /* @__PURE__ */ React12.createElement(
-        "div",
-        {
-          className: "sft-footer-summary"
-        },
-        /* @__PURE__ */ React12.createElement(
-          "span",
-          {
-            className: "sft-footer-summary-label"
-          },
-          summary
-        )
-      ),
-      pagination
-    );
-  }
-};
-
-// src/SearchFilterTableHeaders.tsx
-var React14 = __toESM(require_react());
-
-// src/SearchFilterTableHeader.tsx
-var React13 = __toESM(require_react());
-var SearchFilterTableHeader = class extends React13.Component {
-  constructor(props) {
-    super(props);
-    this.dragEnter = this.dragEnter.bind(this);
-    this.dragLeave = this.dragLeave.bind(this);
-  }
-  dragEnter() {
-    this.mask.style.zIndex = 1e4;
-    this.th.classList.add("sft-column-header-wrapper-droppable");
-  }
-  dragLeave() {
-    this.mask.style.zIndex = -1;
-    this.th.classList.remove("sft-column-header-wrapper-droppable");
-  }
-  render() {
-    const root = this.props.root;
-    const parent = this.props.parent;
-    const col = this.props.column;
-    let filterIcon;
-    let sortIcon;
-    let quickCheck;
-    if (this.props.static !== true) {
-      sortIcon = root.filters.getSortIcon(col.developerName);
-      if (this.props.inlineSearch === true) {
-        filterIcon = root.filters.getFilterIcon(col.developerName);
-      }
-      quickCheck = root.filters.getQuickCheck(col.developerName);
-    }
-    let cls = "sft-column-header sft-column-header-" + col.developerName;
-    if (this.props.sticky) {
-      cls += " sft-header-sticky";
-    }
-    return /* @__PURE__ */ React13.createElement(
-      "th",
-      {
-        key: col.developerName,
-        className: cls,
-        style: { pointerEvents: "all" },
-        ref: (element) => {
-          this.th = element;
-        }
-      },
-      /* @__PURE__ */ React13.createElement(
-        "div",
-        {
-          className: "sft-column-header-wrapper sft-thcontainer",
-          style: { display: "flex", flexDirection: "row", pointerEvents: "all" },
-          draggable: root.dynamicColumns,
-          onDragStart: (e) => {
-            parent.dragColumn(e, col.developerName);
-          },
-          onDragEnter: (e) => {
-            parent.onDragEnter(e);
-          },
-          onDragLeave: (e) => {
-            parent.onDragLeave(e);
-          },
-          onDragOver: (e) => {
-            parent.onDragOver(e);
-          },
-          onDrop: (e) => {
-            parent.onDrop(e);
-          },
-          onClick: (e) => {
-            root.filters.sortClicked(col.developerName);
-          },
-          "data-fieldname": col.developerName
-        },
-        /* @__PURE__ */ React13.createElement(
-          "div",
-          {
-            className: "sft-column-header-top",
-            style: { pointerEvents: "all" }
-          },
-          /* @__PURE__ */ React13.createElement(
-            "div",
-            {
-              className: "sft-column-header-title",
-              style: { pointerEvents: "all" }
-            },
-            /* @__PURE__ */ React13.createElement(
-              "span",
-              {
-                className: "sft-column-header-title-label"
-              },
-              col.label
-            )
-          ),
-          /* @__PURE__ */ React13.createElement(
-            "div",
-            {
-              className: "sft-column-header-flags",
-              style: { pointerEvents: "all" }
-            },
-            sortIcon
-          ),
-          /* @__PURE__ */ React13.createElement(
-            "div",
-            {
-              style: { pointerEvents: "all" },
-              className: "sft-column-header-buttons"
-            },
-            filterIcon,
-            quickCheck
-          )
-        ),
-        /* @__PURE__ */ React13.createElement(
-          "div",
-          {
-            className: "sft-column-header-bottom",
-            style: { pointerEvents: "all" }
-          }
-        ),
-        /* @__PURE__ */ React13.createElement(
-          "div",
-          {
-            style: { position: "absolute", top: "0", left: "0", bottom: "0", right: "0", pointerEvents: "all", zIndex: -1 },
-            ref: (element) => {
-              this.mask = element;
-            }
-          }
-        )
-      )
-    );
-  }
-};
-
-// src/SearchFilterTableHeaders.tsx
-var SearchFilterTableHeaders = class extends React14.Component {
-  constructor(props) {
-    super(props);
-    this.headers = /* @__PURE__ */ new Map();
-    this.setHeader = this.setHeader.bind(this);
-    this.dragColumn = this.dragColumn.bind(this);
-    this.onDragEnter = this.onDragEnter.bind(this);
-    this.onDragOver = this.onDragOver.bind(this);
-    this.onDragLeave = this.onDragLeave.bind(this);
-    this.onDrop = this.onDrop.bind(this);
-    this.moveColumn = this.moveColumn.bind(this);
-  }
-  componentDidMount() {
-    this.forceUpdate();
-  }
-  setHeader(key, header) {
-    if (header) {
-      this.headers.set(key, header);
-    } else {
-      this.headers.delete(key);
-    }
-  }
-  dragColumn(e, fieldName) {
-    e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData("column", fieldName);
-    this.draggedFieldName = fieldName;
-  }
-  onDragEnter(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
-    const srcFieldName = this.draggedFieldName;
-    if (!srcFieldName || this.draggedFieldName === tgtFieldName) {
-      e.dataTransfer.dropEffect = "none";
-    } else {
-      this.headers.get(tgtFieldName).dragEnter();
-      e.dataTransfer.dropEffect = "move";
-    }
-  }
-  onDragLeave(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
-    this.headers.get(tgtFieldName).dragLeave();
-  }
-  onDragOver(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const srcFieldName = e.dataTransfer.getData("column");
-    const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
-  }
-  async onDrop(e) {
-    const root = this.props.root;
-    e.preventDefault();
-    e.stopPropagation();
-    const srcFieldName = e.dataTransfer.getData("column");
-    const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
-    this.draggedFieldName = void 0;
-    e.dataTransfer.clearData();
-    e.currentTarget.parentElement.classList.remove("sft-column-header-wrapper-droppable");
-    if (srcFieldName && srcFieldName !== tgtFieldName) {
-      await this.moveColumn(srcFieldName, tgtFieldName);
-      this.forceUpdate();
-    }
-  }
-  async moveColumn(srcFieldName, tgtFieldName) {
-    const root = this.props.root;
-    console.log("move " + srcFieldName + " before " + tgtFieldName);
-    root.userColumns.splice(root.userColumns.indexOf(tgtFieldName), 0, root.userColumns.splice(root.userColumns.indexOf(srcFieldName), 1)[0]);
-    root.columnsReordered();
-  }
-  render() {
-    this.headers = /* @__PURE__ */ new Map();
-    const headers = [];
-    const root = this.props.root;
-    const buttons = [];
-    let anyoutcomes = false;
-    Object.keys(root.component.outcomes).forEach((key) => {
-      if (root.component.outcomes[key].isBulkAction === false) {
-        if (!root.supressedOutcomes.has(key)) {
-          anyoutcomes = true;
-        }
-        buttons.push(key);
-      }
-    });
-    if (root.colMap.size > 0) {
-      if (root.component.isMultiSelect) {
-        headers.push(
-          /* @__PURE__ */ React14.createElement(
-            "th",
-            {
-              key: "checks",
-              className: "sft-check-header sft-column-header ",
-              ref: (element) => {
-                this.setHeader("checks", element);
-              }
-            },
-            /* @__PURE__ */ React14.createElement("span", { style: { display: "none" } }, "Toggle Selection"),
-            /* @__PURE__ */ React14.createElement(
-              "div",
-              {
-                className: "sft-thcontainer"
-              },
-              /* @__PURE__ */ React14.createElement(
-                "input",
-                {
-                  className: "sft-checkbox",
-                  type: "checkbox",
-                  onClick: (event) => {
-                    root.toggleSelectAll(event);
-                  },
-                  title: "Toggle Selection"
-                }
-              )
-            )
-          )
-        );
-      } else {
-        if (root.component.getAttribute("showRadio", "false").toLowerCase() === "true") {
-          headers.push(
-            /* @__PURE__ */ React14.createElement(
-              "th",
-              {
-                key: "checks",
-                className: "sft-column-header",
-                ref: (element) => {
-                  this.setHeader("checks", element);
-                }
-              },
-              /* @__PURE__ */ React14.createElement("span", { style: { display: "none" } }, "Toggle Selection"),
-              /* @__PURE__ */ React14.createElement(
-                "div",
-                {
-                  className: "sft-thcontainer"
-                }
-              )
-            )
-          );
-        }
-      }
-      let fixedCols = parseInt(root.component.getAttribute("stickyColumns", "0"));
-      root.userColumns.forEach((collName) => {
-        if (collName === "#BUTTONS#") {
-          if (anyoutcomes) {
-            headers.push(
-              /* @__PURE__ */ React14.createElement(
-                SearchFilterTableHeader,
-                {
-                  key: "#BUTTONS#",
-                  root: this.props.root,
-                  parent: this,
-                  column: { developerName: "#BUTTONS#", label: root.component.getAttribute("OutcomesLabel", "Action") },
-                  static: true,
-                  inlineSearch: this.props.inlineSearch,
-                  ref: (element) => {
-                    this.setHeader("#BUTTONS#", element);
-                  },
-                  sticky: fixedCols > 0
-                }
-              )
-            );
-          }
-        } else {
-          const col = root.colMap.get(collName);
-          if (col) {
-            headers.push(
-              /* @__PURE__ */ React14.createElement(
-                SearchFilterTableHeader,
-                {
-                  key: col.developerName,
-                  root: this.props.root,
-                  parent: this,
-                  column: col,
-                  inlineSearch: this.props.inlineSearch,
-                  ref: (element) => {
-                    this.setHeader(col.developerName, element);
-                  },
-                  sticky: fixedCols > 0
-                }
-              )
-            );
-          } else {
-            root.userColumns.splice(root.userColumns.indexOf(collName), 1);
-            root.saveUserColumns();
-          }
-        }
-        if (fixedCols > 0)
-          fixedCols--;
-      });
-    }
-    return /* @__PURE__ */ React14.createElement(
-      "tr",
-      {
-        className: "sft-column-headers"
-      },
-      headers
-    );
-  }
-};
-
-// src/SearchFilterTableRibbon.tsx
-var React15 = __toESM(require_react());
-var SearchFilterTableRibbon = class extends React15.Component {
-  constructor(props) {
-    super(props);
-    this.generateButtons = this.generateButtons.bind(this);
-    this.generateComponents = this.generateComponents.bind(this);
-  }
-  async componentDidMount() {
-    await this.generateButtons();
-  }
-  async generateButtons() {
-    this.leftButtons = [];
-    this.rightButtons = [];
-    const root = this.props.root;
-    const canExport = root.component.getAttribute("canExport", "false").toLowerCase() === "true";
-    if (canExport === true) {
-      this.rightButtons.push(
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-button-wrapper",
-            onClick: (e) => {
-              e.stopPropagation();
-              root.doExport(root.rowMap);
-            }
-          },
-          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              key: "exportAll",
-              className: "glyphicon glyphicon-floppy-save sft-ribbon-button-icon",
-              title: "Export All"
-            }
-          ) : null,
-          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              className: "sft-ribbon-button-label"
-            },
-            "Export All"
-          ) : null
-        )
-      );
-    }
-    if (root.rowMap.size > root.currentRowMap.size && canExport === true) {
-      this.rightButtons.push(
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-button-wrapper",
-            onClick: (e) => {
-              e.stopPropagation();
-              root.doExport(root.currentRowMap);
-            }
-          },
-          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              key: "exportShown",
-              className: "glyphicon glyphicon-floppy-save sft-ribbon-button-icon",
-              title: "Export Shown"
-            }
-          ) : null,
-          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              className: "sft-ribbon-button-label"
-            },
-            "Export Shown"
-          ) : null
-        )
-      );
-    }
-    const arrOutcomes = Array.from(Object.values(root.component.outcomes));
-    for (let pos = 0; pos < arrOutcomes.length; pos++) {
-      const outcome = arrOutcomes[pos];
-      if (outcome.isBulkAction && outcome.developerName !== "OnSelect" && outcome.developerName !== "OnChange" && !outcome.developerName.toLowerCase().startsWith("cm")) {
-        const showOutcome = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root);
-        if (showOutcome === true) {
-          this.rightButtons.push(
-            /* @__PURE__ */ React15.createElement(
-              "div",
-              {
-                className: "sft-ribbon-button-wrapper",
-                onClick: (e) => {
-                  root.doOutcome(outcome.developerName, void 0);
-                }
-              },
-              outcome.attributes?.icon ? /* @__PURE__ */ React15.createElement(
-                "span",
-                {
-                  key: outcome.developerName,
-                  className: "glyphicon glyphicon-" + (outcome.attributes["icon"]?.value || "plus") + " sft-ribbon-button-icon",
-                  title: outcome.label || outcome.developerName
-                }
-              ) : null,
-              !outcome.attributes?.display || outcome.attributes.display?.value.indexOf("text") >= 0 ? /* @__PURE__ */ React15.createElement(
-                "span",
-                {
-                  className: "sft-ribbon-button-label"
-                },
-                outcome.label
-              ) : null
-            )
-          );
-        }
-      }
-    }
-    if (root.component.content?.length > 0) {
-      this.rightButtons.push(
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-search-button-wrapper",
-            onClick: (e) => {
-              root.showInfo();
-            }
-          },
-          /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              key: "colpick",
-              className: "glyphicon sft-ribbon-search-button-icon glyphicon-" + (root.component.attributes?.InfoIcon ? root.component.attributes.InfoIcon : "question-sign"),
-              title: "Infornation"
-            }
-          ),
-          !root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              className: "sft-ribbon-search-button-label"
-            },
-            "Column Picker"
-          ) : null
-        )
-      );
-    }
-    if (root.dynamicColumns === true) {
-      this.rightButtons.push(
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-button-wrapper",
-            onClick: (e) => {
-              root.showColumnPicker();
-            }
-          },
-          /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              key: "colpick",
-              className: "glyphicon sft-ribbon-button-icon glyphicon-" + (root.component.attributes?.ColumnsIcon ? root.component.attributes.ColumnsIcon : "option-vertical"),
-              title: "Select columns"
-            }
-          ),
-          !root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              className: "sft-ribbon-button-label"
-            },
-            "Column Picker"
-          ) : null
-        )
-      );
-    }
-    if (root.selectedRowMap.size > 0 && canExport === true) {
-      this.leftButtons.push(
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-button-wrapper",
-            onClick: (e) => {
-              e.stopPropagation();
-              root.doExport(root.selectedRowMap);
-            }
-          },
-          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              key: "exportSelected",
-              className: "glyphicon glyphicon-floppy-save sft-ribbon-button-icon",
-              title: "Export Selected"
-            }
-          ) : null,
-          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              className: "sft-ribbon-button-label"
-            },
-            "Export Selected"
-          ) : null
-        )
-      );
-    }
-    this.forceUpdate();
-    return true;
-  }
-  generateComponents() {
-  }
-  render() {
-    const root = this.props.root;
-    const style = {};
-    if (root.titleElement) {
-      style.top = "2.5rem";
-    }
-    return /* @__PURE__ */ React15.createElement(
-      "div",
-      {
-        className: "sft-ribbon",
-        style
-      },
-      /* @__PURE__ */ React15.createElement(
-        "div",
-        {
-          className: "sft-ribbon-left-wrapper"
-        },
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-title-wrapper"
-          },
-          /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              className: "sft-ribbon-title"
-            },
-            "Available actions:"
-          )
-        ),
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-hbuttons-wrapper"
-          },
-          this.leftButtons
-        )
-      ),
-      /* @__PURE__ */ React15.createElement(
-        "div",
-        {
-          className: "sft-ribbon-right-wrapper"
-        },
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-title-wrapper"
-          },
-          /* @__PURE__ */ React15.createElement(
-            "span",
-            {
-              className: "sft-ribbon-title"
-            }
-          )
-        ),
-        /* @__PURE__ */ React15.createElement(
-          "div",
-          {
-            className: "sft-ribbon-hbuttons-wrapper"
-          },
-          this.rightButtons
-        )
-      )
-    );
-  }
-};
-
-// src/SearchFilterTableRibbonSearch.tsx
-var React17 = __toESM(require_react());
+var React4 = __toESM(require_react());
 
 // node_modules/@fortawesome/fontawesome-svg-core/index.mjs
 var noop = () => {
@@ -34963,13 +32286,13 @@ function getMutator() {
 function createElementNS(tag) {
   return DOCUMENT.createElementNS("http://www.w3.org/2000/svg", tag);
 }
-function createElement15(tag) {
+function createElement2(tag) {
   return DOCUMENT.createElement(tag);
 }
 function convertSVG(abstractObj) {
   let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
   const {
-    ceFn = abstractObj.tag === "svg" ? createElementNS : createElement15
+    ceFn = abstractObj.tag === "svg" ? createElementNS : createElement2
   } = params;
   if (typeof abstractObj === "string") {
     return DOCUMENT.createTextNode(abstractObj);
@@ -36518,8 +33841,3001 @@ FontAwesomeIcon.propTypes = {
 };
 var convertCurry = convert.bind(null, import_react2.default.createElement);
 
-// src/SearchFilterTableRibbonSearch.tsx
+// src/FilterConfigForm.tsx
+var import_faCirclePlus = __toESM(require_faCirclePlus());
+var import_faCircleXmark = __toESM(require_faCircleXmark());
+var FilterConfigForm = class extends React4.Component {
+  constructor(props) {
+    super(props);
+    this.filter = this.props.filter;
+    this.newCriteria = [];
+    this.filter.criteria.forEach((criteria) => {
+      this.newCriteria.push(criteria);
+    });
+    this.addCriteria = this.addCriteria.bind(this);
+  }
+  addCriteria() {
+    this.newCriteria.push(new SFTColumnCriteria(0 /* equalTo */, ""));
+    this.forceUpdate();
+  }
+  prepCriteriaValue(criteria) {
+    switch (criteria.comparator) {
+      case 9 /* in */:
+      case 10 /* notIn */:
+        criteria.value = /* @__PURE__ */ new Map();
+        break;
+      default:
+        if (typeof criteria.value !== "string") {
+          criteria.value = "";
+        }
+        break;
+    }
+  }
+  render() {
+    const rows = [];
+    if (this.newCriteria.length === 0) {
+      rows.push(
+        /* @__PURE__ */ React4.createElement(
+          "div",
+          {
+            className: "sft-fcf-row"
+          },
+          /* @__PURE__ */ React4.createElement(
+            "span",
+            {
+              className: "sft-fcf-label"
+            },
+            "No Criteria defined"
+          )
+        )
+      );
+    } else {
+      this.newCriteria.forEach((criteria) => {
+        const options = SFTColumnCriteria.getOptions(criteria.comparator, "sft-fmf-row-criteria-select-option", this.props.contentType);
+        let critBox;
+        let critBox2;
+        switch (criteria.comparator) {
+          case 9 /* in */:
+          case 10 /* notIn */:
+            critBox = this.props.root.getColumnUniques(this.props.developerName, criteria);
+            break;
+          case 4 /* between */:
+            critBox = /* @__PURE__ */ React4.createElement(
+              "input",
+              {
+                type: "text",
+                className: "sft-fmf-row-criteria-text",
+                defaultValue: criteria.value,
+                onChange: (e) => {
+                  criteria.value = e.target.value;
+                }
+              }
+            );
+            critBox2 = /* @__PURE__ */ React4.createElement(
+              "input",
+              {
+                type: "text",
+                className: "sft-fmf-row-criteria-text",
+                defaultValue: criteria.value2,
+                onChange: (e) => {
+                  criteria.value2 = e.target.value;
+                }
+              }
+            );
+            break;
+          default:
+            critBox = /* @__PURE__ */ React4.createElement(
+              "input",
+              {
+                type: "text",
+                className: "sft-fmf-row-criteria-text",
+                defaultValue: criteria.value,
+                onChange: (e) => {
+                  criteria.value = e.target.value;
+                }
+              }
+            );
+            break;
+        }
+        rows.push(
+          /* @__PURE__ */ React4.createElement(
+            "div",
+            {
+              className: "sft-fmf-row"
+            },
+            /* @__PURE__ */ React4.createElement(
+              "div",
+              {
+                className: "sft-fmf-row-labels"
+              },
+              /* @__PURE__ */ React4.createElement(
+                "div",
+                {
+                  className: "sft-fmf-row-caption-criteria"
+                },
+                "Comparator"
+              ),
+              /* @__PURE__ */ React4.createElement(
+                "div",
+                {
+                  className: "sft-fmf-row-caption"
+                },
+                "Value"
+              )
+            ),
+            /* @__PURE__ */ React4.createElement(
+              "div",
+              {
+                className: "sft-fmf-row-values"
+              },
+              /* @__PURE__ */ React4.createElement(
+                "div",
+                {
+                  className: "sft-fmf-row-criteria"
+                },
+                /* @__PURE__ */ React4.createElement(
+                  "select",
+                  {
+                    className: "sft-fmf-row-criteria-select",
+                    onChange: (e) => {
+                      criteria.comparator = parseInt(e.target.options[e.target.selectedIndex].value);
+                      this.prepCriteriaValue(criteria);
+                      this.forceUpdate();
+                    }
+                  },
+                  options
+                )
+              ),
+              /* @__PURE__ */ React4.createElement(
+                "div",
+                {
+                  className: "sft-fmf-row-value"
+                },
+                critBox,
+                critBox2
+              ),
+              /* @__PURE__ */ React4.createElement(
+                "button",
+                {
+                  className: "sft-ribbon-search-button-wrapper",
+                  title: "Remove criteria",
+                  onClick: (e) => {
+                    this.newCriteria = this.newCriteria.filter(
+                      (item) => item !== criteria
+                    );
+                    this.forceUpdate();
+                  }
+                },
+                /* @__PURE__ */ React4.createElement(
+                  FontAwesomeIcon,
+                  {
+                    icon: import_faCircleXmark.faCircleXmark,
+                    className: "sft-ribbon-search-button-icon  sft-column-header-flag-hot"
+                  }
+                )
+              )
+            )
+          )
+        );
+      });
+    }
+    rows.push(
+      /* @__PURE__ */ React4.createElement(
+        "div",
+        {
+          className: "sft-fcf-buttons"
+        },
+        /* @__PURE__ */ React4.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faCirclePlus.faCirclePlus,
+            className: "sft-column-header-flag"
+          }
+        )
+      )
+    );
+    return /* @__PURE__ */ React4.createElement(
+      "div",
+      {
+        className: "modal-dialog-content",
+        style: { width: "910px", display: "flex", flexDirection: "column", margin: "auto", padding: "2rem" }
+      },
+      rows
+    );
+  }
+};
+
+// node_modules/fcmkit/lib/ModalDialog/FCMModalButton.js
+var FCMModalButton = class {
+  constructor(label, handler) {
+    this.label = label;
+    this.handler = handler;
+  }
+};
+
+// src/ColumnFilters.tsx
+var import_faCircleXmark2 = __toESM(require_faCircleXmark());
+var import_faCaretDown = __toESM(require_faCaretDown());
+var import_faCaretUp = __toESM(require_faCaretUp());
 var import_faMagnifyingGlass = __toESM(require_faMagnifyingGlass());
+var SFTColumnFilters2 = class _SFTColumnFilters {
+  constructor(parent) {
+    this.items = /* @__PURE__ */ new Map();
+    this.quickChecks = /* @__PURE__ */ new Map();
+    this.suppressNotify = false;
+    this.parent = parent;
+    this.notify = this.notify.bind(this);
+    this.getSortIcon = this.getSortIcon.bind(this);
+    this.getFilterIcon = this.getFilterIcon.bind(this);
+    this.getQuickCheck = this.getQuickCheck.bind(this);
+    this.sortClicked = this.sortClicked.bind(this);
+    this.filterClicked = this.filterClicked.bind(this);
+    this.quickCheckClicked = this.quickCheckClicked.bind(this);
+    this.saveFilter = this.saveFilter.bind(this);
+    this.cancelFilter = this.cancelFilter.bind(this);
+    this.matchesCriteria = this.matchesCriteria.bind(this);
+  }
+  clone() {
+    const clone = new _SFTColumnFilters(this.parent);
+    clone.globalCriteria = this.globalCriteria;
+    this.items.forEach((item, key) => {
+      clone.items.set(key, item.clone());
+    });
+    return clone;
+  }
+  // stores / deletes a ref to the child dialog component
+  setDialog(element) {
+    this.dialog = element;
+  }
+  // this is called when individual filters change
+  notify(key, event) {
+    if (this.suppressNotify === false) {
+      this.parent.filtersChanged(key, event);
+    }
+  }
+  get(key) {
+    if (this.items.has(key)) {
+      return this.items.get(key);
+    } else {
+      return void 0;
+    }
+  }
+  has(key) {
+    if (this.items.has(key)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  isFiltered() {
+    let filtered = false;
+    this.items.forEach((item) => {
+      if (item.criteria.length > 0) {
+        filtered = true;
+      }
+    });
+    return filtered;
+  }
+  isFilteredOn(columnName) {
+    let filtered = false;
+    if (this.items.has(columnName)) {
+      if (this.items.get(columnName).criteria.length > 0) {
+        filtered = true;
+      }
+    }
+    return filtered;
+  }
+  clearAll() {
+    this.suppressNotify = true;
+    this.items.forEach((item) => {
+      item.clearFilters();
+    });
+    this.suppressNotify = false;
+    this.notify("", 2 /* filter */);
+  }
+  sortClicked(key) {
+    if (!this.items.has(key)) {
+      this.items.set(key, new SFTColumnFilter(key, this));
+    }
+    this.items.forEach((item) => {
+      if (item.key !== key) {
+        item.sortNone();
+      }
+    });
+    this.items.get(key).sortToggle();
+  }
+  // the filter button was pressed
+  filterClicked(key) {
+    const root = this.parent;
+    if (!this.items.has(key)) {
+      this.items.set(key, new SFTColumnFilter(key, this));
+    }
+    const col = this.parent.colMap.get(key);
+    this.parent.messageBox.showDialog(
+      null,
+      "Filter " + col.label,
+      /* @__PURE__ */ React5.createElement(
+        FilterConfigForm,
+        {
+          root,
+          parent: this,
+          key,
+          developerName: key,
+          filter: this.items.get(key),
+          contentType: col.contentType,
+          ref: (element) => {
+            this.setDialog(element);
+          }
+        }
+      ),
+      [new FCMModalButton("Apply", this.saveFilter), new FCMModalButton("Cancel", this.cancelFilter)]
+    );
+  }
+  filterClear(key) {
+    this.items.get(key).clearFilters();
+  }
+  saveFilter() {
+    const key = this.dialog.filter.key;
+    this.dialog.filter.criteria = this.dialog.newCriteria;
+    this.items.set(key, this.dialog.filter);
+    this.dialog = void 0;
+    this.parent.messageBox.hideDialog();
+    this.notify(key, 2 /* filter */);
+  }
+  cancelFilter() {
+    const key = this.dialog.filter.key;
+    this.dialog = void 0;
+    this.parent.messageBox.hideDialog();
+    this.notify(key, 2 /* filter */);
+  }
+  getSortIcon(key) {
+    if (this.items.has(key)) {
+      switch (this.items.get(key).sort) {
+        case 0 /* none */:
+          return /* @__PURE__ */ React5.createElement(
+            "div",
+            {
+              title: "Not sorted - click to toggle",
+              style: { display: "flex", flexDirection: "column" }
+            },
+            /* @__PURE__ */ React5.createElement(
+              FontAwesomeIcon,
+              {
+                icon: import_faCaretUp.faCaretUp,
+                className: "sft-column-header-flag"
+              }
+            ),
+            /* @__PURE__ */ React5.createElement(
+              FontAwesomeIcon,
+              {
+                icon: import_faCaretDown.faCaretDown,
+                className: "sft-column-header-flag"
+              }
+            )
+          );
+        case 1 /* ascending */:
+          return /* @__PURE__ */ React5.createElement(
+            "div",
+            {
+              onClick: (e) => {
+                this.sortClicked(key);
+              },
+              title: "Ascending - click to toggle",
+              style: { display: "flex", flexDirection: "column" }
+            },
+            /* @__PURE__ */ React5.createElement(
+              FontAwesomeIcon,
+              {
+                icon: import_faCaretUp.faCaretUp,
+                className: "sft-column-header-flag  sft-column-header-flag-hot"
+              }
+            ),
+            /* @__PURE__ */ React5.createElement(
+              FontAwesomeIcon,
+              {
+                icon: import_faCaretDown.faCaretDown,
+                className: "sft-column-header-flag"
+              }
+            )
+          );
+        case -1 /* descending */:
+          return /* @__PURE__ */ React5.createElement(
+            "div",
+            {
+              onClick: (e) => {
+                this.sortClicked(key);
+              },
+              title: "Descending - click to toggle",
+              style: { display: "flex", flexDirection: "column" }
+            },
+            /* @__PURE__ */ React5.createElement(
+              FontAwesomeIcon,
+              {
+                icon: import_faCaretUp.faCaretUp,
+                className: "sft-column-header-flag"
+              }
+            ),
+            /* @__PURE__ */ React5.createElement(
+              FontAwesomeIcon,
+              {
+                icon: import_faCaretDown.faCaretDown,
+                className: "sft-column-header-flag sft-column-header-flag-hot"
+              }
+            )
+          );
+      }
+    } else {
+      return /* @__PURE__ */ React5.createElement(
+        "div",
+        {
+          onClick: (e) => {
+            this.sortClicked(key);
+          },
+          title: "Not sorted - click to toggle",
+          style: { display: "flex", flexDirection: "column" }
+        },
+        /* @__PURE__ */ React5.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faCaretUp.faCaretUp,
+            className: "sft-column-header-flag"
+          }
+        ),
+        /* @__PURE__ */ React5.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faCaretDown.faCaretDown,
+            className: "sft-column-header-flag"
+          }
+        )
+      );
+    }
+  }
+  getFilterIcon(key) {
+    if (this.items.has(key) && this.items.get(key).criteria?.length > 0) {
+      return /* @__PURE__ */ React5.createElement(React5.Fragment, null, /* @__PURE__ */ React5.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faMagnifyingGlass.faMagnifyingGlass,
+          className: "sft-column-header-flag  sft-column-header-flag-hot",
+          onClick: (e) => {
+            this.filterClicked(key);
+          },
+          title: "Change filter"
+        }
+      ), /* @__PURE__ */ React5.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faCircleXmark2.faCircleXmark,
+          className: "sft-column-header-flag sft-column-header-button-hot",
+          onClick: (e) => {
+            this.filterClear(key);
+          },
+          title: "Clear filter"
+        }
+      ));
+    } else {
+      return /* @__PURE__ */ React5.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faMagnifyingGlass.faMagnifyingGlass,
+          className: "sft-column-header-flag  sft-column-header-flag-hot",
+          onClick: (e) => {
+            this.filterClicked(key);
+          },
+          title: "Change filter"
+        }
+      );
+    }
+  }
+  getQuickCheck(columnName) {
+    if (this.parent.component.getAttribute("QuickCheck", "false") === "true" && this.parent.colMap.get(columnName)?.contentType === eContentType.ContentBoolean) {
+      const crit = this.items.get(columnName)?.criteria[0];
+      return /* @__PURE__ */ React5.createElement(
+        "input",
+        {
+          className: "sft-checkbox sft-quick-check",
+          type: "checkbox",
+          onChange: (e) => {
+            this.quickCheckClicked(columnName, e);
+          },
+          ref: (element) => {
+            this.quickChecks.set(columnName, element);
+          },
+          checked: crit?.value ? crit.value : false
+        }
+      );
+    } else {
+      return void 0;
+    }
+  }
+  quickCheckClicked(key, e) {
+    console.log("quick " + key);
+    if (e.currentTarget.checked === true) {
+      this.items.set(key, new SFTColumnFilter(key, this, 0 /* none */, [new SFTColumnCriteria(0 /* equalTo */, true)]));
+    } else {
+      this.items.get(key).clearFilters();
+    }
+    this.notify(key, 2 /* filter */);
+  }
+  // this will filter the passed source map based on the current filters and return a new map of matches.
+  filter(source) {
+    const matches = /* @__PURE__ */ new Map();
+    source.forEach((item, key) => {
+      if (this.matchesCriteria(item)) {
+        matches.set(key, void 0);
+      }
+    });
+    return matches;
+  }
+  matchesCriteria(value) {
+    const objData = value.objectData;
+    let matches = true;
+    let globalMatches;
+    if (this.globalCriteria && this.globalCriteria.length > 0) {
+      globalMatches = false;
+      const comparator = this.globalCriteria.toLowerCase();
+      value.columns.forEach((col) => {
+        const val = ("" + objData.properties[col.name].value)?.toLowerCase();
+        if (val.indexOf(comparator) >= 0) {
+          globalMatches = true;
+        }
+      });
+    }
+    this.items.forEach((item) => {
+      item.criteria.forEach((criteria) => {
+        let val;
+        let crit;
+        let crit2;
+        switch (objData.properties[item.key]?.contentType) {
+          case eContentType.ContentString:
+            val = objData.properties[item.key].value?.toLowerCase();
+            if (criteria.value instanceof Map) {
+              crit = criteria.value;
+            } else {
+              crit = criteria.value.toLowerCase();
+            }
+            break;
+          case eContentType.ContentNumber:
+            val = objData.properties[item.key].value;
+            crit = parseInt(criteria.value);
+            crit2 = parseInt(criteria.value2);
+            break;
+          case eContentType.ContentBoolean:
+            val = objData.properties[item.key].value;
+            crit = criteria.value;
+            break;
+          case eContentType.ContentDateTime:
+            val = new Date(objData.properties[item.key].value);
+            if (isNaN(val)) {
+              val = 0;
+            } else {
+              val = val.getTime();
+            }
+            crit = new Date(criteria.value);
+            if (isNaN(crit)) {
+              crit = 0;
+            } else {
+              crit = crit.getTime();
+            }
+            crit2 = new Date(criteria.value2);
+            if (isNaN(crit2)) {
+              crit2 = 0;
+            } else {
+              crit2 = crit2.getTime();
+            }
+            break;
+          default:
+            val = "";
+            crit = "";
+        }
+        let crits;
+        let matchArray;
+        switch (criteria.comparator) {
+          case 0 /* equalTo */:
+            if (val !== crit) {
+              matches = false;
+            }
+            break;
+          case 1 /* notEqualTo */:
+            if (val === crit) {
+              matches = false;
+            }
+            break;
+          case 7 /* contains */:
+            crits = crit.split(",");
+            matchArray = [];
+            crits.forEach((crit3) => {
+              if (val.indexOf(crit3.trim()) < 0) {
+                matchArray.push(false);
+              } else {
+                matchArray.push(true);
+              }
+            });
+            matches = matchArray.indexOf(true) >= 0;
+            break;
+          case 5 /* startsWith */:
+            if (!val.startsWith(crit)) {
+              matches = false;
+            }
+            break;
+          case 6 /* endsWith */:
+            if (!val.endsWith(crit)) {
+              matches = false;
+            }
+            break;
+          case 8 /* notContains */:
+            crits = crit.split(",");
+            matchArray = [];
+            crits.forEach((crit3) => {
+              if (val.indexOf(crit3.trim()) >= 0) {
+                matchArray.push(true);
+              }
+            });
+            matches = matchArray.indexOf(true) < 0;
+            break;
+          case 9 /* in */:
+            if (!crit.has(objData.properties[item.key].value)) {
+              matches = false;
+            }
+            break;
+          case 10 /* notIn */:
+            if (crit.has(objData.properties[item.key].value)) {
+              matches = false;
+            }
+            break;
+          case 3 /* lessThan */:
+            if (crit <= val) {
+              matches = false;
+            }
+            break;
+          case 2 /* greaterThan */:
+            if (crit >= val) {
+              matches = false;
+            }
+            break;
+          case 4 /* between */:
+            if (val < crit || val > crit2) {
+              matches = false;
+            }
+            break;
+          default:
+            matches = false;
+            break;
+        }
+      });
+    });
+    if (this.globalCriteria?.length > 0) {
+      if (globalMatches === true && matches === true) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return matches;
+    }
+  }
+  getSortColumn() {
+    let sortColumn;
+    this.items.forEach((col) => {
+      if (col.sort !== 0 /* none */) {
+        sortColumn = col;
+      }
+    });
+    return sortColumn;
+  }
+  // this will sort the passed map based on the current filter's sorts and return a new map
+  sort(items, source) {
+    const candidates = new Map(Array.from(source).filter((item) => {
+      if (items.has(item[0])) {
+        return true;
+      }
+    }));
+    const sortColumn = this.getSortColumn();
+    if (sortColumn) {
+      let sorted;
+      let sortPropertyName = sortColumn.key;
+      let colRule = this.parent.columnRules.get(sortColumn.key);
+      if (colRule) {
+        if (["url"].indexOf(colRule.mode) >= 0) {
+          if (colRule.label && colRule.label.startsWith("{{") && colRule.label.endsWith("}}")) {
+            sortPropertyName = colRule.label.replaceAll("{{", "").replaceAll("}}", "");
+          }
+        }
+      }
+      const colDef = this.parent.colMap.get(sortPropertyName);
+      sorted = Array.from(candidates);
+      if (colDef) {
+        if (sortColumn.sort !== 0 /* none */) {
+          switch (colDef?.contentType) {
+            case eContentType.ContentDateTime:
+              sorted.sort((a2, b) => {
+                const d1 = new Date(a2[1].objectData.properties[sortPropertyName].value);
+                const d2 = new Date(b[1].objectData.properties[sortPropertyName].value);
+                if (d1 < d2) {
+                  return -1;
+                }
+                if (d1 > d2) {
+                  return 1;
+                }
+                return 0;
+              });
+              break;
+            default:
+              const collator = new Intl.Collator(void 0, { numeric: true, sensitivity: "base" });
+              sorted.sort(
+                (a2, b) => {
+                  const v1 = a2[1].objectData.properties[sortPropertyName].value ? a2[1].objectData.properties[sortPropertyName].value : 0;
+                  const v2 = b[1].objectData.properties[sortPropertyName].value ? b[1].objectData.properties[sortPropertyName].value : 0;
+                  return collator.compare(v1, v2);
+                }
+              );
+              break;
+          }
+          if (sortColumn.sort === -1 /* descending */) {
+            sorted = sorted.reverse();
+          }
+        }
+        const results = new Map(sorted);
+        results.forEach((item, key) => {
+          results.set(key, void 0);
+        });
+        return results;
+      } else {
+        return items;
+      }
+    } else {
+      return items;
+    }
+  }
+  getForStorage() {
+    const filters = [];
+    this.items.forEach((item) => {
+      filters.push(item.getForStorage());
+    });
+    return JSON.stringify(filters);
+  }
+  loadFromStorage(filters) {
+    this.items = /* @__PURE__ */ new Map();
+    const src = JSON.parse(filters);
+    if (src) {
+      src.forEach((filter) => {
+        filter = JSON.parse(filter);
+        if (filter.key) {
+          this.items.set(filter.key, new SFTColumnFilter(filter.key, this, filter.sort, filter.criteria));
+        }
+      });
+    }
+  }
+  getForFSS() {
+    let filters = {};
+    let sort;
+    if (this.getSortColumn()) {
+      sort = {
+        developerName: this.getSortColumn().key,
+        direction: this.getSortColumn().sortAscending ? "ASC" : "DESC"
+      };
+      filters.sort = sort;
+    }
+    if (this.items.size > 0 || this.globalCriteria) {
+      filters.filters = [];
+      if (this.globalCriteria) {
+        filters.filters.push(
+          {
+            developerName: "stringSearch",
+            comparator: "CONTAINS",
+            value: this.globalCriteria
+          }
+        );
+      }
+      this.items.forEach((item) => {
+        filters.filters.push(item.getForFSS());
+      });
+    }
+    return JSON.stringify(filters);
+  }
+};
+
+// src/ColumnPickerForm.tsx
+var React6 = __toESM(require_react());
+var ColumnPickerForm = class extends React6.Component {
+  constructor(props) {
+    super(props);
+    this.selectedColumns = [];
+    this.toggleSelection = this.toggleSelection.bind(this);
+    const root = this.props.root;
+    root.userColumns.forEach((columnName) => {
+      this.selectedColumns.push(columnName);
+    });
+  }
+  toggleSelection(key, e) {
+    if (e.target.checked) {
+      if (this.selectedColumns.indexOf(key) < 0) {
+        this.selectedColumns.push(key);
+      }
+    } else {
+      this.selectedColumns.splice(this.selectedColumns.indexOf(key), 1);
+    }
+    this.forceUpdate();
+  }
+  render() {
+    const root = this.props.root;
+    const cols = [];
+    let rows = [];
+    let colArray = Array.from(root.colMap.values());
+    colArray.sort((a2, b) => {
+      if (a2.label > b.label) {
+        return 1;
+      }
+      if (a2.label < b.label) {
+        return -1;
+      }
+      return 0;
+    });
+    colArray.forEach((column) => {
+      if (rows.length > 11) {
+        cols.push(
+          /* @__PURE__ */ React6.createElement(
+            "div",
+            {
+              className: "sft-column-picker-column"
+            },
+            rows
+          )
+        );
+        rows = [];
+      }
+      rows.push(
+        /* @__PURE__ */ React6.createElement(
+          "div",
+          {
+            className: "sft-column-picker-row"
+          },
+          /* @__PURE__ */ React6.createElement(
+            "div",
+            {
+              className: "checkbox-checkbox-wrapper"
+            },
+            /* @__PURE__ */ React6.createElement(
+              "input",
+              {
+                id: column.developerName,
+                type: "checkbox",
+                className: "sft-checkbox",
+                checked: this.selectedColumns.indexOf(column.developerName) >= 0,
+                onChange: (e) => {
+                  this.toggleSelection(column.developerName, e);
+                }
+              }
+            )
+          ),
+          /* @__PURE__ */ React6.createElement(
+            "div",
+            {
+              className: "checkbox-label-wrapper"
+            },
+            /* @__PURE__ */ React6.createElement(
+              "label",
+              {
+                className: "checkbox-row-label",
+                htmlFor: column.developerName
+              },
+              column.label
+            )
+          )
+        )
+      );
+    });
+    if (rows.length > 0) {
+      cols.push(
+        /* @__PURE__ */ React6.createElement("div", null, rows)
+      );
+    }
+    return /* @__PURE__ */ React6.createElement(
+      "div",
+      {
+        className: "modal-dialog-content",
+        style: { maxHeight: "80vh", maxWidth: "80vw", display: "flex", flexDirection: "column", margin: "auto", padding: "0rem" }
+      },
+      /* @__PURE__ */ React6.createElement(
+        "div",
+        {
+          className: "sft-scroller",
+          style: { maxHeight: "80vh", maxWidth: "80vw" }
+        },
+        /* @__PURE__ */ React6.createElement(
+          "div",
+          {
+            className: "sft-column-picker-body"
+          },
+          cols
+        )
+      )
+    );
+  }
+};
+
+// src/ColumnRule.tsx
+var React8 = __toESM(require_react());
+
+// src/CommonFunctions.tsx
+var React7 = __toESM(require_react());
+var SFTCommonFunctions = class _SFTCommonFunctions {
+  static async getFlowValue() {
+  }
+  static async assessGlobalOutcomeRule(outcome, root) {
+    let result = true;
+    if (outcome.attributes["RequiresSelected"]?.value === "true") {
+      if (root.component.isMultiSelect === true) {
+        if (root.selectedRowMap.size < 1) {
+          result = false;
+        }
+      } else {
+        if (!root.selectedRow || root.selectedRow.length < 1) {
+          result = false;
+        }
+      }
+    }
+    if (outcome.attributes["RequiresRows"]?.value === "true" && root.rowMap.size < 1) {
+      result = false;
+    }
+    if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
+      try {
+        const rule = JSON.parse(outcome.attributes.rule.value);
+        let contentType;
+        let match;
+        let fld = rule.field;
+        let fld2 = rule.value;
+        let value = fld;
+        let compareTo = fld2;
+        while (match = RegExp(/{{([^}]*)}}/).exec(fld)) {
+          switch (match[1]) {
+            case "TENANT_ID":
+              contentType = eContentType.ContentString;
+              value = "MyTenentId";
+              break;
+            default:
+              const fldElements = match[1].split("->");
+              let val;
+              if (root.component.fields[fldElements[0]]) {
+                val = root.component.fields[fldElements[0]];
+              } else {
+                val = await root.component.getValue(fldElements[0]);
+              }
+              if (val) {
+                let od = val.value;
+                if (od) {
+                  if (fldElements.length > 1) {
+                    for (let epos = 1; epos < fldElements.length; epos++) {
+                      contentType = od.properties[fldElements[epos]]?.contentType;
+                      od = od.properties[fldElements[epos]].value;
+                    }
+                    value = od;
+                  } else {
+                    value = val.value;
+                    contentType = val.contentType;
+                  }
+                } else {
+                  value = val.value;
+                  contentType = val.contentType;
+                }
+              }
+              break;
+          }
+          fld = fld.replace(match[0], value);
+        }
+        while (match = RegExp(/{{([^}]*)}}/).exec(fld2)) {
+          switch (match[1]) {
+            case "TENANT_ID":
+              contentType = eContentType.ContentString;
+              value = "MyTenentId";
+              break;
+            default:
+              const fldElements = match[1].split("->");
+              let val;
+              if (root.component.fields[fldElements[0]]) {
+                val = root.component.fields[fldElements[0]];
+              } else {
+                val = await root.component.getValue(fldElements[0]);
+              }
+              if (val) {
+                let od = val.value;
+                if (od) {
+                  if (fldElements.length > 1) {
+                    for (let epos = 1; epos < fldElements.length; epos++) {
+                      contentType = od.properties[fldElements[epos]]?.contentType;
+                      od = od.properties[fldElements[epos]].value;
+                    }
+                    compareTo = od;
+                  } else {
+                    compareTo = val.value;
+                    contentType = val.contentType;
+                  }
+                } else {
+                  compareTo = val.value;
+                  contentType = val.contentType;
+                }
+              }
+              break;
+          }
+          fld2 = fld2.replace(match[0], value);
+        }
+        result = result && _SFTCommonFunctions.assessRule(value, rule.comparator, compareTo, contentType);
+      } catch (e) {
+        console.log("The rule on top level outcome " + outcome.developerName + " is invalid");
+      }
+    }
+    return result;
+  }
+  static assessRowOutcomeRule(outcome, row, root) {
+    let result = true;
+    if (!outcome) {
+      return false;
+    }
+    if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
+      try {
+        const rule = JSON.parse(outcome.attributes.rule.value);
+        let contentType;
+        let match;
+        let fld = rule.field;
+        let fld2 = rule.value;
+        let value = fld;
+        let compareTo = fld2;
+        while (match = RegExp(/{{([^}]*)}}/).exec(fld)) {
+          switch (match[1]) {
+            case "TENANT_ID":
+              contentType = eContentType.ContentString;
+              value = "MyTenentId";
+              break;
+            default:
+              const fldElements = match[1].split("->");
+              let val;
+              val = root.component.fields[fldElements[0]];
+              if (val) {
+                let od = val.value;
+                if (od) {
+                  if (fldElements.length > 1) {
+                    for (let epos = 1; epos < fldElements.length; epos++) {
+                      contentType = od.properties[fldElements[epos]]?.contentType;
+                      od = od.properties[fldElements[epos]].value;
+                    }
+                    value = od;
+                  } else {
+                    value = val.value;
+                    contentType = val.contentType;
+                  }
+                } else {
+                  value = val.value;
+                  contentType = val.contentType;
+                }
+              }
+              break;
+          }
+          fld = fld.replace(match[0], value);
+        }
+        while (match = RegExp(/{{([^}]*)}}/).exec(fld2)) {
+          switch (match[1]) {
+            case "TENANT_ID":
+              contentType = eContentType.ContentString;
+              value = "MyTenentId";
+              break;
+            default:
+              const fldElements = match[1].split("->");
+              let val;
+              val = root.component.fields[fldElements[0]];
+              if (val) {
+                let od = val.value;
+                if (od) {
+                  if (fldElements.length > 1) {
+                    for (let epos = 1; epos < fldElements.length; epos++) {
+                      contentType = od.properties[fldElements[epos]]?.contentType;
+                      od = od.properties[fldElements[epos]].value;
+                    }
+                    compareTo = od;
+                  } else {
+                    compareTo = val.value;
+                    contentType = val.contentType;
+                  }
+                } else {
+                  compareTo = val.value;
+                  contentType = val.contentType;
+                }
+              }
+              break;
+          }
+          fld2 = fld2.replace(match[0], value);
+        }
+        if (row.properties[fld]) {
+          const property = row.properties[fld];
+          result = _SFTCommonFunctions.assessRule(property.value, rule.comparator, compareTo, property.contentType);
+        } else {
+          result = _SFTCommonFunctions.assessRule(value, rule.comparator, compareTo, contentType);
+        }
+      } catch (e) {
+        console.log("The rule on row level outcome " + outcome.developerName + " is invalid");
+      }
+    }
+    return result;
+  }
+  static assessRule(value, comparator, compareTo, fieldType) {
+    let comparee;
+    let comparer;
+    let result = true;
+    switch (fieldType) {
+      case eContentType.ContentNumber:
+        comparee = parseInt(compareTo);
+        comparer = value;
+        break;
+      case eContentType.ContentDateTime:
+        comparee = new Date(compareTo);
+        comparer = value;
+        break;
+      case eContentType.ContentBoolean:
+        comparee = ("" + compareTo).toLowerCase() === "true";
+        comparer = value;
+        break;
+      case eContentType.ContentString:
+      default:
+        comparee = compareTo.toLowerCase().split(",");
+        if (comparee.length > 0) {
+          for (let pos = 0; pos < comparee.length; pos++) {
+            comparee[pos] = comparee[pos].trim();
+          }
+        }
+        if (["in", "not in"].indexOf(comparator.toLowerCase()) < 0) {
+          comparee = comparee[0];
+        }
+        comparer = value?.toLowerCase();
+        break;
+    }
+    switch (comparator.toLowerCase()) {
+      case "equals":
+        result = comparer === comparee;
+        break;
+      case "not equals":
+        result = comparer !== comparee;
+        break;
+      case "contains":
+        result = comparer.indexOf(comparee) >= 0;
+        break;
+      case "not contains":
+        result = comparer.indexOf(comparee) < 0;
+        break;
+      case "starts with":
+        result = ("" + comparer).startsWith(comparee);
+        break;
+      case "ends with":
+        result = ("" + comparer).endsWith(comparee);
+        break;
+      case "in":
+        result = comparee.indexOf(comparer) >= 0;
+        break;
+      case "not in":
+        result = comparee.indexOf(comparer) < 0;
+        break;
+      case "lt":
+        result = parseInt("" + comparer) < parseInt("" + comparee);
+        break;
+      case "lte":
+        result = parseInt("" + comparer) <= parseInt("" + comparee);
+        break;
+      case "gt":
+        result = parseInt("" + comparer) > parseInt("" + comparee);
+        break;
+      case "gte":
+        result = parseInt("" + comparer) >= parseInt("" + comparee);
+        break;
+    }
+    return result;
+  }
+  // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
+  // the values, if {{}} ere prepopulated in preLoad
+  static makeOutcomeButton(comp, outcome, suffix, objectData, dissabled) {
+    let icon2;
+    let show = false;
+    let retries = 0;
+    if (outcome.attributes?.iconValue?.value?.length > 0) {
+      let flds;
+      let iconName;
+      let iconValue = comp.outcomeIcons.get(outcome.id);
+      if (suffix && suffix.length > 0) {
+        let path = iconValue.substring(0, iconValue.lastIndexOf("."));
+        let ext = iconValue.substring(iconValue.lastIndexOf("."));
+        iconName = path + "_" + suffix.toLowerCase() + ext;
+      } else {
+        iconName = iconValue;
+      }
+      let imgClass = "sft-ribbon-search-button-image";
+      if (dissabled) {
+        imgClass += " sft-ribbon-search-button-image-grey";
+      }
+      icon2 = /* @__PURE__ */ React7.createElement(
+        "img",
+        {
+          className: imgClass,
+          src: iconName,
+          onError: (e) => {
+            retries++;
+            if (retries < 2) {
+              e.currentTarget.src = iconValue;
+            }
+          },
+          title: outcome.label || outcome.developerName
+        }
+      );
+      show = true;
+    } else {
+      if (outcome.attributes?.icon?.value?.length > 0 && outcome.attributes?.icon?.value !== "null") {
+        let iconClass = " sft-ribbon-search-button-icon";
+        if (dissabled) {
+          iconClass += "sft-ribbon-search-button-image-grey";
+        }
+        icon2 = /* @__PURE__ */ React7.createElement(
+          "span",
+          {
+            key: outcome.developerName,
+            className: "glyphicon glyphicon-" + (outcome.attributes["icon"]?.value || "plus") + " " + iconClass,
+            title: outcome.label || outcome.developerName
+          }
+        );
+        show = true;
+      }
+    }
+    let button;
+    if (show === true) {
+      button = /* @__PURE__ */ React7.createElement(
+        "div",
+        {
+          key: outcome.id,
+          className: "sft-ribbon-search-button-wrapper " + outcome.attributes?.classes?.value,
+          onClick: (e) => {
+            if (!dissabled) {
+              e.stopPropagation();
+              comp.doOutcome(outcome.developerName, objectData);
+            }
+          }
+        },
+        icon2,
+        !outcome.attributes?.display || outcome.attributes.display?.value.indexOf("text") >= 0 ? /* @__PURE__ */ React7.createElement(
+          "span",
+          {
+            className: "sft-ribbon-search-button-label"
+          },
+          outcome.label
+        ) : null
+      );
+    }
+    return button;
+  }
+  // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
+  // the values, if {{}} ere prepopulated in preLoad
+  static makeCoreButton(label, toolTip, iconValue, defaultIcon, suffix, callback, key, display) {
+    let retries = 0;
+    let icon2;
+    if (iconValue?.length > 0) {
+      let flds;
+      let iconName;
+      if (suffix && suffix.length > 0) {
+        let path = iconValue.substring(0, iconValue.lastIndexOf("."));
+        let ext = iconValue.substring(iconValue.lastIndexOf("."));
+        iconName = path + "_" + suffix.toLowerCase() + ext;
+      } else {
+        iconName = iconValue;
+      }
+      let imgClass = "sft-ribbon-search-button-image";
+      icon2 = /* @__PURE__ */ React7.createElement(
+        "img",
+        {
+          className: imgClass,
+          src: iconName,
+          onError: (e) => {
+            retries++;
+            if (retries < 2) {
+              e.currentTarget.src = iconValue;
+            }
+          },
+          title: toolTip
+        }
+      );
+    } else {
+      icon2 = defaultIcon;
+    }
+    let button = /* @__PURE__ */ React7.createElement(
+      "div",
+      {
+        key,
+        className: "sft-ribbon-search-button-wrapper " + key,
+        onClick: callback
+      },
+      icon2,
+      display && display.indexOf("text") >= 0 ? /* @__PURE__ */ React7.createElement(
+        "span",
+        {
+          className: "sft-ribbon-search-button-label"
+        },
+        label
+      ) : null
+    );
+    return button;
+  }
+};
+
+// src/ColumnRule.tsx
+var ColumnRules = class {
+  static async parse(ruleStr, parent) {
+    let match;
+    while (match = RegExp(/^{{([^}]*)}}/).exec(ruleStr)) {
+      const fldElements = match[1].split("->");
+      let val = await parent.component.getValue(fldElements[0]);
+      ruleStr = ruleStr.replace(match[0], val.value);
+    }
+    const rules = /* @__PURE__ */ new Map();
+    if (ruleStr && ruleStr.length > 0) {
+      let rObj;
+      try {
+        rObj = JSON.parse(ruleStr);
+        Object.keys(rObj).forEach((key) => {
+          rules.set(key, ColumnRule.parse(key, rObj[key], parent));
+        });
+      } catch (e) {
+        console.log("Column rules attribute badly formatted");
+      }
+    }
+    return rules;
+  }
+};
+var ColumnRule = class _ColumnRule {
+  constructor() {
+    this.timeZone = true;
+  }
+  static parse(key, rule, parent) {
+    const colRule = new _ColumnRule();
+    colRule.columnName = key;
+    colRule.mode = rule.mode?.toLowerCase();
+    colRule.parent = parent;
+    colRule.whiteSpace = rule.whitespace || "";
+    colRule.cssClass = rule.classes || "";
+    colRule.condition = rule.condition;
+    colRule.cellClass = rule.cellClass;
+    colRule.rowClass = rule.rowClass;
+    switch (colRule.mode) {
+      case "url":
+        colRule.target = rule.target || "_blank";
+        colRule.url = rule.url || "{{VALUE}}";
+        colRule.label = rule.label || void 0;
+        break;
+      case "dateformat":
+        colRule.dateFormat = rule.dateFormat;
+        colRule.timeZone = !(("" + rule.timeZone).toLowerCase() === "false");
+        break;
+      case "class":
+        colRule.componentClass = rule.componentClass || rule.className;
+      case "style":
+        break;
+      case "outcome":
+        colRule.outcomeName = rule.outcomeName;
+        break;
+      case "lookup":
+        colRule.lookupTable = /* @__PURE__ */ new Map();
+        if (rule.options) {
+          Object.keys(rule.options).forEach((key2) => {
+            colRule.lookupTable.set(key2, rule.options[key2]);
+          });
+        }
+        break;
+      case "format":
+        colRule.format = rule.format;
+        break;
+      case "currency":
+        colRule.currency = rule.currency;
+        break;
+      case "icon":
+        colRule.icon = rule.icon;
+        colRule.iconClass = rule.iconClass;
+        break;
+      default:
+        break;
+    }
+    return colRule;
+  }
+  getTextValue(property) {
+    let result = "";
+    const style = {};
+    switch (property.contentType) {
+      case eContentType.ContentBoolean:
+        if (property.value === true) {
+          result = "True";
+        } else {
+          result = "False";
+        }
+        break;
+      case eContentType.ContentNumber:
+        result = property.value.toString();
+        break;
+      default:
+        result = property.value;
+        break;
+    }
+    return result;
+  }
+  generateColumnContent(value, row, sft) {
+    const style = {};
+    let classes = "sft-table-cell-text";
+    if (this.whiteSpace) {
+      style.whiteSpace = this.whiteSpace;
+    }
+    if (this.cssClass) {
+      classes += " " + this.cssClass;
+    }
+    let applyRule = true;
+    if (this.condition) {
+      switch (this.condition.comparator.toLowerCase()) {
+        case "equals":
+          applyRule = value.value === this.condition.value;
+          break;
+        case "not equals":
+          applyRule = value.value !== this.condition.value;
+          break;
+        case "gt":
+          applyRule = value.value > this.condition.value;
+          break;
+      }
+    }
+    let label;
+    let match;
+    let content;
+    let rowClass = this.rowClass || "";
+    let cellClass = this.cellClass || "";
+    const matches = [];
+    if (applyRule === true || this.mode === "icon") {
+      rowClass = this.rowClass;
+      switch (this.mode) {
+        case "outcome":
+          label = this.label || value.value;
+          let show = SFTCommonFunctions.assessRowOutcomeRule(sft.component.outcomes[this.outcomeName], row, sft);
+          while (match = RegExp(/{{([^}]*)}}/).exec(label)) {
+            const prop = row.properties[match[1].replace("&amp;", "&")];
+            if (prop) {
+              const subs = this.getTextValue(prop);
+              label = label.replace(match[0], subs);
+            }
+          }
+          if (show) {
+            let toolTip = sft.component.outcomes[this.outcomeName].label;
+            content = /* @__PURE__ */ React8.createElement(
+              "span",
+              {
+                className: "sft-table-cell-href",
+                onClick: (e) => {
+                  sft.doOutcome(this.outcomeName, row);
+                },
+                title: toolTip
+              },
+              label
+            );
+          } else {
+            content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, label);
+          }
+          break;
+        case "url":
+          const href = this.url.replace("{{VALUE}}", value.value);
+          label = this.label || value.value;
+          while (match = RegExp(/{{([^}]*)}}/).exec(label)) {
+            const prop = row.properties[match[1].replace("&amp;", "&")];
+            if (prop) {
+              const subs = this.getTextValue(prop);
+              label = label.replace(match[0], subs);
+            }
+          }
+          content = /* @__PURE__ */ React8.createElement(
+            "a",
+            {
+              className: "sft-table-cell-href",
+              href,
+              target: this.target
+            },
+            label
+          );
+          break;
+        case "class":
+          const columnProps = {
+            id: row.internalId,
+            propertyId: value.typeElementPropertyId,
+            contentValue: value.value,
+            objectData: value.value,
+            flowKey: this.parent.component.id,
+            contentType: value.contentType,
+            contentFormat: value.contentFormat,
+            row,
+            sft: this.parent,
+            component: this.parent.component
+          };
+          content = React8.createElement(manywho.component.getByName(this.componentClass), columnProps);
+          break;
+        case "dateformat":
+          let result = "";
+          if (value) {
+            const dt = new Date(value.value);
+            if (!isNaN(dt.getTime()) && dt.getTime() > 0) {
+              if (this.timeZone === false) {
+                dt.setMinutes(dt.getMinutes() + dt.getTimezoneOffset());
+              }
+              switch (this.dateFormat.toLowerCase()) {
+                case "datetime":
+                  result = dt.toLocaleString("en-GB", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+                  break;
+                case "date":
+                  result = dt.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+                  break;
+                case "time":
+                  result = dt.toLocaleTimeString();
+                  break;
+                case "json":
+                  result = dt.toJSON();
+                  break;
+                case "iso":
+                  result = dt.toISOString();
+                  break;
+                case "utc":
+                  result = dt.toUTCString();
+                  break;
+                case "year":
+                  result = "" + dt.getFullYear();
+                  break;
+              }
+            }
+          }
+          content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, result);
+          break;
+        case "lookup":
+          let enval = value;
+          if (this.lookupTable.has(value)) {
+            enval = this.lookupTable.get(value);
+          }
+          content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, enval);
+          break;
+        case "percent":
+          let pc = parseInt("" + value?.value || "0") + "%";
+          content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, pc);
+          break;
+        case "format":
+          let res = this.format.replaceAll("{{value}}", value.value);
+          content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, res);
+          break;
+        case "currency":
+          var formatter = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: this.currency,
+            // These options are needed to round to whole numbers if that's what you want.
+            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+            maximumFractionDigits: 0
+            // (causes 2500.99 to be printed as $2,501)
+          });
+          let amt = formatter.format(value.value);
+          content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, amt);
+          break;
+        case "style":
+          content = /* @__PURE__ */ React8.createElement("span", { className: classes + " " + cellClass, style }, value.value);
+          break;
+        case "icon":
+          let iconClass = this.iconClass + " glyphicon glyphicon-";
+          if (applyRule) {
+            iconClass += (this.condition.icon || this.icon) + " " + this.condition.iconClass;
+            rowClass += " " + this.condition.rowClass;
+            cellClass += " " + this.condition.cellClass;
+          } else {
+            iconClass += this.icon;
+          }
+          content = /* @__PURE__ */ React8.createElement(
+            "span",
+            {
+              title: "" + value.value,
+              className: classes + " " + iconClass,
+              style
+            }
+          );
+          break;
+        default:
+          content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, value.value);
+          break;
+      }
+    } else {
+      content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, value.value);
+    }
+    return { content, cellClass, rowClass };
+  }
+};
+
+// src/FilterManagementForm.tsx
+var React11 = __toESM(require_react());
+
+// src/FilterFormManagementAddRow.tsx
+var React9 = __toESM(require_react());
+var import_faCirclePlus2 = __toESM(require_faCirclePlus());
+var FilterManagementFormAddRow = class extends React9.Component {
+  constructor(props) {
+    super(props);
+    this.fieldSelected = this.fieldSelected.bind(this);
+    this.addColumnCriteria = this.addColumnCriteria.bind(this);
+  }
+  fieldSelected(e) {
+    this.forceUpdate();
+  }
+  addColumnCriteria(e) {
+    const parent = this.props.parent;
+    if (this.fieldSelect && this.fieldSelect.options[this.fieldSelect.selectedIndex].value) {
+      parent.addCriteria(this.fieldSelect.options[this.fieldSelect.selectedIndex].value);
+    }
+  }
+  render() {
+    const parent = this.props.parent;
+    const criteria = this.props.criteria;
+    let fieldInput;
+    const fieldOptions = [];
+    fieldOptions.push(
+      /* @__PURE__ */ React9.createElement(
+        "option",
+        {
+          className: "sft-fmf-row-criteria-select-option",
+          value: null
+        },
+        "Please Select ..."
+      )
+    );
+    const collator = new Intl.Collator(void 0, { numeric: true, sensitivity: "base" });
+    const sorted = Array.from(parent.columns).filter((a2) => {
+      return !parent.newFilters.isFilteredOn(a2[1].developerName);
+    }).sort((a2, b) => {
+      return collator.compare(a2[1].label, b[1].label);
+    });
+    sorted.forEach((col) => {
+      fieldOptions.push(
+        /* @__PURE__ */ React9.createElement(
+          "option",
+          {
+            className: "sft-fmf-row-criteria-select-option",
+            value: col[1].developerName
+          },
+          " " + col[1].label + " "
+        )
+      );
+    });
+    fieldInput = /* @__PURE__ */ React9.createElement(
+      "select",
+      {
+        className: "sft-fmf-row-criteria-select",
+        onChange: this.fieldSelected,
+        ref: (element) => {
+          this.fieldSelect = element;
+        }
+      },
+      fieldOptions
+    );
+    let addButton;
+    if (this.fieldSelect && this.fieldSelect.options[this.fieldSelect.selectedIndex].value) {
+      addButton = /* @__PURE__ */ React9.createElement(
+        "button",
+        {
+          className: "sft-ribbon-search-button-wrapper",
+          onClick: this.addColumnCriteria
+        },
+        /* @__PURE__ */ React9.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faCirclePlus2.faCirclePlus,
+            className: "sft-ribbon-search-button-icon"
+          }
+        )
+      );
+    }
+    return /* @__PURE__ */ React9.createElement(
+      "div",
+      {
+        className: "sft-fmf-row"
+      },
+      /* @__PURE__ */ React9.createElement(
+        "div",
+        {
+          className: "sft-fmf-row-labels"
+        },
+        /* @__PURE__ */ React9.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-caption"
+          },
+          "Column Name"
+        )
+      ),
+      /* @__PURE__ */ React9.createElement(
+        "div",
+        {
+          className: "sft-fmf-row-values"
+        },
+        /* @__PURE__ */ React9.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-title"
+          },
+          fieldInput
+        ),
+        /* @__PURE__ */ React9.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-buttons"
+          },
+          addButton
+        )
+      )
+    );
+  }
+};
+
+// src/FilterManagementFormRow.tsx
+var React10 = __toESM(require_react());
+var import_faCircleXmark3 = __toESM(require_faCircleXmark());
+var FilterManagementFormRow = class extends React10.Component {
+  constructor(props) {
+    super(props);
+    this.valueChanged = this.valueChanged.bind(this);
+    this.valueToChanged = this.valueToChanged.bind(this);
+    this.comparatorChanged = this.comparatorChanged.bind(this);
+    this.removeCriteria = this.removeCriteria.bind(this);
+  }
+  valueChanged(e) {
+    if (e.target.type === "checkbox") {
+      this.props.criteria.value = e.target.checked;
+    } else {
+      this.props.criteria.value = e.target.value;
+    }
+    this.forceUpdate();
+  }
+  valueToChanged(e) {
+    this.props.criteria.value2 = e.target.value;
+    this.forceUpdate();
+  }
+  comparatorChanged(e) {
+    if (this.comparatorElement && this.comparatorElement.options[this.comparatorElement.selectedIndex].value) {
+      const value = this.comparatorElement.options[this.comparatorElement.selectedIndex].value;
+      const comparator = parseInt(value);
+      this.props.criteria.comparator = comparator;
+      if (comparator !== 9 /* in */ && comparator !== 10 /* notIn */ && typeof this.props.criteria.value !== "string") {
+        this.props.criteria.value = "";
+        this.props.criteria.value2 = "";
+      } else {
+        if ((comparator === 9 /* in */ || comparator === 10 /* notIn */) && typeof this.props.criteria.value === "string") {
+          this.props.criteria.value = /* @__PURE__ */ new Map();
+        }
+        if (comparator !== 4 /* between */) {
+          this.props.criteria.value2 = "";
+        }
+      }
+      this.forceUpdate();
+    }
+  }
+  removeCriteria() {
+    this.props.parent.removeCriteria(this.props.filterId);
+  }
+  render() {
+    const parent = this.props.parent;
+    const filter = parent.newFilters.get(this.props.filterId);
+    const fieldDef = parent.columns.get(filter.key);
+    const criteria = this.props.criteria;
+    let fieldInput;
+    if (fieldDef) {
+      fieldInput = /* @__PURE__ */ React10.createElement("span", null, fieldDef.label);
+    } else {
+      const fieldOptions = [];
+      parent.columns.forEach((field) => {
+        fieldOptions.push(
+          /* @__PURE__ */ React10.createElement(
+            "option",
+            {
+              className: "sft-fmf-row-criteria-select-option",
+              value: field.developerName,
+              selected: field.developerName === fieldDef.developerName
+            },
+            field.label
+          )
+        );
+      });
+      fieldInput = /* @__PURE__ */ React10.createElement(
+        "select",
+        {
+          className: "sft-fmf-row-criteria-select"
+        },
+        fieldOptions
+      );
+    }
+    const criteriaOptions = SFTColumnCriteria.getOptions(criteria.comparator, "sft-fmf-row-criteria-select-option", fieldDef.contentType);
+    let input;
+    let input2;
+    let label1 = "Value";
+    let label2;
+    if (criteria.comparator === 9 /* in */ || criteria.comparator === 10 /* notIn */) {
+      input = this.props.parent.props.parent.getColumnUniques(fieldDef.developerName, criteria.value);
+    } else {
+      switch (fieldDef.contentType) {
+        case eContentType.ContentDateTime:
+          input = /* @__PURE__ */ React10.createElement(
+            "input",
+            {
+              className: "sft-fmf-row-criteria-date",
+              type: "date",
+              value: this.props.criteria.value,
+              onChange: this.valueChanged
+            }
+          );
+          if (criteria.comparator === 4 /* between */) {
+            input2 = /* @__PURE__ */ React10.createElement(
+              "div",
+              {
+                className: "sft-fmf-row-value"
+              },
+              /* @__PURE__ */ React10.createElement(
+                "input",
+                {
+                  className: "sft-fmf-row-criteria-date",
+                  type: "date",
+                  value: this.props.criteria.value2,
+                  onChange: this.valueToChanged
+                }
+              )
+            );
+            label1 = "From";
+            label2 = /* @__PURE__ */ React10.createElement(
+              "div",
+              {
+                className: "sft-fmf-row-caption"
+              },
+              "To"
+            );
+          }
+          break;
+        case eContentType.ContentNumber:
+          input = /* @__PURE__ */ React10.createElement(
+            "input",
+            {
+              className: "sft-fmf-row-criteria-number",
+              type: "number",
+              value: this.props.criteria.value,
+              onChange: this.valueChanged
+            }
+          );
+          if (criteria.comparator === 4 /* between */) {
+            input2 = /* @__PURE__ */ React10.createElement(
+              "div",
+              {
+                className: "sft-fmf-row-value"
+              },
+              /* @__PURE__ */ React10.createElement(
+                "input",
+                {
+                  className: "sft-fmf-row-criteria-number",
+                  type: "number",
+                  value: this.props.criteria.value2,
+                  onChange: this.valueToChanged
+                }
+              )
+            );
+            label1 = "From";
+            label2 = /* @__PURE__ */ React10.createElement(
+              "div",
+              {
+                className: "sft-fmf-row-caption"
+              },
+              "To"
+            );
+          }
+          break;
+        case eContentType.ContentBoolean:
+          input = /* @__PURE__ */ React10.createElement(
+            "input",
+            {
+              className: "sft-fmf-row-criteria-checkbox",
+              type: "checkbox",
+              checked: this.props.criteria.value,
+              onChange: this.valueChanged
+            }
+          );
+          break;
+        default:
+          input = /* @__PURE__ */ React10.createElement(
+            "input",
+            {
+              className: "sft-fmf-row-criteria-text",
+              type: "text",
+              value: this.props.criteria.value,
+              onChange: this.valueChanged
+            }
+          );
+          break;
+      }
+    }
+    return /* @__PURE__ */ React10.createElement(
+      "div",
+      {
+        className: "sft-fmf-row"
+      },
+      /* @__PURE__ */ React10.createElement(
+        "div",
+        {
+          className: "sft-fmf-row-labels"
+        },
+        /* @__PURE__ */ React10.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-caption"
+          },
+          "Column Name"
+        ),
+        /* @__PURE__ */ React10.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-caption-criteria"
+          },
+          "Comparator"
+        ),
+        /* @__PURE__ */ React10.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-caption"
+          },
+          label1
+        ),
+        label2
+      ),
+      /* @__PURE__ */ React10.createElement(
+        "div",
+        {
+          className: "sft-fmf-row-values"
+        },
+        /* @__PURE__ */ React10.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-title"
+          },
+          fieldInput
+        ),
+        /* @__PURE__ */ React10.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-criteria"
+          },
+          /* @__PURE__ */ React10.createElement(
+            "select",
+            {
+              className: "sft-fmf-row-criteria-select",
+              onChange: this.comparatorChanged,
+              ref: (element) => {
+                this.comparatorElement = element;
+              }
+            },
+            criteriaOptions
+          )
+        ),
+        /* @__PURE__ */ React10.createElement(
+          "div",
+          {
+            className: "sft-fmf-row-value"
+          },
+          input
+        ),
+        input2,
+        /* @__PURE__ */ React10.createElement(
+          "button",
+          {
+            className: "sft-ribbon-search-button-wrapper",
+            title: "Remove criteria",
+            onClick: this.removeCriteria
+          },
+          /* @__PURE__ */ React10.createElement(
+            FontAwesomeIcon,
+            {
+              icon: import_faCircleXmark3.faCircleXmark,
+              className: "sft-ribbon-search-button-icon"
+            }
+          )
+        )
+      )
+    );
+  }
+};
+
+// src/FilterManagementForm.tsx
+var FilterManagementForm = class extends React11.Component {
+  constructor(props) {
+    super(props);
+    this.parent = this.props.parent;
+    this.columns = this.parent.colMap;
+    this.addCriteria = this.addCriteria.bind(this);
+    this.removeCriteria = this.removeCriteria.bind(this);
+    this.newFilters = this.parent.filters.clone();
+  }
+  addCriteria(fieldName) {
+    this.newFilters.items.set(fieldName, new SFTColumnFilter(fieldName, this.newFilters, 0 /* none */, [new SFTColumnCriteria(0 /* equalTo */, "", "")]));
+    this.forceUpdate();
+  }
+  removeCriteria(key) {
+    this.newFilters.items.delete(key);
+    this.forceUpdate();
+  }
+  render() {
+    const rows = [];
+    this.newFilters.items.forEach((filter, key) => {
+      filter.criteria.forEach((criteria) => {
+        rows.push(
+          /* @__PURE__ */ React11.createElement(
+            FilterManagementFormRow,
+            {
+              parent: this,
+              filterId: key,
+              criteria
+            }
+          )
+        );
+      });
+    });
+    rows.push(
+      /* @__PURE__ */ React11.createElement(
+        FilterManagementFormAddRow,
+        {
+          parent: this
+        }
+      )
+    );
+    return /* @__PURE__ */ React11.createElement(
+      "div",
+      {
+        className: "modal-dialog-content",
+        style: { width: "910px" }
+      },
+      rows
+    );
+  }
+};
+
+// src/MultiSelect.tsx
+var React12 = __toESM(require_react());
+var MultiSelect = class extends React12.Component {
+  constructor(props) {
+    super(props);
+    this.expanded = false;
+    this.showCheckboxes = this.showCheckboxes.bind(this);
+  }
+  showCheckboxes() {
+    const checkboxes = document.getElementById("checkboxes_" + this.props.id);
+    if (!this.expanded) {
+      checkboxes.style.display = "flex";
+      this.expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      this.expanded = false;
+    }
+  }
+  render() {
+    const checkBoxes = [];
+    const collator = new Intl.Collator(void 0, { numeric: true, sensitivity: "base" });
+    const sorted = Array.from(this.props.allItems.keys()).sort((a2, b) => collator.compare(a2, b));
+    sorted.forEach((item) => {
+      checkBoxes.push(
+        /* @__PURE__ */ React12.createElement(
+          "div",
+          {
+            className: "checkbox-row"
+          },
+          /* @__PURE__ */ React12.createElement(
+            "div",
+            {
+              className: "checkbox-checkbox-wrapper"
+            },
+            /* @__PURE__ */ React12.createElement(
+              "input",
+              {
+                type: "checkbox",
+                id: item,
+                key: item,
+                className: "sft-checkbox",
+                checked: this.props.selectedItems?.has(item),
+                onClick: (e) => {
+                  if (this.props.selectedItems?.has(item)) {
+                    this.props.selectedItems.delete(item);
+                  } else {
+                    this.props.selectedItems.set(item, item);
+                  }
+                  this.forceUpdate();
+                }
+              }
+            )
+          ),
+          /* @__PURE__ */ React12.createElement(
+            "div",
+            {
+              className: "checkbox-label-wrapper"
+            },
+            /* @__PURE__ */ React12.createElement(
+              "span",
+              {
+                className: "checkbox-row-label"
+              },
+              item
+            )
+          )
+        )
+      );
+    });
+    return /* @__PURE__ */ React12.createElement("div", { className: "multiselect" }, /* @__PURE__ */ React12.createElement(
+      "div",
+      {
+        className: "selectBox",
+        onClick: this.showCheckboxes
+      },
+      /* @__PURE__ */ React12.createElement("select", null, /* @__PURE__ */ React12.createElement("option", null, "Select an option")),
+      /* @__PURE__ */ React12.createElement(
+        "div",
+        {
+          className: "overSelect"
+        }
+      )
+    ), /* @__PURE__ */ React12.createElement(
+      "div",
+      {
+        className: "checkboxScroller"
+      },
+      /* @__PURE__ */ React12.createElement(
+        "div",
+        {
+          className: "checkboxes",
+          id: "checkboxes_" + this.props.id
+        },
+        checkBoxes
+      )
+    ));
+  }
+};
+
+// src/RowItem.ts
+var RowItem = class {
+  constructor() {
+    this.columns = /* @__PURE__ */ new Map();
+  }
+};
+
+// src/SearchFilterTableFooter.tsx
+var React13 = __toESM(require_react());
+var import_faBackwardFast = __toESM(require_faBackwardFast());
+var import_faBackwardStep = __toESM(require_faBackwardStep());
+var import_faForwardFast = __toESM(require_faForwardFast());
+var import_faForwardStep = __toESM(require_faForwardStep());
+var SearchFilterTableFooter = class extends React13.Component {
+  componentDidMount() {
+    this.forceUpdate();
+    this.maxPerPageChanged = this.maxPerPageChanged.bind(this);
+  }
+  maxPerPageChanged(e) {
+    const root = this.props.root;
+    root.maxPerPageChanged(parseInt(this.maxPerPage.options[this.maxPerPage.selectedIndex].value));
+  }
+  render() {
+    const root = this.props.root;
+    let summary;
+    let pag;
+    switch (true) {
+      case root.paginationMode === 2 /* external */:
+        summary = "";
+        pag = root.externalPaginationPage.toString();
+        break;
+      case (root.component.getAttribute("summaryMode", "default").toLowerCase() === "simple" || root.component.isMultiSelect === false):
+        summary = "Showing " + root.currentRowMap.size + " items of " + root.rowMap.size;
+        pag = "page " + (root.currentRowPage + 1) + " of " + root.currentRowPages.length;
+        break;
+      default:
+        summary = "Selected " + root.selectedRowMap.size + " of " + root.currentRowMap.size + " items from a total dataset of " + root.rowMap.size;
+        pag = "page " + (root.currentRowPage + 1) + " of " + root.currentRowPages.length;
+        break;
+    }
+    let firstPage;
+    let prevPage;
+    let nextPage;
+    let lastPage;
+    if (root.currentRowPage > 0) {
+      firstPage = /* @__PURE__ */ React13.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faBackwardFast.faBackwardFast,
+          className: "sft-footer-pagination-button",
+          title: "First page",
+          onClick: root.firstPage
+        }
+      );
+      prevPage = /* @__PURE__ */ React13.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faBackwardStep.faBackwardStep,
+          className: "sft-footer-pagination-button",
+          title: "Previous page",
+          onClick: root.previousPage
+        }
+      );
+    } else {
+      firstPage = /* @__PURE__ */ React13.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faBackwardFast.faBackwardFast,
+          className: "sft-footer-pagination-button sft-footer-pagination-button-disabled"
+        }
+      );
+      prevPage = /* @__PURE__ */ React13.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faBackwardStep.faBackwardStep,
+          className: "sft-footer-pagination-button sft-footer-pagination-button-disabled"
+        }
+      );
+    }
+    if (root.currentRowPage < root.currentRowPages.length - 1) {
+      lastPage = /* @__PURE__ */ React13.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faForwardFast.faForwardFast,
+          className: "sft-footer-pagination-button",
+          title: "Last page",
+          onClick: root.lastPage
+        }
+      );
+      nextPage = /* @__PURE__ */ React13.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faForwardStep.faForwardStep,
+          className: "sft-footer-pagination-button",
+          title: "Next page",
+          onClick: root.nextPage
+        }
+      );
+    } else {
+      lastPage = /* @__PURE__ */ React13.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faForwardFast.faForwardFast,
+          className: "sft-footer-pagination-button sft-footer-pagination-button-disabled"
+        }
+      );
+      nextPage = /* @__PURE__ */ React13.createElement(
+        FontAwesomeIcon,
+        {
+          icon: import_faForwardStep.faForwardStep,
+          className: "sft-footer-pagination-button sft-footer-pagination-button-disabled"
+        }
+      );
+    }
+    let options = [];
+    options.push(10, 20, 50, 100);
+    if (options.indexOf(root.maxPageRows) < 0) {
+      options.push(root.maxPageRows);
+    }
+    options = options.sort((a2, b) => {
+      return a2 - b;
+    });
+    const opts = [];
+    let selected = options[0];
+    options.forEach((a2) => {
+      if (root.maxPageRows === a2) {
+        selected = a2;
+      }
+      opts.push(
+        /* @__PURE__ */ React13.createElement(
+          "option",
+          {
+            key: a2,
+            value: a2
+          },
+          a2
+        )
+      );
+    });
+    const perPage = /* @__PURE__ */ React13.createElement(
+      "select",
+      {
+        className: "sft-footer-select",
+        value: selected,
+        onChange: this.maxPerPageChanged,
+        ref: (element) => {
+          this.maxPerPage = element;
+        }
+      },
+      opts
+    );
+    let pagination;
+    let perPageBlock;
+    switch (root.paginationMode) {
+      case 1 /* local */:
+        pagination = /* @__PURE__ */ React13.createElement(
+          "div",
+          {
+            className: "sft-footer-pagination"
+          },
+          firstPage,
+          prevPage,
+          /* @__PURE__ */ React13.createElement("span", { className: "sft-footer-pagination-label" }, pag),
+          nextPage,
+          lastPage
+        );
+        perPageBlock = /* @__PURE__ */ React13.createElement(
+          "div",
+          {
+            className: "sft-footer-perpage"
+          },
+          /* @__PURE__ */ React13.createElement(
+            "div",
+            {
+              className: "sft-footer-perpage-label"
+            },
+            "Items per page"
+          ),
+          perPage
+        );
+        break;
+      case 2 /* external */:
+        prevPage = /* @__PURE__ */ React13.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faBackwardStep.faBackwardStep,
+            className: "sft-footer-pagination-button",
+            title: "Previous page",
+            onClick: root.previousPage
+          }
+        );
+        nextPage = /* @__PURE__ */ React13.createElement(
+          FontAwesomeIcon,
+          {
+            icon: import_faForwardStep.faForwardStep,
+            className: "sft-footer-pagination-button",
+            title: "Next page",
+            onClick: root.nextPage
+          }
+        );
+        pagination = /* @__PURE__ */ React13.createElement(
+          "div",
+          {
+            className: "sft-footer-pagination"
+          },
+          prevPage,
+          /* @__PURE__ */ React13.createElement("span", { className: "sft-footer-pagination-label" }, pag),
+          nextPage
+        );
+        break;
+    }
+    return /* @__PURE__ */ React13.createElement(
+      "div",
+      {
+        className: "sft-footer"
+      },
+      perPageBlock,
+      /* @__PURE__ */ React13.createElement(
+        "div",
+        {
+          className: "sft-footer-spacer"
+        }
+      ),
+      /* @__PURE__ */ React13.createElement(
+        "div",
+        {
+          className: "sft-footer-summary"
+        },
+        /* @__PURE__ */ React13.createElement(
+          "span",
+          {
+            className: "sft-footer-summary-label"
+          },
+          summary
+        )
+      ),
+      pagination
+    );
+  }
+};
+
+// src/SearchFilterTableHeaders.tsx
+var React15 = __toESM(require_react());
+
+// src/SearchFilterTableHeader.tsx
+var React14 = __toESM(require_react());
+var SearchFilterTableHeader = class extends React14.Component {
+  constructor(props) {
+    super(props);
+    this.dragEnter = this.dragEnter.bind(this);
+    this.dragLeave = this.dragLeave.bind(this);
+  }
+  dragEnter() {
+    this.mask.style.zIndex = 1e4;
+    this.th.classList.add("sft-column-header-wrapper-droppable");
+  }
+  dragLeave() {
+    this.mask.style.zIndex = -1;
+    this.th.classList.remove("sft-column-header-wrapper-droppable");
+  }
+  render() {
+    const root = this.props.root;
+    const parent = this.props.parent;
+    const col = this.props.column;
+    let filterIcon;
+    let sortIcon;
+    let quickCheck;
+    if (this.props.static !== true) {
+      sortIcon = root.filters.getSortIcon(col.developerName);
+      if (this.props.inlineSearch === true) {
+        filterIcon = root.filters.getFilterIcon(col.developerName);
+      }
+      quickCheck = root.filters.getQuickCheck(col.developerName);
+    }
+    let cls = "sft-column-header sft-column-header-" + col.developerName;
+    if (this.props.sticky) {
+      cls += " sft-header-sticky";
+    }
+    return /* @__PURE__ */ React14.createElement(
+      "th",
+      {
+        key: col.developerName,
+        className: cls,
+        style: { pointerEvents: "all" },
+        ref: (element) => {
+          this.th = element;
+        }
+      },
+      /* @__PURE__ */ React14.createElement(
+        "div",
+        {
+          className: "sft-column-header-wrapper sft-thcontainer",
+          style: { display: "flex", flexDirection: "row", pointerEvents: "all" },
+          draggable: root.dynamicColumns,
+          onDragStart: (e) => {
+            parent.dragColumn(e, col.developerName);
+          },
+          onDragEnter: (e) => {
+            parent.onDragEnter(e);
+          },
+          onDragLeave: (e) => {
+            parent.onDragLeave(e);
+          },
+          onDragOver: (e) => {
+            parent.onDragOver(e);
+          },
+          onDrop: (e) => {
+            parent.onDrop(e);
+          },
+          onClick: (e) => {
+            root.filters.sortClicked(col.developerName);
+          },
+          "data-fieldname": col.developerName
+        },
+        /* @__PURE__ */ React14.createElement(
+          "div",
+          {
+            className: "sft-column-header-top",
+            style: { pointerEvents: "all" }
+          },
+          /* @__PURE__ */ React14.createElement(
+            "div",
+            {
+              className: "sft-column-header-title",
+              style: { pointerEvents: "all" }
+            },
+            /* @__PURE__ */ React14.createElement(
+              "span",
+              {
+                className: "sft-column-header-title-label"
+              },
+              col.label
+            )
+          ),
+          /* @__PURE__ */ React14.createElement(
+            "div",
+            {
+              className: "sft-column-header-flags",
+              style: { pointerEvents: "all" }
+            },
+            sortIcon
+          ),
+          /* @__PURE__ */ React14.createElement(
+            "div",
+            {
+              style: { pointerEvents: "all" },
+              className: "sft-column-header-buttons"
+            },
+            filterIcon,
+            quickCheck
+          )
+        ),
+        /* @__PURE__ */ React14.createElement(
+          "div",
+          {
+            className: "sft-column-header-bottom",
+            style: { pointerEvents: "all" }
+          }
+        ),
+        /* @__PURE__ */ React14.createElement(
+          "div",
+          {
+            style: { position: "absolute", top: "0", left: "0", bottom: "0", right: "0", pointerEvents: "all", zIndex: -1 },
+            ref: (element) => {
+              this.mask = element;
+            }
+          }
+        )
+      )
+    );
+  }
+};
+
+// src/SearchFilterTableHeaders.tsx
+var SearchFilterTableHeaders = class extends React15.Component {
+  constructor(props) {
+    super(props);
+    this.headers = /* @__PURE__ */ new Map();
+    this.setHeader = this.setHeader.bind(this);
+    this.dragColumn = this.dragColumn.bind(this);
+    this.onDragEnter = this.onDragEnter.bind(this);
+    this.onDragOver = this.onDragOver.bind(this);
+    this.onDragLeave = this.onDragLeave.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+    this.moveColumn = this.moveColumn.bind(this);
+  }
+  componentDidMount() {
+    this.forceUpdate();
+  }
+  setHeader(key, header) {
+    if (header) {
+      this.headers.set(key, header);
+    } else {
+      this.headers.delete(key);
+    }
+  }
+  dragColumn(e, fieldName) {
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("column", fieldName);
+    this.draggedFieldName = fieldName;
+  }
+  onDragEnter(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
+    const srcFieldName = this.draggedFieldName;
+    if (!srcFieldName || this.draggedFieldName === tgtFieldName) {
+      e.dataTransfer.dropEffect = "none";
+    } else {
+      this.headers.get(tgtFieldName).dragEnter();
+      e.dataTransfer.dropEffect = "move";
+    }
+  }
+  onDragLeave(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
+    this.headers.get(tgtFieldName).dragLeave();
+  }
+  onDragOver(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const srcFieldName = e.dataTransfer.getData("column");
+    const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
+  }
+  async onDrop(e) {
+    const root = this.props.root;
+    e.preventDefault();
+    e.stopPropagation();
+    const srcFieldName = e.dataTransfer.getData("column");
+    const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
+    this.draggedFieldName = void 0;
+    e.dataTransfer.clearData();
+    e.currentTarget.parentElement.classList.remove("sft-column-header-wrapper-droppable");
+    if (srcFieldName && srcFieldName !== tgtFieldName) {
+      await this.moveColumn(srcFieldName, tgtFieldName);
+      this.forceUpdate();
+    }
+  }
+  async moveColumn(srcFieldName, tgtFieldName) {
+    const root = this.props.root;
+    console.log("move " + srcFieldName + " before " + tgtFieldName);
+    root.userColumns.splice(root.userColumns.indexOf(tgtFieldName), 0, root.userColumns.splice(root.userColumns.indexOf(srcFieldName), 1)[0]);
+    root.columnsReordered();
+  }
+  render() {
+    this.headers = /* @__PURE__ */ new Map();
+    const headers = [];
+    const root = this.props.root;
+    const buttons = [];
+    let anyoutcomes = false;
+    Object.keys(root.component.outcomes).forEach((key) => {
+      if (root.component.outcomes[key].isBulkAction === false) {
+        if (!root.supressedOutcomes.has(key)) {
+          anyoutcomes = true;
+        }
+        buttons.push(key);
+      }
+    });
+    if (root.colMap.size > 0) {
+      if (root.component.isMultiSelect) {
+        headers.push(
+          /* @__PURE__ */ React15.createElement(
+            "th",
+            {
+              key: "checks",
+              className: "sft-check-header sft-column-header ",
+              ref: (element) => {
+                this.setHeader("checks", element);
+              }
+            },
+            /* @__PURE__ */ React15.createElement("span", { style: { display: "none" } }, "Toggle Selection"),
+            /* @__PURE__ */ React15.createElement(
+              "div",
+              {
+                className: "sft-thcontainer"
+              },
+              /* @__PURE__ */ React15.createElement(
+                "input",
+                {
+                  className: "sft-checkbox",
+                  type: "checkbox",
+                  onClick: (event) => {
+                    root.toggleSelectAll(event);
+                  },
+                  title: "Toggle Selection"
+                }
+              )
+            )
+          )
+        );
+      } else {
+        if (root.component.getAttribute("showRadio", "false").toLowerCase() === "true") {
+          headers.push(
+            /* @__PURE__ */ React15.createElement(
+              "th",
+              {
+                key: "checks",
+                className: "sft-column-header",
+                ref: (element) => {
+                  this.setHeader("checks", element);
+                }
+              },
+              /* @__PURE__ */ React15.createElement("span", { style: { display: "none" } }, "Toggle Selection"),
+              /* @__PURE__ */ React15.createElement(
+                "div",
+                {
+                  className: "sft-thcontainer"
+                }
+              )
+            )
+          );
+        }
+      }
+      let fixedCols = parseInt(root.component.getAttribute("stickyColumns", "0"));
+      root.userColumns.forEach((collName) => {
+        if (collName === "#BUTTONS#") {
+          if (anyoutcomes) {
+            headers.push(
+              /* @__PURE__ */ React15.createElement(
+                SearchFilterTableHeader,
+                {
+                  key: "#BUTTONS#",
+                  root: this.props.root,
+                  parent: this,
+                  column: { developerName: "#BUTTONS#", label: root.component.getAttribute("OutcomesLabel", "Action") },
+                  static: true,
+                  inlineSearch: this.props.inlineSearch,
+                  ref: (element) => {
+                    this.setHeader("#BUTTONS#", element);
+                  },
+                  sticky: fixedCols > 0
+                }
+              )
+            );
+          }
+        } else {
+          const col = root.colMap.get(collName);
+          if (col) {
+            headers.push(
+              /* @__PURE__ */ React15.createElement(
+                SearchFilterTableHeader,
+                {
+                  key: col.developerName,
+                  root: this.props.root,
+                  parent: this,
+                  column: col,
+                  inlineSearch: this.props.inlineSearch,
+                  ref: (element) => {
+                    this.setHeader(col.developerName, element);
+                  },
+                  sticky: fixedCols > 0
+                }
+              )
+            );
+          } else {
+            root.userColumns.splice(root.userColumns.indexOf(collName), 1);
+            root.saveUserColumns();
+          }
+        }
+        if (fixedCols > 0)
+          fixedCols--;
+      });
+    }
+    return /* @__PURE__ */ React15.createElement(
+      "tr",
+      {
+        className: "sft-column-headers"
+      },
+      headers
+    );
+  }
+};
+
+// src/SearchFilterTableRibbon.tsx
+var React16 = __toESM(require_react());
+var SearchFilterTableRibbon = class extends React16.Component {
+  constructor(props) {
+    super(props);
+    this.generateButtons = this.generateButtons.bind(this);
+    this.generateComponents = this.generateComponents.bind(this);
+  }
+  async componentDidMount() {
+    await this.generateButtons();
+  }
+  async generateButtons() {
+    this.leftButtons = [];
+    this.rightButtons = [];
+    const root = this.props.root;
+    const canExport = root.component.getAttribute("canExport", "false").toLowerCase() === "true";
+    if (canExport === true) {
+      this.rightButtons.push(
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-button-wrapper",
+            onClick: (e) => {
+              e.stopPropagation();
+              root.doExport(root.rowMap);
+            }
+          },
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              key: "exportAll",
+              className: "glyphicon glyphicon-floppy-save sft-ribbon-button-icon",
+              title: "Export All"
+            }
+          ) : null,
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              className: "sft-ribbon-button-label"
+            },
+            "Export All"
+          ) : null
+        )
+      );
+    }
+    if (root.rowMap.size > root.currentRowMap.size && canExport === true) {
+      this.rightButtons.push(
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-button-wrapper",
+            onClick: (e) => {
+              e.stopPropagation();
+              root.doExport(root.currentRowMap);
+            }
+          },
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              key: "exportShown",
+              className: "glyphicon glyphicon-floppy-save sft-ribbon-button-icon",
+              title: "Export Shown"
+            }
+          ) : null,
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              className: "sft-ribbon-button-label"
+            },
+            "Export Shown"
+          ) : null
+        )
+      );
+    }
+    const arrOutcomes = Array.from(Object.values(root.component.outcomes));
+    for (let pos = 0; pos < arrOutcomes.length; pos++) {
+      const outcome = arrOutcomes[pos];
+      if (outcome.isBulkAction && outcome.developerName !== "OnSelect" && outcome.developerName !== "OnChange" && !outcome.developerName.toLowerCase().startsWith("cm")) {
+        const showOutcome = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root);
+        if (showOutcome === true) {
+          this.rightButtons.push(
+            /* @__PURE__ */ React16.createElement(
+              "div",
+              {
+                className: "sft-ribbon-button-wrapper",
+                onClick: (e) => {
+                  root.doOutcome(outcome.developerName, void 0);
+                }
+              },
+              outcome.attributes?.icon ? /* @__PURE__ */ React16.createElement(
+                "span",
+                {
+                  key: outcome.developerName,
+                  className: "glyphicon glyphicon-" + (outcome.attributes["icon"]?.value || "plus") + " sft-ribbon-button-icon",
+                  title: outcome.label || outcome.developerName
+                }
+              ) : null,
+              !outcome.attributes?.display || outcome.attributes.display?.value.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+                "span",
+                {
+                  className: "sft-ribbon-button-label"
+                },
+                outcome.label
+              ) : null
+            )
+          );
+        }
+      }
+    }
+    if (root.component.content?.length > 0) {
+      this.rightButtons.push(
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-search-button-wrapper",
+            onClick: (e) => {
+              root.showInfo();
+            }
+          },
+          /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              key: "colpick",
+              className: "glyphicon sft-ribbon-search-button-icon glyphicon-" + (root.component.attributes?.InfoIcon ? root.component.attributes.InfoIcon : "question-sign"),
+              title: "Infornation"
+            }
+          ),
+          !root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              className: "sft-ribbon-search-button-label"
+            },
+            "Column Picker"
+          ) : null
+        )
+      );
+    }
+    if (root.dynamicColumns === true) {
+      this.rightButtons.push(
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-button-wrapper",
+            onClick: (e) => {
+              root.showColumnPicker();
+            }
+          },
+          /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              key: "colpick",
+              className: "glyphicon sft-ribbon-button-icon glyphicon-" + (root.component.attributes?.ColumnsIcon ? root.component.attributes.ColumnsIcon : "option-vertical"),
+              title: "Select columns"
+            }
+          ),
+          !root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              className: "sft-ribbon-button-label"
+            },
+            "Column Picker"
+          ) : null
+        )
+      );
+    }
+    if (root.selectedRowMap.size > 0 && canExport === true) {
+      this.leftButtons.push(
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-button-wrapper",
+            onClick: (e) => {
+              e.stopPropagation();
+              root.doExport(root.selectedRowMap);
+            }
+          },
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              key: "exportSelected",
+              className: "glyphicon glyphicon-floppy-save sft-ribbon-button-icon",
+              title: "Export Selected"
+            }
+          ) : null,
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              className: "sft-ribbon-button-label"
+            },
+            "Export Selected"
+          ) : null
+        )
+      );
+    }
+    this.forceUpdate();
+    return true;
+  }
+  generateComponents() {
+  }
+  render() {
+    const root = this.props.root;
+    const style = {};
+    if (root.titleElement) {
+      style.top = "2.5rem";
+    }
+    return /* @__PURE__ */ React16.createElement(
+      "div",
+      {
+        className: "sft-ribbon",
+        style
+      },
+      /* @__PURE__ */ React16.createElement(
+        "div",
+        {
+          className: "sft-ribbon-left-wrapper"
+        },
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-title-wrapper"
+          },
+          /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              className: "sft-ribbon-title"
+            },
+            "Available actions:"
+          )
+        ),
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-hbuttons-wrapper"
+          },
+          this.leftButtons
+        )
+      ),
+      /* @__PURE__ */ React16.createElement(
+        "div",
+        {
+          className: "sft-ribbon-right-wrapper"
+        },
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-title-wrapper"
+          },
+          /* @__PURE__ */ React16.createElement(
+            "span",
+            {
+              className: "sft-ribbon-title"
+            }
+          )
+        ),
+        /* @__PURE__ */ React16.createElement(
+          "div",
+          {
+            className: "sft-ribbon-hbuttons-wrapper"
+          },
+          this.rightButtons
+        )
+      )
+    );
+  }
+};
+
+// src/SearchFilterTableRibbonSearch.tsx
+var React17 = __toESM(require_react());
+var import_faMagnifyingGlass2 = __toESM(require_faMagnifyingGlass());
 var import_faBan = __toESM(require_faBan());
 var import_faCircleInfo = __toESM(require_faCircleInfo());
 var import_faDownload = __toESM(require_faDownload());
@@ -36953,7 +37269,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
-              icon: import_faMagnifyingGlass.faMagnifyingGlass,
+              icon: import_faMagnifyingGlass2.faMagnifyingGlass,
               role: "button",
               className: "sft-ribbon-search-icon sft-ribbon-search-icon-search",
               onClick: this.filterCommitted,
@@ -37056,6 +37372,8 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
 
 // src/SearchFilterTableRow.tsx
 var React18 = __toESM(require_react());
+var import_faCircleCheck = __toESM(require_faCircleCheck());
+var import_faCircleXmark4 = __toESM(require_faCircleXmark());
 var SearchFilterTableRow = class extends React18.Component {
   constructor(props) {
     super(props);
@@ -37427,16 +37745,18 @@ var SearchFilterTableRow = class extends React18.Component {
             case eContentType.ContentBoolean:
               if ((col.value + "")?.toLowerCase() === "true") {
                 result = /* @__PURE__ */ React18.createElement(
-                  "span",
+                  FontAwesomeIcon,
                   {
-                    className: "sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-true glyphicon glyphicon-ok"
+                    icon: import_faCircleCheck.faCircleCheck,
+                    className: "sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-true"
                   }
                 );
               } else {
                 result = /* @__PURE__ */ React18.createElement(
-                  "span",
+                  FontAwesomeIcon,
                   {
-                    className: "sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-false glyphicon glyphicon-remove"
+                    icon: import_faCircleXmark4.faCircleXmark,
+                    className: "sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-false"
                   }
                 );
               }
@@ -37712,7 +38032,7 @@ var FCMDragEvent = class _FCMDragEvent {
 };
 
 // node_modules/fcmkit/lib/ModalDialog/FCMModal.js
-var import_faCircleXmark = __toESM(require_faCircleXmark());
+var import_faCircleXmark5 = __toESM(require_faCircleXmark());
 var React20 = __toESM(require_react());
 var __awaiter3 = function(thisArg, _arguments, P, generator) {
   function adopt(value) {
@@ -37874,7 +38194,7 @@ var FCMModal = class extends React20.Component {
                 this.stopEventBubble(e);
                 this.dialogOnClose();
               } },
-              React20.createElement(FontAwesomeIcon, { icon: import_faCircleXmark.faCircleXmark, className: "fcmmod-icon" })
+              React20.createElement(FontAwesomeIcon, { icon: import_faCircleXmark5.faCircleXmark, className: "fcmmod-icon" })
             )
           )
         );

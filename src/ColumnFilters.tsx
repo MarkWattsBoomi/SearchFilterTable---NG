@@ -10,6 +10,11 @@ import { FCMModalButton } from 'fcmkit/lib/ModalDialog/FCMModalButton';
 import { FlowDisplayColumn } from 'fcmlib/lib/FlowDisplayColumn';
 import { eContentType } from 'fcmlib/lib/FCMNew';
 import { FlowObjectData } from 'fcmlib/lib/FlowObjectData';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons/faCircleXmark';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons/faCaretUp';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
 
 export enum eFilterEvent {
     none = 0,
@@ -190,12 +195,13 @@ export class SFTColumnFilters {
                             title="Not sorted - click to toggle"
                             style={{display: 'flex', flexDirection: 'column'}}
                         >
-                            <span
-                                className="sft-column-header-flag  glyphicon glyphicon-triangle-top"
-
+                            <FontAwesomeIcon 
+                                icon={faCaretUp}
+                                className="sft-column-header-flag"
                             />
-                            <span
-                                className="sft-column-header-flag  glyphicon glyphicon-triangle-bottom"
+                            <FontAwesomeIcon 
+                                icon={faCaretDown}
+                                className="sft-column-header-flag"
                             />
                         </div>
 
@@ -208,30 +214,32 @@ export class SFTColumnFilters {
                             title="Ascending - click to toggle"
                             style={{display: 'flex', flexDirection: 'column'}}
                         >
-                            <span
-                                className="sft-column-header-flag sft-column-header-flag-hot glyphicon glyphicon-triangle-top"
-
+                            <FontAwesomeIcon 
+                                icon={faCaretUp}
+                                className="sft-column-header-flag  sft-column-header-flag-hot"
                             />
-                            <span
-                                className="sft-column-header-flag   glyphicon glyphicon-triangle-bottom"
+                            <FontAwesomeIcon 
+                                icon={faCaretDown}
+                                className="sft-column-header-flag"
                             />
                         </div>
                     );
                 case eSortDirection.descending:
                     return (
                         <div
-                        onClick={(e: any) => {this.sortClicked(key); }}
-                        title="Descending - click to toggle"
-                        style={{display: 'flex', flexDirection: 'column'}}
-                    >
-                        <span
-                            className="sft-column-header-flag  glyphicon glyphicon-triangle-top"
-
-                        />
-                        <span
-                            className="sft-column-header-flag sft-column-header-flag-hot glyphicon glyphicon-triangle-bottom"
-                        />
-                    </div>
+                            onClick={(e: any) => {this.sortClicked(key); }}
+                            title="Descending - click to toggle"
+                            style={{display: 'flex', flexDirection: 'column'}}
+                        >
+                            <FontAwesomeIcon 
+                                icon={faCaretUp}
+                                className="sft-column-header-flag"
+                            />
+                            <FontAwesomeIcon 
+                                icon={faCaretDown}
+                                className="sft-column-header-flag sft-column-header-flag-hot"
+                            />
+                        </div>
                     );
             }
         } else {
@@ -241,12 +249,13 @@ export class SFTColumnFilters {
                     title="Not sorted - click to toggle"
                     style={{display: 'flex', flexDirection: 'column'}}
                 >
-                    <span
-                        className="sft-column-header-flag  glyphicon glyphicon-triangle-top"
-
+                    <FontAwesomeIcon 
+                            icon={faCaretUp}
+                            className="sft-column-header-flag"
                     />
-                    <span
-                        className="sft-column-header-flag  glyphicon glyphicon-triangle-bottom"
+                    <FontAwesomeIcon 
+                        icon={faCaretDown}
+                        className="sft-column-header-flag"
                     />
                 </div>
             );
@@ -257,13 +266,15 @@ export class SFTColumnFilters {
         if (this.items.has(key) && this.items.get(key).criteria?.length > 0) {
             return (
                 <React.Fragment>
-                    <span
-                        className="sft-column-header-button sft-column-header-button-hot glyphicon glyphicon-search"
+                    <FontAwesomeIcon 
+                        icon={faMagnifyingGlass}
+                        className="sft-column-header-flag  sft-column-header-flag-hot"
                         onClick={(e: any) => {this.filterClicked(key); }}
                         title="Change filter"
                     />
-                    <span
-                        className="sft-column-header-button sft-column-header-button-hot glyphicon glyphicon-remove"
+                    <FontAwesomeIcon 
+                        icon={faCircleXmark}
+                        className="sft-column-header-flag sft-column-header-button-hot"
                         onClick={(e: any) => {this.filterClear(key); }}
                         title="Clear filter"
                     />
@@ -271,9 +282,11 @@ export class SFTColumnFilters {
             );
         } else {
             return (
-                <span
-                    className="sft-column-header-button glyphicon glyphicon-search"
+                <FontAwesomeIcon 
+                    icon={faMagnifyingGlass}
+                    className="sft-column-header-flag  sft-column-header-flag-hot"
                     onClick={(e: any) => {this.filterClicked(key); }}
+                    title="Change filter"
                 />
             );
         }

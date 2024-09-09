@@ -304,7 +304,7 @@
   cursor: pointer;
 }
 .sft-column-header-flag {
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: #ddd;
 }
 .sft-column-header-flag-hot {
@@ -374,6 +374,9 @@
   padding-right: 0.5rem !important;
   display: flex;
   white-space: nowrap;
+}
+.sft-table-cell-boolean {
+  font-size: 1rem;
 }
 .sft-table-cell-check {
   position: sticky;

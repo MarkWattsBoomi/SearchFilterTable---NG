@@ -1,5 +1,10 @@
 import * as React from 'react';
 import {SFT,  ePaginationMode } from './SearchFilterTable';
+import { faBackwardFast } from '@fortawesome/free-solid-svg-icons/faBackwardFast';
+import { faBackwardStep, } from '@fortawesome/free-solid-svg-icons/faBackwardStep';
+import { faForwardFast } from '@fortawesome/free-solid-svg-icons/faForwardFast';
+import { faForwardStep } from '@fortawesome/free-solid-svg-icons/faForwardStep';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class SearchFilterTableFooter extends React.Component<any, any> {
 
@@ -43,56 +48,65 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
 
         if (root.currentRowPage > 0) {
             firstPage = (
-                <span
-                    className="glyphicon glyphicon-fast-backward sft-footer-pagination-button"
+                <FontAwesomeIcon 
+                    icon={faBackwardFast}
+                    className="sft-footer-pagination-button"
                     title="First page"
                     onClick={root.firstPage}
                 />
             );
             prevPage = (
-                <span
-                    className="glyphicon glyphicon-step-backward sft-footer-pagination-button"
+                <FontAwesomeIcon 
+                    icon={faBackwardStep}
+                    className="sft-footer-pagination-button"
                     title="Previous page"
                     onClick={root.previousPage}
                 />
             );
         } else {
             firstPage = (
-                <span
-                    className="glyphicon glyphicon-fast-backward sft-footer-pagination-button sft-footer-pagination-button-disabled"
+                <FontAwesomeIcon 
+                    icon={faBackwardFast}
+                    className="sft-footer-pagination-button sft-footer-pagination-button-disabled"
+                    
                 />
             );
             prevPage = (
-                <span
-                    className="glyphicon glyphicon-step-backward sft-footer-pagination-button sft-footer-pagination-button-disabled"
+                <FontAwesomeIcon 
+                    icon={faBackwardStep}
+                    className="sft-footer-pagination-button sft-footer-pagination-button-disabled"
                 />
             );
         }
 
         if (root.currentRowPage < (root.currentRowPages.length - 1)) {
             lastPage = (
-                <span
-                    className="glyphicon glyphicon-fast-forward sft-footer-pagination-button"
+                <FontAwesomeIcon 
+                    icon={faForwardFast}
+                    className="sft-footer-pagination-button"
                     title="Last page"
                     onClick={root.lastPage}
                 />
             );
             nextPage = (
-                <span
-                    className="glyphicon glyphicon-step-forward sft-footer-pagination-button"
+                <FontAwesomeIcon 
+                    icon={faForwardStep}
+                    className="sft-footer-pagination-button"
                     title="Next page"
                     onClick={root.nextPage}
                 />
             );
         } else {
             lastPage = (
-                <span
-                    className="glyphicon glyphicon-fast-forward sft-footer-pagination-button sft-footer-pagination-button-disabled"
+                <FontAwesomeIcon 
+                    icon={faForwardFast}
+                    className="sft-footer-pagination-button sft-footer-pagination-button-disabled"
                 />
             );
             nextPage = (
-                <span
-                    className="glyphicon glyphicon-step-forward sft-footer-pagination-button sft-footer-pagination-button-disabled"
+                <FontAwesomeIcon 
+                    icon={faForwardStep}
+                    className="sft-footer-pagination-button sft-footer-pagination-button-disabled"
                 />
             );
         }
@@ -164,19 +178,22 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
                 break;
             case ePaginationMode.external:
                 prevPage = (
-                    <span
-                        className="glyphicon glyphicon-step-backward sft-footer-pagination-button"
+                    <FontAwesomeIcon 
+                        icon={faBackwardStep}
+                        className="sft-footer-pagination-button"
                         title="Previous page"
                         onClick={root.previousPage}
                     />
                 );
                 nextPage = (
-                    <span
-                        className="glyphicon glyphicon-step-forward sft-footer-pagination-button"
+                    <FontAwesomeIcon 
+                        icon={faForwardStep}
+                        className="sft-footer-pagination-button"
                         title="Next page"
                         onClick={root.nextPage}
                     />
                 );
+                
                 pagination = (
                     <div
                         className="sft-footer-pagination"

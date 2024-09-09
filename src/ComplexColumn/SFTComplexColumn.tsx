@@ -1,7 +1,7 @@
-import { FlowObjectData } from "flow-component-model";
 import * as React from "react";
 import "./SFTComplexColumn.css";
 import { SFT } from "../SearchFilterTable";
+import { FlowObjectData } from "fcmlib/lib/FlowObjectData";
 declare var manywho: any;
 
 export class SFTComplexColumn extends React.Component<any,any> {
@@ -36,7 +36,7 @@ const columnProps = {
 
     render() {
         let sft: SFT = this.props.sft;
-        let valName: string = sft.parent.getAttribute("ComplexColumnValue","Value");
+        let valName: string = sft.component.getAttribute("ComplexColumnValue","Value");
         let objData: FlowObjectData = this.props.objectData;
         let style: React.CSSProperties = {};
         let res: number = objData.properties?.Result?.value as number;

@@ -5,6 +5,8 @@ import {FilterManagementForm} from './FilterManagementForm';
 import {SFT} from './SearchFilterTable';
 import { FlowDisplayColumn } from 'fcmlib/lib/FlowDisplayColumn';
 import { eContentType } from 'fcmlib/lib/FCMNew';
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons/faCircleXmark';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class FilterManagementFormRow extends React.Component<any, any> {
 
@@ -246,8 +248,9 @@ export class FilterManagementFormRow extends React.Component<any, any> {
                         title="Remove criteria"
                         onClick={this.removeCriteria}
                     >
-                        <span
-                            className="sft-ribbon-search-button-icon glyphicon glyphicon-remove-sign"
+                        <FontAwesomeIcon 
+                            icon={faCircleXmark}
+                            className="sft-ribbon-search-button-icon"
                         />
                     </button>
                 </div>

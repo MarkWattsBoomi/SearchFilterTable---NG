@@ -7,6 +7,9 @@ import { FlowDisplayColumn } from 'fcmlib/lib/FlowDisplayColumn';
 import { eContentType } from 'fcmlib/lib/FCMNew';
 import { FlowObjectDataProperty } from 'fcmlib/lib/FlowObjectDataProperty';
 import { FlowObjectDataArray } from 'fcmlib/lib/FlowObjectDataArray';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons/faCircleCheck';
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons/faCircleXmark';
 // declare const manywho: IManywho;
 declare const manywho: any;
 
@@ -375,14 +378,16 @@ export class SearchFilterTableRow extends React.Component<any, any> {
                         case eContentType.ContentBoolean:
                             if ((((col as any).value as string)+"")?.toLowerCase() === 'true') {
                                 result = (
-                                    <span
-                                        className="sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-true glyphicon glyphicon-ok"
+                                    <FontAwesomeIcon 
+                                        icon={faCircleCheck}
+                                        className="sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-true"
                                     />
                                 );
                             } else {
                                 result = (
-                                    <span
-                                        className="sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-false glyphicon glyphicon-remove"
+                                    <FontAwesomeIcon 
+                                        icon={faCircleXmark}
+                                        className="sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-false"
                                     />
                                 );
                             }

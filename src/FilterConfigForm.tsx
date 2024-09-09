@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {SFTColumnCriteria, eColumnComparator } from './ColumnCriteria';
 import {SFTColumnFilter} from './ColumnFilter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons/faCirclePlus';
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons/faCircleXmark';
 
 export class FilterConfigForm extends React.Component<any, any> {
 
@@ -142,8 +145,9 @@ export class FilterConfigForm extends React.Component<any, any> {
                                     this.forceUpdate();
                                 }}
                             >
-                                <span
-                                    className="sft-ribbon-search-button-icon glyphicon glyphicon-remove-sign"
+                                <FontAwesomeIcon 
+                                    icon={faCircleXmark}
+                                    className="sft-ribbon-search-button-icon  sft-column-header-flag-hot"
                                 />
                             </button>
                         </div>
@@ -156,10 +160,9 @@ export class FilterConfigForm extends React.Component<any, any> {
             <div
                 className="sft-fcf-buttons"
             >
-                <span
-                    className="sft-fcf-button glyphicon glyphicon-plus-sign"
-                    title="Add criteria"
-                    onClick={this.addCriteria}
+                <FontAwesomeIcon 
+                    icon={faCirclePlus}
+                    className="sft-column-header-flag"
                 />
             </div>,
         );

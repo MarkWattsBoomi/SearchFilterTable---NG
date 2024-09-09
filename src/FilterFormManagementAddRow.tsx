@@ -2,6 +2,8 @@ import * as React from 'react';
 import {FilterManagementForm} from './FilterManagementForm';
 import { SFTColumnCriteria } from './ColumnCriteria';
 import { FlowDisplayColumn } from 'fcmlib/lib/FlowDisplayColumn';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons/faCirclePlus';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class FilterManagementFormAddRow extends React.Component<any, any> {
 
@@ -79,8 +81,9 @@ export class FilterManagementFormAddRow extends React.Component<any, any> {
                     className="sft-ribbon-search-button-wrapper"
                     onClick={this.addColumnCriteria}
                 >
-                    <span
-                        className="glyphicon glyphicon-plus sft-ribbon-search-button-icon"
+                    <FontAwesomeIcon 
+                        icon={faCirclePlus}
+                        className="sft-ribbon-search-button-icon"
                     />
                 </button>
             );
