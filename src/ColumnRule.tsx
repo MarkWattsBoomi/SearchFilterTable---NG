@@ -235,7 +235,13 @@ export class ColumnRule {
                         sft: this.parent,
                         component: this.parent.component,
                     };
-                    content = React.createElement(manywho.component.getByName(this.componentClass), columnProps);
+                    if(typeof manywho !== 'undefined'){
+                        content = React.createElement(manywho.component.getByName(this.componentClass), columnProps);
+                    }
+                    else {
+                        content = React.createElement(eval(this.componentClass) , columnProps);
+                    }
+                    
                     break;
                 case 'dateformat':
                     let result: string = '';

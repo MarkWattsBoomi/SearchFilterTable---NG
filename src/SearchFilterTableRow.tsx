@@ -215,7 +215,12 @@ export class SearchFilterTableRow extends React.Component<any, any> {
                         sft: root,
                         component: root.component
                     };
-                    result = React.createElement(manywho.component.getByName(componentType), columnProps);
+                    if(typeof manywho !== 'undefined'){
+                        result = React.createElement(manywho.component.getByName(componentType), columnProps);
+                    }
+                    else {
+                        result = React.createElement(eval(componentType) , columnProps);
+                    }
                 } else {
                     switch (contentType) {
                         case eContentType.ContentDateTime:
