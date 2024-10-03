@@ -672,7 +672,7 @@
   margin: auto 0 auto 0.5rem !important;
   cursor: pointer;
   height: 100%;
-  background-color: #fefefe;
+  background-color: transparent;
 }
 .sft-ribbon-search-button-icon {
   font-size: 1.1rem;
