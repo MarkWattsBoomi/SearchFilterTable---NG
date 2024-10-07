@@ -322,6 +322,12 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         let val: FlowValue = comp.value;
         val.value = e.currentTarget.value;
         sft.component.setValues(val);
+        if(comp.onChange?.length > 0 && sft.component.outcomes[comp.onChange]) {
+            sft.component.triggerOutcome(comp.onChange);
+        }
+        else {
+
+        }
         this.generateComponents();
         this.forceUpdate();
     }
@@ -351,14 +357,24 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                 if(sft.selectedPartition===key){
                     classes += " sft-ribbon-search-partition-selected"
                 }
+                let label: string = "";
+                let toolTip: string = key;
+                if(toolTip.length > 10) {
+                    label = toolTip.substring(0,10) + "...";
+                }
+                else {
+                    label=toolTip;
+                }
+
                 this.partitions.push(
                     <div
                         key={key}
                         className={classes}
                         onClick={(e: any) => {this.filterPartition(e, key)}}
+                        title={toolTip}
                     >
                         <span>
-                            {key.toLowerCase()}
+                            {label.toLowerCase()}
                         </span>
                     </div>
                 );

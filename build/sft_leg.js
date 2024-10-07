@@ -305,31 +305,31 @@ var require_react_development = __commonJS({
         function isArray(a2) {
           return isArrayImpl(a2);
         }
-        function typeName(value2) {
+        function typeName(value) {
           {
             var hasToStringTag = typeof Symbol === "function" && Symbol.toStringTag;
-            var type = hasToStringTag && value2[Symbol.toStringTag] || value2.constructor.name || "Object";
+            var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
             return type;
           }
         }
-        function willCoercionThrow(value2) {
+        function willCoercionThrow(value) {
           {
             try {
-              testStringCoercion(value2);
+              testStringCoercion(value);
               return false;
             } catch (e) {
               return true;
             }
           }
         }
-        function testStringCoercion(value2) {
-          return "" + value2;
+        function testStringCoercion(value) {
+          return "" + value;
         }
-        function checkKeyStringCoercion(value2) {
+        function checkKeyStringCoercion(value) {
           {
-            if (willCoercionThrow(value2)) {
-              error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value2));
-              return testStringCoercion(value2);
+            if (willCoercionThrow(value)) {
+              error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
+              return testStringCoercion(value);
             }
           }
         }
@@ -643,8 +643,8 @@ var require_react_development = __commonJS({
             "=": "=0",
             ":": "=2"
           };
-          var escapedString = key.replace(escapeRegex, function(match2) {
-            return escaperLookup[match2];
+          var escapedString = key.replace(escapeRegex, function(match) {
+            return escaperLookup[match];
           });
           return "$" + escapedString;
         }
@@ -760,12 +760,12 @@ var require_react_development = __commonJS({
           if (children == null) {
             return children;
           }
-          var result2 = [];
+          var result = [];
           var count = 0;
-          mapIntoArray(children, result2, "", "", function(child) {
+          mapIntoArray(children, result, "", "", function(child) {
             return func.call(context, child, count++);
           });
-          return result2;
+          return result;
         }
         function countChildren(children) {
           var n = 0;
@@ -1126,19 +1126,19 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useImperativeHandle(ref, create, deps);
         }
-        function useDebugValue(value2, formatterFn) {
+        function useDebugValue(value, formatterFn) {
           {
             var dispatcher = resolveDispatcher();
-            return dispatcher.useDebugValue(value2, formatterFn);
+            return dispatcher.useDebugValue(value, formatterFn);
           }
         }
         function useTransition() {
           var dispatcher = resolveDispatcher();
           return dispatcher.useTransition();
         }
-        function useDeferredValue(value2) {
+        function useDeferredValue(value) {
           var dispatcher = resolveDispatcher();
-          return dispatcher.useDeferredValue(value2);
+          return dispatcher.useDeferredValue(value);
         }
         function useId() {
           var dispatcher = resolveDispatcher();
@@ -1234,8 +1234,8 @@ var require_react_development = __commonJS({
               try {
                 throw Error();
               } catch (x) {
-                var match2 = x.stack.trim().match(/\n( *(at )?)/);
-                prefix = match2 && match2[1] || "";
+                var match = x.stack.trim().match(/\n( *(at )?)/);
+                prefix = match && match[1] || "";
               }
             }
             return "\n" + prefix + name;
@@ -1719,10 +1719,10 @@ var require_react_development = __commonJS({
               ReactCurrentActQueue.current = [];
             }
             var prevIsBatchingLegacy = ReactCurrentActQueue.isBatchingLegacy;
-            var result2;
+            var result;
             try {
               ReactCurrentActQueue.isBatchingLegacy = true;
-              result2 = callback();
+              result = callback();
               if (!prevIsBatchingLegacy && ReactCurrentActQueue.didScheduleLegacyUpdate) {
                 var queue = ReactCurrentActQueue.current;
                 if (queue !== null) {
@@ -1736,8 +1736,8 @@ var require_react_development = __commonJS({
             } finally {
               ReactCurrentActQueue.isBatchingLegacy = prevIsBatchingLegacy;
             }
-            if (result2 !== null && typeof result2 === "object" && typeof result2.then === "function") {
-              var thenableResult = result2;
+            if (result !== null && typeof result === "object" && typeof result.then === "function") {
+              var thenableResult = result;
               var wasAwaited = false;
               var thenable = {
                 then: function(resolve, reject) {
@@ -1768,7 +1768,7 @@ var require_react_development = __commonJS({
               }
               return thenable;
             } else {
-              var returnValue = result2;
+              var returnValue = result;
               popActScope(prevActScopeDepth);
               if (actScopeDepth === 0) {
                 var _queue = ReactCurrentActQueue.current;
@@ -2439,12 +2439,12 @@ var require_factoryWithTypeCheckers = __commonJS({
               return null;
             }
           }
-          var valuesString = JSON.stringify(expectedValues, function replacer(key, value2) {
-            var type = getPreciseType(value2);
+          var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+            var type = getPreciseType(value);
             if (type === "symbol") {
-              return String(value2);
+              return String(value);
             }
-            return value2;
+            return value;
           });
           return new PropTypeError("Invalid " + location + " `" + propFullName + "` of value `" + String(propValue) + "` " + ("supplied to `" + componentName + "`, expected one of " + valuesString + "."));
         }
@@ -2650,8 +2650,8 @@ var require_factoryWithTypeCheckers = __commonJS({
         }
         return propType;
       }
-      function getPostfixForTypeWarning(value2) {
-        var type = getPreciseType(value2);
+      function getPostfixForTypeWarning(value) {
+        var type = getPreciseType(value);
         switch (type) {
           case "array":
           case "object":
@@ -29325,31 +29325,31 @@ var FlowObjectDataProperty = class _FlowObjectDataProperty {
       }
     }
   }
-  static newInstance(developerName, contentType2, value2) {
+  static newInstance(developerName, contentType, value) {
     let cv;
     let objd = [];
-    switch (contentType2) {
+    switch (contentType) {
       case eContentType.ContentObject:
-        const od = value2;
+        const od = value;
         objd.push(od.iObjectData());
         break;
       case eContentType.ContentList:
-        const oda = value2;
+        const oda = value;
         objd = oda.iFlowObjectDataArray();
         break;
       case eContentType.ContentNumber:
-        cv = value2;
+        cv = value;
         break;
       case eContentType.ContentBoolean:
-        cv = value2;
+        cv = value;
         break;
       default:
-        cv = value2;
+        cv = value;
         break;
     }
     const data = {
       contentFormat: "",
-      contentType: eContentType[contentType2],
+      contentType: eContentType[contentType],
       contentValue: cv,
       developerName,
       objectData: objd,
@@ -29367,8 +29367,8 @@ var FlowObjectDataProperty = class _FlowObjectDataProperty {
   get contentType() {
     return this.ContentType;
   }
-  set contentType(contentType2) {
-    this.ContentType = contentType2;
+  set contentType(contentType) {
+    this.ContentType = contentType;
   }
   get developerName() {
     return this.DeveloperName;
@@ -29400,35 +29400,35 @@ var FlowObjectDataProperty = class _FlowObjectDataProperty {
         return this.Value;
     }
   }
-  set value(value2) {
+  set value(value) {
     switch (this.contentType) {
       case eContentType.ContentNumber:
-        this.Value = parseFloat(value2 ? "" + value2 : "0");
+        this.Value = parseFloat(value ? "" + value : "0");
         break;
       case eContentType.ContentBoolean:
-        this.Value = new String(value2).toLowerCase() === "true" ? true : false;
+        this.Value = new String(value).toLowerCase() === "true" ? true : false;
       case eContentType.ContentDateTime:
-        this.Value = new Date(value2);
+        this.Value = new Date(value);
       default:
-        this.Value = value2;
+        this.Value = value;
     }
   }
   clone() {
-    let value2;
+    let value;
     switch (this.contentType) {
       case eContentType.ContentList:
-        value2 = new FlowObjectDataArray();
+        value = new FlowObjectDataArray();
         this.value.items.forEach((item) => {
-          value2.addItem(item.clone(item.developerName));
+          value.addItem(item.clone(item.developerName));
         });
         break;
       case eContentType.ContentObject:
-        value2 = this.value.clone(this.value.developerName);
+        value = this.value.clone(this.value.developerName);
         break;
       default:
-        value2 = this.value;
+        value = this.value;
     }
-    const clone = _FlowObjectDataProperty.newInstance(this.developerName, this.contentType, value2);
+    const clone = _FlowObjectDataProperty.newInstance(this.developerName, this.contentType, value);
     return clone;
   }
   iFlowObjectDataProperty() {
@@ -29470,25 +29470,25 @@ var FlowObjectDataProperty = class _FlowObjectDataProperty {
     return output;
   }
   get displayString() {
-    let label2 = "";
+    let label = "";
     if (this.Value) {
       switch (this.ContentType) {
         case eContentType.ContentString:
         case eContentType.ContentNumber:
-          label2 = this.Value;
+          label = this.Value;
           break;
         case eContentType.ContentBoolean:
           if (this.Value === true) {
-            label2 = "True";
+            label = "True";
           } else {
-            label2 = "False";
+            label = "False";
           }
           break;
         case eContentType.ContentDateTime:
           const d = Date.parse(this.Value);
           if (!isNaN(d)) {
             const dt = new Date(d);
-            if (label2.length <= 10) {
+            if (label.length <= 10) {
               return dt.toLocaleDateString();
             } else {
               return dt.toLocaleString();
@@ -29496,13 +29496,13 @@ var FlowObjectDataProperty = class _FlowObjectDataProperty {
           }
           break;
         default:
-          label2 = eContentType[this.ContentType];
+          label = eContentType[this.ContentType];
           break;
       }
     } else {
-      label2 = "Undefined";
+      label = "Undefined";
     }
-    return label2;
+    return label;
   }
 };
 
@@ -29699,12 +29699,12 @@ var FlowObjectDataArray = class _FlowObjectDataArray {
     let model = JSON.parse(json);
     model.forEach((item) => {
       let objData = FlowObjectData.newInstance(flowTypeName);
-      columns.forEach((col2) => {
-        let val = item[col2.developerName];
-        if (col2.developerName === primaryKey) {
+      columns.forEach((col) => {
+        let val = item[col.developerName];
+        if (col.developerName === primaryKey) {
           objData.externalId = val;
         }
-        switch (col2.contentType) {
+        switch (col.contentType) {
           case eContentType.ContentDateTime:
             val = new Date(val);
             if (val && !isNaN(val.getTime())) {
@@ -29725,8 +29725,8 @@ var FlowObjectDataArray = class _FlowObjectDataArray {
             val = new String(val).toLowerCase() === "true";
             break;
         }
-        objData.addProperty(FlowObjectDataProperty.newInstance(col2.developerName, col2.contentType, val));
-        objData.properties[col2.developerName].typeElementPropertyId = col2.typeElementPropertyId;
+        objData.addProperty(FlowObjectDataProperty.newInstance(col.developerName, col.contentType, val));
+        objData.properties[col.developerName].typeElementPropertyId = col.typeElementPropertyId;
       });
       objDataArray.addItem(objData);
     });
@@ -29755,25 +29755,25 @@ var FlowObjectDataArray = class _FlowObjectDataArray {
   getItemWithPropertyName(findProperty, withValue, returnProperty) {
     for (const item of this.Items) {
       if (item.properties[findProperty] && item.properties[findProperty].value != void 0) {
-        let value2 = item.properties[findProperty].value;
+        let value = item.properties[findProperty].value;
         let compareTo = withValue;
         switch (item.properties[findProperty].contentType) {
           case eContentType.ContentString:
-            value2 = value2.toLowerCase();
+            value = value.toLowerCase();
             compareTo = compareTo.toLowerCase();
             break;
           case eContentType.ContentNumber:
-            value2 = value2;
+            value = value;
             compareTo = parseFloat(compareTo.toLowerCase());
             break;
           case eContentType.ContentBoolean:
-            value2 = value2;
+            value = value;
             compareTo = new String(compareTo).toLowerCase() === "true";
             break;
           default:
             break;
         }
-        if (value2 === compareTo) {
+        if (value === compareTo) {
           return item.properties[returnProperty];
         }
       }
@@ -29792,25 +29792,25 @@ var FlowObjectDataArray = class _FlowObjectDataArray {
   getItemWithPropertyValue(findProperty, withValue) {
     for (const item of this.Items) {
       if (item.properties[findProperty] && item.properties[findProperty].value != void 0) {
-        let value2 = item.properties[findProperty].value;
+        let value = item.properties[findProperty].value;
         let compareTo = withValue;
         switch (item.properties[findProperty].contentType) {
           case eContentType.ContentString:
-            value2 = value2.toLowerCase();
+            value = value.toLowerCase();
             compareTo = new String(compareTo).toLowerCase();
             break;
           case eContentType.ContentNumber:
-            value2 = value2;
+            value = value;
             compareTo = parseFloat(new String(compareTo).toLowerCase());
             break;
           case eContentType.ContentBoolean:
-            value2 = value2;
+            value = value;
             compareTo = new String(compareTo).toLowerCase() === "true";
             break;
           default:
             break;
         }
-        if (value2 === compareTo) {
+        if (value === compareTo) {
           return item;
         }
       }
@@ -29820,25 +29820,25 @@ var FlowObjectDataArray = class _FlowObjectDataArray {
     for (let pos = 0; pos < this.items.length; pos++) {
       const item = this.items[pos];
       if (item.properties[findProperty] && item.properties[findProperty].value != void 0) {
-        let value2 = item.properties[findProperty].value;
+        let value = item.properties[findProperty].value;
         let compareTo = withValue;
         switch (item.properties[findProperty].contentType) {
           case eContentType.ContentString:
-            value2 = value2.toLowerCase();
+            value = value.toLowerCase();
             compareTo = compareTo.toLowerCase();
             break;
           case eContentType.ContentNumber:
-            value2 = value2;
+            value = value;
             compareTo = parseFloat(new String(compareTo).toLowerCase());
             break;
           case eContentType.ContentBoolean:
-            value2 = value2;
+            value = value;
             compareTo = new String(compareTo).toLowerCase() === "true";
             break;
           default:
             break;
         }
-        if (value2 === compareTo) {
+        if (value === compareTo) {
           return pos;
         }
       }
@@ -29850,25 +29850,25 @@ var FlowObjectDataArray = class _FlowObjectDataArray {
     for (let pos = 0; pos < this.items.length; pos++) {
       const item = this.items[pos];
       if (item.properties[findProperty] && item.properties[findProperty].value != void 0) {
-        let value2 = item.properties[findProperty].value;
+        let value = item.properties[findProperty].value;
         let compareTo = withValue;
         switch (item.properties[findProperty].contentType) {
           case eContentType.ContentString:
-            value2 = value2.toLowerCase();
+            value = value.toLowerCase();
             compareTo = compareTo.toLowerCase();
             break;
           case eContentType.ContentNumber:
-            value2 = value2;
+            value = value;
             compareTo = parseFloat(new String(compareTo).toLowerCase());
             break;
           case eContentType.ContentBoolean:
-            value2 = value2;
+            value = value;
             compareTo = new String(compareTo).toLowerCase() === "true";
             break;
           default:
             break;
         }
-        if (value2 === compareTo) {
+        if (value === compareTo) {
           this.items.splice(pos, 1);
           modifiedCount++;
         }
@@ -29888,9 +29888,9 @@ var FlowObjectDataArray = class _FlowObjectDataArray {
 
 // node_modules/fcmlib/lib/FlowAttribute.js
 var FlowAttribute = class {
-  constructor(name, value2) {
+  constructor(name, value) {
     this.Name = name;
-    this.Value = value2;
+    this.Value = value;
   }
   get name() {
     return this.Name;
@@ -30041,8 +30041,8 @@ var FlowValue = class {
   get value() {
     return this.Value;
   }
-  set value(value2) {
-    this.Value = value2;
+  set value(value) {
+    this.Value = value;
   }
   iFlowField() {
     let contentValue = "";
@@ -30077,28 +30077,28 @@ var FlowValue = class {
 
 // node_modules/fcmlib/lib/FCMCore.js
 var __awaiter = function(thisArg, _arguments, P, generator) {
-  function adopt(value2) {
-    return value2 instanceof P ? value2 : new P(function(resolve) {
-      resolve(value2);
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
     });
   }
   return new (P || (P = Promise))(function(resolve, reject) {
-    function fulfilled(value2) {
+    function fulfilled(value) {
       try {
-        step(generator.next(value2));
+        step(generator.next(value));
       } catch (e) {
         reject(e);
       }
     }
-    function rejected(value2) {
+    function rejected(value) {
       try {
-        step(generator["throw"](value2));
+        step(generator["throw"](value));
       } catch (e) {
         reject(e);
       }
     }
-    function step(result2) {
-      result2.done ? resolve(result2.value) : adopt(result2.value).then(fulfilled, rejected);
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
     }
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
@@ -30203,18 +30203,18 @@ var FCMCore = class extends import_react.default.Component {
   }
   getValue(valueName) {
     return __awaiter(this, void 0, void 0, function* () {
-      let value2;
+      let value;
       try {
-        value2 = yield this.callRequest("values/name/" + valueName, "GET", {});
-        sessionStorage.setItem(value2.developerName, JSON.stringify(value2));
+        value = yield this.callRequest("values/name/" + valueName, "GET", {});
+        sessionStorage.setItem(value.developerName, JSON.stringify(value));
       } catch (e) {
         console.error(e);
-        value2 = JSON.parse(sessionStorage.getItem(valueName));
+        value = JSON.parse(sessionStorage.getItem(valueName));
       } finally {
-        if (value2) {
-          this.fields[value2.developerName] = new FlowValue(value2);
+        if (value) {
+          this.fields[value.developerName] = new FlowValue(value);
         }
-        return this.fields[value2.developerName];
+        return this.fields[value.developerName];
       }
     });
   }
@@ -30241,11 +30241,11 @@ var FCMCore = class extends import_react.default.Component {
   inflateValue(input) {
     return __awaiter(this, void 0, void 0, function* () {
       if (input) {
-        let value2;
-        let match2;
-        const matches2 = [];
-        while (match2 = RegExp(/{{([^}]*)}}/).exec(input)) {
-          const fldElements = match2[1].split("->");
+        let value;
+        let match;
+        const matches = [];
+        while (match = RegExp(/{{([^}]*)}}/).exec(input)) {
+          const fldElements = match[1].split("->");
           let fld;
           if (!this.fields[fldElements[0]]) {
             fld = yield this.getValue(fldElements[0]);
@@ -30260,14 +30260,14 @@ var FCMCore = class extends import_react.default.Component {
                 for (let epos = 1; epos < fldElements.length; epos++) {
                   od = od.properties[fldElements[epos]].value;
                 }
-                value2 = od;
+                value = od;
               } else {
-                value2 = fld.value;
+                value = fld.value;
               }
             } else {
-              value2 = fld.value;
+              value = fld.value;
             }
-            input = input.replace(match2[0], value2);
+            input = input.replace(match[0], value);
           }
         }
       }
@@ -30278,28 +30278,28 @@ var FCMCore = class extends import_react.default.Component {
 
 // node_modules/fcmlib/lib/FCMLegacy.js
 var __awaiter2 = function(thisArg, _arguments, P, generator) {
-  function adopt(value2) {
-    return value2 instanceof P ? value2 : new P(function(resolve) {
-      resolve(value2);
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
     });
   }
   return new (P || (P = Promise))(function(resolve, reject) {
-    function fulfilled(value2) {
+    function fulfilled(value) {
       try {
-        step(generator.next(value2));
+        step(generator.next(value));
       } catch (e) {
         reject(e);
       }
     }
-    function rejected(value2) {
+    function rejected(value) {
       try {
-        step(generator["throw"](value2));
+        step(generator["throw"](value));
       } catch (e) {
         reject(e);
       }
     }
-    function step(result2) {
-      result2.done ? resolve(result2.value) : adopt(result2.value).then(fulfilled, rejected);
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
     }
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
@@ -30358,8 +30358,8 @@ var FCMLegacy = class extends FCMCore {
     this.colSpan = model.colSpan;
     this.column = model.column;
     this.columns = [];
-    (_a = model.columns) === null || _a === void 0 ? void 0 : _a.forEach((col2) => {
-      this.columns.push(new FlowDisplayColumn(col2));
+    (_a = model.columns) === null || _a === void 0 ? void 0 : _a.forEach((col) => {
+      this.columns.push(new FlowDisplayColumn(col));
     });
     this.columns.sort((a2, b) => {
       return a2.order - b.order;
@@ -30436,17 +30436,17 @@ var FCMLegacy = class extends FCMCore {
     this.width = model.width;
     return hasChanged;
   }
-  setStateValue(value2) {
-    this.stateValue = value2;
+  setStateValue(value) {
+    this.stateValue = value;
     const flowModel = manywho.model.getComponent(this.id, this.flowKey);
     let newState;
     if (flowModel) {
       switch (flowModel.contentType) {
         case "ContentObject":
           let objectData = null;
-          if (value2) {
-            value2.isSelected = true;
-            objectData = value2.iFlowObjectDataArray();
+          if (value) {
+            value.isSelected = true;
+            objectData = value.iFlowObjectDataArray();
             objectData = JSON.parse(JSON.stringify(objectData));
           }
           newState = { "objectData": objectData };
@@ -30454,19 +30454,19 @@ var FCMLegacy = class extends FCMCore {
           break;
         case "ContentList":
           let objectDataArray = null;
-          if (value2) {
-            objectDataArray = value2.iFlowObjectDataArray();
+          if (value) {
+            objectDataArray = value.iFlowObjectDataArray();
             objectDataArray = JSON.parse(JSON.stringify(objectDataArray));
           }
           newState = { "objectData": objectDataArray };
           manywho.state.setComponent(this.id, newState, this.flowKey, true);
           break;
         case "ContentDate":
-          newState = { "contentValue": value2.toISOString() };
+          newState = { "contentValue": value.toISOString() };
           manywho.state.setComponent(this.id, newState, this.flowKey, true);
           break;
         default:
-          newState = { "contentValue": value2 };
+          newState = { "contentValue": value };
           manywho.state.setComponent(this.id, newState, this.flowKey, true);
           break;
       }
@@ -30501,9 +30501,9 @@ var FCMLegacy = class extends FCMCore {
     let objDataArray = new FlowObjectDataArray(employees.objectData);
     return objDataArray;
   }
-  setPageComponentState(componentName, value2) {
+  setPageComponentState(componentName, value) {
     let employees = manywho.model.getComponentByName(componentName, this.flowKey);
-    manywho.state.setComponent(employees.id, value2.iFlowObjectDataArray(true), this.flowKey, true);
+    manywho.state.setComponent(employees.id, value.iFlowObjectDataArray(true), this.flowKey, true);
   }
   getUserEmail() {
     let email = "admin@manywho.com";
@@ -30529,10 +30529,10 @@ var React22 = __toESM(require_react());
 
 // src/CellItem.ts
 var CellItem = class {
-  constructor(name, value2) {
+  constructor(name, value) {
     this.name = name;
-    this.originalValue = value2;
-    this.newValue = value2;
+    this.originalValue = value;
+    this.newValue = value;
   }
 };
 
@@ -30627,48 +30627,48 @@ var SFTColumnCriteria = class _SFTColumnCriteria {
     });
     return options;
   }
-  constructor(comparator, value2, value22) {
+  constructor(comparator, value, value2) {
     this.comparator = comparator;
     switch (comparator) {
       case 9 /* in */:
       case 10 /* notIn */:
-        this.value = value2;
-        this.value2 = value22;
+        this.value = value;
+        this.value2 = value2;
         break;
       default:
-        this.value = value2;
-        this.value2 = value22;
+        this.value = value;
+        this.value2 = value2;
     }
   }
   getForStorage() {
-    const result2 = {};
-    result2.comparator = this.comparator;
+    const result = {};
+    result.comparator = this.comparator;
     if (this.value instanceof Map) {
       const vals = [];
       this.value.forEach((val, key) => {
         vals.push(key);
       });
-      result2.value = JSON.stringify(vals);
+      result.value = JSON.stringify(vals);
     } else {
-      result2.value = this.value;
-      result2.value2 = this.value2;
+      result.value = this.value;
+      result.value2 = this.value2;
     }
-    return JSON.stringify(result2);
+    return JSON.stringify(result);
   }
   getForFSS() {
-    const result2 = {};
-    result2.comparator = this.comparator;
+    const result = {};
+    result.comparator = this.comparator;
     if (this.value instanceof Map) {
       const vals = [];
       this.value.forEach((val, key) => {
         vals.push(key);
       });
-      result2.value = JSON.stringify(vals);
+      result.value = JSON.stringify(vals);
     } else {
-      result2.value = this.value;
-      result2.value2 = this.value2;
+      result.value = this.value;
+      result.value2 = this.value2;
     }
-    return result2;
+    return result;
   }
 };
 
@@ -31198,9 +31198,9 @@ function insertCss(css2) {
   if (!css2 || !IS_DOM) {
     return;
   }
-  const style2 = DOCUMENT.createElement("style");
-  style2.setAttribute("type", "text/css");
-  style2.innerHTML = css2;
+  const style = DOCUMENT.createElement("style");
+  style.setAttribute("type", "text/css");
+  style.innerHTML = css2;
   const headChildren = DOCUMENT.head.childNodes;
   let beforeChild = null;
   for (let i = headChildren.length - 1; i > -1; i--) {
@@ -31210,7 +31210,7 @@ function insertCss(css2) {
       beforeChild = child;
     }
   }
-  DOCUMENT.head.insertBefore(style2, beforeChild);
+  DOCUMENT.head.insertBefore(style, beforeChild);
   return css2;
 }
 var idPool = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -31391,36 +31391,36 @@ var bindInternal4 = function bindInternal42(func, thisContext) {
   };
 };
 var reduce = function fastReduceObject(subject, fn, initialValue, thisContext) {
-  var keys = Object.keys(subject), length = keys.length, iterator = thisContext !== void 0 ? bindInternal4(fn, thisContext) : fn, i, key, result2;
+  var keys = Object.keys(subject), length = keys.length, iterator = thisContext !== void 0 ? bindInternal4(fn, thisContext) : fn, i, key, result;
   if (initialValue === void 0) {
     i = 1;
-    result2 = subject[keys[0]];
+    result = subject[keys[0]];
   } else {
     i = 0;
-    result2 = initialValue;
+    result = initialValue;
   }
   for (; i < length; i++) {
     key = keys[i];
-    result2 = iterator(result2, subject[key], key, subject);
+    result = iterator(result, subject[key], key, subject);
   }
-  return result2;
+  return result;
 };
 function ucs2decode(string) {
   const output = [];
   let counter2 = 0;
   const length = string.length;
   while (counter2 < length) {
-    const value2 = string.charCodeAt(counter2++);
-    if (value2 >= 55296 && value2 <= 56319 && counter2 < length) {
+    const value = string.charCodeAt(counter2++);
+    if (value >= 55296 && value <= 56319 && counter2 < length) {
       const extra = string.charCodeAt(counter2++);
       if ((extra & 64512) == 56320) {
-        output.push(((value2 & 1023) << 10) + (extra & 1023) + 65536);
+        output.push(((value & 1023) << 10) + (extra & 1023) + 65536);
       } else {
-        output.push(value2);
+        output.push(value);
         counter2--;
       }
     } else {
-      output.push(value2);
+      output.push(value);
     }
   }
   return output;
@@ -31506,8 +31506,8 @@ function getIconName(cssPrefix, cls) {
 }
 var build = () => {
   const lookup = (reducer) => {
-    return reduce(styles, (o$$1, style2, prefix) => {
-      o$$1[prefix] = reduce(style2, reducer, {});
+    return reduce(styles, (o$$1, style, prefix) => {
+      o$$1[prefix] = reduce(style, reducer, {});
       return o$$1;
     }, {});
   };
@@ -31623,11 +31623,11 @@ function getCanonicalPrefix(styleOrPrefix) {
   const {
     family = a
   } = params;
-  const style2 = PREFIX_TO_STYLE[family][styleOrPrefix];
-  const prefix = STYLE_TO_PREFIX[family][styleOrPrefix] || STYLE_TO_PREFIX[family][style2];
+  const style = PREFIX_TO_STYLE[family][styleOrPrefix];
+  const prefix = STYLE_TO_PREFIX[family][styleOrPrefix] || STYLE_TO_PREFIX[family][style];
   const defined = styleOrPrefix in namespace.styles ? styleOrPrefix : null;
-  const result2 = prefix || defined || null;
-  return result2;
+  const result = prefix || defined || null;
+  return result;
 }
 var PREFIXES_FOR_FAMILY = {
   [a]: Object.keys(PREFIX_TO_LONG_STYLE[a]),
@@ -32018,7 +32018,7 @@ function makeInlineSvgAbstract(params) {
   } = mask.found ? mask : main;
   const isUploadedIcon = prefix === "fak";
   const attrClass = [config.replacementClass, iconName ? "".concat(config.cssPrefix, "-").concat(iconName) : ""].filter((c2) => extra.classes.indexOf(c2) === -1).filter((c2) => c2 !== "" || !!c2).concat(extra.classes).join(" ");
-  let content2 = {
+  let content = {
     children: [],
     attributes: {
       ...extra.attributes,
@@ -32034,20 +32034,20 @@ function makeInlineSvgAbstract(params) {
     width: "".concat(width / height * 16 * 0.0625, "em")
   } : {};
   if (watchable) {
-    content2.attributes[DATA_FA_I2SVG] = "";
+    content.attributes[DATA_FA_I2SVG] = "";
   }
   if (title) {
-    content2.children.push({
+    content.children.push({
       tag: "title",
       attributes: {
-        id: content2.attributes["aria-labelledby"] || "title-".concat(titleId || nextUniqueId())
+        id: content.attributes["aria-labelledby"] || "title-".concat(titleId || nextUniqueId())
       },
       children: [title]
     });
-    delete content2.attributes.title;
+    delete content.attributes.title;
   }
   const args = {
-    ...content2,
+    ...content,
     prefix,
     iconName,
     main,
@@ -32080,7 +32080,7 @@ function makeInlineSvgAbstract(params) {
 }
 function makeLayersTextAbstract(params) {
   const {
-    content: content2,
+    content,
     width,
     height,
     transform,
@@ -32118,7 +32118,7 @@ function makeLayersTextAbstract(params) {
   val.push({
     tag: "span",
     attributes,
-    children: [content2]
+    children: [content]
   });
   if (title) {
     val.push({
@@ -32133,7 +32133,7 @@ function makeLayersTextAbstract(params) {
 }
 function makeLayersCounterAbstract(params) {
   const {
-    content: content2,
+    content,
     title,
     extra
   } = params;
@@ -32152,7 +32152,7 @@ function makeLayersCounterAbstract(params) {
   val.push({
     tag: "span",
     attributes,
-    children: [content2]
+    children: [content]
   });
   if (title) {
     val.push({
@@ -32447,15 +32447,15 @@ function disconnect() {
   mo$1.disconnect();
 }
 function styleParser(node) {
-  const style2 = node.getAttribute("style");
+  const style = node.getAttribute("style");
   let val = [];
-  if (style2) {
-    val = style2.split(";").reduce((acc, style3) => {
-      const styles2 = style3.split(":");
+  if (style) {
+    val = style.split(";").reduce((acc, style2) => {
+      const styles2 = style2.split(":");
       const prop = styles2[0];
-      const value2 = styles2.slice(1);
-      if (prop && value2.length > 0) {
-        acc[prop] = value2.join(":").trim();
+      const value = styles2.slice(1);
+      if (prop && value.length > 0) {
+        acc[prop] = value.join(":").trim();
       }
       return acc;
     }, {});
@@ -32579,7 +32579,7 @@ Object.keys(PREFIX_TO_STYLE[a]).map(knownPrefixes.add.bind(knownPrefixes));
 Object.keys(PREFIX_TO_STYLE[r]).map(knownPrefixes.add.bind(knownPrefixes));
 Object.keys(PREFIX_TO_STYLE[o]).map(knownPrefixes.add.bind(knownPrefixes));
 knownPrefixes = [...knownPrefixes];
-function onTree(root2) {
+function onTree(root) {
   let callback = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
   if (!IS_DOM)
     return Promise.resolve();
@@ -32596,7 +32596,7 @@ function onTree(root2) {
   }
   let candidates = [];
   try {
-    candidates = toArray(root2.querySelectorAll(prefixesDomQuery));
+    candidates = toArray(root.querySelectorAll(prefixesDomQuery));
   } catch (e$$1) {
   }
   if (candidates.length > 0) {
@@ -32671,7 +32671,7 @@ var render = function(iconDefinition) {
     maskId = null,
     title = null,
     titleId = null,
-    classes: classes2 = [],
+    classes = [],
     attributes = {},
     styles: styles2 = {}
   } = params;
@@ -32721,7 +32721,7 @@ var render = function(iconDefinition) {
       extra: {
         attributes,
         styles: styles2,
-        classes: classes2
+        classes
       }
     });
   });
@@ -32823,7 +32823,7 @@ var Layers = {
       layer(assembler) {
         let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
         const {
-          classes: classes2 = []
+          classes = []
         } = params;
         return domVariants({
           type: "layer"
@@ -32841,7 +32841,7 @@ var Layers = {
           return [{
             tag: "span",
             attributes: {
-              class: ["".concat(config.cssPrefix, "-layers"), ...classes2].join(" ")
+              class: ["".concat(config.cssPrefix, "-layers"), ...classes].join(" ")
             },
             children
           }];
@@ -32853,29 +32853,29 @@ var Layers = {
 var LayersCounter = {
   mixout() {
     return {
-      counter(content2) {
+      counter(content) {
         let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
         const {
           title = null,
-          classes: classes2 = [],
+          classes = [],
           attributes = {},
           styles: styles2 = {}
         } = params;
         return domVariants({
           type: "counter",
-          content: content2
+          content
         }, () => {
           callHooks("beforeDOMElementCreation", {
-            content: content2,
+            content,
             params
           });
           return makeLayersCounterAbstract({
-            content: content2.toString(),
+            content: content.toString(),
             title,
             extra: {
               attributes,
               styles: styles2,
-              classes: ["".concat(config.cssPrefix, "-layers-counter"), ...classes2]
+              classes: ["".concat(config.cssPrefix, "-layers-counter"), ...classes]
             }
           });
         });
@@ -32886,25 +32886,25 @@ var LayersCounter = {
 var LayersText = {
   mixout() {
     return {
-      text(content2) {
+      text(content) {
         let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
         const {
           transform = meaninglessTransform,
           title = null,
-          classes: classes2 = [],
+          classes = [],
           attributes = {},
           styles: styles2 = {}
         } = params;
         return domVariants({
           type: "text",
-          content: content2
+          content
         }, () => {
           callHooks("beforeDOMElementCreation", {
-            content: content2,
+            content,
             params
           });
           return makeLayersTextAbstract({
-            content: content2,
+            content,
             transform: {
               ...meaninglessTransform,
               ...transform
@@ -32913,7 +32913,7 @@ var LayersText = {
             extra: {
               attributes,
               styles: styles2,
-              classes: ["".concat(config.cssPrefix, "-layers-text"), ...classes2]
+              classes: ["".concat(config.cssPrefix, "-layers-text"), ...classes]
             }
           });
         });
@@ -32972,8 +32972,8 @@ var FONT_FAMILY_WEIGHT_FALLBACK = Object.keys(FONT_FAMILY_WEIGHT_TO_PREFIX).redu
   acc[fontFamily] = weights[900] || [...Object.entries(weights)][0][1];
   return acc;
 }, {});
-function hexValueFromContent(content2) {
-  const cleaned = content2.replace(CLEAN_CONTENT_PATTERN, "");
+function hexValueFromContent(content) {
+  const cleaned = content.replace(CLEAN_CONTENT_PATTERN, "");
   const codePoint = codePointAt(cleaned, 0);
   const isPrependTen = codePoint >= SECONDARY_UNICODE_RANGE[0] && codePoint <= SECONDARY_UNICODE_RANGE[1];
   const isDoubled = cleaned.length === 2 ? cleaned[0] === cleaned[1] : false;
@@ -33000,17 +33000,17 @@ function replaceForPosition(node, position) {
     const fontFamily = styles2.getPropertyValue("font-family");
     const fontFamilyMatch = fontFamily.match(FONT_FAMILY_PATTERN);
     const fontWeight = styles2.getPropertyValue("font-weight");
-    const content2 = styles2.getPropertyValue("content");
+    const content = styles2.getPropertyValue("content");
     if (alreadyProcessedPseudoElement && !fontFamilyMatch) {
       node.removeChild(alreadyProcessedPseudoElement);
       return resolve();
-    } else if (fontFamilyMatch && content2 !== "none" && content2 !== "") {
-      const content3 = styles2.getPropertyValue("content");
+    } else if (fontFamilyMatch && content !== "none" && content !== "") {
+      const content2 = styles2.getPropertyValue("content");
       let prefix = getPrefix(fontFamily, fontWeight);
       const {
         value: hexValue,
         isSecondary
-      } = hexValueFromContent(content3);
+      } = hexValueFromContent(content2);
       const isV4 = fontFamilyMatch[0].startsWith("FontAwesome");
       let iconName = byUnicode(prefix, hexValue);
       let iconIdentifier = iconName;
@@ -33067,11 +33067,11 @@ function replace(node) {
 function processable(node) {
   return node.parentNode !== document.head && !~TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS.indexOf(node.tagName.toUpperCase()) && !node.getAttribute(DATA_FA_PSEUDO_ELEMENT) && (!node.parentNode || node.parentNode.tagName !== "svg");
 }
-function searchPseudoElements(root2) {
+function searchPseudoElements(root) {
   if (!IS_DOM)
     return;
   return new Promise((resolve, reject) => {
-    const operations = toArray(root2.querySelectorAll("*")).filter(processable).map(replace);
+    const operations = toArray(root.querySelectorAll("*")).filter(processable).map(replace);
     const end2 = perf.begin("searchPseudoElements");
     disableObservation();
     Promise.all(operations).then(() => {
@@ -33543,16 +33543,16 @@ function _typeof(obj) {
     return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
   }, _typeof(obj);
 }
-function _defineProperty(obj, key, value2) {
+function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
-      value: value2,
+      value,
       enumerable: true,
       configurable: true,
       writable: true
     });
   } else {
-    obj[key] = value2;
+    obj[key] = value;
   }
   return obj;
 }
@@ -33625,7 +33625,7 @@ function _nonIterableSpread() {
 function classList(props) {
   var _classes;
   var beat = props.beat, fade = props.fade, beatFade = props.beatFade, bounce = props.bounce, shake = props.shake, flash = props.flash, spin = props.spin, spinPulse = props.spinPulse, spinReverse = props.spinReverse, pulse = props.pulse, fixedWidth = props.fixedWidth, inverse = props.inverse, border = props.border, listItem = props.listItem, flip = props.flip, size = props.size, rotation = props.rotation, pull = props.pull;
-  var classes2 = (_classes = {
+  var classes = (_classes = {
     "fa-beat": beat,
     "fa-fade": fade,
     "fa-beat-fade": beatFade,
@@ -33644,8 +33644,8 @@ function classList(props) {
     "fa-flip-horizontal": flip === "horizontal" || flip === "both",
     "fa-flip-vertical": flip === "vertical" || flip === "both"
   }, _defineProperty(_classes, "fa-".concat(size), typeof size !== "undefined" && size !== null), _defineProperty(_classes, "fa-rotate-".concat(rotation), typeof rotation !== "undefined" && rotation !== null && rotation !== 0), _defineProperty(_classes, "fa-pull-".concat(pull), typeof pull !== "undefined" && pull !== null), _defineProperty(_classes, "fa-swap-opacity", props.swapOpacity), _classes);
-  return Object.keys(classes2).map(function(key) {
-    return classes2[key] ? key : null;
+  return Object.keys(classes).map(function(key) {
+    return classes[key] ? key : null;
   }).filter(function(key) {
     return key;
   });
@@ -33658,7 +33658,7 @@ function camelize(string) {
   if (_isNumerical(string)) {
     return string;
   }
-  string = string.replace(/[\-_\s]+(.)?/g, function(match2, chr) {
+  string = string.replace(/[\-_\s]+(.)?/g, function(match, chr) {
     return chr ? chr.toUpperCase() : "";
   });
   return string.substr(0, 1).toLowerCase() + string.substr(1);
@@ -33667,16 +33667,16 @@ var _excluded = ["style"];
 function capitalize(val) {
   return val.charAt(0).toUpperCase() + val.slice(1);
 }
-function styleToObject(style2) {
-  return style2.split(";").map(function(s) {
+function styleToObject(style) {
+  return style.split(";").map(function(s) {
     return s.trim();
   }).filter(function(s) {
     return s;
   }).reduce(function(acc, pair) {
     var i = pair.indexOf(":");
     var prop = camelize(pair.slice(0, i));
-    var value2 = pair.slice(i + 1).trim();
-    prop.startsWith("webkit") ? acc[capitalize(prop)] = value2 : acc[prop] = value2;
+    var value = pair.slice(i + 1).trim();
+    prop.startsWith("webkit") ? acc[capitalize(prop)] = value : acc[prop] = value;
     return acc;
   }, {});
 }
@@ -33750,8 +33750,8 @@ function normalizeIconArgs(icon2) {
     };
   }
 }
-function objectWithKey(key, value2) {
-  return Array.isArray(value2) && value2.length > 0 || !Array.isArray(value2) && value2 ? _defineProperty({}, key, value2) : {};
+function objectWithKey(key, value) {
+  return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty({}, key, value) : {};
 }
 var defaultProps = {
   border: false,
@@ -33785,10 +33785,10 @@ var FontAwesomeIcon = /* @__PURE__ */ import_react2.default.forwardRef(function(
   var allProps = _objectSpread2(_objectSpread2({}, defaultProps), props);
   var iconArgs = allProps.icon, maskArgs = allProps.mask, symbol = allProps.symbol, className = allProps.className, title = allProps.title, titleId = allProps.titleId, maskId = allProps.maskId;
   var iconLookup = normalizeIconArgs(iconArgs);
-  var classes2 = objectWithKey("classes", [].concat(_toConsumableArray(classList(allProps)), _toConsumableArray((className || "").split(" "))));
+  var classes = objectWithKey("classes", [].concat(_toConsumableArray(classList(allProps)), _toConsumableArray((className || "").split(" "))));
   var transform = objectWithKey("transform", typeof allProps.transform === "string" ? parse$1.transform(allProps.transform) : allProps.transform);
   var mask = objectWithKey("mask", normalizeIconArgs(maskArgs));
-  var renderedIcon = icon(iconLookup, _objectSpread2(_objectSpread2(_objectSpread2(_objectSpread2({}, classes2), transform), mask), {}, {
+  var renderedIcon = icon(iconLookup, _objectSpread2(_objectSpread2(_objectSpread2(_objectSpread2({}, classes), transform), mask), {}, {
     symbol,
     title,
     titleId,
@@ -34047,8 +34047,8 @@ var FilterConfigForm = class extends React4.Component {
 
 // node_modules/fcmkit/lib/ModalDialog/FCMModalButton.js
 var FCMModalButton = class {
-  constructor(label2, handler) {
-    this.label = label2;
+  constructor(label, handler) {
+    this.label = label;
     this.handler = handler;
   }
 };
@@ -34116,10 +34116,10 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
     });
     return filtered;
   }
-  isFilteredOn(columnName2) {
+  isFilteredOn(columnName) {
     let filtered = false;
-    if (this.items.has(columnName2)) {
-      if (this.items.get(columnName2).criteria.length > 0) {
+    if (this.items.has(columnName)) {
+      if (this.items.get(columnName).criteria.length > 0) {
         filtered = true;
       }
     }
@@ -34146,23 +34146,23 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
   }
   // the filter button was pressed
   filterClicked(key) {
-    const root2 = this.parent;
+    const root = this.parent;
     if (!this.items.has(key)) {
       this.items.set(key, new SFTColumnFilter(key, this));
     }
-    const col2 = this.parent.colMap.get(key);
+    const col = this.parent.colMap.get(key);
     this.parent.messageBox.showDialog(
       null,
-      "Filter " + col2.label,
+      "Filter " + col.label,
       /* @__PURE__ */ React5.createElement(
         FilterConfigForm,
         {
-          root: root2,
+          root,
           parent: this,
           key,
           developerName: key,
           filter: this.items.get(key),
-          contentType: col2.contentType,
+          contentType: col.contentType,
           ref: (element) => {
             this.setDialog(element);
           }
@@ -34328,19 +34328,19 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
       );
     }
   }
-  getQuickCheck(columnName2) {
-    if (this.parent.component.getAttribute("QuickCheck", "false") === "true" && this.parent.colMap.get(columnName2)?.contentType === eContentType.ContentBoolean) {
-      const crit = this.items.get(columnName2)?.criteria[0];
+  getQuickCheck(columnName) {
+    if (this.parent.component.getAttribute("QuickCheck", "false") === "true" && this.parent.colMap.get(columnName)?.contentType === eContentType.ContentBoolean) {
+      const crit = this.items.get(columnName)?.criteria[0];
       return /* @__PURE__ */ React5.createElement(
         "input",
         {
           className: "sft-checkbox sft-quick-check",
           type: "checkbox",
           onChange: (e) => {
-            this.quickCheckClicked(columnName2, e);
+            this.quickCheckClicked(columnName, e);
           },
           ref: (element) => {
-            this.quickChecks.set(columnName2, element);
+            this.quickChecks.set(columnName, element);
           },
           checked: crit?.value ? crit.value : false
         }
@@ -34360,23 +34360,23 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
   }
   // this will filter the passed source map based on the current filters and return a new map of matches.
   filter(source) {
-    const matches2 = /* @__PURE__ */ new Map();
+    const matches = /* @__PURE__ */ new Map();
     source.forEach((item, key) => {
       if (this.matchesCriteria(item)) {
-        matches2.set(key, void 0);
+        matches.set(key, void 0);
       }
     });
-    return matches2;
+    return matches;
   }
-  matchesCriteria(value2) {
-    const objData = value2.objectData;
-    let matches2 = true;
+  matchesCriteria(value) {
+    const objData = value.objectData;
+    let matches = true;
     let globalMatches;
     if (this.globalCriteria && this.globalCriteria.length > 0) {
       globalMatches = false;
       const comparator = this.globalCriteria.toLowerCase();
-      value2.columns.forEach((col2) => {
-        const val = ("" + objData.properties[col2.name].value)?.toLowerCase();
+      value.columns.forEach((col) => {
+        const val = ("" + objData.properties[col.name].value)?.toLowerCase();
         if (val.indexOf(comparator) >= 0) {
           globalMatches = true;
         }
@@ -34434,12 +34434,12 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
         switch (criteria.comparator) {
           case 0 /* equalTo */:
             if (val !== crit) {
-              matches2 = false;
+              matches = false;
             }
             break;
           case 1 /* notEqualTo */:
             if (val === crit) {
-              matches2 = false;
+              matches = false;
             }
             break;
           case 7 /* contains */:
@@ -34452,16 +34452,16 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
                 matchArray.push(true);
               }
             });
-            matches2 = matchArray.indexOf(true) >= 0;
+            matches = matchArray.indexOf(true) >= 0;
             break;
           case 5 /* startsWith */:
             if (!val.startsWith(crit)) {
-              matches2 = false;
+              matches = false;
             }
             break;
           case 6 /* endsWith */:
             if (!val.endsWith(crit)) {
-              matches2 = false;
+              matches = false;
             }
             break;
           case 8 /* notContains */:
@@ -34472,54 +34472,54 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
                 matchArray.push(true);
               }
             });
-            matches2 = matchArray.indexOf(true) < 0;
+            matches = matchArray.indexOf(true) < 0;
             break;
           case 9 /* in */:
             if (!crit.has(objData.properties[item.key].value)) {
-              matches2 = false;
+              matches = false;
             }
             break;
           case 10 /* notIn */:
             if (crit.has(objData.properties[item.key].value)) {
-              matches2 = false;
+              matches = false;
             }
             break;
           case 3 /* lessThan */:
             if (crit <= val) {
-              matches2 = false;
+              matches = false;
             }
             break;
           case 2 /* greaterThan */:
             if (crit >= val) {
-              matches2 = false;
+              matches = false;
             }
             break;
           case 4 /* between */:
             if (val < crit || val > crit2) {
-              matches2 = false;
+              matches = false;
             }
             break;
           default:
-            matches2 = false;
+            matches = false;
             break;
         }
       });
     });
     if (this.globalCriteria?.length > 0) {
-      if (globalMatches === true && matches2 === true) {
+      if (globalMatches === true && matches === true) {
         return true;
       } else {
         return false;
       }
     } else {
-      return matches2;
+      return matches;
     }
   }
   getSortColumn() {
     let sortColumn;
-    this.items.forEach((col2) => {
-      if (col2.sort !== 0 /* none */) {
-        sortColumn = col2;
+    this.items.forEach((col) => {
+      if (col.sort !== 0 /* none */) {
+        sortColumn = col;
       }
     });
     return sortColumn;
@@ -34643,9 +34643,9 @@ var ColumnPickerForm = class extends React6.Component {
     super(props);
     this.selectedColumns = [];
     this.toggleSelection = this.toggleSelection.bind(this);
-    const root2 = this.props.root;
-    root2.userColumns.forEach((columnName2) => {
-      this.selectedColumns.push(columnName2);
+    const root = this.props.root;
+    root.userColumns.forEach((columnName) => {
+      this.selectedColumns.push(columnName);
     });
   }
   toggleSelection(key, e) {
@@ -34659,10 +34659,10 @@ var ColumnPickerForm = class extends React6.Component {
     this.forceUpdate();
   }
   render() {
-    const root2 = this.props.root;
+    const root = this.props.root;
     const cols = [];
     let rows = [];
-    let colArray = Array.from(root2.colMap.values());
+    let colArray = Array.from(root.colMap.values());
     colArray.sort((a2, b) => {
       if (a2.label > b.label) {
         return 1;
@@ -34763,216 +34763,216 @@ var React7 = __toESM(require_react());
 var SFTCommonFunctions = class _SFTCommonFunctions {
   static async getFlowValue() {
   }
-  static async assessGlobalOutcomeRule(outcome, root2) {
-    let result2 = true;
+  static async assessGlobalOutcomeRule(outcome, root) {
+    let result = true;
     if (outcome.attributes["RequiresSelected"]?.value === "true") {
-      if (root2.component.isMultiSelect === true) {
-        if (root2.selectedRowMap.size < 1) {
-          result2 = false;
+      if (root.component.isMultiSelect === true) {
+        if (root.selectedRowMap.size < 1) {
+          result = false;
         }
       } else {
-        if (!root2.selectedRow || root2.selectedRow.length < 1) {
-          result2 = false;
+        if (!root.selectedRow || root.selectedRow.length < 1) {
+          result = false;
         }
       }
     }
-    if (outcome.attributes["RequiresRows"]?.value === "true" && root2.rowMap.size < 1) {
-      result2 = false;
+    if (outcome.attributes["RequiresRows"]?.value === "true" && root.rowMap.size < 1) {
+      result = false;
     }
     if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
       try {
         const rule = JSON.parse(outcome.attributes.rule.value);
-        let contentType2;
-        let match2;
+        let contentType;
+        let match;
         let fld = rule.field;
         let fld2 = rule.value;
-        let value2 = fld;
+        let value = fld;
         let compareTo = fld2;
-        while (match2 = RegExp(/{{([^}]*)}}/).exec(fld)) {
-          switch (match2[1]) {
+        while (match = RegExp(/{{([^}]*)}}/).exec(fld)) {
+          switch (match[1]) {
             case "TENANT_ID":
-              contentType2 = eContentType.ContentString;
-              value2 = "MyTenentId";
+              contentType = eContentType.ContentString;
+              value = "MyTenentId";
               break;
             default:
-              const fldElements = match2[1].split("->");
+              const fldElements = match[1].split("->");
               let val;
-              if (root2.component.fields[fldElements[0]]) {
-                val = root2.component.fields[fldElements[0]];
+              if (root.component.fields[fldElements[0]]) {
+                val = root.component.fields[fldElements[0]];
               } else {
-                val = await root2.component.getValue(fldElements[0]);
+                val = await root.component.getValue(fldElements[0]);
               }
               if (val) {
                 let od = val.value;
                 if (od) {
                   if (fldElements.length > 1) {
                     for (let epos = 1; epos < fldElements.length; epos++) {
-                      contentType2 = od.properties[fldElements[epos]]?.contentType;
+                      contentType = od.properties[fldElements[epos]]?.contentType;
                       od = od.properties[fldElements[epos]].value;
                     }
-                    value2 = od;
+                    value = od;
                   } else {
-                    value2 = val.value;
-                    contentType2 = val.contentType;
+                    value = val.value;
+                    contentType = val.contentType;
                   }
                 } else {
-                  value2 = val.value;
-                  contentType2 = val.contentType;
+                  value = val.value;
+                  contentType = val.contentType;
                 }
               }
               break;
           }
-          fld = fld.replace(match2[0], value2);
+          fld = fld.replace(match[0], value);
         }
-        while (match2 = RegExp(/{{([^}]*)}}/).exec(fld2)) {
-          switch (match2[1]) {
+        while (match = RegExp(/{{([^}]*)}}/).exec(fld2)) {
+          switch (match[1]) {
             case "TENANT_ID":
-              contentType2 = eContentType.ContentString;
-              value2 = "MyTenentId";
+              contentType = eContentType.ContentString;
+              value = "MyTenentId";
               break;
             default:
-              const fldElements = match2[1].split("->");
+              const fldElements = match[1].split("->");
               let val;
-              if (root2.component.fields[fldElements[0]]) {
-                val = root2.component.fields[fldElements[0]];
+              if (root.component.fields[fldElements[0]]) {
+                val = root.component.fields[fldElements[0]];
               } else {
-                val = await root2.component.getValue(fldElements[0]);
+                val = await root.component.getValue(fldElements[0]);
               }
               if (val) {
                 let od = val.value;
                 if (od) {
                   if (fldElements.length > 1) {
                     for (let epos = 1; epos < fldElements.length; epos++) {
-                      contentType2 = od.properties[fldElements[epos]]?.contentType;
+                      contentType = od.properties[fldElements[epos]]?.contentType;
                       od = od.properties[fldElements[epos]].value;
                     }
                     compareTo = od;
                   } else {
                     compareTo = val.value;
-                    contentType2 = val.contentType;
+                    contentType = val.contentType;
                   }
                 } else {
                   compareTo = val.value;
-                  contentType2 = val.contentType;
+                  contentType = val.contentType;
                 }
               }
               break;
           }
-          fld2 = fld2.replace(match2[0], value2);
+          fld2 = fld2.replace(match[0], value);
         }
-        result2 = result2 && _SFTCommonFunctions.assessRule(value2, rule.comparator, compareTo, contentType2);
+        result = result && _SFTCommonFunctions.assessRule(value, rule.comparator, compareTo, contentType);
       } catch (e) {
         console.log("The rule on top level outcome " + outcome.developerName + " is invalid");
       }
     }
-    return result2;
+    return result;
   }
-  static assessRowOutcomeRule(outcome, row2, root2) {
-    let result2 = true;
+  static assessRowOutcomeRule(outcome, row, root) {
+    let result = true;
     if (!outcome) {
       return false;
     }
     if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
       try {
         const rule = JSON.parse(outcome.attributes.rule.value);
-        let contentType2;
-        let match2;
+        let contentType;
+        let match;
         let fld = rule.field;
         let fld2 = rule.value;
-        let value2 = fld;
+        let value = fld;
         let compareTo = fld2;
-        while (match2 = RegExp(/{{([^}]*)}}/).exec(fld)) {
-          switch (match2[1]) {
+        while (match = RegExp(/{{([^}]*)}}/).exec(fld)) {
+          switch (match[1]) {
             case "TENANT_ID":
-              contentType2 = eContentType.ContentString;
-              value2 = "MyTenentId";
+              contentType = eContentType.ContentString;
+              value = "MyTenentId";
               break;
             default:
-              const fldElements = match2[1].split("->");
+              const fldElements = match[1].split("->");
               let val;
-              val = root2.component.fields[fldElements[0]];
+              val = root.component.fields[fldElements[0]];
               if (val) {
                 let od = val.value;
                 if (od) {
                   if (fldElements.length > 1) {
                     for (let epos = 1; epos < fldElements.length; epos++) {
-                      contentType2 = od.properties[fldElements[epos]]?.contentType;
+                      contentType = od.properties[fldElements[epos]]?.contentType;
                       od = od.properties[fldElements[epos]].value;
                     }
-                    value2 = od;
+                    value = od;
                   } else {
-                    value2 = val.value;
-                    contentType2 = val.contentType;
+                    value = val.value;
+                    contentType = val.contentType;
                   }
                 } else {
-                  value2 = val.value;
-                  contentType2 = val.contentType;
+                  value = val.value;
+                  contentType = val.contentType;
                 }
               }
               break;
           }
-          fld = fld.replace(match2[0], value2);
+          fld = fld.replace(match[0], value);
         }
-        while (match2 = RegExp(/{{([^}]*)}}/).exec(fld2)) {
-          switch (match2[1]) {
+        while (match = RegExp(/{{([^}]*)}}/).exec(fld2)) {
+          switch (match[1]) {
             case "TENANT_ID":
-              contentType2 = eContentType.ContentString;
-              value2 = "MyTenentId";
+              contentType = eContentType.ContentString;
+              value = "MyTenentId";
               break;
             default:
-              const fldElements = match2[1].split("->");
+              const fldElements = match[1].split("->");
               let val;
-              val = root2.component.fields[fldElements[0]];
+              val = root.component.fields[fldElements[0]];
               if (val) {
                 let od = val.value;
                 if (od) {
                   if (fldElements.length > 1) {
                     for (let epos = 1; epos < fldElements.length; epos++) {
-                      contentType2 = od.properties[fldElements[epos]]?.contentType;
+                      contentType = od.properties[fldElements[epos]]?.contentType;
                       od = od.properties[fldElements[epos]].value;
                     }
                     compareTo = od;
                   } else {
                     compareTo = val.value;
-                    contentType2 = val.contentType;
+                    contentType = val.contentType;
                   }
                 } else {
                   compareTo = val.value;
-                  contentType2 = val.contentType;
+                  contentType = val.contentType;
                 }
               }
               break;
           }
-          fld2 = fld2.replace(match2[0], value2);
+          fld2 = fld2.replace(match[0], value);
         }
-        if (row2.properties[fld]) {
-          const property = row2.properties[fld];
-          result2 = _SFTCommonFunctions.assessRule(property.value, rule.comparator, compareTo, property.contentType);
+        if (row.properties[fld]) {
+          const property = row.properties[fld];
+          result = _SFTCommonFunctions.assessRule(property.value, rule.comparator, compareTo, property.contentType);
         } else {
-          result2 = _SFTCommonFunctions.assessRule(value2, rule.comparator, compareTo, contentType2);
+          result = _SFTCommonFunctions.assessRule(value, rule.comparator, compareTo, contentType);
         }
       } catch (e) {
         console.log("The rule on row level outcome " + outcome.developerName + " is invalid");
       }
     }
-    return result2;
+    return result;
   }
-  static assessRule(value2, comparator, compareTo, fieldType) {
+  static assessRule(value, comparator, compareTo, fieldType) {
     let comparee;
     let comparer;
-    let result2 = true;
+    let result = true;
     switch (fieldType) {
       case eContentType.ContentNumber:
         comparee = parseInt(compareTo);
-        comparer = value2;
+        comparer = value;
         break;
       case eContentType.ContentDateTime:
         comparee = new Date(compareTo);
-        comparer = value2;
+        comparer = value;
         break;
       case eContentType.ContentBoolean:
         comparee = ("" + compareTo).toLowerCase() === "true";
-        comparer = value2;
+        comparer = value;
         break;
       case eContentType.ContentString:
       default:
@@ -34985,54 +34985,54 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
         if (["in", "not in"].indexOf(comparator.toLowerCase()) < 0) {
           comparee = comparee[0];
         }
-        comparer = value2?.toLowerCase();
+        comparer = value?.toLowerCase();
         break;
     }
     switch (comparator.toLowerCase()) {
       case "equals":
-        result2 = comparer === comparee;
+        result = comparer === comparee;
         break;
       case "not equals":
-        result2 = comparer !== comparee;
+        result = comparer !== comparee;
         break;
       case "contains":
-        result2 = comparer.indexOf(comparee) >= 0;
+        result = comparer.indexOf(comparee) >= 0;
         break;
       case "not contains":
-        result2 = comparer.indexOf(comparee) < 0;
+        result = comparer.indexOf(comparee) < 0;
         break;
       case "starts with":
-        result2 = ("" + comparer).startsWith(comparee);
+        result = ("" + comparer).startsWith(comparee);
         break;
       case "ends with":
-        result2 = ("" + comparer).endsWith(comparee);
+        result = ("" + comparer).endsWith(comparee);
         break;
       case "in":
-        result2 = comparee.indexOf(comparer) >= 0;
+        result = comparee.indexOf(comparer) >= 0;
         break;
       case "not in":
-        result2 = comparee.indexOf(comparer) < 0;
+        result = comparee.indexOf(comparer) < 0;
         break;
       case "lt":
-        result2 = parseInt("" + comparer) < parseInt("" + comparee);
+        result = parseInt("" + comparer) < parseInt("" + comparee);
         break;
       case "lte":
-        result2 = parseInt("" + comparer) <= parseInt("" + comparee);
+        result = parseInt("" + comparer) <= parseInt("" + comparee);
         break;
       case "gt":
-        result2 = parseInt("" + comparer) > parseInt("" + comparee);
+        result = parseInt("" + comparer) > parseInt("" + comparee);
         break;
       case "gte":
-        result2 = parseInt("" + comparer) >= parseInt("" + comparee);
+        result = parseInt("" + comparer) >= parseInt("" + comparee);
         break;
     }
-    return result2;
+    return result;
   }
   // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
   // the values, if {{}} ere prepopulated in preLoad
   static makeOutcomeButton(comp, outcome, suffix, objectData, dissabled) {
     let icon2;
-    let show2 = false;
+    let show = false;
     let retries = 0;
     if (outcome.attributes?.iconValue?.value?.length > 0) {
       let flds;
@@ -35063,26 +35063,26 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
           title: outcome.label || outcome.developerName
         }
       );
-      show2 = true;
+      show = true;
     } else {
       if (outcome.attributes?.icon?.value?.length > 0 && outcome.attributes?.icon?.value !== "null") {
-        let iconClass2 = " sft-ribbon-search-button-icon";
+        let iconClass = " sft-ribbon-search-button-icon";
         if (dissabled) {
-          iconClass2 += "sft-ribbon-search-button-image-grey";
+          iconClass += "sft-ribbon-search-button-image-grey";
         }
         icon2 = /* @__PURE__ */ React7.createElement(
           "span",
           {
             key: outcome.developerName,
-            className: "glyphicon glyphicon-" + (outcome.attributes["icon"]?.value || "plus") + " " + iconClass2,
+            className: "glyphicon glyphicon-" + (outcome.attributes["icon"]?.value || "plus") + " " + iconClass,
             title: outcome.label || outcome.developerName
           }
         );
-        show2 = true;
+        show = true;
       }
     }
     let button;
-    if (show2 === true) {
+    if (show === true) {
       button = /* @__PURE__ */ React7.createElement(
         "div",
         {
@@ -35109,7 +35109,7 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
   }
   // this will make an outcome button (top or row) based on the outcome name, the suffix & icon
   // the values, if {{}} ere prepopulated in preLoad
-  static makeCoreButton(label2, toolTip, iconValue, defaultIcon, suffix, callback, key, display) {
+  static makeCoreButton(label, toolTip, iconValue, defaultIcon, suffix, callback, key, display) {
     let retries = 0;
     let icon2;
     if (iconValue?.length > 0) {
@@ -35153,7 +35153,7 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
         {
           className: "sft-ribbon-search-button-label"
         },
-        label2
+        label
       ) : null
     );
     return button;
@@ -35163,11 +35163,11 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
 // src/ColumnRule.tsx
 var ColumnRules = class {
   static async parse(ruleStr, parent) {
-    let match2;
-    while (match2 = RegExp(/^{{([^}]*)}}/).exec(ruleStr)) {
-      const fldElements = match2[1].split("->");
+    let match;
+    while (match = RegExp(/^{{([^}]*)}}/).exec(ruleStr)) {
+      const fldElements = match[1].split("->");
       let val = await parent.component.getValue(fldElements[0]);
-      ruleStr = ruleStr.replace(match2[0], val.value);
+      ruleStr = ruleStr.replace(match[0], val.value);
     }
     const rules = /* @__PURE__ */ new Map();
     if (ruleStr && ruleStr.length > 0) {
@@ -35239,24 +35239,24 @@ var ColumnRule = class _ColumnRule {
     return colRule;
   }
   getTextValue(property) {
-    let result2 = "";
-    const style2 = {};
+    let result = "";
+    const style = {};
     switch (property.contentType) {
       case eContentType.ContentBoolean:
         if (property.value === true) {
-          result2 = "True";
+          result = "True";
         } else {
-          result2 = "False";
+          result = "False";
         }
         break;
       case eContentType.ContentNumber:
-        result2 = property.value.toString();
+        result = property.value.toString();
         break;
       default:
-        result2 = property.value;
+        result = property.value;
         break;
     }
-    return result2;
+    return result;
   }
   generateColumnContent(value, row, sft) {
     const style = {};
@@ -35353,7 +35353,7 @@ var ColumnRule = class _ColumnRule {
           if (typeof manywho !== "undefined") {
             content = React8.createElement(manywho.component.getByName(this.componentClass), columnProps);
           } else {
-            content = React8.createElement(eval(this.componentClass), columnProps);
+            content = React8.createElement((0, eval)(this.componentClass), columnProps);
           }
           break;
         case "dateformat":
@@ -35449,8 +35449,6 @@ var ColumnRule = class _ColumnRule {
     return { content, cellClass, rowClass };
   }
 };
-var ColumnRuleCondition = class {
-};
 
 // src/FilterManagementForm.tsx
 var React11 = __toESM(require_react());
@@ -35494,15 +35492,15 @@ var FilterManagementFormAddRow = class extends React9.Component {
     }).sort((a2, b) => {
       return collator.compare(a2[1].label, b[1].label);
     });
-    sorted.forEach((col2) => {
+    sorted.forEach((col) => {
       fieldOptions.push(
         /* @__PURE__ */ React9.createElement(
           "option",
           {
             className: "sft-fmf-row-criteria-select-option",
-            value: col2[1].developerName
+            value: col[1].developerName
           },
-          " " + col2[1].label + " "
+          " " + col[1].label + " "
         )
       );
     });
@@ -35601,8 +35599,8 @@ var FilterManagementFormRow = class extends React10.Component {
   }
   comparatorChanged(e) {
     if (this.comparatorElement && this.comparatorElement.options[this.comparatorElement.selectedIndex].value) {
-      const value2 = this.comparatorElement.options[this.comparatorElement.selectedIndex].value;
-      const comparator = parseInt(value2);
+      const value = this.comparatorElement.options[this.comparatorElement.selectedIndex].value;
+      const comparator = parseInt(value);
       this.props.criteria.comparator = comparator;
       if (comparator !== 9 /* in */ && comparator !== 10 /* notIn */ && typeof this.props.criteria.value !== "string") {
         this.props.criteria.value = "";
@@ -36018,32 +36016,32 @@ var SearchFilterTableFooter = class extends React13.Component {
     this.maxPerPageChanged = this.maxPerPageChanged.bind(this);
   }
   maxPerPageChanged(e) {
-    const root2 = this.props.root;
-    root2.maxPerPageChanged(parseInt(this.maxPerPage.options[this.maxPerPage.selectedIndex].value));
+    const root = this.props.root;
+    root.maxPerPageChanged(parseInt(this.maxPerPage.options[this.maxPerPage.selectedIndex].value));
   }
   render() {
-    const root2 = this.props.root;
+    const root = this.props.root;
     let summary;
     let pag;
     switch (true) {
-      case root2.paginationMode === 2 /* external */:
+      case root.paginationMode === 2 /* external */:
         summary = "";
-        pag = root2.externalPaginationPage.toString();
+        pag = root.externalPaginationPage.toString();
         break;
-      case (root2.component.getAttribute("summaryMode", "default").toLowerCase() === "simple" || root2.component.isMultiSelect === false):
-        summary = "Showing " + root2.currentRowMap.size + " items of " + root2.rowMap.size;
-        pag = "page " + (root2.currentRowPage + 1) + " of " + root2.currentRowPages.length;
+      case (root.component.getAttribute("summaryMode", "default").toLowerCase() === "simple" || root.component.isMultiSelect === false):
+        summary = "Showing " + root.currentRowMap.size + " items of " + root.rowMap.size;
+        pag = "page " + (root.currentRowPage + 1) + " of " + root.currentRowPages.length;
         break;
       default:
-        summary = "Selected " + root2.selectedRowMap.size + " of " + root2.currentRowMap.size + " items from a total dataset of " + root2.rowMap.size;
-        pag = "page " + (root2.currentRowPage + 1) + " of " + root2.currentRowPages.length;
+        summary = "Selected " + root.selectedRowMap.size + " of " + root.currentRowMap.size + " items from a total dataset of " + root.rowMap.size;
+        pag = "page " + (root.currentRowPage + 1) + " of " + root.currentRowPages.length;
         break;
     }
     let firstPage;
     let prevPage;
     let nextPage;
     let lastPage;
-    if (root2.currentRowPage > 0) {
+    if (root.currentRowPage > 0) {
       firstPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
@@ -36051,7 +36049,7 @@ var SearchFilterTableFooter = class extends React13.Component {
           icon: import_faBackwardFast.faBackwardFast,
           className: "sft-footer-pagination-button",
           title: "First page",
-          onClick: root2.firstPage
+          onClick: root.firstPage
         }
       );
       prevPage = /* @__PURE__ */ React13.createElement(
@@ -36061,7 +36059,7 @@ var SearchFilterTableFooter = class extends React13.Component {
           icon: import_faBackwardStep.faBackwardStep,
           className: "sft-footer-pagination-button",
           title: "Previous page",
-          onClick: root2.previousPage
+          onClick: root.previousPage
         }
       );
     } else {
@@ -36082,7 +36080,7 @@ var SearchFilterTableFooter = class extends React13.Component {
         }
       );
     }
-    if (root2.currentRowPage < root2.currentRowPages.length - 1) {
+    if (root.currentRowPage < root.currentRowPages.length - 1) {
       lastPage = /* @__PURE__ */ React13.createElement(
         FontAwesomeIcon,
         {
@@ -36090,7 +36088,7 @@ var SearchFilterTableFooter = class extends React13.Component {
           icon: import_faForwardFast.faForwardFast,
           className: "sft-footer-pagination-button",
           title: "Last page",
-          onClick: root2.lastPage
+          onClick: root.lastPage
         }
       );
       nextPage = /* @__PURE__ */ React13.createElement(
@@ -36100,7 +36098,7 @@ var SearchFilterTableFooter = class extends React13.Component {
           icon: import_faForwardStep.faForwardStep,
           className: "sft-footer-pagination-button",
           title: "Next page",
-          onClick: root2.nextPage
+          onClick: root.nextPage
         }
       );
     } else {
@@ -36123,8 +36121,8 @@ var SearchFilterTableFooter = class extends React13.Component {
     }
     let options = [];
     options.push(10, 20, 50, 100);
-    if (options.indexOf(root2.maxPageRows) < 0) {
-      options.push(root2.maxPageRows);
+    if (options.indexOf(root.maxPageRows) < 0) {
+      options.push(root.maxPageRows);
     }
     options = options.sort((a2, b) => {
       return a2 - b;
@@ -36132,7 +36130,7 @@ var SearchFilterTableFooter = class extends React13.Component {
     const opts = [];
     let selected = options[0];
     options.forEach((a2) => {
-      if (root2.maxPageRows === a2) {
+      if (root.maxPageRows === a2) {
         selected = a2;
       }
       opts.push(
@@ -36160,7 +36158,7 @@ var SearchFilterTableFooter = class extends React13.Component {
     );
     let pagination;
     let perPageBlock;
-    switch (root2.paginationMode) {
+    switch (root.paginationMode) {
       case 1 /* local */:
         pagination = /* @__PURE__ */ React13.createElement(
           "div",
@@ -36196,7 +36194,7 @@ var SearchFilterTableFooter = class extends React13.Component {
             icon: import_faBackwardStep.faBackwardStep,
             className: "sft-footer-pagination-button",
             title: "Previous page",
-            onClick: root2.previousPage
+            onClick: root.previousPage
           }
         );
         nextPage = /* @__PURE__ */ React13.createElement(
@@ -36206,7 +36204,7 @@ var SearchFilterTableFooter = class extends React13.Component {
             icon: import_faForwardStep.faForwardStep,
             className: "sft-footer-pagination-button",
             title: "Next page",
-            onClick: root2.nextPage
+            onClick: root.nextPage
           }
         );
         pagination = /* @__PURE__ */ React13.createElement(
@@ -36270,27 +36268,27 @@ var SearchFilterTableHeader = class extends React14.Component {
     this.th.classList.remove("sft-column-header-wrapper-droppable");
   }
   render() {
-    const root2 = this.props.root;
+    const root = this.props.root;
     const parent = this.props.parent;
-    const col2 = this.props.column;
+    const col = this.props.column;
     let filterIcon;
     let sortIcon;
     let quickCheck;
     if (this.props.static !== true) {
-      sortIcon = root2.filters.getSortIcon(col2.developerName);
+      sortIcon = root.filters.getSortIcon(col.developerName);
       if (this.props.inlineSearch === true) {
-        filterIcon = root2.filters.getFilterIcon(col2.developerName);
+        filterIcon = root.filters.getFilterIcon(col.developerName);
       }
-      quickCheck = root2.filters.getQuickCheck(col2.developerName);
+      quickCheck = root.filters.getQuickCheck(col.developerName);
     }
-    let cls = "sft-column-header sft-column-header-" + col2.developerName;
+    let cls = "sft-column-header sft-column-header-" + col.developerName;
     if (this.props.sticky) {
       cls += " sft-header-sticky";
     }
     return /* @__PURE__ */ React14.createElement(
       "th",
       {
-        key: col2.developerName,
+        key: col.developerName,
         className: cls,
         style: { pointerEvents: "all" },
         ref: (element) => {
@@ -36302,9 +36300,9 @@ var SearchFilterTableHeader = class extends React14.Component {
         {
           className: "sft-column-header-wrapper sft-thcontainer",
           style: { display: "flex", flexDirection: "row", pointerEvents: "all" },
-          draggable: root2.dynamicColumns,
+          draggable: root.dynamicColumns,
           onDragStart: (e) => {
-            parent.dragColumn(e, col2.developerName);
+            parent.dragColumn(e, col.developerName);
           },
           onDragEnter: (e) => {
             parent.onDragEnter(e);
@@ -36319,9 +36317,9 @@ var SearchFilterTableHeader = class extends React14.Component {
             parent.onDrop(e);
           },
           onClick: (e) => {
-            root2.filters.sortClicked(col2.developerName);
+            root.filters.sortClicked(col.developerName);
           },
-          "data-fieldname": col2.developerName
+          "data-fieldname": col.developerName
         },
         /* @__PURE__ */ React14.createElement(
           "div",
@@ -36340,7 +36338,7 @@ var SearchFilterTableHeader = class extends React14.Component {
               {
                 className: "sft-column-header-title-label"
               },
-              col2.label
+              col.label
             )
           ),
           /* @__PURE__ */ React14.createElement(
@@ -36435,7 +36433,7 @@ var SearchFilterTableHeaders = class extends React15.Component {
     const tgtFieldName = e.currentTarget.getAttribute("data-fieldname");
   }
   async onDrop(e) {
-    const root2 = this.props.root;
+    const root = this.props.root;
     e.preventDefault();
     e.stopPropagation();
     const srcFieldName = e.dataTransfer.getData("column");
@@ -36449,27 +36447,27 @@ var SearchFilterTableHeaders = class extends React15.Component {
     }
   }
   async moveColumn(srcFieldName, tgtFieldName) {
-    const root2 = this.props.root;
+    const root = this.props.root;
     console.log("move " + srcFieldName + " before " + tgtFieldName);
-    root2.userColumns.splice(root2.userColumns.indexOf(tgtFieldName), 0, root2.userColumns.splice(root2.userColumns.indexOf(srcFieldName), 1)[0]);
-    root2.columnsReordered();
+    root.userColumns.splice(root.userColumns.indexOf(tgtFieldName), 0, root.userColumns.splice(root.userColumns.indexOf(srcFieldName), 1)[0]);
+    root.columnsReordered();
   }
   render() {
     this.headers = /* @__PURE__ */ new Map();
     const headers = [];
-    const root2 = this.props.root;
+    const root = this.props.root;
     const buttons = [];
     let anyoutcomes = false;
-    Object.keys(root2.component.outcomes).forEach((key) => {
-      if (root2.component.outcomes[key].isBulkAction === false) {
-        if (!root2.supressedOutcomes.has(key)) {
+    Object.keys(root.component.outcomes).forEach((key) => {
+      if (root.component.outcomes[key].isBulkAction === false) {
+        if (!root.supressedOutcomes.has(key)) {
           anyoutcomes = true;
         }
         buttons.push(key);
       }
     });
-    if (root2.colMap.size > 0) {
-      if (root2.component.isMultiSelect) {
+    if (root.colMap.size > 0) {
+      if (root.component.isMultiSelect) {
         headers.push(
           /* @__PURE__ */ React15.createElement(
             "th",
@@ -36492,7 +36490,7 @@ var SearchFilterTableHeaders = class extends React15.Component {
                   className: "sft-checkbox",
                   type: "checkbox",
                   onClick: (event) => {
-                    root2.toggleSelectAll(event);
+                    root.toggleSelectAll(event);
                   },
                   title: "Toggle Selection"
                 }
@@ -36501,7 +36499,7 @@ var SearchFilterTableHeaders = class extends React15.Component {
           )
         );
       } else {
-        if (root2.component.getAttribute("showRadio", "false").toLowerCase() === "true") {
+        if (root.component.getAttribute("showRadio", "false").toLowerCase() === "true") {
           headers.push(
             /* @__PURE__ */ React15.createElement(
               "th",
@@ -36523,8 +36521,8 @@ var SearchFilterTableHeaders = class extends React15.Component {
           );
         }
       }
-      let fixedCols = parseInt(root2.component.getAttribute("stickyColumns", "0"));
-      root2.userColumns.forEach((collName) => {
+      let fixedCols = parseInt(root.component.getAttribute("stickyColumns", "0"));
+      root.userColumns.forEach((collName) => {
         if (collName === "#BUTTONS#") {
           if (anyoutcomes) {
             headers.push(
@@ -36534,7 +36532,7 @@ var SearchFilterTableHeaders = class extends React15.Component {
                   key: "#BUTTONS#",
                   root: this.props.root,
                   parent: this,
-                  column: { developerName: "#BUTTONS#", label: root2.component.getAttribute("OutcomesLabel", "Action") },
+                  column: { developerName: "#BUTTONS#", label: root.component.getAttribute("OutcomesLabel", "Action") },
                   static: true,
                   inlineSearch: this.props.inlineSearch,
                   ref: (element) => {
@@ -36546,27 +36544,27 @@ var SearchFilterTableHeaders = class extends React15.Component {
             );
           }
         } else {
-          const col2 = root2.colMap.get(collName);
-          if (col2) {
+          const col = root.colMap.get(collName);
+          if (col) {
             headers.push(
               /* @__PURE__ */ React15.createElement(
                 SearchFilterTableHeader,
                 {
-                  key: col2.developerName,
+                  key: col.developerName,
                   root: this.props.root,
                   parent: this,
-                  column: col2,
+                  column: col,
                   inlineSearch: this.props.inlineSearch,
                   ref: (element) => {
-                    this.setHeader(col2.developerName, element);
+                    this.setHeader(col.developerName, element);
                   },
                   sticky: fixedCols > 0
                 }
               )
             );
           } else {
-            root2.userColumns.splice(root2.userColumns.indexOf(collName), 1);
-            root2.saveUserColumns();
+            root.userColumns.splice(root.userColumns.indexOf(collName), 1);
+            root.saveUserColumns();
           }
         }
         if (fixedCols > 0)
@@ -36597,8 +36595,8 @@ var SearchFilterTableRibbon = class extends React16.Component {
   async generateButtons() {
     this.leftButtons = [];
     this.rightButtons = [];
-    const root2 = this.props.root;
-    const canExport = root2.component.getAttribute("canExport", "false").toLowerCase() === "true";
+    const root = this.props.root;
+    const canExport = root.component.getAttribute("canExport", "false").toLowerCase() === "true";
     if (canExport === true) {
       this.rightButtons.push(
         /* @__PURE__ */ React16.createElement(
@@ -36607,10 +36605,10 @@ var SearchFilterTableRibbon = class extends React16.Component {
             className: "sft-ribbon-button-wrapper",
             onClick: (e) => {
               e.stopPropagation();
-              root2.doExport(root2.rowMap);
+              root.doExport(root.rowMap);
             }
           },
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
             "span",
             {
               key: "exportAll",
@@ -36618,7 +36616,7 @@ var SearchFilterTableRibbon = class extends React16.Component {
               title: "Export All"
             }
           ) : null,
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
             "span",
             {
               className: "sft-ribbon-button-label"
@@ -36628,7 +36626,7 @@ var SearchFilterTableRibbon = class extends React16.Component {
         )
       );
     }
-    if (root2.rowMap.size > root2.currentRowMap.size && canExport === true) {
+    if (root.rowMap.size > root.currentRowMap.size && canExport === true) {
       this.rightButtons.push(
         /* @__PURE__ */ React16.createElement(
           "div",
@@ -36636,10 +36634,10 @@ var SearchFilterTableRibbon = class extends React16.Component {
             className: "sft-ribbon-button-wrapper",
             onClick: (e) => {
               e.stopPropagation();
-              root2.doExport(root2.currentRowMap);
+              root.doExport(root.currentRowMap);
             }
           },
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
             "span",
             {
               key: "exportShown",
@@ -36647,7 +36645,7 @@ var SearchFilterTableRibbon = class extends React16.Component {
               title: "Export Shown"
             }
           ) : null,
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
             "span",
             {
               className: "sft-ribbon-button-label"
@@ -36657,11 +36655,11 @@ var SearchFilterTableRibbon = class extends React16.Component {
         )
       );
     }
-    const arrOutcomes = Array.from(Object.values(root2.component.outcomes));
+    const arrOutcomes = Array.from(Object.values(root.component.outcomes));
     for (let pos = 0; pos < arrOutcomes.length; pos++) {
       const outcome = arrOutcomes[pos];
       if (outcome.isBulkAction && outcome.developerName !== "OnSelect" && outcome.developerName !== "OnChange" && !outcome.developerName.toLowerCase().startsWith("cm")) {
-        const showOutcome = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root2);
+        const showOutcome = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root);
         if (showOutcome === true) {
           this.rightButtons.push(
             /* @__PURE__ */ React16.createElement(
@@ -36669,7 +36667,7 @@ var SearchFilterTableRibbon = class extends React16.Component {
               {
                 className: "sft-ribbon-button-wrapper",
                 onClick: (e) => {
-                  root2.doOutcome(outcome.developerName, void 0);
+                  root.doOutcome(outcome.developerName, void 0);
                 }
               },
               outcome.attributes?.icon ? /* @__PURE__ */ React16.createElement(
@@ -36692,25 +36690,25 @@ var SearchFilterTableRibbon = class extends React16.Component {
         }
       }
     }
-    if (root2.component.content?.length > 0) {
+    if (root.component.content?.length > 0) {
       this.rightButtons.push(
         /* @__PURE__ */ React16.createElement(
           "div",
           {
             className: "sft-ribbon-search-button-wrapper",
             onClick: (e) => {
-              root2.showInfo();
+              root.showInfo();
             }
           },
           /* @__PURE__ */ React16.createElement(
             "span",
             {
               key: "colpick",
-              className: "glyphicon sft-ribbon-search-button-icon glyphicon-" + (root2.component.attributes?.InfoIcon ? root2.component.attributes.InfoIcon : "question-sign"),
+              className: "glyphicon sft-ribbon-search-button-icon glyphicon-" + (root.component.attributes?.InfoIcon ? root.component.attributes.InfoIcon : "question-sign"),
               title: "Infornation"
             }
           ),
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
             "span",
             {
               className: "sft-ribbon-search-button-label"
@@ -36720,25 +36718,25 @@ var SearchFilterTableRibbon = class extends React16.Component {
         )
       );
     }
-    if (root2.dynamicColumns === true) {
+    if (root.dynamicColumns === true) {
       this.rightButtons.push(
         /* @__PURE__ */ React16.createElement(
           "div",
           {
             className: "sft-ribbon-button-wrapper",
             onClick: (e) => {
-              root2.showColumnPicker();
+              root.showColumnPicker();
             }
           },
           /* @__PURE__ */ React16.createElement(
             "span",
             {
               key: "colpick",
-              className: "glyphicon sft-ribbon-button-icon glyphicon-" + (root2.component.attributes?.ColumnsIcon ? root2.component.attributes.ColumnsIcon : "option-vertical"),
+              className: "glyphicon sft-ribbon-button-icon glyphicon-" + (root.component.attributes?.ColumnsIcon ? root.component.attributes.ColumnsIcon : "option-vertical"),
               title: "Select columns"
             }
           ),
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
             "span",
             {
               className: "sft-ribbon-button-label"
@@ -36748,7 +36746,7 @@ var SearchFilterTableRibbon = class extends React16.Component {
         )
       );
     }
-    if (root2.selectedRowMap.size > 0 && canExport === true) {
+    if (root.selectedRowMap.size > 0 && canExport === true) {
       this.leftButtons.push(
         /* @__PURE__ */ React16.createElement(
           "div",
@@ -36756,10 +36754,10 @@ var SearchFilterTableRibbon = class extends React16.Component {
             className: "sft-ribbon-button-wrapper",
             onClick: (e) => {
               e.stopPropagation();
-              root2.doExport(root2.selectedRowMap);
+              root.doExport(root.selectedRowMap);
             }
           },
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("icon") >= 0 ? /* @__PURE__ */ React16.createElement(
             "span",
             {
               key: "exportSelected",
@@ -36767,7 +36765,7 @@ var SearchFilterTableRibbon = class extends React16.Component {
               title: "Export Selected"
             }
           ) : null,
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes?.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React16.createElement(
             "span",
             {
               className: "sft-ribbon-button-label"
@@ -36783,16 +36781,16 @@ var SearchFilterTableRibbon = class extends React16.Component {
   generateComponents() {
   }
   render() {
-    const root2 = this.props.root;
-    const style2 = {};
-    if (root2.titleElement) {
-      style2.top = "2.5rem";
+    const root = this.props.root;
+    const style = {};
+    if (root.titleElement) {
+      style.top = "2.5rem";
     }
     return /* @__PURE__ */ React16.createElement(
       "div",
       {
         className: "sft-ribbon",
-        style: style2
+        style
       },
       /* @__PURE__ */ React16.createElement(
         "div",
@@ -36879,8 +36877,8 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     this.filterChanged = this.filterChanged.bind(this);
     this.filterCommitted = this.filterCommitted.bind(this);
     this.trcChange = this.trcChange.bind(this);
-    const root2 = this.props.root;
-    this.currentFilter = root2.filters.globalCriteria;
+    const root = this.props.root;
+    this.currentFilter = root.filters.globalCriteria;
   }
   componentDidMount() {
     this.generateButtons();
@@ -36892,17 +36890,17 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     } else {
       this.deBounce = true;
     }
-    const root2 = this.props.root;
+    const root = this.props.root;
     this.leftButtons = [];
     this.rightButtons = [];
     this.farRightButtons = [];
-    const canExport = root2.component.getAttribute("canExport", "true").toLowerCase() === "true";
+    const canExport = root.component.getAttribute("canExport", "true").toLowerCase() === "true";
     if (canExport === true) {
       this.rightButtons.push(
         SFTCommonFunctions.makeCoreButton(
           "Export All",
           "Export All",
-          root2.downloadIcon,
+          root.downloadIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
@@ -36912,22 +36910,22 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
               className: "sft-ribbon-search-button-icon"
             }
           ),
-          root2.iconSuffix,
+          root.iconSuffix,
           (e) => {
             e.stopPropagation();
-            root2.doExport(root2.rowMap);
+            root.doExport(root.rowMap);
           },
           "exportAll",
-          root2.component.attributes?.RibbonDisplay
+          root.component.attributes?.RibbonDisplay
         )
       );
     }
-    if (root2.rowMap.size > root2.currentRowMap.size && canExport === true) {
+    if (root.rowMap.size > root.currentRowMap.size && canExport === true) {
       this.rightButtons.push(
         SFTCommonFunctions.makeCoreButton(
           "Export Shown",
           "Export Shown",
-          root2.downloadIcon,
+          root.downloadIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
@@ -36937,23 +36935,23 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
               className: "sft-ribbon-search-button-icon"
             }
           ),
-          root2.iconSuffix,
+          root.iconSuffix,
           (e) => {
             e.stopPropagation();
-            root2.doExport(root2.currentRowMap);
+            root.doExport(root.currentRowMap);
           },
           "exportShown",
-          root2.component.attributes?.RibbonDisplay
+          root.component.attributes?.RibbonDisplay
         )
       );
     }
-    const arrOutcomes = Array.from(Object.values(root2.component.outcomes));
+    const arrOutcomes = Array.from(Object.values(root.component.outcomes));
     for (let pos = 0; pos < arrOutcomes.length; pos++) {
       const outcome = arrOutcomes[pos];
       if (outcome.isBulkAction && outcome.developerName !== "OnSelect" && outcome.developerName !== "OnChange" && !outcome.developerName.toLowerCase().startsWith("cm")) {
-        const showOutcome = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root2);
-        if (root2.component.getAttribute("greyDissabled", "false").toLowerCase() === "true") {
-          let btn = SFTCommonFunctions.makeOutcomeButton(root2, outcome, root2.iconSuffix, void 0, !showOutcome);
+        const showOutcome = await SFTCommonFunctions.assessGlobalOutcomeRule(outcome, root);
+        if (root.component.getAttribute("greyDissabled", "false").toLowerCase() === "true") {
+          let btn = SFTCommonFunctions.makeOutcomeButton(root, outcome, root.iconSuffix, void 0, !showOutcome);
           if (outcome.order > 200) {
             this.farRightButtons.push(
               btn
@@ -36965,7 +36963,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
           }
         } else {
           if (showOutcome === true) {
-            let btn = SFTCommonFunctions.makeOutcomeButton(root2, outcome, root2.iconSuffix, void 0, false);
+            let btn = SFTCommonFunctions.makeOutcomeButton(root, outcome, root.iconSuffix, void 0, false);
             if (outcome.order > 200) {
               this.farRightButtons.push(
                 btn
@@ -36979,14 +36977,14 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
         }
       }
     }
-    if (root2.component.content?.length > 0) {
+    if (root.component.content?.length > 0) {
       this.rightButtons.push(
         /* @__PURE__ */ React17.createElement(
           "div",
           {
             className: "sft-ribbon-search-button-wrapper",
             onClick: (e) => {
-              root2.showInfo();
+              root.showInfo();
             },
             key: "info"
           },
@@ -37000,7 +36998,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
               title: "Show Info"
             }
           ),
-          !root2.component.attributes?.RibbonDisplay || root2.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React17.createElement(
+          !root.component.attributes?.RibbonDisplay || root.component.attributes.RibbonDisplay?.indexOf("text") >= 0 ? /* @__PURE__ */ React17.createElement(
             "span",
             {
               className: "sft-ribbon-search-button-label"
@@ -37010,12 +37008,12 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
         )
       );
     }
-    if (root2.dynamicColumns === true) {
+    if (root.dynamicColumns === true) {
       this.rightButtons.push(
         SFTCommonFunctions.makeCoreButton(
           "Select columns",
           "Select columns",
-          root2.colpickIcon,
+          root.colpickIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
@@ -37024,21 +37022,21 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
               className: "sft-ribbon-search-button-icon"
             }
           ),
-          root2.iconSuffix,
+          root.iconSuffix,
           (e) => {
-            root2.showColumnPicker();
+            root.showColumnPicker();
           },
           "colpick",
-          root2.component.attributes?.RibbonDisplay
+          root.component.attributes?.RibbonDisplay
         )
       );
     }
-    if (root2.selectedRowMap.size > 0 && canExport === true) {
+    if (root.selectedRowMap.size > 0 && canExport === true) {
       this.leftButtons.push(
         SFTCommonFunctions.makeCoreButton(
           "Export Selected",
           "Export Selected",
-          root2.downloadIcon,
+          root.downloadIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
@@ -37048,21 +37046,21 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
               title: "Export Selected"
             }
           ),
-          root2.iconSuffix,
+          root.iconSuffix,
           (e) => {
             e.stopPropagation();
-            root2.doExport(root2.selectedRowMap);
+            root.doExport(root.selectedRowMap);
           },
           "exportSelected",
-          root2.component.attributes?.RibbonDisplay
+          root.component.attributes?.RibbonDisplay
         )
       );
     }
-    if (root2.filters.isFiltered()) {
+    if (root.filters.isFiltered()) {
       this.clearFiltersButton = SFTCommonFunctions.makeCoreButton(
         "Clear Filters",
         "Clear Filters",
-        root2.clearFilterIcon,
+        root.clearFilterIcon,
         /* @__PURE__ */ React17.createElement(
           FontAwesomeIcon,
           {
@@ -37071,10 +37069,10 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
             className: "sft-ribbon-search-button-icon"
           }
         ),
-        root2.iconSuffix,
+        root.iconSuffix,
         this.clearFilters,
         "clearFilters",
-        root2.component.attributes?.RibbonDisplay
+        root.component.attributes?.RibbonDisplay
       );
     } else {
       this.clearFiltersButton = void 0;
@@ -37094,15 +37092,15 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
   filterCommitted() {
     if (this.currentFilter !== this.previousFilter) {
       this.previousFilter = this.currentFilter;
-      const root2 = this.props.root;
-      root2.globalFilterChanged(this.currentFilter);
+      const root = this.props.root;
+      root.globalFilterChanged(this.currentFilter);
     }
   }
   filterPartition(e, key) {
     e.preventDefault();
     e.stopPropagation();
-    const root2 = this.props.root;
-    root2.partitionFilterChanged(key);
+    const root = this.props.root;
+    root.partitionFilterChanged(key);
   }
   filterKeyDown(e) {
     switch (e.key) {
@@ -37133,38 +37131,42 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     }
   }
   showSearch(e) {
-    const sft2 = this.props.root;
-    sft2.manageFilters();
+    const sft = this.props.root;
+    sft.manageFilters();
   }
   clearFilters(e) {
-    const sft2 = this.props.root;
-    if (sft2.selectedPartition) {
-      sft2.selectedPartition = void 0;
+    const sft = this.props.root;
+    if (sft.selectedPartition) {
+      sft.selectedPartition = void 0;
     }
-    sft2.filters.clearAll();
+    sft.filters.clearAll();
   }
   async trcChange(e, comp) {
-    const sft2 = this.props.root;
+    const sft = this.props.root;
     let val = comp.value;
     val.value = e.currentTarget.value;
-    sft2.component.setValues(val);
+    sft.component.setValues(val);
+    if (comp.onChange?.length > 0 && sft.component.outcomes[comp.onChange]) {
+      sft.component.triggerOutcome(comp.onChange);
+    } else {
+    }
     this.generateComponents();
     this.forceUpdate();
   }
   generatePartitions() {
-    const sft2 = this.props.root;
+    const sft = this.props.root;
     this.partitions = [];
-    if (sft2.partitionedRowMaps && sft2.partitionedRowMaps.size > 0) {
-      let classes2 = "sft-ribbon-search-partition";
-      if (!sft2.selectedPartition) {
-        classes2 += " sft-ribbon-search-partition-selected";
+    if (sft.partitionedRowMaps && sft.partitionedRowMaps.size > 0) {
+      let classes = "sft-ribbon-search-partition";
+      if (!sft.selectedPartition) {
+        classes += " sft-ribbon-search-partition-selected";
       }
       this.partitions.push(
         /* @__PURE__ */ React17.createElement(
           "div",
           {
             key: "_all",
-            className: classes2,
+            className: classes,
             onClick: (e) => {
               this.filterPartition(e, null);
             }
@@ -37172,33 +37174,41 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
           "All"
         )
       );
-      sft2.partitionedRowMaps.forEach((partition, key) => {
-        let classes3 = "sft-ribbon-search-partition";
-        if (sft2.selectedPartition === key) {
-          classes3 += " sft-ribbon-search-partition-selected";
+      sft.partitionedRowMaps.forEach((partition, key) => {
+        let classes2 = "sft-ribbon-search-partition";
+        if (sft.selectedPartition === key) {
+          classes2 += " sft-ribbon-search-partition-selected";
+        }
+        let label = "";
+        let toolTip = key;
+        if (toolTip.length > 10) {
+          label = toolTip.substring(0, 10) + "...";
+        } else {
+          label = toolTip;
         }
         this.partitions.push(
           /* @__PURE__ */ React17.createElement(
             "div",
             {
               key,
-              className: classes3,
+              className: classes2,
               onClick: (e) => {
                 this.filterPartition(e, key);
-              }
+              },
+              title: toolTip
             },
-            /* @__PURE__ */ React17.createElement("span", null, key.toLowerCase())
+            /* @__PURE__ */ React17.createElement("span", null, label.toLowerCase())
           )
         );
       });
     }
   }
   generateComponents() {
-    const sft2 = this.props.root;
+    const sft = this.props.root;
     this.topRowComponents = [];
-    if (sft2.topRowComponents && sft2.topRowComponents.length > 0) {
-      sft2.topRowComponents.forEach((comp) => {
-        let classes2 = "sft-ribbon-search-trc";
+    if (sft.topRowComponents && sft.topRowComponents.length > 0) {
+      sft.topRowComponents.forEach((comp) => {
+        let classes = "sft-ribbon-search-trc";
         let element;
         switch (comp.type) {
           case "select":
@@ -37233,7 +37243,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
             "div",
             {
               key: comp.label,
-              className: classes2
+              className: classes
             },
             /* @__PURE__ */ React17.createElement(
               "span",
@@ -37249,26 +37259,26 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     }
   }
   render() {
-    const root2 = this.props.root;
-    const style2 = {};
-    if (root2.titleElement) {
-      style2.marginTop = "0.5rem";
+    const root = this.props.root;
+    const style = {};
+    if (root.titleElement) {
+      style.marginTop = "0.5rem";
     }
     let title;
-    if (root2.title && root2.title.length > 0) {
+    if (root.title && root.title.length > 0) {
       title = /* @__PURE__ */ React17.createElement(
         "div",
         {
           className: "sft-ribbon-title-wrapper"
         },
-        root2.title
+        root.title
       );
     }
     return /* @__PURE__ */ React17.createElement(
       "div",
       {
         className: "sft-ribbon-search",
-        style: style2,
+        style,
         key: "ribbon"
       },
       title,
@@ -37324,7 +37334,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
         SFTCommonFunctions.makeCoreButton(
           "Advanced Search",
           "Advanced Search",
-          root2.filterIcon,
+          root.filterIcon,
           /* @__PURE__ */ React17.createElement(
             FontAwesomeIcon,
             {
@@ -37334,10 +37344,10 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
               className: "sft-ribbon-search-button-icon"
             }
           ),
-          root2.iconSuffix,
+          root.iconSuffix,
           this.showSearch,
           "showSearch",
-          root2.component.attributes?.RibbonDisplay
+          root.component.attributes?.RibbonDisplay
         ),
         this.clearFiltersButton
       ),
@@ -37398,50 +37408,50 @@ var SearchFilterTableRow = class extends React18.Component {
   }
   async componentDidMount() {
     const enabledOutcomes = [];
-    const root2 = this.props.root;
-    const objData = root2.rowMap.get(this.props.id)?.objectData;
-    const keys = Object.keys(root2.component.outcomes);
+    const root = this.props.root;
+    const objData = root.rowMap.get(this.props.id)?.objectData;
+    const keys = Object.keys(root.component.outcomes);
     for (let pos = 0; pos < keys.length; pos++) {
-      if (root2.component.outcomes[keys[pos]].isBulkAction === false) {
-        if (!root2.supressedOutcomes.has(root2.component.outcomes[keys[pos]].developerName)) {
-          if (SFTCommonFunctions.assessRowOutcomeRule(root2.component.outcomes[keys[pos]], objData, root2) === true) {
+      if (root.component.outcomes[keys[pos]].isBulkAction === false) {
+        if (!root.supressedOutcomes.has(root.component.outcomes[keys[pos]].developerName)) {
+          if (SFTCommonFunctions.assessRowOutcomeRule(root.component.outcomes[keys[pos]], objData, root) === true) {
             enabledOutcomes.push(keys[pos]);
           }
         }
       }
     }
-    if (root2.lastRememberedRow) {
-      if (objData.properties[root2.rowRememberColumn]?.value === root2.lastRememberedRow) {
+    if (root.lastRememberedRow) {
+      if (objData.properties[root.rowRememberColumn]?.value === root.lastRememberedRow) {
         this.rowElement.scrollIntoView({ inline: "nearest", block: "start", behavior: "auto" });
       }
     }
     this.setState({ enabledOutcomes });
   }
   selectRow(e) {
-    const root2 = this.props.root;
-    const objData = root2.rowMap.get(this.props.id)?.objectData;
-    root2.selectRow(objData);
+    const root = this.props.root;
+    const objData = root.rowMap.get(this.props.id)?.objectData;
+    root.selectRow(objData);
   }
   render() {
-    const root2 = this.props.root;
-    const objData = root2.rowMap.get(this.props.id)?.objectData;
-    let rowClass2 = "";
-    if (root2.selectedRow === objData.externalId) {
-      rowClass2 += " sft-table-row-selected ";
+    const root = this.props.root;
+    const objData = root.rowMap.get(this.props.id)?.objectData;
+    let rowClass = "";
+    if (root.selectedRow === objData.externalId) {
+      rowClass += " sft-table-row-selected ";
     }
     const buttons = [];
     let anyoutcomes = false;
-    for (let key of Object.keys(root2.component.outcomes)) {
-      if (root2.component.outcomes[key].isBulkAction === false) {
+    for (let key of Object.keys(root.component.outcomes)) {
+      if (root.component.outcomes[key].isBulkAction === false) {
         let showOutcome = this.state.enabledOutcomes.indexOf(key) >= 0;
-        if (!root2.supressedOutcomes.has(key)) {
+        if (!root.supressedOutcomes.has(key)) {
           anyoutcomes = true;
-          if (root2.component.getAttribute("greyDissabled", "false").toLowerCase() === "true") {
-            let btn = SFTCommonFunctions.makeOutcomeButton(root2, root2.component.outcomes[key], root2.iconSuffix, objData, !showOutcome);
+          if (root.component.getAttribute("greyDissabled", "false").toLowerCase() === "true") {
+            let btn = SFTCommonFunctions.makeOutcomeButton(root, root.component.outcomes[key], root.iconSuffix, objData, !showOutcome);
             buttons.push(btn);
           } else {
             if (showOutcome === true) {
-              let btn = SFTCommonFunctions.makeOutcomeButton(root2, root2.component.outcomes[key], root2.iconSuffix, objData, false);
+              let btn = SFTCommonFunctions.makeOutcomeButton(root, root.component.outcomes[key], root.iconSuffix, objData, false);
               buttons.push(btn);
             }
           }
@@ -37450,7 +37460,7 @@ var SearchFilterTableRow = class extends React18.Component {
     }
     ;
     const cols = [];
-    if (root2.component.isMultiSelect) {
+    if (root.component.isMultiSelect) {
       cols.push(
         /* @__PURE__ */ React18.createElement(
           "td",
@@ -37464,9 +37474,9 @@ var SearchFilterTableRow = class extends React18.Component {
               className: "sft-checkbox",
               type: "checkbox",
               onClick: (event) => {
-                root2.toggleSelect(event, this.props.id);
+                root.toggleSelect(event, this.props.id);
               },
-              checked: root2.selectedRowMap.has(this.props.id),
+              checked: root.selectedRowMap.has(this.props.id),
               title: "Select Row",
               onChange: (e) => {
                 return;
@@ -37476,7 +37486,7 @@ var SearchFilterTableRow = class extends React18.Component {
         )
       );
     } else {
-      if (root2.component.getAttribute("showRadio", "false").toLowerCase() === "true") {
+      if (root.component.getAttribute("showRadio", "false").toLowerCase() === "true") {
         cols.push(
           /* @__PURE__ */ React18.createElement(
             "td",
@@ -37489,7 +37499,7 @@ var SearchFilterTableRow = class extends React18.Component {
               {
                 className: "sft-radio",
                 type: "radio",
-                checked: root2.selectedRow === objData.externalId,
+                checked: root.selectedRow === objData.externalId,
                 title: "Select Row",
                 onChange: (e) => {
                   return;
@@ -37500,7 +37510,7 @@ var SearchFilterTableRow = class extends React18.Component {
         );
       }
     }
-    root2.userColumns.forEach((collName) => {
+    root.userColumns.forEach((collName) => {
       if (collName === "#BUTTONS#") {
         if (anyoutcomes) {
           cols.push(
@@ -37521,19 +37531,19 @@ var SearchFilterTableRow = class extends React18.Component {
           );
         }
       } else {
-        const col2 = root2.colMap.get(collName);
-        if (col2) {
-          let cellResult = this.formatValue(col2.componentType, col2.contentType, root2, col2.developerName, objData);
+        const col = root.colMap.get(collName);
+        if (col) {
+          let cellResult = this.formatValue(col.componentType, col.contentType, root, col.developerName, objData);
           const val = cellResult.result;
-          if (rowClass2.length > 0 && cellResult.rowClass.length > 0) {
-            rowClass2 += " ";
+          if (rowClass.length > 0 && cellResult.rowClass.length > 0) {
+            rowClass += " ";
           }
-          rowClass2 += cellResult.rowClass;
+          rowClass += cellResult.rowClass;
           cols.push(
             /* @__PURE__ */ React18.createElement(
               "td",
               {
-                key: col2.developerName,
+                key: col.developerName,
                 className: "sft-table-cell " + cellResult.cellClass
               },
               val
@@ -37548,7 +37558,7 @@ var SearchFilterTableRow = class extends React18.Component {
       "tr",
       {
         key: this.props.id,
-        className: "sft-table-row " + rowClass2,
+        className: "sft-table-row " + rowClass,
         ref: (element) => {
           this.rowElement = element;
         },
@@ -37601,7 +37611,7 @@ var SearchFilterTableRow = class extends React18.Component {
           if (typeof manywho !== "undefined") {
             result = React18.createElement(manywho.component.getByName(componentType), columnProps);
           } else {
-            result = React18.createElement(eval(componentType), columnProps);
+            result = React18.createElement((0, eval)(componentType), columnProps);
           }
         } else {
           switch (contentType) {
@@ -37806,37 +37816,37 @@ var SearchFilterTableRow = class extends React18.Component {
       return false;
     }
   }
-  isJSON(value2) {
-    value2 += "";
-    if (value2 === "null") {
-      value2 = "";
+  isJSON(value) {
+    value += "";
+    if (value === "null") {
+      value = "";
     }
     try {
-      if (value2.indexOf("{") < 0) {
+      if (value.indexOf("{") < 0) {
         return false;
       }
     } catch (e) {
       console.log("bang");
     }
     try {
-      value2 = value2.replaceAll("\\n ", "");
-      value2 = value2.replaceAll("\\n}", "}");
-      value2 = value2.replaceAll("\\", '"');
-      value2 = value2.replaceAll('"', '"');
-      const obj = JSON.parse(value2);
+      value = value.replaceAll("\\n ", "");
+      value = value.replaceAll("\\n}", "}");
+      value = value.replaceAll("\\", '"');
+      value = value.replaceAll('"', '"');
+      const obj = JSON.parse(value);
       return true;
     } catch (e) {
       return false;
     }
   }
-  showJSON(title, value2) {
-    const root2 = this.props.root;
-    value2 = value2.replaceAll("\\n ", "");
-    value2 = value2.replaceAll("\\n}", "}");
-    value2 = value2.replaceAll("\\", '"');
-    value2 = value2.replaceAll('"', '"');
-    const jj = JSON.stringify(JSON.parse(value2), void 0, 4);
-    const content2 = /* @__PURE__ */ React18.createElement(
+  showJSON(title, value) {
+    const root = this.props.root;
+    value = value.replaceAll("\\n ", "");
+    value = value.replaceAll("\\n}", "}");
+    value = value.replaceAll("\\", '"');
+    value = value.replaceAll('"', '"');
+    const jj = JSON.stringify(JSON.parse(value), void 0, 4);
+    const content = /* @__PURE__ */ React18.createElement(
       "div",
       {
         style: {
@@ -37856,28 +37866,28 @@ var SearchFilterTableRow = class extends React18.Component {
         jj
       )
     );
-    root2.messageBox.showDialog(
+    root.messageBox.showDialog(
       null,
       title,
-      content2,
-      [new FCMModalButton("Ok", root2.messageBox.hideDialog)]
+      content,
+      [new FCMModalButton("Ok", root.messageBox.hideDialog)]
     );
   }
-  isContent(value2) {
-    value2 += "";
-    if (value2 === "null") {
-      value2 = "";
+  isContent(value) {
+    value += "";
+    if (value === "null") {
+      value = "";
     }
-    if (value2.indexOf("\\n") > 0 || /<\/?[a-z][\s\S]*>/i.test(value2)) {
+    if (value.indexOf("\\n") > 0 || /<\/?[a-z][\s\S]*>/i.test(value)) {
       return true;
     } else {
       return false;
     }
   }
-  showContent(title, value2) {
-    value2 = value2.replaceAll("\\n", "<br>");
-    value2 = value2.replaceAll("<br><br>", "<br>");
-    const content2 = /* @__PURE__ */ React18.createElement(
+  showContent(title, value) {
+    value = value.replaceAll("\\n", "<br>");
+    value = value.replaceAll("<br><br>", "<br>");
+    const content = /* @__PURE__ */ React18.createElement(
       "div",
       {
         style: {
@@ -37892,47 +37902,47 @@ var SearchFilterTableRow = class extends React18.Component {
             whiteSpace: "pre",
             fontSize: "1rem"
           },
-          dangerouslySetInnerHTML: { __html: value2 }
+          dangerouslySetInnerHTML: { __html: value }
         }
       ))
     );
-    const root2 = this.props.root;
-    root2.messageBox.showDialog(
+    const root = this.props.root;
+    root.messageBox.showDialog(
       null,
       title,
-      content2,
-      [new FCMModalButton("Ok", root2.messageBox.hideDialog)]
+      content,
+      [new FCMModalButton("Ok", root.messageBox.hideDialog)]
     );
   }
-  isXML(value2) {
-    value2 += "";
-    if (value2 === "null") {
-      value2 = "";
+  isXML(value) {
+    value += "";
+    if (value === "null") {
+      value = "";
     }
-    if (value2.startsWith("<?xml")) {
+    if (value.startsWith("<?xml")) {
       return true;
     } else {
       return false;
     }
   }
-  showXML(title, value2) {
-    value2 = value2.replaceAll("\\n", "<br>");
-    value2 = value2.replaceAll("<br><br>", "<br>");
-    const content2 = /* @__PURE__ */ React18.createElement(
+  showXML(title, value) {
+    value = value.replaceAll("\\n", "<br>");
+    value = value.replaceAll("<br><br>", "<br>");
+    const content = /* @__PURE__ */ React18.createElement(
       "div",
       {
         style: {
           overflow: "visible"
         }
       },
-      /* @__PURE__ */ React18.createElement("pre", null, /* @__PURE__ */ React18.createElement("code", null, value2))
+      /* @__PURE__ */ React18.createElement("pre", null, /* @__PURE__ */ React18.createElement("code", null, value))
     );
-    const root2 = this.props.root;
-    root2.messageBox.showDialog(
+    const root = this.props.root;
+    root.messageBox.showDialog(
       null,
       title,
-      content2,
-      [new FCMModalButton("Ok", root2.messageBox.hideDialog)]
+      content,
+      [new FCMModalButton("Ok", root.messageBox.hideDialog)]
     );
   }
   makeFileName(name, mimeType) {
@@ -38055,28 +38065,28 @@ var FCMDragEvent = class _FCMDragEvent {
 var import_faCircleXmark5 = __toESM(require_faCircleXmark());
 var React20 = __toESM(require_react());
 var __awaiter3 = function(thisArg, _arguments, P, generator) {
-  function adopt(value2) {
-    return value2 instanceof P ? value2 : new P(function(resolve) {
-      resolve(value2);
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
     });
   }
   return new (P || (P = Promise))(function(resolve, reject) {
-    function fulfilled(value2) {
+    function fulfilled(value) {
       try {
-        step(generator.next(value2));
+        step(generator.next(value));
       } catch (e) {
         reject(e);
       }
     }
-    function rejected(value2) {
+    function rejected(value) {
       try {
-        step(generator["throw"](value2));
+        step(generator["throw"](value));
       } catch (e) {
         reject(e);
       }
     }
-    function step(result2) {
-      result2.done ? resolve(result2.value) : adopt(result2.value).then(fulfilled, rejected);
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
     }
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
@@ -38135,12 +38145,12 @@ var FCMModal = class extends React20.Component {
   componentDidMount() {
     this.forceUpdate();
   }
-  showDialog(icon2, title, content2, buttons, onClose, clientStyle) {
+  showDialog(icon2, title, content, buttons, onClose, clientStyle) {
     return __awaiter3(this, void 0, void 0, function* () {
       this.dialogVisible = true;
       this.dialogIcon = icon2;
       this.dialogTitle = title;
-      this.dialogContent = content2;
+      this.dialogContent = content;
       this.dialogOnClose = onClose || this.hideDialog;
       this.dialogButtons = buttons;
       this.clientStyle = clientStyle;
@@ -38180,9 +38190,9 @@ var FCMModal = class extends React20.Component {
   }
   // Render the component passing onCloseRequest and children as props.
   render() {
-    let content2;
+    let content;
     if (this.dialogVisible === false) {
-      content2 = React20.createElement("div", null);
+      content = React20.createElement("div", null);
     } else {
       const buttons = [];
       for (const button of this.dialogButtons) {
@@ -38221,7 +38231,7 @@ var FCMModal = class extends React20.Component {
       } else {
         bodyMouseDown = this.onMouseDown;
       }
-      content2 = React20.createElement(
+      content = React20.createElement(
         "div",
         { className: "fcmmod-redaction", onMouseMove: (e) => {
           this.onMouseMove(e);
@@ -38253,7 +38263,7 @@ var FCMModal = class extends React20.Component {
         )
       );
     }
-    return content2;
+    return content;
   }
   moveMe(left, top) {
     this.left = left;
@@ -38541,13 +38551,13 @@ var SpreadsheetExporter = class {
     let file = "";
     let body = "";
     let headers = "";
-    let row2 = "";
+    let row = "";
     let rows;
     let wb = new import_exceljs.Workbook();
     let sheet;
     let cols = [];
-    columns?.forEach((col2) => {
-      cols.push(col2.label || col2.developerName);
+    columns?.forEach((col) => {
+      cols.push(col.label || col.developerName);
     });
     if (partitions && partitions.size > 1) {
       let items;
@@ -38556,9 +38566,9 @@ var SpreadsheetExporter = class {
         sheet = wb.addWorksheet(key);
         rows = [];
         rows.push(cols);
-        allRows.forEach((row3) => {
-          if (partition.has(row3.id)) {
-            items.set(row3.id, row3);
+        allRows.forEach((row2) => {
+          if (partition.has(row2.id)) {
+            items.set(row2.id, row2);
           }
         });
         rows.push(...this.buildRows(columns, items));
@@ -38587,19 +38597,19 @@ var SpreadsheetExporter = class {
   static buildRows(cols, items) {
     let rows = [];
     items.forEach((item) => {
-      let row2 = [];
+      let row = [];
       let objData = item.objectData;
-      cols.forEach((col2) => {
-        switch (col2.contentType) {
+      cols.forEach((col) => {
+        switch (col.contentType) {
           case eContentType.ContentString:
-            row2.push(objData.properties[col2.developerName].value);
+            row.push(objData.properties[col.developerName].value);
             break;
           default:
-            row2.push(objData.properties[col2.developerName].value);
+            row.push(objData.properties[col.developerName].value);
             break;
         }
       });
-      rows.push(row2);
+      rows.push(row);
     });
     return rows;
   }
@@ -38651,8 +38661,8 @@ var SpreadsheetExporter = class {
 
 // src/CSVImporter.ts
 var SFTCSVCell = class {
-  constructor(value2) {
-    this.value = value2;
+  constructor(value) {
+    this.value = value;
   }
 };
 var SFTCSVRow = class {
@@ -38692,7 +38702,7 @@ var SFTCSVFile = class {
     let file = "";
     let body = "";
     let headers = "";
-    let row2 = "";
+    let row = "";
     cols?.forEach((item) => {
       if (headers.length > 0) {
         headers += ",";
@@ -38715,10 +38725,10 @@ var SFTCSVFile = class {
   }
   toFlowObjectDataArray(objectDataTypeName) {
     let objDataArray = new FlowObjectDataArray();
-    this.rows.forEach((row2) => {
+    this.rows.forEach((row) => {
       let objData = FlowObjectData.newInstance(objectDataTypeName);
       this.headers.forEach((header) => {
-        objData.addProperty(FlowObjectDataProperty.newInstance(header.value, eContentType.ContentString, row2.cells.get(header.value).value));
+        objData.addProperty(FlowObjectDataProperty.newInstance(header.value, eContentType.ContentString, row.cells.get(header.value).value));
       });
       objData.isSelected = true;
       objDataArray.addItem(objData);
@@ -39024,7 +39034,7 @@ var SFT3 = class extends React22.Component {
     return true;
   }
   showInfo() {
-    const content2 = /* @__PURE__ */ React22.createElement(
+    const content = /* @__PURE__ */ React22.createElement(
       "div",
       {
         dangerouslySetInnerHTML: { __html: this.component.content }
@@ -39033,12 +39043,12 @@ var SFT3 = class extends React22.Component {
     this.messageBox.showDialog(
       null,
       "Information",
-      content2,
+      content,
       [new FCMModalButton("Close", this.messageBox.hideDialog)]
     );
   }
   showColumnPicker() {
-    const content2 = /* @__PURE__ */ React22.createElement(
+    const content = /* @__PURE__ */ React22.createElement(
       ColumnPickerForm,
       {
         root: this,
@@ -39050,7 +39060,7 @@ var SFT3 = class extends React22.Component {
     this.messageBox.showDialog(
       null,
       "Select Columns",
-      content2,
+      content,
       [new FCMModalButton("Apply", this.applyColumns), new FCMModalButton("Cancel", this.cancelColumns)]
     );
   }
@@ -39064,15 +39074,15 @@ var SFT3 = class extends React22.Component {
     this.messageBox.hideDialog();
     this.form = void 0;
     this.headers.forceUpdate();
-    this.rows.forEach((row2) => {
-      row2.forceUpdate();
+    this.rows.forEach((row) => {
+      row.forceUpdate();
     });
   }
   async columnsReordered() {
     this.saveUserColumns();
     this.headers.forceUpdate();
-    this.rows.forEach((row2) => {
-      row2.forceUpdate();
+    this.rows.forEach((row) => {
+      row.forceUpdate();
     });
   }
   getColumnUniques(name, criteria) {
@@ -39091,7 +39101,7 @@ var SFT3 = class extends React22.Component {
     switch (event) {
       case 1 /* sort */:
         if (this.filters.get(key).sort !== 0 /* none */) {
-          const col2 = this.headers.headers.get(key);
+          const col = this.headers.headers.get(key);
         }
         this.sortRows();
         this.bringColumnIntoView(key);
@@ -39101,12 +39111,12 @@ var SFT3 = class extends React22.Component {
         break;
     }
   }
-  bringColumnIntoView(col2) {
-    let header = this.headers.headers.get(col2);
+  bringColumnIntoView(col) {
+    let header = this.headers.headers.get(col);
     header?.th?.scrollIntoView({ inline: "nearest", block: "start", behavior: "auto" });
   }
-  globalFilterChanged(value2) {
-    this.filters.globalCriteria = value2;
+  globalFilterChanged(value) {
+    this.filters.globalCriteria = value;
     this.filtersChanged("", 2 /* filter */);
   }
   partitionFilterChanged(key) {
@@ -39128,7 +39138,7 @@ var SFT3 = class extends React22.Component {
     this.filtersChanged("", 2 /* filter */);
   }
   manageFilters() {
-    const content2 = /* @__PURE__ */ React22.createElement(
+    const content = /* @__PURE__ */ React22.createElement(
       FilterManagementForm,
       {
         parent: this,
@@ -39140,7 +39150,7 @@ var SFT3 = class extends React22.Component {
     this.messageBox.showDialog(
       null,
       "Manage Filters",
-      content2,
+      content,
       [new FCMModalButton("Apply", this.applyFilters), new FCMModalButton("Cancel", this.cancelFilters)]
     );
   }
@@ -39201,18 +39211,18 @@ var SFT3 = class extends React22.Component {
       cols = userFieldsVal.split(",");
     }
     this.userColumns = [];
-    cols.forEach((col2) => {
-      this.userColumns.push(col2.trim());
+    cols.forEach((col) => {
+      this.userColumns.push(col.trim());
     });
   }
   async saveUserColumns() {
     let userCols = "";
-    this.userColumns.forEach((col2) => {
+    this.userColumns.forEach((col) => {
       if (userCols.length > 0) {
         userCols += ",";
       }
-      if (col2) {
-        userCols += col2.trim();
+      if (col) {
+        userCols += col.trim();
       } else {
         console.log("One of the columns in the table had a null name.  Check the table display columns settings in Flow");
       }
@@ -39246,8 +39256,8 @@ var SFT3 = class extends React22.Component {
             return -1;
         }
       });
-      cols.forEach((col2) => {
-        colMap.set(col2.developerName, col2);
+      cols.forEach((col) => {
+        colMap.set(col.developerName, col);
       });
     } else {
       if (this.component.getAttribute("ComplexColumns", "false").toLowerCase() === "true") {
@@ -39255,8 +39265,8 @@ var SFT3 = class extends React22.Component {
         let colName = this.component.getAttribute("ComplexColumnName", "Name");
         let colType = this.component.getAttribute("ComplexColumnType", "Type");
         this.component.objectData.items?.forEach((item) => {
-          item.properties[colsName].value.items.forEach((col2) => {
-            let cname = col2.properties[colName].value;
+          item.properties[colsName].value.items.forEach((col) => {
+            let cname = col.properties[colName].value;
             if (!colMap.has(cname)) {
               let cdef = {
                 developerName: cname,
@@ -39276,11 +39286,11 @@ var SFT3 = class extends React22.Component {
     if (populateDefaults) {
       this.userColumns = [];
     }
-    colMap.forEach((col2) => {
-      this.colMap.set(col2.developerName, col2);
-      this.colValMap.set(col2.developerName, /* @__PURE__ */ new Map());
+    colMap.forEach((col) => {
+      this.colMap.set(col.developerName, col);
+      this.colValMap.set(col.developerName, /* @__PURE__ */ new Map());
       if (populateDefaults) {
-        this.userColumns.push(col2.developerName);
+        this.userColumns.push(col.developerName);
       }
     });
     if (this.userColumns.indexOf("#BUTTONS#") < 0) {
@@ -39421,9 +39431,9 @@ var SFT3 = class extends React22.Component {
         }
         const node = new RowItem();
         node.id = item.internalId;
-        this.colMap.forEach((col2) => {
-          node.columns.set(col2.developerName, new CellItem(col2.developerName, item.properties[col2.developerName]?.value));
-          this.colValMap.get(col2.developerName).set(item.properties[col2.developerName]?.value, item.properties[col2.developerName]?.value);
+        this.colMap.forEach((col) => {
+          node.columns.set(col.developerName, new CellItem(col.developerName, item.properties[col.developerName]?.value));
+          this.colValMap.get(col.developerName).set(item.properties[col.developerName]?.value, item.properties[col.developerName]?.value);
         });
         node.objectData = item;
         this.rowMap.set(node.id, node);
@@ -39433,12 +39443,12 @@ var SFT3 = class extends React22.Component {
     let partition = this.component.getAttribute("partitionColumn");
     this.partitionedRowMaps = /* @__PURE__ */ new Map();
     if (partition && this.colMap.has(partition)) {
-      this.rowMap.forEach((row2) => {
-        let div = row2.columns.get(partition);
+      this.rowMap.forEach((row) => {
+        let div = row.columns.get(partition);
         if (!this.partitionedRowMaps.has(div.originalValue)) {
           this.partitionedRowMaps.set(div.originalValue, /* @__PURE__ */ new Map());
         }
-        this.partitionedRowMaps.get(div.originalValue).set(row2.id, row2.id);
+        this.partitionedRowMaps.get(div.originalValue).set(row.id, row.id);
       });
     }
   }
@@ -39580,8 +39590,8 @@ var SFT3 = class extends React22.Component {
     this.refreshRows();
   }
   refreshRows() {
-    this.rows.forEach((row2) => {
-      row2.forceUpdate();
+    this.rows.forEach((row) => {
+      row.forceUpdate();
     });
   }
   /////////////////////
@@ -39597,8 +39607,8 @@ var SFT3 = class extends React22.Component {
         this.selectedRowMap.delete(key);
       });
     }
-    this.rows.forEach((row2) => {
-      row2.forceUpdate();
+    this.rows.forEach((row) => {
+      row.forceUpdate();
     });
     this.buildRibbon();
     this.buildFooter();
@@ -39864,41 +39874,41 @@ var SFT3 = class extends React22.Component {
       const outcome = this.component.outcomes[outcomeName];
       switch (true) {
         case outcome.attributes["uri"]?.value.length > 0:
-          let href2 = outcome.attributes["uri"].value;
-          let match2;
-          while (match2 = RegExp(/{{([^}]*)}}/).exec(href2)) {
-            if (selectedItem && selectedItem.properties[match2[1]]) {
-              href2 = href2.replace(match2[0], selectedItem.properties[match2[1]] ? this.getTextValue(selectedItem.properties[match2[1]]) : "");
+          let href = outcome.attributes["uri"].value;
+          let match;
+          while (match = RegExp(/{{([^}]*)}}/).exec(href)) {
+            if (selectedItem && selectedItem.properties[match[1]]) {
+              href = href.replace(match[0], selectedItem.properties[match[1]] ? this.getTextValue(selectedItem.properties[match[1]]) : "");
             } else {
-              switch (match2[1]) {
+              switch (match[1]) {
                 case "TENANT_ID":
-                  href2 = href2.replace(match2[0], this.component.tenantId);
+                  href = href.replace(match[0], this.component.tenantId);
                   break;
                 default:
-                  const fldElements = match2[1].split("->");
+                  const fldElements = match[1].split("->");
                   const val = await this.component.getValue(fldElements[0]);
-                  let value2;
+                  let value;
                   if (val) {
                     if (fldElements.length > 1) {
                       let od = val.value;
                       for (let epos = 1; epos < fldElements.length; epos++) {
                         od = od.properties[fldElements[epos]].value;
                       }
-                      value2 = od;
+                      value = od;
                     } else {
-                      value2 = val.value;
+                      value = val.value;
                     }
                   }
-                  href2 = href2.replace(match2[0], value2);
+                  href = href.replace(match[0], value);
               }
             }
           }
           if (this.component.outcomes[outcomeName].attributes["target"]?.value === "_self") {
-            window.location.href = href2;
+            window.location.href = href;
           } else {
             const tab = window.open("");
             if (tab) {
-              tab.location.href = href2;
+              tab.location.href = href;
             } else {
               console.log("Couldn't open a new tab");
             }
@@ -39918,11 +39928,11 @@ var SFT3 = class extends React22.Component {
             component: this.component
           };
           const comp = manywho.component.getByName(form.class);
-          const content2 = React22.createElement(comp, formProps);
+          const content = React22.createElement(comp, formProps);
           this.messageBox.showDialog(
             null,
             form.title,
-            content2,
+            content,
             [new FCMModalButton("Ok", this.okOutcomeForm), new FCMModalButton("Cancel", this.cancelOutcomeForm)]
           );
           this.forceUpdate();
@@ -40055,18 +40065,18 @@ var SFT3 = class extends React22.Component {
     );
   }
   render() {
-    const classes2 = "sft " + this.component.getAttribute("classes", "");
-    const style2 = {};
-    style2.width = "-webkit-fill-available";
-    style2.height = "-webkit-fill-available";
+    const classes = "sft " + this.component.getAttribute("classes", "");
+    const style = {};
+    style.width = "-webkit-fill-available";
+    style.height = "-webkit-fill-available";
     if (this.component.isVisible === false) {
-      style2.display = "none";
+      style.display = "none";
     }
     if (this.component.attributes.width) {
-      style2.width = this.component.attributes.width;
+      style.width = this.component.attributes.width;
     }
     if (this.component.attributes.height) {
-      style2.height = this.component.attributes.height;
+      style.height = this.component.attributes.height;
     }
     const title = this.component.label || "";
     let body;
@@ -40117,8 +40127,8 @@ var SFT3 = class extends React22.Component {
       {
         id: this.component.id,
         key: this.component.id,
-        className: classes2,
-        style: style2,
+        className: classes,
+        style,
         onContextMenu: this.showContextMenu
       },
       /* @__PURE__ */ React22.createElement(
@@ -40178,7 +40188,7 @@ var SFTMessageBox = class extends React23.Component {
     this.props.sft.form = this;
   }
   async componentDidMount() {
-    let sft2 = this.props.sft;
+    let sft = this.props.sft;
     this.forceUpdate();
   }
   validate() {

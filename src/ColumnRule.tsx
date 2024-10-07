@@ -239,7 +239,7 @@ export class ColumnRule {
                         content = React.createElement(manywho.component.getByName(this.componentClass), columnProps);
                     }
                     else {
-                        content = React.createElement(eval(this.componentClass) , columnProps);
+                        content = React.createElement((0,eval)(this.componentClass) , columnProps);
                     }
                     
                     break;

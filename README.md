@@ -610,7 +610,8 @@ e.g.
         {"label":"6 Months", "value": 6},
         {"label":"9 Months", "value": 9}
     ],
-    "state":"drdMonths"
+    "state":"drdMonths",
+    "onChange":"Outcome Name to trigger" // optional
   }
 ]
 ```

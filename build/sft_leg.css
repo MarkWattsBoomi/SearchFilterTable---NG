@@ -704,22 +704,21 @@
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   border: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 .sft-ribbon-search-partition {
   border: 1px solid #ccc;
   padding: 0 0.5rem;
-  margin-right: 0.5rem;
   border-radius: 0.5rem;
   text-transform: capitalize;
   cursor: pointer;
+  white-space: nowrap;
 }
 .sft-ribbon-search-partition-selected {
   border: 1px solid #ccc;
   background-color: #033d58;
   color: #fefefe;
-}
-.sft-ribbon-search-partition:last-of-type {
-  margin-right: 0;
 }
 .sft-fmf-row {
   display: flex;

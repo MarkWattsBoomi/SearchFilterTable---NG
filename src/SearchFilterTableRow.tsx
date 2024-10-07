@@ -219,7 +219,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
                         result = React.createElement(manywho.component.getByName(componentType), columnProps);
                     }
                     else {
-                        result = React.createElement(eval(componentType) , columnProps);
+                        result = React.createElement((0,eval)(componentType) , columnProps);
                     }
                 } else {
                     switch (contentType) {
