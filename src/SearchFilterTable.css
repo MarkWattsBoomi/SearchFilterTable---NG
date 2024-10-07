@@ -560,6 +560,7 @@
 .sft-fcf-select {
     font-size: 1rem !important;
     -webkit-appearance: listbox !important;
+    appearance: listbox;
     padding: 1px !important;
     border: 1px solid #333 !important;
     border-radius: 2px !important;
