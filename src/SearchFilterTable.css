@@ -615,7 +615,7 @@
     display: flex;
     flex-direction: row;
     flex-grow: 0;
-    margin: auto auto auto 2rem;
+    margin: auto auto auto 1rem;
     align-items: flex-start;
 }
 
@@ -624,7 +624,7 @@
     display: flex;
     flex-direction: row;
     flex-grow: 0;
-    margin: auto auto auto 2rem;
+    margin: auto auto auto 1rem;
     align-items: flex-start;
 }
 
@@ -634,6 +634,7 @@
 
 .sft-ribbon-search-trc {
     margin: auto;
+    white-space: nowrap;
 }
 
 .sft-ribbon-search-trc-label{
@@ -753,7 +754,7 @@
     flex-direction: row;
     flex-grow: 0;
     background-color: transparent;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0rem;
     border-radius: 1rem;
     border: none;
     flex-wrap: wrap;
