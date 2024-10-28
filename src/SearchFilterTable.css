@@ -630,6 +630,9 @@
 
 .sft-ribbon-search-trcs {
     margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .sft-ribbon-search-trc {
