@@ -318,18 +318,21 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
     }
 
     async trcChange(e: any, comp: any){
-        const sft: SFT = this.props.root;
-        let val: FlowValue = comp.value;
-        val.value = e.currentTarget.value;
-        sft.component.setValues(val);
-        if(comp.onChange?.length > 0 && sft.component.outcomes[comp.onChange]) {
-            sft.component.triggerOutcome(comp.onChange);
+        if(e && e.currentTarget) {
+            e.stopPropagation();
+            const sft: SFT = this.props.root;
+            let val: FlowValue = comp.value;
+            val.value = e.currentTarget.value;
+            await sft.component.setValues(val);
+            console.log("TRC " + comp.label + " - set value to " + e.currentTarget?.value);
+            if(comp.onChange?.length > 0 && sft.component.outcomes[comp.onChange]) {
+                sft.component.triggerOutcome(comp.onChange);
+            }
+            else {
+                this.generateComponents();
+                this.forceUpdate();
+            }
         }
-        else {
-
-        }
-        this.generateComponents();
-        this.forceUpdate();
     }
 
     generatePartitions() {

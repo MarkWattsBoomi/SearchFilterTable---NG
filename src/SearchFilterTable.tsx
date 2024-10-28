@@ -409,6 +409,7 @@ export class SFT extends React.Component<any,any> {
                 for(let pos = 0 ; pos < this.topRowComponents.length ; pos++) {
                     this.topRowComponents[pos].state = await this.component.inflateValue(this.topRowComponents[pos].state);
                     this.topRowComponents[pos].value = await this.component.getValue(this.topRowComponents[pos].state);
+                    console.log("TRC " + this.topRowComponents[pos].label + " - pre-loading value to " + this.topRowComponents[pos].value.value);
                 };
             }
             catch(e) {
