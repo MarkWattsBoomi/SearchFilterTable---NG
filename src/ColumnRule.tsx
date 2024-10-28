@@ -57,6 +57,7 @@ export class ColumnRule {
             case 'dateformat':
                 colRule.dateFormat = rule.dateFormat;
                 colRule.timeZone = !((""+rule.timeZone).toLowerCase()==="false");
+                colRule.pastClass = rule.pastClass;
                 break;
             case 'class':
                 colRule.componentClass = rule.componentClass || rule.className;
@@ -97,6 +98,7 @@ export class ColumnRule {
     cellClass: string;
     parent: SFT;
     dateFormat: string;
+    pastClass: string;
     whiteSpace: string;
     cssClass: string;
     outcomeName: string;
@@ -250,6 +252,13 @@ export class ColumnRule {
                         if (!isNaN(dt.getTime()) && dt.getTime() > 0) {
                             if(this.timeZone===false){
                                 dt.setMinutes(dt.getMinutes() + dt.getTimezoneOffset());
+                            }
+                            let dt2: Date = new Date(dt);
+                            let now: Date = new Date();
+                            dt.setHours(0,0,0,0);
+                            now.setHours(0,0,0,0);
+                            if(dt < now) {
+                                classes += " " + this.pastClass;
                             }
                             switch (this.dateFormat.toLowerCase()) {
                                 case 'datetime':

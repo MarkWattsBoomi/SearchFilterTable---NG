@@ -363,6 +363,10 @@
     padding-right: 0.5rem !important;
     display: flex;
     white-space: nowrap;
+
+    &.expired {
+        color: red;
+    }
 }
 
 .sft-table-cell-boolean {

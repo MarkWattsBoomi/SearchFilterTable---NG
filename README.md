@@ -401,6 +401,7 @@ The value is a JSON object with one attribute per column.
       "timeZone":false,
       "classes":"mycssclass",
       "whitespace":"pre" // any allowed whitespace flag like nowrap etc.
+      "pastClass":"classname" // a class to apply if the date is in the past - ignores time
    },
    "MyColumn":{
       "mode":"outcome",
