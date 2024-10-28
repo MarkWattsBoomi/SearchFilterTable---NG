@@ -225,7 +225,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
                     switch (contentType) {
                         case eContentType.ContentDateTime:
                             let dt: Date = new Date(col.value as string);
-                            if ((dt instanceof Date && !isNaN(dt.getTime())) === true) {
+                            if ((dt instanceof Date && !isNaN(dt.getTime())) === true && dt.getTime()>0) {
                                 let str: string = '';
                                 switch (root.component.getAttribute('DateFormat', 'LOCALE')) {
                                     case 'UTC':

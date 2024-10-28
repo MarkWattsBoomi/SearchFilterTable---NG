@@ -37621,7 +37621,7 @@ var SearchFilterTableRow = class extends React18.Component {
           switch (contentType) {
             case eContentType.ContentDateTime:
               let dt = new Date(col.value);
-              if ((dt instanceof Date && !isNaN(dt.getTime())) === true) {
+              if ((dt instanceof Date && !isNaN(dt.getTime())) === true && dt.getTime() > 0) {
                 let str = "";
                 switch (root.component.getAttribute("DateFormat", "LOCALE")) {
                   case "UTC":
