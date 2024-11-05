@@ -35127,6 +35127,7 @@ var ColumnRule = class _ColumnRule {
       case "dateformat":
         colRule.dateFormat = rule.dateFormat;
         colRule.timeZone = !(("" + rule.timeZone).toLowerCase() === "false");
+        colRule.pastClass = rule.pastClass;
         break;
       case "class":
         colRule.componentClass = rule.componentClass || rule.className;
@@ -35283,6 +35284,13 @@ var ColumnRule = class _ColumnRule {
             if (!isNaN(dt.getTime()) && dt.getTime() > 0) {
               if (this.timeZone === false) {
                 dt.setMinutes(dt.getMinutes() + dt.getTimezoneOffset());
+              }
+              let dt2 = new Date(dt);
+              let now = /* @__PURE__ */ new Date();
+              dt.setHours(0, 0, 0, 0);
+              now.setHours(0, 0, 0, 0);
+              if (dt < now) {
+                classes += " " + this.pastClass;
               }
               switch (this.dateFormat.toLowerCase()) {
                 case "datetime":
@@ -37062,16 +37070,20 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     sft.filters.clearAll();
   }
   async trcChange(e, comp) {
-    const sft = this.props.root;
-    let val = comp.value;
-    val.value = e.currentTarget.value;
-    sft.component.setValues(val);
-    if (comp.onChange?.length > 0 && sft.component.outcomes[comp.onChange]) {
-      sft.component.triggerOutcome(comp.onChange);
-    } else {
+    if (e && e.currentTarget) {
+      e.stopPropagation();
+      const sft = this.props.root;
+      let val = comp.value;
+      val.value = e.currentTarget.value;
+      await sft.component.setValues(val);
+      console.log("TRC " + comp.label + " - set value to " + e.currentTarget?.value);
+      if (comp.onChange?.length > 0 && sft.component.outcomes[comp.onChange]) {
+        sft.component.triggerOutcome(comp.onChange);
+      } else {
+        this.generateComponents();
+        this.forceUpdate();
+      }
     }
-    this.generateComponents();
-    this.forceUpdate();
   }
   generatePartitions() {
     const sft = this.props.root;
@@ -37537,7 +37549,7 @@ var SearchFilterTableRow = class extends React18.Component {
           switch (contentType) {
             case eContentType.ContentDateTime:
               let dt = new Date(col.value);
-              if ((dt instanceof Date && !isNaN(dt.getTime())) === true) {
+              if ((dt instanceof Date && !isNaN(dt.getTime())) === true && dt.getTime() > 0) {
                 let str = "";
                 switch (root.component.getAttribute("DateFormat", "LOCALE")) {
                   case "UTC":
@@ -38935,6 +38947,7 @@ var SFT3 = class extends React22.Component {
         for (let pos = 0; pos < this.topRowComponents.length; pos++) {
           this.topRowComponents[pos].state = await this.component.inflateValue(this.topRowComponents[pos].state);
           this.topRowComponents[pos].value = await this.component.getValue(this.topRowComponents[pos].state);
+          console.log("TRC " + this.topRowComponents[pos].label + " - pre-loading value to " + this.topRowComponents[pos].value.value);
         }
         ;
       } catch (e) {
