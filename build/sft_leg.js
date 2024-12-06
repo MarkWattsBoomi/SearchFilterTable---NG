@@ -39957,8 +39957,12 @@ var SFT3 = class extends React22.Component {
             sft: this,
             component: this.component
           };
-          const comp = manywho.component.getByName(form.class);
-          const content = React22.createElement(comp, formProps);
+          let content;
+          if (typeof manywho !== "undefined") {
+            content = React22.createElement(manywho.component.getByName(form.class), formProps);
+          } else {
+            content = React22.createElement((0, eval)(form.class), formProps);
+          }
           this.messageBox.showDialog(
             null,
             form.title,
@@ -40276,7 +40280,9 @@ var SFTMessageBox = class extends React23.Component {
     return this.content;
   }
 };
-manywho.component.register("SFTMessageBox", SFTMessageBox);
+if (typeof manywho !== "undefined") {
+  manywho.component.register("SFTMessageBox", SFTMessageBox);
+}
 
 // src/SFTLegacy.tsx
 var SearchFilterTable = class extends FCMLegacy {

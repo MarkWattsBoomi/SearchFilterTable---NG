@@ -78,4 +78,7 @@ export class SFTMessageBox extends React.Component<any,any> {
     }
 }
 
-manywho.component.register('SFTMessageBox', SFTMessageBox);
+if(typeof manywho !== 'undefined'){
+    manywho.component.register('SFTMessageBox', SFTMessageBox);
+}
+

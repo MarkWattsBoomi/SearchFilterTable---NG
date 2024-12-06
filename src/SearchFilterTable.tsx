@@ -1420,8 +1420,15 @@ export class SFT extends React.Component<any,any> {
                         sft: this,
                         component: this.component
                     };
-                    const comp: any = manywho.component.getByName(form.class);
-                    const content: any = React.createElement(comp, formProps);
+                    
+                    let content: any;
+                    if(typeof manywho !== 'undefined'){
+                        content = React.createElement(manywho.component.getByName(form.class), formProps);
+                    }
+                    else {
+                        content = React.createElement((0,eval)(form.class) , formProps);
+                    }
+
                     this.messageBox.showDialog(
                         null,
                         form.title, 
