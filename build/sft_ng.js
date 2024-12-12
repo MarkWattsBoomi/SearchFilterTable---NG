@@ -30214,6 +30214,31 @@ var FCMNew = class extends FCMCore {
   setPageComponentState(componentName, value) {
     throw new Error("Method not implemented.");
   }
+  getPageComponentId(componentName) {
+    throw new Error("Method not implemented.");
+  }
+  setPageComponentValue(componentId, value) {
+    let element = {
+      elementId: componentId,
+      elementPartial: {},
+      triggersPageCondition: false
+    };
+    switch (typeof value) {
+      case "boolean":
+        element.elementPartial.contentValue = value === true ? "true" : "false";
+        break;
+      case "number":
+        element.elementPartial.contentValue = "" + value;
+        break;
+      case "object":
+        element.elementPartial.contentValue = isNaN(value.getTime()) ? "" : value.toISOString();
+        break;
+      default:
+        element.elementPartial.contentValue = "" + value;
+        break;
+    }
+    this.props.updateElement(element);
+  }
   getPageComponentDataSource(componentName) {
     throw new Error("Method not implemented.");
   }
@@ -30238,17 +30263,33 @@ var FCMNew = class extends FCMCore {
         }
       }
     } else {
-      let newModel = new FlowObjectDataArray(nextProps.element.objectData);
-      if (JSON.stringify(this.objectData) != JSON.stringify(newModel)) {
-        if (this.loadModel(nextProps)) {
-          if (this.childComponent && this.componentDidMount) {
-            this.componentDidMount();
+      let reload = true;
+      switch (this.contentType) {
+        case eContentType.ContentObject:
+        case eContentType.ContentList:
+          if (nextProps.element.objectData === null) {
+            reload = false;
           }
-        } else {
-          if (this.childComponent && this.componentUpdated) {
-            this.componentUpdated(false);
-          } else if (this.childComponent && this.componentDidMount) {
-            this.componentDidMount();
+          break;
+        default:
+          if (nextProps.element.contentValue === null) {
+            reload = false;
+          }
+          break;
+      }
+      if (reload) {
+        let newModel = new FlowObjectDataArray(nextProps.element.objectData);
+        if (JSON.stringify(this.objectData) != JSON.stringify(newModel)) {
+          if (this.loadModel(nextProps)) {
+            if (this.childComponent && this.componentDidMount) {
+              this.componentDidMount();
+            }
+          } else {
+            if (this.childComponent && this.componentUpdated) {
+              this.componentUpdated(false);
+            } else if (this.childComponent && this.componentDidMount) {
+              this.componentDidMount();
+            }
           }
         }
       }
@@ -30435,6 +30476,8 @@ var FCMNew = class extends FCMCore {
       }
     }
     return email;
+  }
+  sync() {
   }
 };
 
@@ -40108,6 +40151,17 @@ var SFT3 = class extends React22.Component {
 
 // src/SFTNew.tsx
 var SearchFilterTable = class extends FCMNew {
+  componentDidMount() {
+    if (this.childComponent && this.childComponent.componentDidMount) {
+      if (this.contentValue || this.objectData || this.getAttribute("JSONModelValue")) {
+      }
+    }
+  }
+  componentUpdated(changeDetected) {
+    if (this.childComponent && this.childComponent.componentUpdated) {
+      this.childComponent.componentUpdated();
+    }
+  }
   /*
   UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
       // if the component id changed always reload.

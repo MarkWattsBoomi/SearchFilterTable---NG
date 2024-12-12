@@ -30511,6 +30511,10 @@ var FCMLegacy = class extends FCMCore {
       return yield manywho.engine.objectDataRequest(this.id, request, this.flowKey);
     });
   }
+  getPageComponentId(componentName) {
+    var _a;
+    return (_a = manywho.model.getComponentByName(componentName, this.flowKey)) === null || _a === void 0 ? void 0 : _a.id;
+  }
   getPageComponentDataSource(componentName) {
     let employees = manywho.model.getComponentByName(componentName, this.flowKey);
     let newState = { "objectData": employees.objectData };
@@ -30521,6 +30525,9 @@ var FCMLegacy = class extends FCMCore {
   setPageComponentState(componentName, value) {
     let employees = manywho.model.getComponentByName(componentName, this.flowKey);
     manywho.state.setComponent(employees.id, value.iFlowObjectDataArray(true), this.flowKey, true);
+  }
+  setPageComponentValue(componentId, value) {
+    manywho.state.setComponent(componentId, { contentValue: value }, this.flowKey, true);
   }
   getUserEmail() {
     let email = "admin@manywho.com";
@@ -30535,6 +30542,9 @@ var FCMLegacy = class extends FCMCore {
       }
     }
     return email;
+  }
+  sync() {
+    manywho.engine.sync(this.flowKey);
   }
 };
 

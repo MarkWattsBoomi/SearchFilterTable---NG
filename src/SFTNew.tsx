@@ -5,6 +5,19 @@ import { FlowObjectDataArray } from "fcmlib/lib/FlowObjectDataArray";
 
 export default class SearchFilterTable extends FCMNew {
 
+    componentDidMount() {
+        if(this.childComponent && this.childComponent.componentDidMount){
+            if(this.contentValue || this.objectData || (this.getAttribute("JSONModelValue"))){
+                //this.childComponent.componentDidMount();
+            }
+        }
+    }
+
+    componentUpdated(changeDetected: boolean){
+        if(this.childComponent && this.childComponent.componentUpdated){
+            this.childComponent.componentUpdated();
+        }
+    }
     /*
     UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
         // if the component id changed always reload.

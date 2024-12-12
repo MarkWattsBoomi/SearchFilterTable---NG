@@ -18,8 +18,8 @@
     "buffer": "^6.0.3",
     "esbuild": "^0.19.8",
     "exceljs": "^4.4.0",
-    "fcmkit": "^1.0.15",
-    "fcmlib": "^1.0.89",
+    "fcmkit": "^1.0.19",
+    "fcmlib": "^1.0.93",
     "fs": "^0.0.1-security",
     "react": "18.2.0",
     "readable": "^1.1.3"
