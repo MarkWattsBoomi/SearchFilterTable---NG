@@ -1,12 +1,12 @@
 {
   "name": "sftable",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "index.js",
   "scripts": {
     "start": "esbuild ./src/SFTNew.tsx --outfile=./build/sft_ng.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
-    "build": "esbuild ./src/SFTNew.tsx --outfile=./build/sft_ng.js --bundle  --format=esm",
+    "build": "esbuild ./src/SFTNew.tsx --outfile=./build/sft_ng.%npm_package_version%.js --bundle  --format=esm",
     "startLegacy": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
-    "buildLegacy": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg.js --bundle  --format=esm",
+    "buildLegacy": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg.%npm_package_version%.js --bundle  --format=esm",
     "buildLegacyDebug": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg_db.js --bundle  --format=esm",
     "buildAll": "npm run build & npm run buildLegacy"
   },

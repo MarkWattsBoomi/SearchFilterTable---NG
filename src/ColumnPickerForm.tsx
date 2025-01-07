@@ -1,6 +1,6 @@
-import { FlowDisplayColumn } from 'flow-component-model';
 import * as React from 'react';
 import {SFT} from './SearchFilterTable';
+import { FlowDisplayColumn } from 'fcmlib/lib/FlowDisplayColumn';
 
 export class ColumnPickerForm extends React.Component<any, any> {
 
