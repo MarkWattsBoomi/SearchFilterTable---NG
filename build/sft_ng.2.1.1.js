@@ -244,20 +244,20 @@ var require_react_development = __commonJS({
         {
           Object.freeze(emptyObject);
         }
-        function Component18(props, context, updater) {
+        function Component17(props, context, updater) {
           this.props = props;
           this.context = context;
           this.refs = emptyObject;
           this.updater = updater || ReactNoopUpdateQueue;
         }
-        Component18.prototype.isReactComponent = {};
-        Component18.prototype.setState = function(partialState, callback) {
+        Component17.prototype.isReactComponent = {};
+        Component17.prototype.setState = function(partialState, callback) {
           if (typeof partialState !== "object" && typeof partialState !== "function" && partialState != null) {
             throw new Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
           }
           this.updater.enqueueSetState(this, partialState, callback, "setState");
         };
-        Component18.prototype.forceUpdate = function(callback) {
+        Component17.prototype.forceUpdate = function(callback) {
           this.updater.enqueueForceUpdate(this, callback, "forceUpdate");
         };
         {
@@ -266,7 +266,7 @@ var require_react_development = __commonJS({
             replaceState: ["replaceState", "Refactor your code to use setState instead (see https://github.com/facebook/react/issues/3236)."]
           };
           var defineDeprecationWarning = function(methodName, info) {
-            Object.defineProperty(Component18.prototype, methodName, {
+            Object.defineProperty(Component17.prototype, methodName, {
               get: function() {
                 warn("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
                 return void 0;
@@ -281,7 +281,7 @@ var require_react_development = __commonJS({
         }
         function ComponentDummy() {
         }
-        ComponentDummy.prototype = Component18.prototype;
+        ComponentDummy.prototype = Component17.prototype;
         function PureComponent(props, context, updater) {
           this.props = props;
           this.context = context;
@@ -290,7 +290,7 @@ var require_react_development = __commonJS({
         }
         var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
         pureComponentPrototype.constructor = PureComponent;
-        assign(pureComponentPrototype, Component18.prototype);
+        assign(pureComponentPrototype, Component17.prototype);
         pureComponentPrototype.isPureReactComponent = true;
         function createRef() {
           var refObject = {
@@ -516,7 +516,7 @@ var require_react_development = __commonJS({
           }
           return element;
         };
-        function createElement24(type, config2, children) {
+        function createElement23(type, config2, children) {
           var propName;
           var props = {};
           var key = null;
@@ -1355,8 +1355,8 @@ var require_react_development = __commonJS({
             return describeNativeComponentFrame(fn, false);
           }
         }
-        function shouldConstruct(Component19) {
-          var prototype = Component19.prototype;
+        function shouldConstruct(Component18) {
+          var prototype = Component18.prototype;
           return !!(prototype && prototype.isReactComponent);
         }
         function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
@@ -1615,7 +1615,7 @@ var require_react_development = __commonJS({
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement24.apply(this, arguments);
+          var element = createElement23.apply(this, arguments);
           if (element == null) {
             return element;
           }
@@ -1862,7 +1862,7 @@ var require_react_development = __commonJS({
           only: onlyChild
         };
         exports.Children = Children;
-        exports.Component = Component18;
+        exports.Component = Component17;
         exports.Fragment = REACT_FRAGMENT_TYPE;
         exports.Profiler = REACT_PROFILER_TYPE;
         exports.PureComponent = PureComponent;
@@ -29197,98 +29197,6 @@ var require_exceljs_min = __commonJS({
   }
 });
 
-// node_modules/fcmlib/lib/EventManager.js
-if (!manywho.eventManager) {
-  manywho.eventManager = {};
-  manywho.eventManager.beforeSendListeners = {};
-  manywho.eventManager.doneListeners = {};
-  manywho.eventManager.initializedListeners = {};
-  manywho.eventManager.joinListeners = {};
-  manywho.eventManager.failListeners = {};
-  manywho.eventManager.outcomeBeingTriggered;
-  manywho.eventManager.history = [];
-  manywho.eventManager.beforeSend = (xhr, request) => {
-    if (xhr) {
-      if (window.hasOwnProperty("culture") && culture.length > 0) {
-        xhr.setRequestHeader("Culture", culture);
-      }
-    }
-    for (const key in manywho.eventManager.beforeSendListeners) {
-      manywho.eventManager.beforeSendListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.join = (xhr, request) => {
-    for (const key in manywho.eventManager.joinListeners) {
-      manywho.eventManager.joinListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.done = (xhr, request) => {
-    for (const key in manywho.eventManager.doneListeners) {
-      manywho.eventManager.doneListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.initialized = (xhr, request) => {
-    for (const key in manywho.eventManager.initializedListeners) {
-      manywho.eventManager.initializedListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.fail = (xhr, request) => {
-    for (const key in manywho.eventManager.failListeners) {
-      manywho.eventManager.failListeners[key](xhr, request);
-    }
-  };
-  manywho.eventManager.addBeforeSendListener = (handler, componentId) => {
-    manywho.eventManager.beforeSendListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeBeforeSendListener = (componentId) => {
-    delete manywho.eventManager.beforeSendListeners[componentId];
-  };
-  manywho.eventManager.addInitializedListener = (handler, componentId) => {
-    manywho.eventManager.initializedListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeInitializedListener = (componentId) => {
-    delete manywho.eventManager.initializedListeners[componentId];
-  };
-  manywho.eventManager.addJoinListener = (handler, componentId) => {
-    manywho.eventManager.joinListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeJoinListener = (componentId) => {
-    delete manywho.eventManager.joinListeners[componentId];
-  };
-  manywho.eventManager.addDoneListener = (handler, componentId) => {
-    manywho.eventManager.doneListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeDoneListener = (componentId) => {
-    delete manywho.eventManager.doneListeners[componentId];
-  };
-  manywho.eventManager.addFailListener = (handler, componentId) => {
-    manywho.eventManager.failListeners[componentId] = handler;
-  };
-  manywho.eventManager.removeFailListener = (componentId) => {
-    delete manywho.eventManager.failListeners[componentId];
-  };
-  manywho.settings.initialize(null, {
-    invoke: {
-      beforeSend: manywho.eventManager.beforeSend,
-      done: manywho.eventManager.done,
-      fail: manywho.eventManager.fail
-    },
-    initialization: {
-      beforeSend: manywho.eventManager.beforeSend,
-      done: manywho.eventManager.initialized,
-      fail: manywho.eventManager.fail
-    },
-    join: {
-      beforeSend: manywho.eventManager.beforeSend,
-      done: manywho.eventManager.join,
-      fail: manywho.eventManager.fail
-    }
-  });
-}
-
-// node_modules/fcmlib/lib/FCMCore.js
-var import_react = __toESM(require_react());
-
 // node_modules/fcmlib/lib/FlowObjectDataProperty.js
 var FlowObjectDataProperty = class _FlowObjectDataProperty {
   constructor(property) {
@@ -29971,20 +29879,8 @@ var FlowDisplayColumn = class {
   }
 };
 
-// node_modules/fcmlib/lib/FCMNew.js
-var eContentType;
-(function(eContentType2) {
-  eContentType2[eContentType2["unknown"] = 0] = "unknown";
-  eContentType2[eContentType2["ContentString"] = 1] = "ContentString";
-  eContentType2[eContentType2["ContentNumber"] = 2] = "ContentNumber";
-  eContentType2[eContentType2["ContentObject"] = 3] = "ContentObject";
-  eContentType2[eContentType2["ContentBoolean"] = 4] = "ContentBoolean";
-  eContentType2[eContentType2["ContentList"] = 5] = "ContentList";
-  eContentType2[eContentType2["ContentPassword"] = 6] = "ContentPassword";
-  eContentType2[eContentType2["ContentContent"] = 7] = "ContentContent";
-  eContentType2[eContentType2["ContentDateTime"] = 8] = "ContentDateTime";
-  eContentType2[eContentType2["ContentEncrypted"] = 9] = "ContentEncrypted";
-})(eContentType || (eContentType = {}));
+// node_modules/fcmlib/lib/FCMCore.js
+var import_react = __toESM(require_react());
 
 // node_modules/fcmlib/lib/FlowValue.js
 var FlowValue = class {
@@ -30273,7 +30169,7 @@ var FCMCore = class extends import_react.default.Component {
   }
 };
 
-// node_modules/fcmlib/lib/FCMLegacy.js
+// node_modules/fcmlib/lib/FCMNew.js
 var __awaiter2 = function(thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function(resolve) {
@@ -30301,113 +30197,162 @@ var __awaiter2 = function(thisArg, _arguments, P, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-var FCMLegacy = class extends FCMCore {
-  constructor(props) {
-    var _a;
-    super(props);
-    this.flowBaseUri = ((_a = manywho.settings.global("platform")) === null || _a === void 0 ? void 0 : _a.uri) || window.location.origin;
+var eContentType;
+(function(eContentType3) {
+  eContentType3[eContentType3["unknown"] = 0] = "unknown";
+  eContentType3[eContentType3["ContentString"] = 1] = "ContentString";
+  eContentType3[eContentType3["ContentNumber"] = 2] = "ContentNumber";
+  eContentType3[eContentType3["ContentObject"] = 3] = "ContentObject";
+  eContentType3[eContentType3["ContentBoolean"] = 4] = "ContentBoolean";
+  eContentType3[eContentType3["ContentList"] = 5] = "ContentList";
+  eContentType3[eContentType3["ContentPassword"] = 6] = "ContentPassword";
+  eContentType3[eContentType3["ContentContent"] = 7] = "ContentContent";
+  eContentType3[eContentType3["ContentDateTime"] = 8] = "ContentDateTime";
+  eContentType3[eContentType3["ContentEncrypted"] = 9] = "ContentEncrypted";
+})(eContentType || (eContentType = {}));
+var FCMNew = class extends FCMCore {
+  setPageComponentState(componentName, value) {
+    throw new Error("Method not implemented.");
   }
-  //static getDerivedStateFromProps(nextProps: Readonly<any>, prevState: any): void {
-  UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
-    if (this.suppressEvents === false) {
-      if (nextProps.id !== this.id) {
-        if (this.loadModel(nextProps)) {
-          if (this.childComponent && this.componentDidMount) {
-            this.componentDidMount();
-          }
-        } else {
-          if (this.childComponent && this.componentUpdated) {
-            this.componentUpdated(false);
-          } else if (this.childComponent && this.componentDidMount) {
-            this.componentDidMount();
-          }
-        }
-      } else {
-        let model = manywho.model.getComponent(this.id, this.flowKey);
-        let reload = true;
-        switch (eContentType[model === null || model === void 0 ? void 0 : model.contentType]) {
-          case eContentType.ContentObject:
-          case eContentType.ContentList:
-            if (model.objectData === null) {
-            }
-            break;
-          default:
-            if (model.contentValue === null) {
-              reload = false;
-            }
-            break;
-        }
-        if (model && reload === true) {
-          if (this.loadModel(nextProps)) {
-            if (this.childComponent && this.componentDidMount) {
-              this.componentDidMount();
-            }
-          } else {
-            if (this.childComponent && this.componentUpdated) {
-              this.componentUpdated(false);
-            } else if (this.childComponent && this.componentDidMount) {
-              this.componentDidMount();
-            }
-          }
-        } else {
-          if (this.childComponent && this.componentUpdated) {
-            this.componentUpdated(false);
-          }
-        }
-      }
+  getPageComponentId(componentName) {
+    throw new Error("Method not implemented.");
+  }
+  setPageComponentValue(componentId, value) {
+    let element = {
+      elementId: componentId,
+      elementPartial: {},
+      triggersPageCondition: false
+    };
+    switch (typeof value) {
+      case "boolean":
+        element.elementPartial.contentValue = value === true ? "true" : "false";
+        break;
+      case "number":
+        element.elementPartial.contentValue = "" + value;
+        break;
+      case "object":
+        element.elementPartial.contentValue = isNaN(value.getTime()) ? "" : value.toISOString();
+        break;
+      default:
+        element.elementPartial.contentValue = "" + value;
+        break;
     }
+    this.props.updateElement(element);
   }
+  getPageComponentDataSource(componentName) {
+    throw new Error("Method not implemented.");
+  }
+  requestObjectData(request) {
+    throw new Error("Method not implemented.");
+  }
+  constructor(props) {
+    super(props);
+    this.flowBaseUri = window.location.origin;
+  }
+  /*
+      UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
+          // if the component id changed always reload.
+          if (nextProps.element.id !== this.id) {
+              if(this.loadModel(nextProps)){
+                  if(this.childComponent && this.componentDidMount) {
+                      this.componentDidMount();
+                  }
+              }
+              else{
+                  if(this.childComponent && this.componentUpdated) {
+                      this.componentUpdated(false);
+                  }
+                  else if(this.childComponent && this.componentDidMount) {
+                      this.componentDidMount();
+                  }
+              }
+          }
+          else {
+              let reload: boolean = true;
+              switch(this.contentType){
+                  case eContentType.ContentObject:
+                  case eContentType.ContentList:
+                      if(nextProps.element.objectData === null || nextProps.element.objectData.length === 0){
+                          reload = false;
+                      }
+                      break;
+                  default:
+                      if(nextProps.element.contentValue === null){
+                          reload = false;
+                      }
+                      break;
+              }
+  
+              if(reload){
+                  let newModel: FlowObjectDataArray = new FlowObjectDataArray(nextProps.element.objectData);
+                  if(JSON.stringify(this.objectData) != JSON.stringify(newModel)){
+                      if(this.loadModel(nextProps)){
+                          if(this.childComponent && this.componentDidMount) {
+                              this.componentDidMount();
+                          }
+                      }
+                      else {
+                          if(this.childComponent && this.componentUpdated) {
+                              this.componentUpdated(false);
+                          }
+                          else if(this.childComponent && this.componentDidMount) {
+                              this.componentDidMount();
+                          }
+                      }
+                  }
+              }
+          }
+      }
+      */
   componentUpdated(changeDetected) {
   }
   loadModel(props) {
-    var _a;
+    var _a, _b, _c;
     let hasChanged = false;
-    if (this.id !== props.id) {
-      hasChanged = true;
-    }
-    this.id = props.id;
-    this.flowKey = props.flowKey;
-    const model = manywho.model.getComponent(this.id, this.flowKey);
-    this.authenticationToken = manywho.state.getAuthenticationToken(this.flowKey);
-    this.attributes = model.attributes;
-    this.className = model.className;
-    this.colSpan = model.colSpan;
-    this.column = model.column;
+    this.authenticationToken = props.authenticationToken;
+    this.attributes = props.element.attributes;
+    this.className = props.element.className;
+    this.colSpan = props.element.colSpan;
+    this.column = props.element.column;
     this.columns = [];
-    (_a = model.columns) === null || _a === void 0 ? void 0 : _a.forEach((col) => {
+    (_a = props.element.columns) === null || _a === void 0 ? void 0 : _a.forEach((col) => {
       this.columns.push(new FlowDisplayColumn(col));
     });
     this.columns.sort((a2, b) => {
       return a2.order - b.order;
     });
-    this.componentScriptURL = model.componentScriptURL;
-    this.componentStyleSheetURL = model.componentStyleSheetURL;
-    this.content = model.content;
-    this.contentType = eContentType[model.contentType];
-    if (this.contentValue !== model.contentValue) {
+    this.componentScriptURL = props.element.componentScriptURL;
+    this.componentStyleSheetURL = props.element.componentStyleSheetURL;
+    this.content = props.element.content;
+    this.contentType = eContentType[props.element.contentType];
+    if (this.contentValue !== props.element.contentValue) {
       hasChanged = true;
     }
-    this.contentValue = model.contentValue;
-    this.developerName = model.developerName;
+    this.contentValue = props.element.contentValue;
+    this.developerName = props.element.developerName;
     this.fields = {};
-    this.fileDataRequest = model.fileDataRequest;
-    this.hasEvents = model.hasEvents;
-    this.hasSubmitted = model.hasSubmitted;
-    this.height = model.height;
-    this.helpInfo = model.helpInfo;
-    this.hintValue = model.hintValue;
-    this.imageUri = model.imageUri;
-    this.isEditable = model.isEditable;
-    this.isEnabled = model.isEnabled;
-    this.isMultiSelect = model.isMultiSelect;
-    this.isRequired = model.isRequired;
-    this.isSearchable = model.isSearchable;
-    this.isSearchableDisplayColumns = model.isSearchableDisplayColumns;
-    this.isValid = model.isValid;
-    this.isVisible = model.isVisible;
-    this.label = model.label;
-    this.maxSize = model.maxSize;
-    let newObjData = new FlowObjectDataArray(model.objectData);
+    this.fileDataRequest = props.element.fileDataRequest;
+    this.hasEvents = props.element.hasEvents;
+    this.hasSubmitted = props.hasSubmitted;
+    this.height = props.element.height;
+    this.helpInfo = props.element.helpInfo;
+    this.hintValue = props.element.hintValue;
+    if (this.id !== props.element.id) {
+      hasChanged = true;
+    }
+    this.id = props.element.id;
+    this.imageUri = props.element.imageUri;
+    this.isEditable = props.element.isEditable;
+    this.isEnabled = props.element.isEnabled;
+    this.isMultiSelect = props.element.isMultiSelect;
+    this.isRequired = props.element.isRequired;
+    this.isSearchable = props.element.isSearchable;
+    this.isSearchableDisplayColumns = props.element.isSearchableDisplayColumns;
+    this.isValid = props.element.isValid;
+    this.isVisible = props.element.isVisible;
+    this.label = props.element.label;
+    this.maxSize = props.element.maxSize;
+    let newObjData = new FlowObjectDataArray(props.element.objectData);
     if (this.objectData) {
       if (newObjData) {
         if (JSON.stringify(this.objectData) !== JSON.stringify(newObjData)) {
@@ -30422,118 +30367,117 @@ var FCMLegacy = class extends FCMCore {
       }
     }
     this.objectData = newObjData;
-    this.objectDataRequest = model.objectDataRequest;
-    this.order = model.order;
+    this.objectDataRequest = props.element.objectDataRequest;
+    this.order = props.element.order;
     this.outcomes = {};
-    manywho.model.getOutcomes(this.props.id, this.flowKey).forEach((outcome) => {
+    (_b = props.outcomes) === null || _b === void 0 ? void 0 : _b.forEach((outcome) => {
       let oc = new FlowOutcome(outcome);
       if (oc.pageObjectBindingId === this.id) {
         this.outcomes[oc.developerName] = oc;
       }
     });
-    manywho.model.getOutcomes("", this.flowKey).forEach((outcome) => {
+    (_c = props.element.outcomes) === null || _c === void 0 ? void 0 : _c.forEach((outcome) => {
       let oc = new FlowOutcome(outcome);
       if (oc.pageObjectBindingId === this.id) {
         this.outcomes[oc.developerName] = oc;
       }
     });
-    this.pageContainerId = model.pageContainerId;
-    this.pageSize = model.pageSize || 20;
-    this.row = model.row;
-    this.rowSpan = model.rowSpan;
-    this.selectedItems = model.selectedItems;
-    this.size = model.size;
-    this.stateId = manywho.utils.extractStateId(this.flowKey);
-    this.tags = model.tags;
-    this.tenantId = manywho.utils.extractTenantId(this.flowKey);
-    this.type = model.type;
-    this.validationMessage = model.validationMessage;
-    this.validations = model.validations;
-    this.width = model.width;
+    this.pageContainerId = props.element.pageContainerId;
+    this.pageSize = props.element.pageSize || 20;
+    this.row = props.element.row;
+    this.rowSpan = props.element.rowSpan;
+    this.selectedItems = props.element.selectedItems;
+    this.size = props.element.size;
+    this.stateId = props.stateId;
+    this.tags = props.element.tags;
+    this.tenantId = props.tenantId;
+    this.type = props.element.type;
+    this.validationMessage = props.element.validationMessage;
+    this.validations = props.element.validations;
+    this.width = props.element.width;
     return hasChanged;
   }
-  setStateValue(value) {
-    this.stateValue = value;
-    const flowModel = manywho.model.getComponent(this.id, this.flowKey);
-    let newState;
-    if (flowModel) {
-      switch (flowModel.contentType) {
-        case "ContentObject":
-          let objectData = null;
-          if (value) {
-            value.isSelected = true;
-            objectData = value.iFlowObjectDataArray();
-            objectData = JSON.parse(JSON.stringify(objectData));
-          }
-          newState = { "objectData": objectData };
-          manywho.state.setComponent(this.id, newState, this.flowKey, true);
-          break;
-        case "ContentList":
-          let objectDataArray = null;
-          if (value) {
-            objectDataArray = value.iFlowObjectDataArray();
-            objectDataArray = JSON.parse(JSON.stringify(objectDataArray));
-          }
-          newState = { "objectData": objectDataArray };
-          manywho.state.setComponent(this.id, newState, this.flowKey, true);
-          break;
-        case "ContentDate":
-          newState = { "contentValue": value.toISOString() };
-          manywho.state.setComponent(this.id, newState, this.flowKey, true);
-          break;
-        default:
-          newState = { "contentValue": value };
-          manywho.state.setComponent(this.id, newState, this.flowKey, true);
-          break;
-      }
-    }
-    if (this.hasEvents) {
-      manywho.component.handleEvent(this, manywho.model.getComponent(this.id, this.flowKey), this.flowKey, null);
-    }
+  redraw() {
+    this.componentDidMount();
   }
   triggerOutcome(outcomeName) {
     return __awaiter2(this, void 0, void 0, function* () {
-      let oc;
       if (this.outcomes[outcomeName]) {
-        oc = this.outcomes[outcomeName];
+        let trigger = {
+          outcomeId: this.outcomes[outcomeName].id,
+          invokeType: "FORWARD"
+        };
+        this.props.execute(trigger);
       }
-      if (oc) {
-        yield manywho.component.onOutcome(oc, null, this.flowKey);
-      } else {
-        console.log("Could not find outcome " + outcomeName);
-      }
-      return Promise.resolve();
     });
   }
-  requestObjectData(request) {
-    return __awaiter2(this, void 0, void 0, function* () {
-      return yield manywho.engine.objectDataRequest(this.id, request, this.flowKey);
-    });
+  /*
+  getStateValue(): string | boolean | number | Date | FlowObjectData | FlowObjectDataArray | undefined {
+      // is it a complex type or simple?
+      switch(this.contentType) {
+          case eContentType.ContentObject:
+              return this.objectData.items[0];
+          case eContentType.ContentList:
+              return this.objectData;
+          case eContentType.ContentBoolean:
+              return this.contentValue?.toLowerCase()==="true";
+          case eContentType.ContentNumber:
+              let num: number = parseFloat(this.contentValue);
+              if(!isNaN(num)){
+                  return num;
+              }
+              else {
+                  return undefined;
+              }
+          case eContentType.ContentDateTime:
+              let dt: Date = new Date(this.contentValue);
+              if(!isNaN(dt.getTime())){
+                  return dt;
+              }
+              else {
+                  return undefined;
+              }
+          default:
+              return this.contentValue;
+      }
   }
-  getPageComponentId(componentName) {
-    var _a;
-    return (_a = manywho.model.getComponentByName(componentName, this.flowKey)) === null || _a === void 0 ? void 0 : _a.id;
-  }
-  getPageComponentDataSource(componentName) {
-    let employees = manywho.model.getComponentByName(componentName, this.flowKey);
-    let newState = { "objectData": employees.objectData };
-    manywho.state.setComponent(employees.id, newState, this.flowKey, true);
-    let objDataArray = new FlowObjectDataArray(employees.objectData);
-    return objDataArray;
-  }
-  setPageComponentState(componentName, value) {
-    let employees = manywho.model.getComponentByName(componentName, this.flowKey);
-    manywho.state.setComponent(employees.id, value.iFlowObjectDataArray(true), this.flowKey, true);
-  }
-  setPageComponentValue(componentId, value) {
-    manywho.state.setComponent(componentId, { contentValue: value }, this.flowKey, true);
+  */
+  setStateValue(value) {
+    this.stateValue = value;
+    let element = {
+      elementId: this.id,
+      elementPartial: {},
+      triggersPageCondition: this.hasEvents
+    };
+    switch (this.contentType) {
+      case eContentType.ContentObject:
+        element.elementPartial.objectData = value.iFlowObjectDataArray(true);
+        element.elementPartial.selectedItems = element.elementPartial.objectData;
+        break;
+      case eContentType.ContentList:
+        element.elementPartial.objectData = value.iFlowObjectDataArray(true);
+        element.elementPartial.selectedItems = element.elementPartial.objectData;
+        break;
+      case eContentType.ContentBoolean:
+        element.elementPartial.contentValue = value === true ? "true" : "false";
+        break;
+      case eContentType.ContentNumber:
+        element.elementPartial.contentValue = "" + value;
+        break;
+      case eContentType.ContentDateTime:
+        element.elementPartial.contentValue = isNaN(value.getTime()) ? "" : value.toISOString();
+        break;
+      default:
+        element.elementPartial.contentValue = "" + value;
+        break;
+    }
+    this.props.updateElement(element);
   }
   getUserEmail() {
     let email = "admin@manywho.com";
-    let token = manywho.state.getAuthenticationToken(this.flowKey);
-    if (token && token.length > 0) {
+    if (this.authenticationToken && this.authenticationToken.length > 0) {
       try {
-        let tokStr = window.atob(token.split(".")[1]);
+        let tokStr = window.atob(this.authenticationToken.split(".")[1]);
         let json = JSON.parse(tokStr);
         email = json.email;
       } catch (e) {
@@ -30543,12 +30487,11 @@ var FCMLegacy = class extends FCMCore {
     return email;
   }
   sync() {
-    manywho.engine.sync(this.flowKey);
   }
 };
 
-// src/SFTLegacy.tsx
-var React24 = __toESM(require_react());
+// src/SFTNew.tsx
+var React23 = __toESM(require_react());
 
 // src/SearchFilterTable.tsx
 var React22 = __toESM(require_react());
@@ -33706,13 +33649,13 @@ function styleToObject(style) {
     return acc;
   }, {});
 }
-function convert(createElement24, element) {
+function convert(createElement23, element) {
   var extraProps = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
   if (typeof element === "string") {
     return element;
   }
   var children = (element.children || []).map(function(child) {
-    return convert(createElement24, child);
+    return convert(createElement23, child);
   });
   var mixins = Object.keys(element.attributes || {}).reduce(function(acc, key) {
     var val = element.attributes[key];
@@ -33737,7 +33680,7 @@ function convert(createElement24, element) {
   });
   var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties(extraProps, _excluded);
   mixins.attrs["style"] = _objectSpread2(_objectSpread2({}, mixins.attrs["style"]), existingStyle);
-  return createElement24.apply(void 0, [element.tag, _objectSpread2(_objectSpread2({}, mixins.attrs), remaining)].concat(_toConsumableArray(children)));
+  return createElement23.apply(void 0, [element.tag, _objectSpread2(_objectSpread2({}, mixins.attrs), remaining)].concat(_toConsumableArray(children)));
 }
 var PRODUCTION2 = false;
 try {
@@ -37477,6 +37420,9 @@ var SearchFilterTableRow = class extends React18.Component {
     if (root.selectedRow === objData.externalId) {
       rowClass += " sft-table-row-selected ";
     }
+    if (root.selectedRowMap.has(objData.externalId)) {
+      rowClass += " sft-table-row-tagged ";
+    }
     const buttons = [];
     let anyoutcomes = false;
     for (let key of Object.keys(root.component.outcomes)) {
@@ -38871,6 +38817,7 @@ var SFT3 = class extends React22.Component {
     this.columnRules = /* @__PURE__ */ new Map();
     this.retries = 0;
     this.loaded = false;
+    this.runAgain = false;
     this.supressedOutcomes = /* @__PURE__ */ new Map();
     this.mounting = false;
     this.supressEvents = false;
@@ -38948,6 +38895,7 @@ var SFT3 = class extends React22.Component {
       if (this.supressEvents === true) {
         this.supressEvents = false;
       }
+      this.runAgain = true;
       return;
     }
     this.mounting = true;
@@ -38967,6 +38915,10 @@ var SFT3 = class extends React22.Component {
     this.loaded = true;
     this.mounting = false;
     await this.buildTableRows();
+    if (this.runAgain) {
+      this.runAgain = false;
+      await this.buildTableRows();
+    }
   }
   async componentUpdated(changeDetected) {
     let JSONStateName = this.component.getAttribute("JSONModelValue");
@@ -39691,14 +39643,18 @@ var SFT3 = class extends React22.Component {
   //gets the single selected item from rowlevelstate
   async loadSingleSelected() {
     this.selectedRow = void 0;
-    if (this.component.getAttribute("RowLevelState", "").length > 0 && this.rowRememberColumn) {
+    if (this.component.getAttribute("RowLevelState", "").length > 0) {
       const rls = await this.component.getValue(this.component.getAttribute("RowLevelState"));
       if (rls.value) {
-        for (let val of this.rowMap.values()) {
-          let objData = val?.objectData;
-          if (rls.value.properties[this.rowRememberColumn]?.value === objData.properties[this.rowRememberColumn]?.value) {
-            this.selectedRow = objData.externalId;
+        if (this.rowRememberColumn) {
+          for (let val of this.rowMap.values()) {
+            let objData = val?.objectData;
+            if (rls.value.properties[this.rowRememberColumn]?.value === objData.properties[this.rowRememberColumn]?.value) {
+              this.selectedRow = objData.externalId;
+            }
           }
+        } else {
+          this.selectedRow = rls.value.externalId;
         }
       }
     }
@@ -40215,90 +40171,11 @@ var SFT3 = class extends React22.Component {
   }
 };
 
-// src/SFTMessageBox.tsx
-var React23 = __toESM(require_react());
-var SFTMessageBox = class extends React23.Component {
-  constructor(props) {
-    super(props);
-    this.content = /* @__PURE__ */ React23.createElement(
-      "img",
-      {
-        src: "https://files-manywho-com.s3.amazonaws.com/8f6d2e19-efc9-4ebc-b70e-616396f7184e/loading-icon-transparent-background-12.jpg"
-      }
-    );
-    this.validate = this.validate.bind(this);
-    this.makeObjectData = this.makeObjectData.bind(this);
-    this.props.sft.form = this;
-  }
-  async componentDidMount() {
-    let sft = this.props.sft;
-    this.forceUpdate();
-  }
-  validate() {
-    let valid = true;
-    return valid;
-  }
-  async makeObjectData() {
-    return null;
-  }
-  render() {
-    let outcome = this.props.outcome;
-    let form = this.props.form;
-    let icon2 = "glyphicon glyphicon-" + (form.icon || "exclamation-sign") + " sft-dlg-icon";
-    let msgStr = "Deletion is a permanent action.  Please confirm ?";
-    msgStr = form.message || msgStr;
-    let msgRows = [];
-    let msgLines = msgStr.split("/n");
-    msgLines.forEach((line) => {
-      msgRows.push(
-        /* @__PURE__ */ React23.createElement(
-          "span",
-          {
-            className: "sft-dlg-row"
-          },
-          line.trim()
-        )
-      );
-    });
-    this.content = /* @__PURE__ */ React23.createElement(
-      "div",
-      {
-        className: "sft-dlg"
-      },
-      /* @__PURE__ */ React23.createElement(
-        "div",
-        {
-          className: "sft-dlg-body"
-        },
-        /* @__PURE__ */ React23.createElement(
-          "div",
-          {
-            className: "sft-dlg-body-icon"
-          },
-          /* @__PURE__ */ React23.createElement("span", { className: icon2 })
-        ),
-        /* @__PURE__ */ React23.createElement(
-          "div",
-          {
-            className: "sft-dlg-body-message"
-          },
-          msgRows
-        )
-      )
-    );
-    return this.content;
-  }
-};
-if (typeof manywho !== "undefined") {
-  manywho.component.register("SFTMessageBox", SFTMessageBox);
-}
-
-// src/SFTLegacy.tsx
-var SearchFilterTable = class extends FCMLegacy {
+// src/SFTNew.tsx
+var SearchFilterTable = class extends FCMNew {
   componentDidMount() {
     if (this.childComponent && this.childComponent.componentDidMount) {
       if (this.contentValue || this.objectData || this.getAttribute("JSONModelValue")) {
-        this.childComponent.componentDidMount();
       }
     }
   }
@@ -40307,8 +40184,47 @@ var SearchFilterTable = class extends FCMLegacy {
       this.childComponent.componentUpdated();
     }
   }
+  /*
+  UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
+      // if the component id changed always reload.
+      if (nextProps.element.id !== this.id) {
+          if(this.loadModel(nextProps)){
+              if(this.childComponent && this.componentDidMount) {
+                  this.componentDidMount();
+              }
+          }
+          else{
+              if(this.childComponent && this.componentUpdated) {
+                  this.componentUpdated(false);
+              }
+              else if(this.childComponent && this.componentDidMount) {
+                  this.componentDidMount();
+              }
+          }
+      }
+      else {
+          let newModel: FlowObjectDataArray = new FlowObjectDataArray(nextProps.element.objectData);
+          if(JSON.stringify(this.objectData) != JSON.stringify(newModel)){
+              if(this.loadModel(nextProps)){
+                  if(this.childComponent && this.componentDidMount) {
+                      this.componentDidMount();
+                  }
+              }
+              else {
+                  if(this.childComponent && this.componentUpdated) {
+                      this.componentUpdated(false);
+                  }
+                  else if(this.childComponent && this.componentDidMount) {
+                      this.componentDidMount();
+                  }
+              }
+          }
+          
+      }
+  }
+  */
   render() {
-    return /* @__PURE__ */ React24.createElement(
+    return /* @__PURE__ */ React23.createElement(
       SFT3,
       {
         key: this.id,
@@ -40320,8 +40236,9 @@ var SearchFilterTable = class extends FCMLegacy {
     );
   }
 };
-manywho.component.register("SearchFilterTable", SearchFilterTable);
-manywho.component.register("SFTMessageBox", SFTMessageBox);
+export {
+  SearchFilterTable as default
+};
 /*! Bundled license information:
 
 react/cjs/react.development.js:

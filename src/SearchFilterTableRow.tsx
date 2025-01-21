@@ -59,6 +59,9 @@ export class SearchFilterTableRow extends React.Component<any, any> {
         if(root.selectedRow === objData.externalId) {
             rowClass += " sft-table-row-selected "
         }
+        if(root.selectedRowMap.has(objData.externalId)) {
+            rowClass += " sft-table-row-tagged "
+        }
         const buttons: any[] = [];
         let anyoutcomes: boolean = false;
         for(let key of Object.keys(root.component.outcomes)){

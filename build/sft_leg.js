@@ -30329,7 +30329,6 @@ var FCMLegacy = class extends FCMCore {
           case eContentType.ContentObject:
           case eContentType.ContentList:
             if (model.objectData === null) {
-              reload = false;
             }
             break;
           default:

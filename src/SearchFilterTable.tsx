@@ -140,6 +140,7 @@ export class SFT extends React.Component<any,any> {
     retries: number = 0;
 
     loaded: Boolean = false;
+    runAgain: boolean = false;
 
     supressedOutcomes: Map<string,boolean> = new Map();;
 
@@ -281,6 +282,7 @@ export class SFT extends React.Component<any,any> {
     async componentDidMount() {
         if(this.mounting === true || this.supressEvents === true) {
             if(this.supressEvents===true) {this.supressEvents=false}
+            this.runAgain = true;
             return
         }
         this.mounting = true;
@@ -305,6 +307,11 @@ export class SFT extends React.Component<any,any> {
         this.loaded = true;
         this.mounting = false;
         await this.buildTableRows();
+        if(this.runAgain){
+            this.runAgain=false;
+            await this.buildTableRows();
+            //this.componentDidMount();
+        }
         //this.forceUpdate();
         //this.buildRibbon();
         
@@ -1150,18 +1157,24 @@ export class SFT extends React.Component<any,any> {
     //gets the single selected item from rowlevelstate
     async loadSingleSelected(): Promise<any> {
         this.selectedRow = undefined;
-        if (this.component.getAttribute('RowLevelState', '').length > 0 && this.rowRememberColumn) {
+        if (this.component.getAttribute('RowLevelState', '').length > 0 ) {
             const rls: FlowValue = await this.component.getValue(this.component.getAttribute('RowLevelState'));
-            if(rls.value){
-                for(let val of this.rowMap.values()) {
-                    let objData: FlowObjectData = val?.objectData;
-                    if((rls.value as FlowObjectData).properties[this.rowRememberColumn]?.value ===
-                        objData.properties[this.rowRememberColumn]?.value) {
-                            this.selectedRow = objData.externalId;
-                        }
-                    
+            if(rls.value) {
+                // are we using a specific column
+                if(this.rowRememberColumn) {
+                    for(let val of this.rowMap.values()) {
+                        let objData: FlowObjectData = val?.objectData;
+                        if((rls.value as FlowObjectData).properties[this.rowRememberColumn]?.value ===
+                            objData.properties[this.rowRememberColumn]?.value) {
+                                this.selectedRow = objData.externalId;
+                            }
+                        
+                    }
                 }
-            }         
+                else {
+                    this.selectedRow = (rls.value as FlowObjectData).externalId;
+                }
+            }      
         }
     }
     /////////////////////////////////////////////////////////////////////
