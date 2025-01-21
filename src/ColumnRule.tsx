@@ -282,6 +282,9 @@ export class ColumnRule {
                                 case 'year':
                                     result = '' + dt.getFullYear();
                                     break;
+                                case 'dd/mm/yyyy':
+                                    result = '' + dt.toLocaleDateString("en-GB",{day:"2-digit", month:"2-digit", year:"numeric"});
+                                    break;
                             }
                         }
                     }

@@ -465,13 +465,14 @@ The label (optional) may containe the name of another field surrounded by double
 This allows for making composite columns. 
 
 For "dateFormat" you can use: -
-"datetime"  date & time in local format
-"date"      displays local date format
-"time"      shows only the time element in local format
-"json"      shows date & time in JSON format
-"iso"       shows date & time in ISO format
-"utc"       shows date & time in UTC format
-"year"      shows only the year element
+"datetime"     date & time in local format
+"date"         displays local date format
+"time"         shows only the time element in local format
+"json"         shows date & time in JSON format
+"iso"          shows date & time in ISO format
+"utc"          shows date & time in UTC format
+"year"         shows only the year element
+"dd/mm/yyyy"   in that format
 
 Setting "timeZone" to false will display dates without the locale conversion, they will be absolute.
 
