@@ -355,7 +355,9 @@ export class SFTColumnFilters {
                 let val: any;
                 let crit: any;
                 let crit2: any;
-                switch (objData.properties[item.key]?.contentType) {
+                let contentType: eContentType;
+                contentType = objData.properties[item.key]?.contentType;
+                switch (contentType) {
                     case eContentType.ContentString:
                         val = (objData.properties[item.key].value as string)?.toLowerCase();
                         if (criteria.value instanceof Map) {
@@ -377,9 +379,13 @@ export class SFTColumnFilters {
                         val = new Date(objData.properties[item.key].value as string);
                         if (isNaN(val)) {val = 0; } else {(val = val.getTime()); }
                         crit = new Date(criteria.value);
-                        if (isNaN(crit)) {crit = 0; } else {(crit = crit.getTime()); }
+                        if (isNaN(crit.getTime())) {crit = 0; } else {
+                            crit = crit.getTime(); 
+                        }
                         crit2 = new Date(criteria.value2);
-                        if (isNaN(crit2)) {crit2 = 0; } else {(crit2 = crit2.getTime()); }
+                        if (isNaN(crit2.getTime())) {crit2 = 0; } else {
+                            crit2 = crit2.getTime(); 
+                        }
                         break;
                     default:
                         val = '';
@@ -391,13 +397,45 @@ export class SFTColumnFilters {
 
                 switch (criteria.comparator) {
                     case eColumnComparator.equalTo:
-                        if (val !== crit) {
-                            matches = false;
+                        switch(contentType) {
+                            case eContentType.ContentDateTime:
+                                // need to set crit1 to 00:00 & crit2 to 23:59
+                                let dt1 = new Date(crit);
+                                let dt2 = new Date(crit);
+                                dt1.setHours(0);
+                                dt1.setMinutes(0);
+                                dt2.setHours(23);
+                                dt2.setMinutes(59);
+                                if(val < dt1.getTime() || val > dt2.getTime()){
+                                    matches = false;
+                                }
+                                break;
+                            default:
+                                if (val !== crit) {
+                                    matches = false;
+                                }
+                                break;
                         }
                         break;
                     case eColumnComparator.notEqualTo:
-                        if (val === crit) {
-                            matches = false;
+                        switch(contentType) {
+                            case eContentType.ContentDateTime:
+                                // need to set crit1 to 00:00 & crit2 to 23:59
+                                let dt1 = new Date(crit);
+                                let dt2 = new Date(crit);
+                                dt1.setHours(0);
+                                dt1.setMinutes(0);
+                                dt2.setHours(23);
+                                dt2.setMinutes(59);
+                                if(val >= dt1.getTime() && val <= dt2.getTime()){
+                                    matches = false;
+                                }
+                                break;
+                            default:
+                                if (val === crit) {
+                                    matches = false;
+                                }
+                                break;
                         }
                         break;
                     case eColumnComparator.contains:

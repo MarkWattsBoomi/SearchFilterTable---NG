@@ -34356,7 +34356,9 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
         let val;
         let crit;
         let crit2;
-        switch (objData.properties[item.key]?.contentType) {
+        let contentType;
+        contentType = objData.properties[item.key]?.contentType;
+        switch (contentType) {
           case eContentType.ContentString:
             val = objData.properties[item.key].value?.toLowerCase();
             if (criteria.value instanceof Map) {
@@ -34382,13 +34384,13 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
               val = val.getTime();
             }
             crit = new Date(criteria.value);
-            if (isNaN(crit)) {
+            if (isNaN(crit.getTime())) {
               crit = 0;
             } else {
               crit = crit.getTime();
             }
             crit2 = new Date(criteria.value2);
-            if (isNaN(crit2)) {
+            if (isNaN(crit2.getTime())) {
               crit2 = 0;
             } else {
               crit2 = crit2.getTime();
@@ -34402,13 +34404,43 @@ var SFTColumnFilters2 = class _SFTColumnFilters {
         let matchArray;
         switch (criteria.comparator) {
           case 0 /* equalTo */:
-            if (val !== crit) {
-              matches = false;
+            switch (contentType) {
+              case eContentType.ContentDateTime:
+                let dt1 = new Date(crit);
+                let dt2 = new Date(crit);
+                dt1.setHours(0);
+                dt1.setMinutes(0);
+                dt2.setHours(23);
+                dt2.setMinutes(59);
+                if (val < dt1.getTime() || val > dt2.getTime()) {
+                  matches = false;
+                }
+                break;
+              default:
+                if (val !== crit) {
+                  matches = false;
+                }
+                break;
             }
             break;
           case 1 /* notEqualTo */:
-            if (val === crit) {
-              matches = false;
+            switch (contentType) {
+              case eContentType.ContentDateTime:
+                let dt1 = new Date(crit);
+                let dt2 = new Date(crit);
+                dt1.setHours(0);
+                dt1.setMinutes(0);
+                dt2.setHours(23);
+                dt2.setMinutes(59);
+                if (val >= dt1.getTime() && val <= dt2.getTime()) {
+                  matches = false;
+                }
+                break;
+              default:
+                if (val === crit) {
+                  matches = false;
+                }
+                break;
             }
             break;
           case 7 /* contains */:
