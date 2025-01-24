@@ -243,6 +243,13 @@ enables or disables the export to csv options.  defaults to "true".  Set to "fal
 
 sets if all columns are exported or only those shown / selected by user.  defaults to "false".  Set to "true" to export only the user's displayed columns.
 
+### exportFormat
+
+Set to XLS or CSV to control the export format.
+
+Defaults to XLS.
+
+
 ### RowLevelState
 
 The name of a value in Flow to use for the single row level state.
