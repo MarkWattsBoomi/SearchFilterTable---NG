@@ -1515,8 +1515,13 @@ export class SFT extends React.Component<any,any> {
         else {
             cols = this.colMap;
         }
-        SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, this.exportFileName);
-        //ModelExporter.export(cols, opdata, 'export.csv');
+        if(this.component.getAttribute("exportFormat","XLS") === "CSV") {
+            ModelExporter.export(cols, opdata, this.exportFileName);
+        }
+        else {
+            SpreadsheetExporter.export(cols, opdata, this.partitionedRowMaps, this.exportFileName);
+        }
+        
         if (this.component.outcomes['OnExport']) {
             this.component.triggerOutcome('OnExport');
         }

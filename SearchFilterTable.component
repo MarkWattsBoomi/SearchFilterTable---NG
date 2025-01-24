@@ -41,7 +41,8 @@
     "importCSVOutcome":"CSV Import outcome name",
     "exportCSVSampleOutcome":"CSV Sample Export outcome name",
     "TopRowComponents":"JSON definition of search bar components",
-    "exportFileName":"Name for exported file"
+    "exportFileName":"Name for exported file",
+    "exportFormat":"Export format - XLS* / CSV"
   },
   "configurationEditors": [
     "LABEL",

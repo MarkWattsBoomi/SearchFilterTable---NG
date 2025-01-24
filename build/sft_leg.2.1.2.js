@@ -35967,6 +35967,84 @@ var FilterManagementForm = class extends React11.Component {
   }
 };
 
+// src/ModelExporter.ts
+var ModelExporter = class {
+  static export(columns, data, fileName) {
+    let file = "";
+    let body = "";
+    let headers = "";
+    let row = "";
+    data.forEach((item) => {
+      if (headers.length === 0) {
+        headers = this.buildHeaders(columns, item.objectData);
+      }
+      row = this.buildRow(columns, item.objectData);
+      body += row;
+    });
+    let BOM = "\uFEFF";
+    file = BOM + headers + body;
+    const blob = new Blob([file], { type: "text/csv;charset=utf-8" });
+    const link = document.createElement("a");
+    if (link.download !== void 0) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", fileName);
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+  static buildHeaders(cols, values) {
+    let headers = "";
+    cols.forEach((col) => {
+      switch (col.contentType) {
+        case eContentType.ContentList:
+          const children = values.properties[col.developerName].value;
+          children.items.forEach((item) => {
+            if (headers.length > 0) {
+              headers += ",";
+            }
+            headers += '"' + item.properties["ATTRIBUTE_DISPLAY_NAME"].value + '"';
+          });
+          break;
+        default:
+          if (headers.length > 0) {
+            headers += ",";
+          }
+          headers += '"' + col.label + '"';
+          break;
+      }
+    });
+    headers += "\r\n";
+    return headers;
+  }
+  static buildRow(cols, values) {
+    let row = "";
+    cols.forEach((col) => {
+      switch (col.contentType) {
+        case eContentType.ContentList:
+          const children = values.properties[col.developerName].value;
+          children.items.forEach((item) => {
+            if (row.length > 0) {
+              row += ",";
+            }
+            row += '"' + item.properties["ATTRIBUTE_VALUE"].value + '"';
+          });
+          break;
+        default:
+          if (row.length > 0) {
+            row += ",";
+          }
+          row += '"' + values.properties[col.developerName].value + '"';
+          break;
+      }
+    });
+    row += "\r\n";
+    return row;
+  }
+};
+
 // src/MultiSelect.tsx
 var React12 = __toESM(require_react());
 var MultiSelect = class extends React12.Component {
@@ -40079,7 +40157,11 @@ var SFT3 = class extends React22.Component {
     } else {
       cols = this.colMap;
     }
-    SpreadsheetExporter.export(this.colMap, opdata, this.partitionedRowMaps, this.exportFileName);
+    if (this.component.getAttribute("exportFormat", "XLS") === "CSV") {
+      ModelExporter.export(cols, opdata, this.exportFileName);
+    } else {
+      SpreadsheetExporter.export(cols, opdata, this.partitionedRowMaps, this.exportFileName);
+    }
     if (this.component.outcomes["OnExport"]) {
       this.component.triggerOutcome("OnExport");
     }
