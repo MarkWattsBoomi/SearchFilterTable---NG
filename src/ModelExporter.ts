@@ -84,7 +84,12 @@ export class ModelExporter {
                     });
 
                     break;
-
+                case eContentType.ContentDateTime:
+                    if (row.length > 0) {
+                        row += ',';
+                    }
+                    row += '"' + (values.properties[col.developerName].value as Date).toISOString() + '"';
+                    break;    
                 default:
                     if (row.length > 0) {
                         row += ',';
