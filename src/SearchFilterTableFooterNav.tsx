@@ -102,6 +102,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
             }
             pageNav.push(
                 <FontAwesomeIcon 
+                    key="fp"
                     icon={faAngleDoubleLeft}
                     className={prevClass}
                     title="First page"
@@ -110,6 +111,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
             );
             pageNav.push(
                 <FontAwesomeIcon 
+                    key="pp"
                     icon={faChevronLeft}
                     className={prevClass}
                     title="Previous page"
@@ -123,6 +125,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                 if(pg === currentPage) {
                     pagePageNav.push(
                         <span
+                            key="pg"
                             className="sft-nav-pg  sft-nav-pg-selected"
                             onClick={(e: any) => {this.gotoPage(pg)}}
                         >
@@ -133,6 +136,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                 else {
                     pagePageNav.push(
                         <span
+                            key="pg"
                             className="sft-nav-pg"
                             onClick={(e: any) => {this.gotoPage(pg)}}
                         >
@@ -152,6 +156,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                         //insert the elipse
                         pagePageNav.splice(0,0,(
                             <span
+                                key="elip"
                                 className="sft-nav-pg"
                             >
                                 ...
@@ -172,6 +177,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                 //insert the elipse
                 pagePageNav.splice(pagePageNav.length-1,0,(
                     <span
+                        key="elip"
                         className="sft-nav-pg"
                     >
                         ...
@@ -188,6 +194,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
             }
             pageNav.push(
                 <FontAwesomeIcon 
+                    key="np"
                     icon={faChevronRight}
                     className={nextClass}
                     title="Next page"
@@ -196,6 +203,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
             );
             pageNav.push(
                 <FontAwesomeIcon 
+                    key="lp"
                     icon={faAngleDoubleRight}
                     className={nextClass}
                     title="Last page"
@@ -216,10 +224,10 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                         className="sft-footer-pagination-select"
                         onChange={this.setItemsPerPage}
                     >
-                        <option value={10} selected={parent.maxPageRows === 10}>10</option>
-                        <option value={20} selected={parent.maxPageRows === 20}>20</option>
-                        <option value={50} selected={parent.maxPageRows === 50}>50</option>
-                        <option value={100} selected={parent.maxPageRows === 100}>100</option>
+                        <option key="10" value={10} selected={parent.maxPageRows === 10}>10</option>
+                        <option key="20" value={20} selected={parent.maxPageRows === 20}>20</option>
+                        <option key="50" value={50} selected={parent.maxPageRows === 50}>50</option>
+                        <option key="100" value={100} selected={parent.maxPageRows === 100}>100</option>
                     </select>
                 </div>
             );

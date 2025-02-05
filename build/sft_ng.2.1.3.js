@@ -30247,7 +30247,7 @@ var FCMNew = class extends FCMCore {
   }
   constructor(props) {
     super(props);
-    this.flowBaseUri = window.location.origin;
+    this.flowBaseUri = window.flowBaseUri || window.location.origin;
   }
   /*
       UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
@@ -38484,6 +38484,7 @@ var SearchFilterTableFooterNav = class extends React21.Component {
         /* @__PURE__ */ React21.createElement(
           FontAwesomeIcon,
           {
+            key: "fp",
             icon: import_faAngleDoubleLeft.faAngleDoubleLeft,
             className: prevClass,
             title: "First page",
@@ -38495,6 +38496,7 @@ var SearchFilterTableFooterNav = class extends React21.Component {
         /* @__PURE__ */ React21.createElement(
           FontAwesomeIcon,
           {
+            key: "pp",
             icon: import_faChevronLeft.faChevronLeft,
             className: prevClass,
             title: "Previous page",
@@ -38509,6 +38511,7 @@ var SearchFilterTableFooterNav = class extends React21.Component {
             /* @__PURE__ */ React21.createElement(
               "span",
               {
+                key: "pg",
                 className: "sft-nav-pg  sft-nav-pg-selected",
                 onClick: (e) => {
                   this.gotoPage(pg);
@@ -38522,6 +38525,7 @@ var SearchFilterTableFooterNav = class extends React21.Component {
             /* @__PURE__ */ React21.createElement(
               "span",
               {
+                key: "pg",
                 className: "sft-nav-pg",
                 onClick: (e) => {
                   this.gotoPage(pg);
@@ -38540,6 +38544,7 @@ var SearchFilterTableFooterNav = class extends React21.Component {
             pagePageNav.splice(0, 0, /* @__PURE__ */ React21.createElement(
               "span",
               {
+                key: "elip",
                 className: "sft-nav-pg"
               },
               "..."
@@ -38555,6 +38560,7 @@ var SearchFilterTableFooterNav = class extends React21.Component {
         pagePageNav.splice(pagePageNav.length - 1, 0, /* @__PURE__ */ React21.createElement(
           "span",
           {
+            key: "elip",
             className: "sft-nav-pg"
           },
           "..."
@@ -38569,6 +38575,7 @@ var SearchFilterTableFooterNav = class extends React21.Component {
         /* @__PURE__ */ React21.createElement(
           FontAwesomeIcon,
           {
+            key: "np",
             icon: import_faChevronRight.faChevronRight,
             className: nextClass,
             title: "Next page",
@@ -38580,6 +38587,7 @@ var SearchFilterTableFooterNav = class extends React21.Component {
         /* @__PURE__ */ React21.createElement(
           FontAwesomeIcon,
           {
+            key: "lp",
             icon: import_faAngleDoubleRight.faAngleDoubleRight,
             className: nextClass,
             title: "Last page",
@@ -38605,10 +38613,10 @@ var SearchFilterTableFooterNav = class extends React21.Component {
             className: "sft-footer-pagination-select",
             onChange: this.setItemsPerPage
           },
-          /* @__PURE__ */ React21.createElement("option", { value: 10, selected: parent.maxPageRows === 10 }, "10"),
-          /* @__PURE__ */ React21.createElement("option", { value: 20, selected: parent.maxPageRows === 20 }, "20"),
-          /* @__PURE__ */ React21.createElement("option", { value: 50, selected: parent.maxPageRows === 50 }, "50"),
-          /* @__PURE__ */ React21.createElement("option", { value: 100, selected: parent.maxPageRows === 100 }, "100")
+          /* @__PURE__ */ React21.createElement("option", { key: "10", value: 10, selected: parent.maxPageRows === 10 }, "10"),
+          /* @__PURE__ */ React21.createElement("option", { key: "20", value: 20, selected: parent.maxPageRows === 20 }, "20"),
+          /* @__PURE__ */ React21.createElement("option", { key: "50", value: 50, selected: parent.maxPageRows === 50 }, "50"),
+          /* @__PURE__ */ React21.createElement("option", { key: "100", value: 100, selected: parent.maxPageRows === 100 }, "100")
         )
       );
     }
