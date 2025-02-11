@@ -30198,17 +30198,17 @@ var __awaiter2 = function(thisArg, _arguments, P, generator) {
   });
 };
 var eContentType;
-(function(eContentType3) {
-  eContentType3[eContentType3["unknown"] = 0] = "unknown";
-  eContentType3[eContentType3["ContentString"] = 1] = "ContentString";
-  eContentType3[eContentType3["ContentNumber"] = 2] = "ContentNumber";
-  eContentType3[eContentType3["ContentObject"] = 3] = "ContentObject";
-  eContentType3[eContentType3["ContentBoolean"] = 4] = "ContentBoolean";
-  eContentType3[eContentType3["ContentList"] = 5] = "ContentList";
-  eContentType3[eContentType3["ContentPassword"] = 6] = "ContentPassword";
-  eContentType3[eContentType3["ContentContent"] = 7] = "ContentContent";
-  eContentType3[eContentType3["ContentDateTime"] = 8] = "ContentDateTime";
-  eContentType3[eContentType3["ContentEncrypted"] = 9] = "ContentEncrypted";
+(function(eContentType2) {
+  eContentType2[eContentType2["unknown"] = 0] = "unknown";
+  eContentType2[eContentType2["ContentString"] = 1] = "ContentString";
+  eContentType2[eContentType2["ContentNumber"] = 2] = "ContentNumber";
+  eContentType2[eContentType2["ContentObject"] = 3] = "ContentObject";
+  eContentType2[eContentType2["ContentBoolean"] = 4] = "ContentBoolean";
+  eContentType2[eContentType2["ContentList"] = 5] = "ContentList";
+  eContentType2[eContentType2["ContentPassword"] = 6] = "ContentPassword";
+  eContentType2[eContentType2["ContentContent"] = 7] = "ContentContent";
+  eContentType2[eContentType2["ContentDateTime"] = 8] = "ContentDateTime";
+  eContentType2[eContentType2["ContentEncrypted"] = 9] = "ContentEncrypted";
 })(eContentType || (eContentType = {}));
 var FCMNew = class extends FCMCore {
   setPageComponentState(componentName, value) {
@@ -40305,6 +40305,23 @@ var SFT3 = class extends React22.Component {
 // src/SFTNew.tsx
 var SearchFilterTable = class extends FCMNew {
   componentDidMount() {
+    let reload = true;
+    switch (this.contentType) {
+      case eContentType.ContentObject:
+      case eContentType.ContentList:
+        if (this.props.element.objectData === null || this.props.element.objectData.length === 0) {
+          reload = false;
+        }
+        break;
+      default:
+        if (this.props.element.contentValue === null) {
+          reload = false;
+        }
+        break;
+    }
+    if (reload) {
+      this.loadModel(this.props);
+    }
     if (this.childComponent && this.childComponent.componentDidMount) {
       if (this.contentValue || this.objectData || this.getAttribute("JSONModelValue")) {
       }

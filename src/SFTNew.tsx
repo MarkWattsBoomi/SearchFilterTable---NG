@@ -6,6 +6,23 @@ import { FlowObjectDataArray } from "fcmlib/lib/FlowObjectDataArray";
 export default class SearchFilterTable extends FCMNew {
 
     componentDidMount() {
+        let reload: boolean = true;
+        switch(this.contentType){
+            case eContentType.ContentObject:
+            case eContentType.ContentList:
+                if(this.props.element.objectData === null || this.props.element.objectData.length === 0){
+                    reload = false;
+                }
+                break;
+            default:
+                if(this.props.element.contentValue === null){
+                    reload = false;
+                }
+                break;
+        }
+        if(reload){
+            this.loadModel(this.props);
+        }
         if(this.childComponent && this.childComponent.componentDidMount){
             if(this.contentValue || this.objectData || (this.getAttribute("JSONModelValue"))){
                 //this.childComponent.componentDidMount();

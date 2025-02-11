@@ -280,6 +280,7 @@ export class SFT extends React.Component<any,any> {
     }
 
     async componentDidMount() {
+        
         if(this.mounting === true || this.supressEvents === true) {
             if(this.supressEvents===true) {this.supressEvents=false}
             this.runAgain = true;
