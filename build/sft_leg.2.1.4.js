@@ -35095,7 +35095,7 @@ var SFTCommonFunctions = class _SFTCommonFunctions {
     if (outcome.attributes?.iconValue?.value?.length > 0) {
       let flds;
       let iconName;
-      let iconValue = comp.outcomeIcons.get(outcome.id);
+      let iconValue = comp.outcomeIcons.get(outcome.id) || "";
       if (suffix && suffix.length > 0) {
         let path = iconValue.substring(0, iconValue.lastIndexOf("."));
         let ext = iconValue.substring(iconValue.lastIndexOf("."));
@@ -35549,6 +35549,7 @@ var FilterManagementFormAddRow = class extends React9.Component {
       /* @__PURE__ */ React9.createElement(
         "option",
         {
+          key: "#",
           className: "sft-fmf-row-criteria-select-option",
           value: null
         },
@@ -35566,6 +35567,7 @@ var FilterManagementFormAddRow = class extends React9.Component {
         /* @__PURE__ */ React9.createElement(
           "option",
           {
+            key: col[1].developerName,
             className: "sft-fmf-row-criteria-select-option",
             value: col[1].developerName
           },
@@ -35589,6 +35591,7 @@ var FilterManagementFormAddRow = class extends React9.Component {
       addButton = /* @__PURE__ */ React9.createElement(
         "button",
         {
+          key: "add",
           className: "sft-ribbon-search-button-wrapper",
           onClick: this.addColumnCriteria
         },
@@ -35940,6 +35943,7 @@ var FilterManagementForm = class extends React11.Component {
           /* @__PURE__ */ React11.createElement(
             FilterManagementFormRow,
             {
+              key,
               parent: this,
               filterId: key,
               criteria
@@ -35952,6 +35956,7 @@ var FilterManagementForm = class extends React11.Component {
       /* @__PURE__ */ React11.createElement(
         FilterManagementFormAddRow,
         {
+          key: "add",
           parent: this
         }
       )

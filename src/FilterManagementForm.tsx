@@ -1,4 +1,3 @@
-import { FlowDisplayColumn } from 'flow-component-model';
 import * as React from 'react';
 import {SFTColumnCriteria, eColumnComparator } from './ColumnCriteria';
 import {SFTColumnFilter} from './ColumnFilter';
@@ -6,6 +5,7 @@ import {SFTColumnFilters,  eSortDirection } from './ColumnFilters';
 import {FilterManagementFormAddRow} from './FilterFormManagementAddRow';
 import {FilterManagementFormRow} from './FilterManagementFormRow';
 import {SFT} from './SearchFilterTable';
+import { FlowDisplayColumn } from 'fcmlib/lib/FlowDisplayColumn';
 
 export class FilterManagementForm extends React.Component<any, any> {
     parent: SFT;
@@ -39,6 +39,7 @@ export class FilterManagementForm extends React.Component<any, any> {
             filter.criteria.forEach((criteria: SFTColumnCriteria) => {
                 rows.push(
                     <FilterManagementFormRow
+                        key={key}
                         parent={this}
                         filterId={key}
                         criteria={criteria}
@@ -49,6 +50,7 @@ export class FilterManagementForm extends React.Component<any, any> {
 
         rows.push(
             <FilterManagementFormAddRow
+                key={"add"}
                 parent={this}
             />,
         );

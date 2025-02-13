@@ -322,7 +322,7 @@ export class SFTCommonFunctions {
         if(outcome.attributes?.iconValue?.value?.length > 0){
             let flds: []
             let iconName: string
-            let iconValue: string = comp.outcomeIcons.get(outcome.id);
+            let iconValue: string = comp.outcomeIcons.get(outcome.id) || "";
             //iconValue = await comp.component.inflateValue(iconValue);
             if(suffix && suffix.length>0){
                 let path = iconValue.substring(0,iconValue.lastIndexOf("."));

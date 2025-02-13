@@ -35,6 +35,7 @@ export class FilterManagementFormAddRow extends React.Component<any, any> {
         const fieldOptions: any[] = [];
         fieldOptions.push(
             <option
+                key={"#"}
                 className="sft-fmf-row-criteria-select-option"
                 value={null}
             >
@@ -56,6 +57,7 @@ export class FilterManagementFormAddRow extends React.Component<any, any> {
         sorted.forEach((col: any) => {
             fieldOptions.push(
                 <option
+                    key={col[1].developerName}
                     className="sft-fmf-row-criteria-select-option"
                     value={col[1].developerName}
                 >
@@ -78,6 +80,7 @@ export class FilterManagementFormAddRow extends React.Component<any, any> {
         if (this.fieldSelect && this.fieldSelect.options[this.fieldSelect.selectedIndex].value) {
             addButton = (
                 <button
+                key={"add"}
                     className="sft-ribbon-search-button-wrapper"
                     onClick={this.addColumnCriteria}
                 >
