@@ -175,6 +175,7 @@ export class SFT extends React.Component<any,any> {
     colpickIcon: string;
 
     mounting: boolean = false;
+    preLoaded: boolean = false;
 
     topRowComponents: any;
 
@@ -369,6 +370,7 @@ export class SFT extends React.Component<any,any> {
         //preload any column rule values & inflate any props
         //let flds: Map<string,FlowValue> = new Map();
         //let alreadyDone: string[] = [];
+        this.preLoaded = false;
         this.outcomeIcons = new Map();
         let outcomes: string[] = Array.from(Object.keys(this.component.outcomes));
         for(let pos = 0 ; pos < outcomes.length ; pos++) {
@@ -376,7 +378,8 @@ export class SFT extends React.Component<any,any> {
             if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
                 try {
                     const rule = JSON.parse(outcome.attributes.rule.value);
-                    rule.field = await this.component.inflateValue(rule.field);
+                    rule.field = await this.component.inflateValue(rule.field, true);
+                    rule.value = await this.component.inflateValue(rule.value, true);
                 }
                 catch (e) {
                     console.log('The rule on outcome ' + outcome.developerName + ' is invalid');
@@ -434,7 +437,8 @@ export class SFT extends React.Component<any,any> {
             }
         }
 
-        //console.log(JSON.stringify(outcomes));
+        this.preLoaded = true;
+        this.ribbon?.generateButtons();
         return true;
     }
 

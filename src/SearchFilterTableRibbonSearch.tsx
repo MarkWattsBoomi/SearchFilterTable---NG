@@ -40,6 +40,8 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         this.trcChange = this.trcChange.bind(this);
         const root: SFT = this.props.root;
         this.currentFilter = root.filters.globalCriteria;
+
+        this.state={key: new Date().getTime()}
     }
 
     componentDidMount() {
@@ -49,14 +51,14 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
 
 
     async generateButtons() : Promise<void> {
-    
-        if(this.deBounce === true) {
+        const root: SFT = this.props.root;
+        if(this.deBounce === true || root.preLoaded === false) {
             return;
         }
         else {
             this.deBounce = true;
         }
-        const root: SFT = this.props.root;
+        
         this.leftButtons = [];
         this.rightButtons = [];
         this.farRightButtons = [];
@@ -241,7 +243,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
         }
         this.generatePartitions();
         this.deBounce = false;
-        this.forceUpdate();
+        this.setState({key: new Date().getTime()});
     }
 
     clearSearch(e: any) {
@@ -251,7 +253,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
 
     filterChanged() {
         this.currentFilter = this.searchInput.value;
-        this.forceUpdate();
+        this.setState({key: new Date().getTime()});
     }
 
     filterCommitted() {
@@ -330,7 +332,7 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
             }
             else {
                 this.generateComponents();
-                this.forceUpdate();
+                this.setState({key: new Date().getTime()});
             }
         }
     }
@@ -432,6 +434,16 @@ export class SearchFilterTableRibbonSearch extends React.Component<any, any> {
                     </div>
                 );
             });
+        }
+    }
+
+    shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
+        const root: SFT = this.props.root;
+        if(root.preLoaded===true){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 

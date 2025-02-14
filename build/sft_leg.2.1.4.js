@@ -30235,7 +30235,7 @@ var FCMCore = class extends import_react.default.Component {
   }
   // this takes a string value and if it is the {{FieldName->property}} notation it will
   // load the base flow value, save it to the Fields list and extapolate the requested property
-  inflateValue(input) {
+  inflateValue(input, forceRefresh = false) {
     return __awaiter(this, void 0, void 0, function* () {
       if (input) {
         let value;
@@ -30244,7 +30244,7 @@ var FCMCore = class extends import_react.default.Component {
         while (match = RegExp(/{{([^}]*)}}/).exec(input)) {
           const fldElements = match[1].split("->");
           let fld;
-          if (!this.fields[fldElements[0]]) {
+          if (!this.fields[fldElements[0]] || forceRefresh === true) {
             fld = yield this.getValue(fldElements[0]);
             this.fields[fldElements[0]] = fld;
           } else {
@@ -37037,18 +37037,19 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     this.trcChange = this.trcChange.bind(this);
     const root = this.props.root;
     this.currentFilter = root.filters.globalCriteria;
+    this.state = { key: (/* @__PURE__ */ new Date()).getTime() };
   }
   componentDidMount() {
     this.generateButtons();
     this.generateComponents();
   }
   async generateButtons() {
-    if (this.deBounce === true) {
+    const root = this.props.root;
+    if (this.deBounce === true || root.preLoaded === false) {
       return;
     } else {
       this.deBounce = true;
     }
-    const root = this.props.root;
     this.leftButtons = [];
     this.rightButtons = [];
     this.farRightButtons = [];
@@ -37237,7 +37238,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
     }
     this.generatePartitions();
     this.deBounce = false;
-    this.forceUpdate();
+    this.setState({ key: (/* @__PURE__ */ new Date()).getTime() });
   }
   clearSearch(e) {
     this.currentFilter = "";
@@ -37245,7 +37246,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
   }
   filterChanged() {
     this.currentFilter = this.searchInput.value;
-    this.forceUpdate();
+    this.setState({ key: (/* @__PURE__ */ new Date()).getTime() });
   }
   filterCommitted() {
     if (this.currentFilter !== this.previousFilter) {
@@ -37311,7 +37312,7 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
         sft.component.triggerOutcome(comp.onChange);
       } else {
         this.generateComponents();
-        this.forceUpdate();
+        this.setState({ key: (/* @__PURE__ */ new Date()).getTime() });
       }
     }
   }
@@ -37418,6 +37419,14 @@ var SearchFilterTableRibbonSearch = class extends React17.Component {
           )
         );
       });
+    }
+  }
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    const root = this.props.root;
+    if (root.preLoaded === true) {
+      return true;
+    } else {
+      return false;
     }
   }
   render() {
@@ -39009,6 +39018,7 @@ var SFT3 = class extends React22.Component {
     this.runAgain = false;
     this.supressedOutcomes = /* @__PURE__ */ new Map();
     this.mounting = false;
+    this.preLoaded = false;
     this.supressEvents = false;
     this.component = this.props.parent;
     this.showContextMenu = this.showContextMenu.bind(this);
@@ -39151,6 +39161,7 @@ var SFT3 = class extends React22.Component {
     }
   }
   async preLoad() {
+    this.preLoaded = false;
     this.outcomeIcons = /* @__PURE__ */ new Map();
     let outcomes = Array.from(Object.keys(this.component.outcomes));
     for (let pos = 0; pos < outcomes.length; pos++) {
@@ -39158,7 +39169,8 @@ var SFT3 = class extends React22.Component {
       if (outcome.attributes.rule && outcome.attributes.rule.value.length > 0) {
         try {
           const rule = JSON.parse(outcome.attributes.rule.value);
-          rule.field = await this.component.inflateValue(rule.field);
+          rule.field = await this.component.inflateValue(rule.field, true);
+          rule.value = await this.component.inflateValue(rule.value, true);
         } catch (e) {
           console.log("The rule on outcome " + outcome.developerName + " is invalid");
         }
@@ -39211,6 +39223,8 @@ var SFT3 = class extends React22.Component {
         }
       }
     }
+    this.preLoaded = true;
+    this.ribbon?.generateButtons();
     return true;
   }
   showInfo() {
