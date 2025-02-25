@@ -195,7 +195,8 @@ export class SFT extends React.Component<any,any> {
         //this.flowMoving = this.flowMoving.bind(this);
         this.showContextMenu = this.showContextMenu.bind(this);
         this.hideContextMenu = this.hideContextMenu.bind(this);
-
+        
+        this.coreLoad = this.coreLoad.bind(this);
         this.buildCoreTable = this.buildCoreTable.bind(this);
         this.buildRibbon = this.buildRibbon.bind(this);
         this.buildFooter = this.buildFooter.bind(this);
@@ -287,6 +288,16 @@ export class SFT extends React.Component<any,any> {
             this.runAgain = true;
             return
         }
+        else {
+            await this.coreLoad();
+        }
+    }
+
+    shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
+        return true; //!this.supressEvents;
+    }
+
+    async coreLoad() {
         this.mounting = true;
         console.log(this.component.developerName + "=" + this.component.id);
         // will get this from a component attribute
@@ -311,12 +322,10 @@ export class SFT extends React.Component<any,any> {
         await this.buildTableRows();
         if(this.runAgain){
             this.runAgain=false;
+            //await this.preLoad();
+            //await this.buildCoreTable();
             await this.buildTableRows();
-            //this.componentDidMount();
-        }
-        //this.forceUpdate();
-        //this.buildRibbon();
-        
+        }        
     }
 
     async componentUpdated(changeDetected: boolean) {
@@ -355,7 +364,7 @@ export class SFT extends React.Component<any,any> {
         }
         if(this.loaded){
             if(redraw === true) {
-                this.componentDidMount();
+                await this.coreLoad();;
             }
             else{
                 await this.preLoad();
@@ -840,7 +849,7 @@ export class SFT extends React.Component<any,any> {
         //await this.loadModelData();
     
         // save the selected items to state
-        await this.saveSelected();
+//await this.saveSelected();
         const end: Date = new Date();
     
         //load selectedSingleItem
@@ -1136,14 +1145,22 @@ export class SFT extends React.Component<any,any> {
 
     // store the selected items to state
     async saveSelected() {
-        const selectedItems: FlowObjectDataArray = new FlowObjectDataArray();
-        this.selectedRowMap.forEach((item: FlowObjectData, key: string) => {
-            const tItem: FlowObjectData = this.rowMap.get(key).objectData;
-            tItem.isSelected = true;
-            selectedItems.addItem(tItem);
-        });
-        this.supressEvents = true;
-        this.component.setStateValue(selectedItems);
+        if(this.rowMap?.size > 0){
+            const selectedItems: FlowObjectDataArray = new FlowObjectDataArray();
+            this.rowMap.forEach((item: FlowObjectData, key: string) => {
+                const tItem: FlowObjectData = this.rowMap.get(key).objectData;
+                if(this.selectedRowMap.has(key)){
+                    tItem.isSelected = true;
+                }
+                else {
+                    tItem.isSelected = false;
+                }
+                selectedItems.addItem(tItem);
+            });
+            
+            this.supressEvents = true;
+            this.component.setStateValue(selectedItems);
+        }
     }
 
     // load selected items from state
@@ -1676,8 +1693,8 @@ export class SFT extends React.Component<any,any> {
 
         return  (
             <div
-                id={this.component.id}
-                key={this.component.id}
+                id={this.component.id + "_child"}
+                key={this.component.id + "_child"}
                 className={classes}
                 style={style}
                 onContextMenu={this.showContextMenu}
