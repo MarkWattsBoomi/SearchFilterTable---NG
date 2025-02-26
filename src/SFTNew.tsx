@@ -57,7 +57,7 @@ export default class SearchFilterTable extends FCMNew {
     }
 */
     render() {
-        this.loadModel(this.props);
+        //this.loadModel(this.props);
         return(
             <SFT 
                 key={this.id}
@@ -67,12 +67,14 @@ export default class SearchFilterTable extends FCMNew {
         );
     }
 
+    
+
     setStateValue(value: any) {
         this.stateValue = value;
         let element: any = {
             elementId: this.id,
             elementPartial: {},
-            triggersPageCondition: this.hasEvents,
+            triggersPageCondition: true,
         };
         switch (this.contentType) {
             case eContentType.ContentObject:
@@ -81,7 +83,7 @@ export default class SearchFilterTable extends FCMNew {
                 break;
             case eContentType.ContentList:
                 //let items = (value as FlowObjectDataArray).iFlowObjectDataArray(false);
-                //element.elementPartial.objectData = this.objectData.iFlowObjectDataArray();
+                //element.elementPartial.objectData = (value as FlowObjectDataArray).iFlowObjectDataArray();
                 element.elementPartial.selectedItems = (value as FlowObjectDataArray).iFlowObjectDataArray().filter((item)=>{return item.isSelected});
                 break;
             case eContentType.ContentBoolean:

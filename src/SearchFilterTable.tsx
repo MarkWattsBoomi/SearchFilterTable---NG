@@ -285,7 +285,7 @@ export class SFT extends React.Component<any,any> {
         
         if(this.mounting === true || this.supressEvents === true) {
             if(this.supressEvents===true) {this.supressEvents=false}
-            this.runAgain = true;
+            //this.runAgain = true;
             return
         }
         else {
@@ -294,7 +294,7 @@ export class SFT extends React.Component<any,any> {
     }
 
     shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
-        return true; //!this.supressEvents;
+        return true;
     }
 
     async coreLoad() {
@@ -369,7 +369,7 @@ export class SFT extends React.Component<any,any> {
             else{
                 await this.preLoad();
                 this.buildRibbon();
-                this.saveSelected();
+                //this.saveSelected();
                 this.forceUpdate();
             }
         }
@@ -920,7 +920,7 @@ export class SFT extends React.Component<any,any> {
 
                 this.rowMap.set(node.id, node);
             });
-            await this.saveSelected();
+            //await this.saveSelected();
         }
         let partition = this.component.getAttribute("partitionColumn");
         this.partitionedRowMaps= new Map();

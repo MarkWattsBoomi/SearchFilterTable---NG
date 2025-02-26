@@ -39002,7 +39002,6 @@ var SFT3 = class extends React22.Component {
       if (this.supressEvents === true) {
         this.supressEvents = false;
       }
-      this.runAgain = true;
       return;
     } else {
       await this.coreLoad();
@@ -39071,7 +39070,6 @@ var SFT3 = class extends React22.Component {
       } else {
         await this.preLoad();
         this.buildRibbon();
-        this.saveSelected();
         this.forceUpdate();
       }
     }
@@ -39547,7 +39545,6 @@ var SFT3 = class extends React22.Component {
         node.objectData = item;
         this.rowMap.set(node.id, node);
       });
-      await this.saveSelected();
     }
     let partition = this.component.getAttribute("partitionColumn");
     this.partitionedRowMaps = /* @__PURE__ */ new Map();
@@ -40350,7 +40347,6 @@ var SearchFilterTable = class extends FCMNew {
       }
   */
   render() {
-    this.loadModel(this.props);
     return /* @__PURE__ */ React23.createElement(
       SFT3,
       {
@@ -40367,7 +40363,7 @@ var SearchFilterTable = class extends FCMNew {
     let element = {
       elementId: this.id,
       elementPartial: {},
-      triggersPageCondition: this.hasEvents
+      triggersPageCondition: true
     };
     switch (this.contentType) {
       case eContentType.ContentObject:
@@ -40397,7 +40393,6 @@ var SearchFilterTable = class extends FCMNew {
 export {
   SearchFilterTable as default
 };
-//!this.supressEvents;
 /*! Bundled license information:
 
 react/cjs/react.development.js:
