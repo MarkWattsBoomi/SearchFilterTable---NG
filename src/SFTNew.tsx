@@ -11,53 +11,13 @@ export default class SearchFilterTable extends FCMNew {
         //this.reloadModel = this.reloadModel.bind(this);
     }
     
-    /*
+    
     componentDidMount() {
-        this.reloadModel();
+        this.loadModel(this.props);
     }
-
-    UNSAFE_componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any): void {
-        console.log("1");
-    }
-
-    shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
-        console.log("1");
-        return true;
-    }
-
-    componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
-        this.reloadModel();
-    }
-
-    reloadModel(){
-        let reload: boolean = true;
-         
-        switch(this.contentType){
-            case eContentType.ContentObject:
-            case eContentType.ContentList:
-                if(this.props.element.objectData === null){
-                    reload = false;
-                }
-                break;
-            default:
-                if(this.props.element.contentValue === null){
-                    reload = false;
-                }
-                break;
-        }
-        if(reload){
-            this.loadModel(this.props);
-        }
-
-        if(this.childComponent && this.childComponent.componentDidMount){
-            if(this.contentValue || this.objectData || (this.getAttribute("JSONModelValue"))){
-                this.childComponent.componentUpdated();
-            }
-        }
-    }
-*/
+    
     render() {
-        //this.loadModel(this.props);
+        
         return(
             <SFT 
                 key={this.id}
@@ -66,8 +26,6 @@ export default class SearchFilterTable extends FCMNew {
             />
         );
     }
-
-    
 
     setStateValue(value: any) {
         this.stateValue = value;
@@ -99,6 +57,7 @@ export default class SearchFilterTable extends FCMNew {
                 element.elementPartial.contentValue = "" + value;
                 break;
         }
+        //this.props.selectItems(this.props.element.id, element.elementPartial.selectedItems, true);
         this.props.updateElement(element);
     }
 }
