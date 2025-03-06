@@ -4,8 +4,10 @@ import { SFT } from './SearchFilterTable';
 import { FlowObjectDataArray } from "fcmlib/lib/FlowObjectDataArray";
 import { FlowObjectData } from "fcmlib/lib/FlowObjectData";
 
+//const React = (window as any).boomi.flow.React;
+
 export default class SearchFilterTable extends FCMNew {
-    
+     
     constructor(props: any) {
         super(props);
         //this.reloadModel = this.reloadModel.bind(this);
@@ -17,7 +19,6 @@ export default class SearchFilterTable extends FCMNew {
     }
     
     render() {
-        
         return(
             <SFT 
                 key={this.id}
@@ -27,7 +28,7 @@ export default class SearchFilterTable extends FCMNew {
         );
     }
 
-    setStateValue(value: any) {
+    setStateValue(value: any, attributes?: any) {
         this.stateValue = value;
         let element: any = {
             elementId: this.id,
@@ -56,6 +57,9 @@ export default class SearchFilterTable extends FCMNew {
             default:
                 element.elementPartial.contentValue = "" + value;
                 break;
+        }
+        if(attributes){
+            element.elementPartial.attributes = attributes;
         }
         //this.props.selectItems(this.props.element.id, element.elementPartial.selectedItems, true);
         this.props.updateElement(element);

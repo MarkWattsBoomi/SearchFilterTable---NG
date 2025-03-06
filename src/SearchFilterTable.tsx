@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {CellItem} from './CellItem';
 import {SFTColumnCriteria, eColumnComparator} from './ColumnCriteria';
 import {SFTColumnFilters,  eFilterEvent, eSortDirection } from './ColumnFilters';
@@ -36,8 +37,7 @@ import { Workbook } from 'exceljs';
 
 // declare const manywho: IManywho;
 declare const manywho: any;
-
-
+//const React: React = (window as any).boomi.flow.React as React;
 
 export enum ePaginationMode {
     none,
@@ -632,7 +632,26 @@ export class SFT extends React.Component<any,any> {
 
     async loadUserColumns() {
         let userFieldsVal: string = '';
-        if (this.component.attributes.UserColumnsValue !== 'LOCAL_STORAGE') {
+        let userColumnsName: any = this.component.getAttribute("UserColumnsValue");
+        if(userColumnsName){
+            switch(typeof(userColumnsName)){
+                case "string":
+                    if (userColumnsName !== 'LOCAL_STORAGE') {
+                        const userFields: FlowValue = await this.component.getValue(this.component.attributes.UserColumnsValue);
+                        if (userFields && (userFields.value as string).length > 0) {
+                            userFieldsVal = userFields.value as string;
+            
+                        }
+                    } else {
+                        userFieldsVal = localStorage.getItem('sft_' + this.component.id + '_cols') || '';
+                    }
+                    break;
+                case "object":
+                    userFieldsVal = userColumnsName.contentValue;
+                    break;
+            }
+        }
+        /*if (userColumnsName && userColumnsName !== 'LOCAL_STORAGE') {
             const userFields: FlowValue = await this.component.getValue(this.component.attributes.UserColumnsValue);
             if (userFields && (userFields.value as string).length > 0) {
                 userFieldsVal = userFields.value as string;
@@ -641,6 +660,7 @@ export class SFT extends React.Component<any,any> {
         } else {
             userFieldsVal = localStorage.getItem('sft_' + this.component.id + '_cols') || '';
         }
+        */
         let cols: string[] = [];
         if (userFieldsVal && userFieldsVal.length > 0) {
             cols = userFieldsVal.split(',');
@@ -664,6 +684,42 @@ export class SFT extends React.Component<any,any> {
             }
         });
 
+        let userColumnsName: any = this.component.getAttribute("UserColumnsValue");
+        if(userColumnsName){
+            switch(typeof(userColumnsName)){
+                case "string":
+                    if (userColumnsName !== 'LOCAL_STORAGE') {
+                        const userFields: FlowValue = await this.component.getValue(userColumnsName);
+                        if (userFields) {
+                            userFields.value = userCols;
+                            await this.component.setValues(userFields);
+                        }
+                    } else {
+                        localStorage.setItem('sft_' + this.component.id + '_cols', userCols);
+                    }
+                    break;
+                case "object":
+                    if(this.component.props.updateElement){// we must be in the new player
+                        let updateElement: any = {
+                            elementId : this.component.id,
+                            elementPartial: {
+                                attributes: {
+                                    "UserColumnsValue" : userCols
+                                }
+                            }
+                        };
+                        this.supressEvents = true;
+                        this.component.props.updateElement(updateElement);
+                    }
+                    else {
+                        let rls: FlowValue = await this.component.getValue(userColumnsName);
+                        rls.value = userCols;
+                        await this.component.setValues(rls);
+                    }
+                    break;
+            }
+        }
+        /*
         if (this.component.attributes.UserColumnsValue !== 'LOCAL_STORAGE') {
             const userFields: FlowValue = await this.component.getValue(this.component.attributes.UserColumnsValue);
             userFields.value = userCols;
@@ -671,6 +727,7 @@ export class SFT extends React.Component<any,any> {
         } else {
             localStorage.setItem('sft_' + this.component.id + '_cols', userCols);
         }
+        */
     }
 
     
@@ -1179,22 +1236,33 @@ export class SFT extends React.Component<any,any> {
     //gets the single selected item from rowlevelstate
     async loadSingleSelected(): Promise<any> {
         this.selectedRow = undefined;
-        if (this.component.getAttribute('RowLevelState', '').length > 0 ) {
-            const rls: FlowValue = await this.component.getValue(this.component.getAttribute('RowLevelState'));
-            if(rls.value) {
+        let rowLevelState: any = (this.component.getAttribute('RowLevelState') as any);
+        let rowLevelStateObjData: FlowObjectData;
+        if (rowLevelState) {
+            switch(typeof(rowLevelState)){
+                case "string":
+                    let rls: FlowValue = await this.component.getValue(rowLevelState);
+                    rowLevelStateObjData = (rls.value as FlowObjectData)
+                    break;
+
+                case "object":
+                    rowLevelStateObjData = new FlowObjectData(rowLevelState);
+                    break;
+            }
+            //const rls: FlowValue = await this.component.getValue(this.component.getAttribute('RowLevelState'));
+            if(rowLevelStateObjData) {
                 // are we using a specific column
                 if(this.rowRememberColumn) {
                     for(let val of this.rowMap.values()) {
                         let objData: FlowObjectData = val?.objectData;
-                        if((rls.value as FlowObjectData).properties[this.rowRememberColumn]?.value ===
+                        if(rowLevelStateObjData.properties[this.rowRememberColumn]?.value ===
                             objData.properties[this.rowRememberColumn]?.value) {
-                                this.selectedRow = objData.externalId;
-                            }
-                        
+                            this.selectedRow = objData.externalId;
+                        }
                     }
                 }
                 else {
-                    this.selectedRow = (rls.value as FlowObjectData).externalId;
+                    this.selectedRow = rowLevelStateObjData.externalId;
                 }
             }      
         }
@@ -1373,6 +1441,52 @@ export class SFT extends React.Component<any,any> {
         }
         this.selectedRow = selectedItem?.externalId;
         // if there's a row level state then set it
+        let rowLevelState: any = this.component.getAttribute('RowLevelState');
+        let rowLevelStateObjData: FlowObjectData;
+        if (rowLevelState && selectedItem) {
+            switch(typeof(rowLevelState)){
+                case "string":
+                    let rls: FlowValue = await this.component.getValue(rowLevelState);
+                    rowLevelStateObjData = (rls.value as FlowObjectData);
+                    if(rowLevelStateObjData){
+                        rls.value = selectedItem || new FlowObjectDataArray();
+                        await this.component.setValues(rls);
+                    }
+                    break;
+
+                case "object":
+                    
+                    //rowLevelStateObjData = new FlowObjectData(rowLevelState);
+                    // save attribute
+                   
+                    if(this.component.props.updateElement){// we must be in the new player
+                        let updateElement: any = {
+                            elementId : this.component.id,
+                            elementPartial: {
+                                attributes: {
+                                    RowLevelState : [selectedItem.iObjectData(true)]
+                                }
+                            },
+                            triggersPageCondition: true
+                        };
+                        this.supressEvents = true;
+                        this.component.props.updateElement(updateElement);
+                    }
+                    else {
+                        if(rowLevelStateObjData){
+                            let rls: FlowValue = await this.component.getValue(rowLevelStateObjData.developerName);
+                            rls.value = selectedItem || new FlowObjectDataArray();
+                            await this.component.setValues(rls);
+                        } 
+                    }
+                    break;
+            }
+            // save the last selected to storage
+            if(this.rowRememberColumn){
+                sessionStorage.setItem('sft-lastrow-' + this.component.id, rowLevelStateObjData.properties[this.rowRememberColumn]?.value as string);
+            }
+        }
+        /*
         if (this.component.getAttribute('RowLevelState', '').length > 0 && selectedItem) {
             const val: FlowValue = await this.component.getValue(this.component.getAttribute('RowLevelState'));
             if (val) {
@@ -1384,6 +1498,7 @@ export class SFT extends React.Component<any,any> {
                 sessionStorage.setItem('sft-lastrow-' + this.component.id, selectedItem.properties[this.rowRememberColumn]?.value as string);
             }
         }
+        */
         if (this.component.outcomes[outcomeName]) {
             const outcome: FlowOutcome = this.component.outcomes[outcomeName];
             switch (true) {
