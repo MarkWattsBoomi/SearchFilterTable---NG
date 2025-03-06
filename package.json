@@ -5,8 +5,8 @@
   "scripts": {
     "start2": "node start.mjs",
     "start": "esbuild ./src/SFTNew.tsx --outfile=./build/sft_ng.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
-    "build2": "node build.mjs",
-    "build": "esbuild ./src/SFTNew.tsx --outfile=./build/sft_ng.%npm_package_version%.js --bundle  --format=esm",
+    "build": "node build.mjs",
+    "buildold": "esbuild ./src/SFTNew.tsx --outfile=./build/sft_ng.%npm_package_version%.js --bundle  --format=esm",
     "startLegacy": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
     "buildLegacy": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg.%npm_package_version%.js --bundle  --format=esm",
     "buildLegacyDebug": "esbuild ./src/SFTLegacy.tsx --outfile=./build/sft_leg_db.js --bundle  --format=esm",
