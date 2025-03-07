@@ -19,7 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "buffer": "^6.0.3",
     "exceljs": "^4.4.0",
-    "fcmkit": "^1.1.0",
+    "fcmkit": "^1.1.1",
     "fcmlib": "^1.0.99",
     "fs": "^0.0.1-security",
     "readable": "^1.1.3"

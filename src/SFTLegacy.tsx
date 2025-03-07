@@ -30,5 +30,5 @@ class SearchFilterTable extends FCMLegacy {
         );
     }
 }
-manywho.component.register('SearchFilterTable', SearchFilterTable);
+manywho.component.register('searchfiltertable', SearchFilterTable);
 manywho.component.register('SFTMessageBox', SFTMessageBox);

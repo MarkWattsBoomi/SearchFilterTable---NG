@@ -1837,6 +1837,7 @@ export class SFT extends React.Component<any,any> {
                 {this.footerElement}
             </div>
         );
+        
     }
 
 }
