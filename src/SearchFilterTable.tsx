@@ -1204,6 +1204,8 @@ export class SFT extends React.Component<any,any> {
     async saveSelected() {
         if(this.rowMap?.size > 0){
             const selectedItems: FlowObjectDataArray = new FlowObjectDataArray();
+
+            // This has changed to support the fact the new player wants both the original datasource and the selected items
             this.rowMap.forEach((item: FlowObjectData, key: string) => {
                 const tItem: FlowObjectData = this.rowMap.get(key).objectData;
                 if(this.selectedRowMap.has(key)){
