@@ -83,6 +83,8 @@ bootstrap glyphicons without the "glyphicon-" prefix e.g. "trash","edit" etc.
 
 * If the outcome has an attribute of "RequireSelected"="true" then it will only be shown if one or more items are tagged.
 
+* If the outcome has an attribute of "RequiresRows"="true" then it will only be shown if there are one or more rows in the table.
+
 * Other outcome rules can be specified in the "rule" attribute.
 
 
