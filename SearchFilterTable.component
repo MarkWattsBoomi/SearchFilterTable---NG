@@ -15,6 +15,7 @@
     "OutcomesLabel": "Outcomes Label.  The label for the outcomes column.",
     "RibbonDisplay": "Ribbon Button Style.  \"text\", \"icon\" or \"iconandtext\"",
     "RowLevelState": "Row Level State.  Tells the table which flow field will receive the row object.",
+    "ModifiedRowsState": "Modified Rows State.  Tells the table which flow list will receive the modified rows.",
     "PaginationSize": "Pagination Size.  The default number of rows per page.",
     "RetainRowColumn": "Primary key column name.  Tells the table which column is the primary key allowing the last row to be brought back into view after a redraw.",
     "noResultsFilter": "noResultsFilter.  The extra message to show if there are rows but none shown due to filtering.",

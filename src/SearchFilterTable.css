@@ -161,7 +161,7 @@
     border: none;
     background-color: #eee;
     z-index: 1020 !important;
-    padding-left: 0 !important;
+    /*padding-left: 0 !important;*/
 }
 
 .sft-checkbox {
@@ -318,6 +318,10 @@
 .sft-table-row {
     background-color: #fefefe;
     border-bottom: 1px solid #ccc;
+
+    &.modified {
+        border: 1px solid #ff0000;
+    }
 }
 
 .sft-table-row.sft-table-row-selected {
@@ -363,6 +367,7 @@
     padding-right: 0.5rem !important;
     display: flex;
     white-space: nowrap;
+    
 
     &.expired {
         color: red;

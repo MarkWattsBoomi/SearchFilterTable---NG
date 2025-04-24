@@ -187,6 +187,8 @@ export class SFT extends React.Component<any,any> {
 
     exportFileName: string;
 
+    modifiedRows: Map<string, FlowObjectData> = new Map();
+
     constructor(props: any) {
         super(props);
         this.component = this.props.parent;
@@ -245,6 +247,8 @@ export class SFT extends React.Component<any,any> {
 
         this.loadModelData = this.loadModelData.bind(this);
 
+        this.saveModified = this.saveModified.bind(this);
+
         let pmode: string = this.component.getAttribute('PaginationMode', "local").toLowerCase();
         switch(pmode) {
             case "none":
@@ -294,7 +298,7 @@ export class SFT extends React.Component<any,any> {
     }
 
     shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
-        return true;
+        return false;
     }
 
     async coreLoad() {
@@ -1222,6 +1226,8 @@ export class SFT extends React.Component<any,any> {
         }
     }
 
+    
+
     // load selected items from state
     async loadSelected(): Promise<Map<string, any>> {
         let stateSelected: Map<string, any>;
@@ -1436,6 +1442,28 @@ export class SFT extends React.Component<any,any> {
         }
     }
 
+    saveModified() {
+        if(this.component.props.updateElement){// we must be in the new player
+            if(this.modifiedRows.size > 0){
+                let arr: FlowObjectDataArray = new FlowObjectDataArray([]);
+                this.modifiedRows.forEach((objData: FlowObjectData) => {
+                    arr.addItem(objData);
+                });
+                let updateElement: any = {
+                    elementId : this.component.id,
+                    elementPartial: {
+                        attributes: {
+                            ModifiedRowsState : arr.iFlowObjectDataArray(true)
+                        }
+                    },
+                    triggersPageCondition: true
+                };
+                this.supressEvents = true;
+                this.component.props.updateElement(updateElement);
+            }
+        }
+    }
+
     async doOutcome(outcomeName: string, selectedItem?: FlowObjectData, ignoreRules?: boolean) {
        
         if(typeof selectedItem === 'string') {
@@ -1462,17 +1490,19 @@ export class SFT extends React.Component<any,any> {
                     // save attribute
                    
                     if(this.component.props.updateElement){// we must be in the new player
-                        let updateElement: any = {
-                            elementId : this.component.id,
-                            elementPartial: {
-                                attributes: {
-                                    RowLevelState : [selectedItem.iObjectData(true)]
-                                }
-                            },
-                            triggersPageCondition: true
-                        };
-                        this.supressEvents = true;
-                        this.component.props.updateElement(updateElement);
+                        if(rowLevelState[0]?.externalId !== selectedItem.externalId){
+                            let updateElement: any = {
+                                elementId : this.component.id,
+                                elementPartial: {
+                                    attributes: {
+                                        RowLevelState : [selectedItem.iObjectData(true)]
+                                    }
+                                },
+                                triggersPageCondition: true
+                            };
+                            this.supressEvents = true;
+                            this.component.props.updateElement(updateElement);
+                        }
                     }
                     else {
                         if(rowLevelStateObjData){

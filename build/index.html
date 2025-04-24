@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="noindex" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Boomi Flow Application" />
+        <meta name="theme-color" content="#033d58" />
+
+        <base href="https://gb-assets.flow-prod.boomi.com/runtime/nextgen/" />
+
+        <title>Flow</title>
+
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/144x144.png" />
+
+        <link href="assets/flow.css" rel="stylesheet" />
+        <link href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/19e6af1b-a269-440e-899f-9e811cfa8f71/PortalStylesNG.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="http://localhost:8080/sft_ng.css"/>
+        
+        <style>
+            html,
+            body,
+            #flow-app {
+                height: 100%;
+                /* Use alongside height: 100% for fallback on older browsers */
+                height: 100dvh;
+                margin: 0;
+            }
+        </style>
+        <script>
+            
+            window.onbeforeflowstart = (options, starttype) => {
+                options.components = {
+                    'searchfiltertable':"http://localhost:8080/sft_ng.js",
+                    //"coredetails":"http://localhost:8080/coredetails_ng.js"
+                    //'navigationmenu':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/navbar_ng.js",
+                    //'assetpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/assetpicker_ng.js",
+                    //'flowpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/flowpicker_ng.js",
+                    //'flowpicker':"http://localhost:8080/flowpicker_ng.js",
+                    //'searchfiltertable':"http://localhost:8080/sft_ng.js",
+                    
+                };
+                options.platformUri="https://gb.flow-prod.boomi.com";
+                options.tenantId="19e6af1b-a269-440e-899f-9e811cfa8f71";
+                options.flowId="195369f0-9637-47b8-9e31-b9273a4ac950";
+                options.environmentId="8f56937e-c143-40cb-ae6a-8596528464a7";
+                return options;
+            }
+            
+        </script>
+        <script id="flow-script" src="assets/flow.js" type="module" defer></script>
+    </head>
+
+    <body>
+        <div id="flow-app"></div>
+    </body>
+</html>
