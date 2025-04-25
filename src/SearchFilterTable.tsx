@@ -179,7 +179,7 @@ export class SFT extends React.Component<any,any> {
 
     topRowComponents: any;
 
-    supressEvents: boolean = false;
+    supressEvents: number = 0;
 
     oldModel: FlowObjectDataArray;
 
@@ -287,8 +287,10 @@ export class SFT extends React.Component<any,any> {
 
     async componentDidMount() {
         
-        if(this.mounting === true || this.supressEvents === true) {
-            if(this.supressEvents===true) {this.supressEvents=false}
+        if(this.mounting === true || this.supressEvents > 0) {
+            if(this.supressEvents > 0) {
+                this.supressEvents--;
+            }
             //this.runAgain = true;
             return
         }
@@ -298,7 +300,7 @@ export class SFT extends React.Component<any,any> {
     }
 
     shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
-        return false;
+        return this.supressEvents <=0 ;
     }
 
     async coreLoad() {
@@ -712,7 +714,7 @@ export class SFT extends React.Component<any,any> {
                                 }
                             }
                         };
-                        this.supressEvents = true;
+                        this.supressEvents++;
                         this.component.props.updateElement(updateElement);
                     }
                     else {
@@ -1148,12 +1150,13 @@ export class SFT extends React.Component<any,any> {
     }
 
     async selectRow(objData: FlowObjectData) {
-        //if(this.selectedRow !== objData.externalId){
+        if(this.selectedRow !== objData.externalId){
             this.selectedRow = objData.externalId;
             await this.doOutcome("OnSelect",objData);
             this.buildRibbon();
             this.buildFooter();
             this.refreshRows();
+        }
         //}
         //else{
         //    this.selectedRow=undefined; 
@@ -1221,7 +1224,7 @@ export class SFT extends React.Component<any,any> {
                 selectedItems.addItem(tItem);
             });
             
-            this.supressEvents = true;
+            this.supressEvents++;
             this.component.setStateValue(selectedItems);
         }
     }
@@ -1444,7 +1447,7 @@ export class SFT extends React.Component<any,any> {
 
     saveModified() {
         if(this.component.props.updateElement){// we must be in the new player
-            if(this.modifiedRows.size > 0){
+            //if(this.modifiedRows.size > 0){
                 let arr: FlowObjectDataArray = new FlowObjectDataArray([]);
                 this.modifiedRows.forEach((objData: FlowObjectData) => {
                     arr.addItem(objData);
@@ -1458,9 +1461,9 @@ export class SFT extends React.Component<any,any> {
                     },
                     triggersPageCondition: true
                 };
-                this.supressEvents = true;
+                this.supressEvents++;
                 this.component.props.updateElement(updateElement);
-            }
+            //}
         }
     }
 
@@ -1500,7 +1503,7 @@ export class SFT extends React.Component<any,any> {
                                 },
                                 triggersPageCondition: true
                             };
-                            this.supressEvents = true;
+                            this.supressEvents += 2;
                             this.component.props.updateElement(updateElement);
                         }
                     }

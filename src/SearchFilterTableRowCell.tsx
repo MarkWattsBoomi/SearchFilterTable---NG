@@ -26,8 +26,8 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
     }
 
     editColumn(e: any){
-        e.preventDefault();
-        e.stopPropagation();
+        //e.preventDefault();
+        //e.stopPropagation();
         console.log("On Edit");
         this.setState({isEditing: true});
         e.currentTarget.focus();
@@ -51,11 +51,17 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
     }
 
     updateValue(e: any) {
-        e.preventDefault();
-        e.stopPropagation();
+        //e.preventDefault();
+        //e.stopPropagation();
         console.log("Edit Done");
         let val: any;
         switch(e.currentTarget.type){
+            case "date":
+                let dt: Date = new Date(e.currentTarget.value);
+                if(!isNaN(dt.getTime()) && dt.getTime() > 0){
+                    val = dt;
+                }
+                break;
             case "text":
             default:
                 val = e.currentTarget.value;
@@ -79,7 +85,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
     }
 
     rollBack(e: any){
-        e.preventDefault();
+        //e.preventDefault();
         e.stopPropagation();
         console.log("Rollback");
         const root: SFT = this.props.root;
@@ -185,29 +191,58 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                     switch (fdc.contentType) {
                         case eContentType.ContentDateTime:
                             let dt: Date = new Date(col.value as string);
-                            if ((dt instanceof Date && !isNaN(dt.getTime())) === true && dt.getTime()>0) {
-                                let str: string = '';
-                                switch (root.component.getAttribute('DateFormat', 'LOCALE')) {
-                                    case 'UTC':
-                                        str = dt.toUTCString();
-                                        break;
-                                    case 'JSON':
-                                        str = dt.toJSON();
-                                        break;
-                                    default:
-                                        str = dt.toLocaleString();
-                                        break;
-                                }
+                            if(this.state.isEditing){
                                 result = (
-                                    <span
-                                        className="sft-table-cell-text"
-                                        onClick={onEdit}
-                                    >
-                                        {str}
-                                    </span>
+                                    <input 
+                                        type="date"
+                                        defaultValue={dt?.toISOString().substring(0,10)}
+                                        onBlur={this.updateValue}
+                                        onKeyUp={this.keyDown}
+                                        autoFocus={true}
+                                    />
                                 );
-                            } else {
-                                <span className="sft-table-cell-text" />;
+                            }
+                            else {
+                                if ((dt instanceof Date && !isNaN(dt.getTime())) === true && dt.getTime()>0) {
+                                    let str: string = '';
+                                    switch (root.component.getAttribute('DateFormat', 'LOCALE')) {
+                                        case 'UTC':
+                                            str = dt.toUTCString();
+                                            break;
+                                        case 'JSON':
+                                            str = dt.toJSON();
+                                            break;
+                                        default:
+                                            str = dt.toLocaleString();
+                                            break;
+                                    }
+                                    result = (
+                                        <div style={{display: "flex", flexDirection: "row"}}  onClick={onEdit}>
+                                            <span
+                                                className="sft-table-cell-text"
+                                                onClick={onEdit}
+                                            >
+                                                {str}
+                                            </span>
+                                            {rollback}
+                                        </div>
+                                    );
+                                } else {
+                                    result = (
+                                        <div style={{display: "flex", flexDirection: "row"}}  onClick={onEdit}>
+                                                <span
+                                                    className="sft-table-cell-text"
+                                                    
+                                                />
+                                                {rollback}
+                                        </div>
+                                    );
+                                    <span 
+                                        className="sft-table-cell-text" 
+                                        onClick={
+                                            onEdit
+                                        }/>;
+                                }
                             }
                             break;
 
