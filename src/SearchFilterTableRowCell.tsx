@@ -613,8 +613,17 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
         const fdc: FlowDisplayColumn = this.props.fdc;
         let modified: boolean = false;
         if(modObjData){
-            if(modObjData.properties[fdc.developerName].value !== objData.properties[fdc.developerName].value){
-                modified=true;
+            switch(fdc.contentType){
+                case eContentType.ContentDateTime:
+                    if((modObjData.properties[fdc.developerName].value as Date).getTime() !== (objData.properties[fdc.developerName].value as Date).getTime()){
+                        modified=true;
+                    }
+                    break;
+                default:
+                    if(modObjData.properties[fdc.developerName].value !== objData.properties[fdc.developerName].value){
+                        modified=true;
+                    }
+                    break;  
             }
         }
         //let col: FlowObjectDataProperty = objData?.properties[this.props.fdc.developerName]

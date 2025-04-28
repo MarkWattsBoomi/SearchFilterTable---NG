@@ -37,12 +37,12 @@ export default class SearchFilterTable extends FCMNew {
         };
         switch (this.contentType) {
             case eContentType.ContentObject:
-                //element.elementPartial.objectData = value.iFlowObjectDataArray();
+                element.elementPartial.objectData = value.iFlowObjectDataArray();
                 element.elementPartial.selectedItems = element.elementPartial.objectData;
                 break;
             case eContentType.ContentList:
-                //let items = (value as FlowObjectDataArray).iFlowObjectDataArray(false);
-                //element.elementPartial.objectData = (value as FlowObjectDataArray).iFlowObjectDataArray();
+                let items = (value as FlowObjectDataArray).iFlowObjectDataArray(false);
+                element.elementPartial.objectData = (value as FlowObjectDataArray).iFlowObjectDataArray();
                 element.elementPartial.selectedItems = (value as FlowObjectDataArray).iFlowObjectDataArray().filter((item)=>{return item.isSelected});
                 break;
             case eContentType.ContentBoolean:
