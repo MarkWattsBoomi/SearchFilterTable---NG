@@ -25,6 +25,7 @@
     "exportUserColumns": "Export User Columns.  If true then only the user's displayed columns are exported.",
     "MaxColumnTextLength": "MaxColumnTextLength.  The maximum col text length before being replaced with a button.",
     "JSONModelValue":"The name of a Flow value which contians the actual datasource data in a JSON string",
+    "JSONModelPrimaryKey","The JSON data primary key attribute.",
     "ModelTypeName":"The name of a Flow type for the datasource objects.  Allows creating state value of correct type.",
     "PaginationMode":"PaginationMode. The mode for row pagination.  none, [local], external.",
     "PreviousPageOutcome":"PreviousPageOutcome. The outcome to trigger when previous page is pressed. PaginationMode=Extrnal",
