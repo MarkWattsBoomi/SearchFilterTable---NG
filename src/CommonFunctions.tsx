@@ -5,6 +5,7 @@ import { FlowObjectData } from 'fcmlib/lib/FlowObjectData';
 import { eContentType } from 'fcmlib/lib/FCMNew';
 import { FlowValue } from 'fcmlib/lib/FlowValue';
 import { FlowObjectDataProperty } from 'fcmlib/lib/FlowObjectDataProperty';
+import { FlowObjectDataArray } from 'fcmlib/lib/FlowObjectDataArray';
 
 export class SFTCommonFunctions {
 
@@ -447,5 +448,33 @@ export class SFTCommonFunctions {
         );
         
         return button;
+    }
+
+    // this will get an object data item by external ID
+    static getObjectDataByExternalId(objDataArray: FlowObjectDataArray, externalId: string) : FlowObjectData{
+        let objData: FlowObjectData;
+        for(let pos = 0 ; pos< objDataArray.items.length ; pos++){
+            if(objDataArray.items[pos].externalId === externalId){
+                objData = objDataArray.items[pos];
+                break;
+            }
+        }
+        return objData
+    }
+
+    static objDataArrayToJSONString(objDataArray: FlowObjectDataArray) : string {
+        let arr: any[] = [];
+        objDataArray.items.forEach((objData: FlowObjectData) =>{
+            arr.push(SFTCommonFunctions.objDataToJSONString(objData));
+        });
+        return JSON.stringify(arr);
+    }
+
+    static objDataToJSONString(objData: FlowObjectData) : string {
+        let obj: any = {};
+        Object.values(objData.properties).forEach((prop: FlowObjectDataProperty) =>{
+            obj[prop.developerName] = prop.value;
+        });
+        return obj;
     }
 }

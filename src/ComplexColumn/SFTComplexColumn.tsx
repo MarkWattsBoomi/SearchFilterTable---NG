@@ -12,19 +12,6 @@ export class SFTComplexColumn extends React.Component<any,any> {
         />
     );
 
-    /*
-const columnProps = {
-                        id: row.internalId,
-                        propertyId: value.typeElementPropertyId,
-                        contentValue: value.value,
-                        objectData: value.value,
-                        flowKey: this.parent.flowKey,
-                        contentType: value.contentType,
-                        contentFormat: value.contentFormat,
-                        row,
-                        sft: this.parent,
-                    };
-    */
     constructor(props: any) {
         super(props);
     }

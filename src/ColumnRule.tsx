@@ -226,7 +226,7 @@ export class ColumnRule {
                     break;
                 case 'class':
                     const columnProps = {
-                        id: row.internalId,
+                        id: row.externalId,
                         propertyId: value.typeElementPropertyId,
                         contentValue: value.value,
                         objectData: value.value,

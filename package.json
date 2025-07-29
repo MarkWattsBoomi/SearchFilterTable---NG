@@ -1,6 +1,6 @@
 {
   "name": "sftable",
-  "version": "2.2.3",
+  "version": "2.2.4a",
   "main": "index.js",
   "scripts": {
     "start2": "node start.mjs",
@@ -20,7 +20,7 @@
     "buffer": "^6.0.3",
     "exceljs": "^4.4.0",
     "fcmkit": "^1.1.1",
-    "fcmlib": "^1.1.2",
+    "fcmlib": "^1.1.6",
     "fs": "^0.0.1-security",
     "readable": "^1.1.3"
   },

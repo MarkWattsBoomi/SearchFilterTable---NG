@@ -40,6 +40,7 @@ export class ColumnPickerForm extends React.Component<any, any> {
                 cols.push(
                     <div
                         className="sft-column-picker-column"
+                        key={crypto.randomUUID()}
                     >
                         {rows}
                     </div>,
@@ -49,6 +50,7 @@ export class ColumnPickerForm extends React.Component<any, any> {
             rows.push(
             <div
                 className="sft-column-picker-row"
+                key={column.developerName}
             >
                 <div
                     className="checkbox-checkbox-wrapper"
@@ -77,7 +79,9 @@ export class ColumnPickerForm extends React.Component<any, any> {
         });
         if (rows.length > 0) {
             cols.push(
-                <div>
+                <div
+                    key={crypto.randomUUID()}
+                >
                     {rows}
                 </div>,
             );

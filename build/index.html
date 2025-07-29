@@ -30,7 +30,8 @@
             }
         </style>
         <script>
-            
+            window.flowBaseUri = "https://gb.flow-prod.boomi.com";
+
             window.onbeforeflowstart = (options, starttype) => {
                 options.components = {
                     'searchfiltertable':"http://localhost:8080/sft_ng.js",
@@ -43,14 +44,36 @@
                     
                 };
                 options.platformUri="https://gb.flow-prod.boomi.com";
-                options.tenantId="19e6af1b-a269-440e-899f-9e811cfa8f71";
-                options.flowId="195369f0-9637-47b8-9e31-b9273a4ac950";
-                options.environmentId="8f56937e-c143-40cb-ae6a-8596528464a7";
+                options.tenantId="1b9ddb52-6e4f-4091-9eb6-330814de77e0";
+                options.flowId="222a2897-3dfe-4943-a82d-88f3d7bbf092";
+                //options.flowVersionId="31d76f66-2f44-4e8a-ae34-e862cd366a74";
+                options.environmentId="9339cc57-12a8-41da-9b85-96bb1ce13559";
                 return options;
             }
             
         </script>
         <script id="flow-script" src="assets/flow.js" type="module" defer></script>
+        <style>
+            .flow {
+            & .content{
+                width: 100%;
+            }
+        }
+        
+        .page-component-searchfiltertable {
+            
+            border: 1px solid #ccc;
+            padding: 0 1rem;
+    
+            &>label {
+                display: none !important;    
+            }
+            
+            &>.outcome-group {
+                display: none !important;  
+            }
+        }
+        </style>
     </head>
 
     <body>

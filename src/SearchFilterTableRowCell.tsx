@@ -18,16 +18,26 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
     
     constructor(props: any) {
         super(props);
-        this.state = {isEditing: false};
+        const row: SearchFilterTableRow = this.props.row;
+        const root: SFT = this.props.root;
+        let objData: FlowObjectData = root.rowMap.get(row.props.id)?.objectData;
+
+        this.state = {isEditing: false, currentValue: objData.properties[this.props.fdc.developerName].value};
         this.editColumn = this.editColumn.bind(this);
         this.keyDown = this.keyDown.bind(this);
         this.updateValue = this.updateValue.bind(this);
+        this.onBlur = this.onBlur.bind(this);
         this.rollBack = this.rollBack.bind(this);
     }
 
     editColumn(e: any){
-        //e.preventDefault();
-        //e.stopPropagation();
+        e.preventDefault();
+        e.stopPropagation();
+        const row: SearchFilterTableRow = this.props.row;
+        const root: SFT = this.props.root;
+        let objData: FlowObjectData = root.rowMap.get(row.props.id)?.objectData;
+        root.selectedRow = objData.externalId;
+        root.lastRememberedRow = root.selectedRow;
         console.log("On Edit");
         this.setState({isEditing: true});
         e.currentTarget.focus();
@@ -46,6 +56,8 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                 break;
             default:
                 //do whatever
+                e.preventDefault();
+                e.stopPropagation();
                 break;
         }
     }
@@ -62,6 +74,12 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                     val = dt;
                 }
                 break;
+            case "checkbox":
+                val=e.currentTarget.checked;
+                break;
+            case "number":
+                val=parseFloat(e.currentTarget.value);
+                break;
             case "text":
             default:
                 val = e.currentTarget.value;
@@ -70,7 +88,9 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
         const root: SFT = this.props.root;
         const row: SearchFilterTableRow = this.props.row;
         let objData: FlowObjectData = root.rowMap.get(row.props.id)?.objectData;
-        if(objData.properties[this.props.fdc.developerName].value !== val){
+        root.selectedRow = objData.externalId;
+        root.lastRememberedRow = root.selectedRow;
+        //if(this.state.currentValue !== val){
             if(!root.modifiedRows.has(objData.externalId)){
                 let clone: FlowObjectData = objData.clone();
                 clone.externalId = objData.externalId;
@@ -79,8 +99,13 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
             }
             objData = root.modifiedRows.get(objData.externalId);
             objData.properties[this.props.fdc.developerName].value = val;
-        }
-        root.saveModified();
+            root.saveModified();
+            this.setState({currentValue: val});
+        //}
+        
+    }
+
+    onBlur(e: any) {
         this.setState({isEditing: false});
     }
 
@@ -170,7 +195,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
             } else {
                 if (fdc.componentType?.length > 0) {
                     const columnProps = {
-                        id: row.internalId,
+                        id: row.externalId,
                         propertyId: col.typeElementPropertyId,
                         contentValue: col.value,
                         objectData: col.value,
@@ -354,7 +379,8 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                             <input 
                                                 type="text"
                                                 defaultValue={col.value as string}
-                                                onBlur={this.updateValue}
+                                                onChange={this.updateValue}
+                                                onBlur={this.onBlur}
                                                 onKeyUp={this.keyDown}
                                                 autoFocus={true}
                                             />
@@ -382,8 +408,9 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                 result = (
                                     <input 
                                         type="number"
-                                        defaultValue={col.value as number}
-                                        onBlur={this.updateValue}
+                                        value={col.value as number}
+                                        onChange={this.updateValue}
+                                        onBlur={this.onBlur}
                                         onKeyUp={this.keyDown}
                                         autoFocus={true}
                                     />
@@ -410,22 +437,35 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                             }
                             break;
                         case eContentType.ContentBoolean:
-                            if ((((col as any).value as string)+"")?.toLowerCase() === 'true') {
+                            if(fdc.isEditable){
                                 result = (
-                                    <FontAwesomeIcon 
-                                        icon={faCircleCheck}
-                                        className="sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-true"
-                                        onClick={onEdit}
+                                    <input 
+                                        type="checkbox"
+                                        className="sft-table-cell-text sft-table-cell-boolean sft-checkbox"
+                                        checked={col.value as boolean}
+                                        onChange={this.updateValue}
+                                        onKeyUp={this.keyDown}
                                     />
                                 );
-                            } else {
-                                result = (
-                                    <FontAwesomeIcon 
-                                        icon={faCircleXmark}
-                                        className="sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-false"
-                                        onClick={onEdit}
-                                    />
-                                );
+                            }
+                            else {
+                                if ((((col as any).value as string)+"")?.toLowerCase() === 'true') {
+                                    result = (
+                                        <FontAwesomeIcon 
+                                            icon={faCircleCheck}
+                                            className="sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-true"
+                                            onClick={onEdit}
+                                        />
+                                    );
+                                } else {
+                                    result = (
+                                        <FontAwesomeIcon 
+                                            icon={faCircleXmark}
+                                            className="sft-table-cell-text sft-table-cell-boolean sft-table-cell-boolean-false"
+                                            onClick={onEdit}
+                                        />
+                                    );
+                                }
                             }
                             break;
 
@@ -609,7 +649,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
         const root: SFT = this.props.root;
         const row: SearchFilterTableRow = this.props.row;
         const objData: FlowObjectData = root.rowMap.get(row.props.id)?.objectData;
-        const modObjData: FlowObjectData = root.modifiedRows.get(row.props.id);
+        const modObjData: FlowObjectData = root.modifiedRows.get(objData.externalId);
         const fdc: FlowDisplayColumn = this.props.fdc;
         let modified: boolean = false;
         if(modObjData){

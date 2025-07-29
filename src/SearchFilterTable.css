@@ -168,7 +168,7 @@
     display: block !important;
     appearance: revert !important;
     content: unset !important;
-    margin: auto !important;
+    margin: auto auto auto 0.5rem !important;
     transform: scale(1.1); 
     width: auto !important;
 }

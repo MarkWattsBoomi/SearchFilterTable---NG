@@ -182,12 +182,15 @@ export class SFT extends React.Component<any,any> {
     supressEvents: number = 0;
 
     oldModel: FlowObjectDataArray;
+    oldJSONState: string;
 
     outcomeIcons: Map<string,string>;
 
     exportFileName: string;
 
     modifiedRows: Map<string, FlowObjectData> = new Map();
+
+    attributes: any = JSON.parse(JSON.stringify(this.props.parent.attributes))
 
     constructor(props: any) {
         super(props);
@@ -248,7 +251,7 @@ export class SFT extends React.Component<any,any> {
         this.loadModelData = this.loadModelData.bind(this);
 
         this.saveModified = this.saveModified.bind(this);
-
+        
         let pmode: string = this.component.getAttribute('PaginationMode', "local").toLowerCase();
         switch(pmode) {
             case "none":
@@ -283,6 +286,8 @@ export class SFT extends React.Component<any,any> {
         }
         
         this.exportFileName=this.component.getAttribute("exportFileName","export");
+
+        //this.coreLoad();
     }
 
     async componentDidMount() {
@@ -931,10 +936,20 @@ export class SFT extends React.Component<any,any> {
         let modelTypeName: string = this.component.getAttribute('ModelTypeName',"GetOpportunities RESPONSE - Opportunity");
         let model: FlowObjectDataArray;
         if(JSONStateName) {
-            let jsonField: FlowValue = await this.component.getValue(JSONStateName);
-            let jsonString: string = jsonField.value as string;
+            let jsonString: string;
+
+            if(JSONStateName.startsWith("[{") && JSONStateName.endsWith("}]")){
+                jsonString = JSONStateName;
+            }
+            else{
+                let jsonField: FlowValue = await this.component.getValue(JSONStateName);
+                jsonString = jsonField.value as string;
+            }
+            
+            // store this for updates
+            this.oldJSONState = jsonString;
             if(jsonString && jsonString.length > 0) {
-                model = FlowObjectDataArray.fromJSONString(jsonField.value as string, this.component.getAttribute('JSONModelPrimaryKey'), this.component.columns, modelTypeName);
+                model = FlowObjectDataArray.fromJSONString(jsonString, this.component.getAttribute('JSONModelPrimaryKey'), this.component.columns, modelTypeName);
             }
         }
         else {
@@ -943,19 +958,18 @@ export class SFT extends React.Component<any,any> {
         // save this for posterity
         this.oldModel = model;
 
-        //this.db = await GenericDB.newInstance(this.componentId, this.colMap);
-        //this.db.ingestObjectDataArray(model);
         if(model) {
             const stateSelectedItems: Map<string, any> = await this.loadSelected();
             const isSelectedColumn: string = this.component.getAttribute('IsSelectedColumn');
             this.rowMap = new Map();
             this.selectedRowMap = new Map();
             this.rows = new Map();
+            this.modifiedRows = new Map();
             model.items.forEach((item: FlowObjectData) => {
                 
                 if (stateSelectedItems) {
-                    if (stateSelectedItems.has(item.internalId) && stateSelectedItems.get(item.internalId).isSelected === true) {
-                        this.selectedRowMap.set(item.internalId, undefined);
+                    if (stateSelectedItems.has(item.externalId) && stateSelectedItems.get(item.externalId).isSelected === true) {
+                        this.selectedRowMap.set(item.externalId, undefined);
                     }
                 }
                 // also set it its explicitly selected
@@ -968,11 +982,11 @@ export class SFT extends React.Component<any,any> {
                         )
                     )
                 ) {
-                    this.selectedRowMap.set(item.internalId, undefined);
+                    this.selectedRowMap.set(item.externalId, undefined);
                 }
         
                 const node = new RowItem();
-                node.id = item.internalId;
+                node.id = item.externalId;
 
                 this.colMap.forEach((col: FlowDisplayColumn) => {
                     node.columns.set(col.developerName, new CellItem(col.developerName, item.properties[col.developerName]?.value as any));
@@ -1036,9 +1050,9 @@ export class SFT extends React.Component<any,any> {
         }
 
         // remove any selected items not in the currentRowMap
-        this.selectedRowMap.forEach((item: RowItem, internalId: string) => {
-            if (!this.currentRowMap.has(internalId)) {
-                //this.selectedRowMap.delete(internalId);
+        this.selectedRowMap.forEach((item: RowItem, externalId: string) => {
+            if (!this.currentRowMap.has(externalId)) {
+                //this.selectedRowMap.delete(externalId);
             }
         });
 
@@ -1157,12 +1171,6 @@ export class SFT extends React.Component<any,any> {
             this.buildFooter();
             this.refreshRows();
         }
-        //}
-        //else{
-        //    this.selectedRow=undefined; 
-        //    await this.doOutcome("OnSelect",undefined);
-        //    this.refreshRows();
-        //}
     }
 
     refreshRows() {
@@ -1238,7 +1246,7 @@ export class SFT extends React.Component<any,any> {
         if (selectedItems && selectedItems.items) {
             stateSelected = new Map();
             for (let pos = 0 ; pos < selectedItems.items.length ; pos++) {
-                stateSelected.set(selectedItems.items[pos].internalId, selectedItems.items[pos]);
+                stateSelected.set(selectedItems.items[pos].externalId, selectedItems.items[pos]);
             }
         }
         return stateSelected;
@@ -1445,25 +1453,85 @@ export class SFT extends React.Component<any,any> {
         }
     }
 
-    saveModified() {
-        if(this.component.props.updateElement){// we must be in the new player
-            //if(this.modifiedRows.size > 0){
-                let arr: FlowObjectDataArray = new FlowObjectDataArray([]);
-                this.modifiedRows.forEach((objData: FlowObjectData) => {
-                    arr.addItem(objData);
-                });
-                let updateElement: any = {
-                    elementId : this.component.id,
-                    elementPartial: {
-                        attributes: {
-                            ModifiedRowsState : arr.iFlowObjectDataArray(true)
+    async saveModified() {
+        let modifiedState: any = this.component.getAttribute('ModifiedRowsState');
+        let JSONState: string = this.component.getAttribute('JSONModelValue');
+        let modifiedStateObjData: FlowObjectData;
+        let modRows: FlowObjectDataArray = new FlowObjectDataArray();
+        this.modifiedRows.forEach((objData: FlowObjectData) => {
+            modRows.addItem(objData);
+        });
+
+        if (modifiedState) {
+            switch(typeof(modifiedState)){
+                case "string":
+                    let ms: FlowValue = await this.component.getValue(modifiedState);
+                    ms.value = modRows;
+                    await this.component.setValues(ms);
+                    break;
+
+                case "object":
+                   
+                    if(this.component.props.updateElement){// we must be in the new player
+                        let updateElement: any = {
+                            elementId : this.component.id,
+                            elementPartial: {
+                                attributes: {
+                                    RowLevelState : modRows.iFlowObjectDataArray(true)
+                                }
+                            },
+                            triggersPageCondition: true
+                        };
+                        this.supressEvents++;
+                        this.component.props.updateElement(updateElement);
+                    }
+                    else {
+                        //can't do it
+                        /*
+                        if(rowLevelStateObjData){
+                            let rls: FlowValue = await this.component.getValue(rowLevelStateObjData.developerName);
+                            rls.value = selectedItem || new FlowObjectDataArray();
+                            await this.component.setValues(rls);
+                        } 
+                        */
+                    }
+                    break;
+            }
+        }
+
+        if(JSONState && (this.component.getAttribute("JSONModelUpdate","false").toLowerCase()==="true")){
+            let foda: FlowObjectDataArray;
+            let JSONString: string;
+            if(this.oldJSONState) {
+                let JSONPrimaryKey: string = this.component.getAttribute('JSONModelPrimaryKey');
+                //turn it into a flowObjectDataArray
+                foda = FlowObjectDataArray.fromJSONString(this.oldJSONState, JSONPrimaryKey, this.component.columns,"test");
+                if(foda){
+                    this.modifiedRows.forEach((objData: FlowObjectData) => {
+                        let od: FlowObjectData = SFTCommonFunctions.getObjectDataByExternalId(foda, objData.externalId);
+                        if(od){
+                            Object.values(objData.properties).forEach((prop: FlowObjectDataProperty) =>{
+                                let dc: FlowDisplayColumn = this.colMap.get(prop.developerName);
+                                if(dc?.isEditable){
+                                    if(od.properties[prop.developerName].value !== prop.value){
+                                        od.properties[prop.developerName].value = prop.value
+                                    }
+                                }
+                            });
                         }
-                    },
-                    triggersPageCondition: true
-                };
-                this.supressEvents++;
-                this.component.props.updateElement(updateElement);
-            //}
+                    });
+
+                    JSONString = SFTCommonFunctions.objDataArrayToJSONString(foda);
+                    this.oldJSONState = JSONString;
+                }
+            }
+            switch(typeof(JSONState)){
+                case "string":
+                    let js: FlowValue = await this.component.getValue(JSONState);
+                    js.value = JSONString;
+                    await this.component.setValues(js);
+                    break;
+            }
         }
     }
 
@@ -1652,7 +1720,6 @@ export class SFT extends React.Component<any,any> {
     async okOutcomeForm() {
         if (this.form.validate() === true) {
             const objData: FlowObjectData = await this.form?.makeObjectData();
-            //const objDataId: string = this.form.props.objData?.internalId;
             const outcome: FlowOutcome = this.form.props.outcome;
             const form: any = this.form.props.form;
             if (form.state && objData) {
@@ -1789,12 +1856,12 @@ export class SFT extends React.Component<any,any> {
             style.display = 'none';
         }
 
-        if (this.component.attributes.width) {
-            style.width = this.component.attributes.width;
+        if (this.component.attributes.width || this.attributes.width) {
+            style.width = this.component.attributes.width || this.attributes.width;
         }
         
-        if (this.component.attributes.height) {
-            style.height = this.component.attributes.height;
+        if (this.component.attributes.height || this.attributes.height) {
+            style.height = this.component.attributes.height || this.attributes.height;
         }        
 
         const title: string = this.component.label || '';

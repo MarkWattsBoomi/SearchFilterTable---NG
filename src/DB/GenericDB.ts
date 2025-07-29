@@ -1,4 +1,6 @@
-import { FlowDisplayColumn, FlowObjectData, FlowObjectDataArray } from "flow-component-model";
+import { FlowDisplayColumn } from "fcmlib/lib/FlowDisplayColumn";
+import { FlowObjectData } from "fcmlib/lib/FlowObjectData";
+import { FlowObjectDataArray } from "fcmlib/lib/FlowObjectDataArray";
 
 export class GenericDB {
 
