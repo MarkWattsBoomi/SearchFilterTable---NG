@@ -36405,7 +36405,7 @@ var SFT3 = class extends React23.Component {
           break;
       }
     }
-    if (JSONState) {
+    if (JSONState && this.component.getAttribute("JSONModelUpdate", "false").toLowerCase() === "true") {
       let foda;
       let JSONString;
       if (this.oldJSONState) {
