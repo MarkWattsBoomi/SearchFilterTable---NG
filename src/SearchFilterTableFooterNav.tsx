@@ -79,7 +79,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                 pag = 'page ' + (parent.currentRowPage + 1) + ' of ' + parent.currentRowPages.length;
                 break;
             case parent.component.getAttribute("summaryMode","default").toLowerCase()==="simple" || parent.component.isMultiSelect===false:
-                showing = 'Showing ' + parent.currentRowMap.size + ' items of ' + parent.rowMap.size;
+                showing = 'Showing ' + first + " - " + to + ' of ' + parent.rowMap.size + " items";
                 pag = 'page ' + (parent.currentRowPage + 1) + ' of ' + parent.currentRowPages.length;
                 break;
             

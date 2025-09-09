@@ -21,21 +21,29 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
     }
 
     render() {
-        const root: SFT = this.props.root;
+        let parent: SFT = this.props.root;
         let summary: string;
         let pag: string;
+        let first: number = ((parent.currentRowPage) * parent.maxPageRows) + 1;
+        if(isNaN(first)){first=0}
+        let tot: number = parent.currentRowMap?.size || 0;
+        if(isNaN(tot)){tot=0}
+        let to: number = first+(parent.maxPageRows-1);
+        if(isNaN(to)){to=0}
+        if(to>tot){to=tot}
+
         switch(true) {
-            case root.paginationMode===ePaginationMode.external:
+            case parent.paginationMode===ePaginationMode.external:
                 summary="";
-                pag=root.externalPaginationPage.toString();
+                pag=parent.externalPaginationPage.toString();
                 break;
-            case root.component.getAttribute("summaryMode","default").toLowerCase()==="simple" || root.component.isMultiSelect===false:
-                summary = 'Showing ' + root.currentRowMap.size + ' items of ' + root.rowMap.size;
-                pag = 'page ' + (root.currentRowPage + 1) + ' of ' + root.currentRowPages.length;
+            case parent.component.getAttribute("summaryMode","default").toLowerCase()==="simple" || parent.component.isMultiSelect===false:
+                summary = 'Showing ' + first + " - " + to + ' of ' + parent.rowMap.size + " items";
+                pag = 'page ' + (parent.currentRowPage + 1) + ' of ' + parent.currentRowPages.length;
                 break;
             default:
-                summary = 'Selected ' + root.selectedRowMap.size + ' of ' + root.currentRowMap.size + ' items from a total dataset of ' + root.rowMap.size;
-                pag = 'page ' + (root.currentRowPage + 1) + ' of ' + root.currentRowPages.length;
+                summary = 'Selected ' + parent.selectedRowMap.size + ' of ' + parent.currentRowMap.size + ' items from a total dataset of ' + parent.rowMap.size;
+                pag = 'page ' + (parent.currentRowPage + 1) + ' of ' + parent.currentRowPages.length;
                 break;   
         }
         
@@ -46,14 +54,14 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
         let nextPage: any;
         let lastPage: any;
 
-        if (root.currentRowPage > 0) {
+        if (parent.currentRowPage > 0) {
             firstPage = (
                 <FontAwesomeIcon 
                     key="fp"
                     icon={faBackwardFast}
                     className="sft-footer-pagination-button"
                     title="First page"
-                    onClick={root.firstPage}
+                    onClick={parent.firstPage}
                 />
             );
             prevPage = (
@@ -62,7 +70,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
                     icon={faBackwardStep}
                     className="sft-footer-pagination-button"
                     title="Previous page"
-                    onClick={root.previousPage}
+                    onClick={parent.previousPage}
                 />
             );
         } else {
@@ -83,14 +91,14 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
             );
         }
 
-        if (root.currentRowPage < (root.currentRowPages.length - 1)) {
+        if (parent.currentRowPage < (parent.currentRowPages.length - 1)) {
             lastPage = (
                 <FontAwesomeIcon 
                     key="lp"
                     icon={faForwardFast}
                     className="sft-footer-pagination-button"
                     title="Last page"
-                    onClick={root.lastPage}
+                    onClick={parent.lastPage}
                 />
             );
             nextPage = (
@@ -99,7 +107,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
                     icon={faForwardStep}
                     className="sft-footer-pagination-button"
                     title="Next page"
-                    onClick={root.nextPage}
+                    onClick={parent.nextPage}
                 />
             );
         } else {
@@ -121,8 +129,8 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
 
         let options: number[] = [];
         options.push(10, 20, 50, 100);
-        if (options.indexOf(root.maxPageRows) < 0) {
-            options.push(root.maxPageRows);
+        if (options.indexOf(parent.maxPageRows) < 0) {
+            options.push(parent.maxPageRows);
         }
         options = options.sort((a, b) => {
             return a - b;
@@ -131,7 +139,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
         const opts: any[] = [];
         let selected: number = options[0];
         options.forEach((a: number) => {
-            if(root.maxPageRows === a){
+            if(parent.maxPageRows === a){
                 selected=a;
             }
             opts.push(
@@ -157,7 +165,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
 
         let pagination: any;
         let perPageBlock: any;
-        switch(root.paginationMode) {
+        switch(parent.paginationMode) {
             case ePaginationMode.local:
                 pagination = (
                     <div
@@ -191,7 +199,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
                         icon={faBackwardStep}
                         className="sft-footer-pagination-button"
                         title="Previous page"
-                        onClick={root.previousPage}
+                        onClick={parent.previousPage}
                     />
                 );
                 nextPage = (
@@ -200,7 +208,7 @@ export class SearchFilterTableFooter extends React.Component<any, any> {
                         icon={faForwardStep}
                         className="sft-footer-pagination-button"
                         title="Next page"
-                        onClick={root.nextPage}
+                        onClick={parent.nextPage}
                     />
                 );
                 
