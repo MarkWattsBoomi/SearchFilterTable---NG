@@ -35198,7 +35198,7 @@ var ColumnRule = class _ColumnRule {
     let cellClass = this.cellClass || "";
     const matches = [];
     if (applyRule === true || this.mode === "icon") {
-      rowClass = this.rowClass;
+      rowClass = this.condition?.rowClass || this.rowClass;
       switch (this.mode) {
         case "outcome":
           label = this.label || value.value;
@@ -35339,6 +35339,9 @@ var ColumnRule = class _ColumnRule {
           content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, amt);
           break;
         case "style":
+          if (applyRule) {
+            cellClass = this.condition.cellClass;
+          }
           content = /* @__PURE__ */ React8.createElement("span", { className: classes + " " + cellClass, style }, value.value);
           break;
         case "icon":

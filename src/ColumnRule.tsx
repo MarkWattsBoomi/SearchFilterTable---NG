@@ -167,7 +167,7 @@ export class ColumnRule {
 
         const matches: any[] = [];
         if(applyRule === true || this.mode==="icon") {
-            rowClass=this.rowClass;
+            rowClass=this.condition?.rowClass || this.rowClass;
             switch (this.mode) {
                 case 'outcome':
                     label = this.label || value.value as string;
@@ -328,6 +328,9 @@ export class ColumnRule {
                     );
                     break;
                 case "style":
+                    if(applyRule){
+                        cellClass=this.condition.cellClass;
+                    }
                     content = (
                         <span className={classes + " " + cellClass} style={style}>{value.value as string}</span>
                     );
