@@ -877,7 +877,7 @@ export class SFT extends React.Component<any,any> {
             }
         }
 
-        if(!this.headersElement){
+        //if(!this.headersElement){
             this.headersElement = (
                 <SearchFilterTableHeaders
                     root={this}
@@ -885,9 +885,9 @@ export class SFT extends React.Component<any,any> {
                     ref={(element: SearchFilterTableHeaders) => {this.setHeaders(element); }}
                 />
             );
-        }
+        //}
 
-        if(!this.footerElement){
+        //if(!this.footerElement){
             switch (this.component.getAttribute('FooterStyle', 'default')) {
                 case "default":
                     this.footerElement = (
@@ -907,7 +907,7 @@ export class SFT extends React.Component<any,any> {
                     );
                     break; 
             }
-        }
+        //}
         
 
         if(this.rowRememberColumn){

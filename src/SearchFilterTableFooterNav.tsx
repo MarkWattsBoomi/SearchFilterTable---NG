@@ -136,7 +136,7 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                 else {
                     pagePageNav.push(
                         <span
-                            key="pg"
+                            key={"pg"+pg}
                             className="sft-nav-pg"
                             onClick={(e: any) => {this.gotoPage(pg)}}
                         >
@@ -210,6 +210,8 @@ export class SearchFilterTableFooterNav extends React.Component<any,any> {
                     onClick={this.lastPage}
                 />
             );
+
+            //pageNav = pagePageNav;
 
             itemsPerPage=(
                 <div

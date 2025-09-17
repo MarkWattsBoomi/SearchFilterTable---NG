@@ -38729,7 +38729,7 @@ var SearchFilterTableFooterNav = class extends React22.Component {
             /* @__PURE__ */ React22.createElement(
               "span",
               {
-                key: "pg",
+                key: "pg" + pg,
                 className: "sft-nav-pg",
                 onClick: (e) => {
                   this.gotoPage(pg);
@@ -39724,43 +39724,39 @@ var SFT3 = class extends React23.Component {
           break;
       }
     }
-    if (!this.headersElement) {
-      this.headersElement = /* @__PURE__ */ React23.createElement(
-        SearchFilterTableHeaders,
-        {
-          root: this,
-          inlineSearch,
-          ref: (element) => {
-            this.setHeaders(element);
-          }
+    this.headersElement = /* @__PURE__ */ React23.createElement(
+      SearchFilterTableHeaders,
+      {
+        root: this,
+        inlineSearch,
+        ref: (element) => {
+          this.setHeaders(element);
         }
-      );
-    }
-    if (!this.footerElement) {
-      switch (this.component.getAttribute("FooterStyle", "default")) {
-        case "default":
-          this.footerElement = /* @__PURE__ */ React23.createElement(
-            SearchFilterTableFooter,
-            {
-              root: this,
-              ref: (element) => {
-                this.setFooter(element);
-              }
-            }
-          );
-          break;
-        case "nav":
-          this.footerElement = /* @__PURE__ */ React23.createElement(
-            SearchFilterTableFooterNav,
-            {
-              root: this,
-              ref: (element) => {
-                this.setFooter(element);
-              }
-            }
-          );
-          break;
       }
+    );
+    switch (this.component.getAttribute("FooterStyle", "default")) {
+      case "default":
+        this.footerElement = /* @__PURE__ */ React23.createElement(
+          SearchFilterTableFooter,
+          {
+            root: this,
+            ref: (element) => {
+              this.setFooter(element);
+            }
+          }
+        );
+        break;
+      case "nav":
+        this.footerElement = /* @__PURE__ */ React23.createElement(
+          SearchFilterTableFooterNav,
+          {
+            root: this,
+            ref: (element) => {
+              this.setFooter(element);
+            }
+          }
+        );
+        break;
     }
     if (this.rowRememberColumn) {
       this.lastRememberedRow = sessionStorage.getItem("sft-lastrow-" + this.component.id);
