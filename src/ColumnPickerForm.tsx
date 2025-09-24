@@ -35,6 +35,7 @@ export class ColumnPickerForm extends React.Component<any, any> {
             if(a.label < b.label){return -1} 
             return 0
         });
+
         colArray.forEach((column: FlowDisplayColumn) => {
             if (rows.length > 11) {
                 cols.push(
@@ -61,6 +62,7 @@ export class ColumnPickerForm extends React.Component<any, any> {
                         className="sft-checkbox"
                         checked={this.selectedColumns.indexOf(column.developerName) >= 0}
                         onChange={(e: any) => {this.toggleSelection(column.developerName, e); }}
+                        disabled={this.selectedColumns.indexOf(column.developerName) >=0 && this.selectedColumns.length<=2}
                     />
                 </div>
                 <div
