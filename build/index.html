@@ -17,7 +17,12 @@
         <link href="assets/flow.css" rel="stylesheet" />
         <link href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/19e6af1b-a269-440e-899f-9e811cfa8f71/PortalStylesNG.css" rel="stylesheet" />
 
-        <link rel="stylesheet" href="http://localhost:8080/sft_ng.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/navbar_ng.2.2.6.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/sft_ng.2.2.5.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/assetpicker_ng.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/PortalStylesNG.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/cmdesigner_ng.1.0.3.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/filepicker_ng.2.2.0.css"/>
         
         <style>
             html,
@@ -36,18 +41,18 @@
                 options.components = {
                     'searchfiltertable':"http://localhost:8080/sft_ng.js",
                     //"coredetails":"http://localhost:8080/coredetails_ng.js"
-                    //'navigationmenu':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/navbar_ng.js",
-                    //'assetpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/assetpicker_ng.js",
-                    //'flowpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/flowpicker_ng.js",
+                    'navigationmenu':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/navbar_ng.2.2.6.js",
+                    'assetpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/assetpicker_ng.2.2.0.js",
+                    'flowpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/flowpicker_ng.2.2.0.js",
                     //'flowpicker':"http://localhost:8080/flowpicker_ng.js",
                     //'searchfiltertable':"http://localhost:8080/sft_ng.js",
                     
                 };
                 options.platformUri="https://gb.flow-prod.boomi.com";
-                options.tenantId="1b9ddb52-6e4f-4091-9eb6-330814de77e0";
-                options.flowId="222a2897-3dfe-4943-a82d-88f3d7bbf092";
+                options.tenantId="ff2d18a1-9a02-45ec-a873-6ee8866401fe";
+                options.flowId="a7084208-b9ba-415a-a4a1-be965ccbbeb5";
                 //options.flowVersionId="31d76f66-2f44-4e8a-ae34-e862cd366a74";
-                options.environmentId="9339cc57-12a8-41da-9b85-96bb1ce13559";
+                options.environmentId="f4aff2be-c07c-4b8f-bbb7-71eb9360ef78";
                 return options;
             }
             
@@ -64,6 +69,7 @@
             
             border: 1px solid #ccc;
             padding: 0 1rem;
+            display: flex !important;
     
             &>label {
                 display: none !important;    
