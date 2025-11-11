@@ -52,6 +52,8 @@ export class SFT extends React.Component<any,any> {
 
     component: FCMCore;
 
+    content: any;
+
     contextMenu: FCMContextMenu;
     messageBox: FCMModal;
     form: any;  // this is the form being shown by the message box
@@ -180,6 +182,7 @@ export class SFT extends React.Component<any,any> {
     topRowComponents: any;
 
     supressEvents: number = 0;
+    alreadySaved: boolean = false;
 
     oldModel: FlowObjectDataArray;
     oldJSONState: string;
@@ -291,26 +294,35 @@ export class SFT extends React.Component<any,any> {
     }
 
     async componentDidMount() {
-        
+        console.debug("componentDidMount");
         if(this.mounting === true || this.supressEvents > 0) {
             if(this.supressEvents > 0) {
                 this.supressEvents--;
             }
-            //this.runAgain = true;
-            return
         }
         else {
             await this.coreLoad();
         }
     }
 
+    /*
     shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
-        return this.supressEvents <=0 ;
+       //return true; //this.supressEvents <=0 ;
+       console.debug("shouldComponentUpdate");
+       return false;
+    }
+    */
+
+    componentWillUnmount(): void {
+        if(this.alreadySaved === false){
+            console.debug("componentWillUnmount - saving selected");
+            this.saveSelected();
+        }
     }
 
     async coreLoad() {
         this.mounting = true;
-        console.log(this.component.developerName + "=" + this.component.id);
+        console.debug(this.component.developerName + "=" + this.component.id);
         // will get this from a component attribute
         this.loaded=false;
         // build tree
@@ -1212,7 +1224,7 @@ export class SFT extends React.Component<any,any> {
         this.rows.get(key).forceUpdate();
         this.buildRibbon();
         this.buildFooter();
-        this.saveSelected();
+        //this.saveSelected();
     }
 
     // store the selected items to state
@@ -1235,9 +1247,7 @@ export class SFT extends React.Component<any,any> {
             this.supressEvents++;
             this.component.setStateValue(selectedItems);
         }
-    }
-
-    
+    }   
 
     // load selected items from state
     async loadSelected(): Promise<Map<string, any>> {
@@ -1541,6 +1551,10 @@ export class SFT extends React.Component<any,any> {
             selectedItem = this.rowMap.get(selectedItem).objectData;
         }
         this.selectedRow = selectedItem?.externalId;
+        // save selected
+        console.debug("doOutcome - Save Selected");
+        this.saveSelected();
+        this.alreadySaved=true;
         // if there's a row level state then set it
         let rowLevelState: any = this.component.getAttribute('RowLevelState');
         let rowLevelStateObjData: FlowObjectData;
@@ -1843,8 +1857,8 @@ export class SFT extends React.Component<any,any> {
             ), [new FCMModalButton('Close', this.messageBox.hideDialog)],
         );
     }
-
-    render() {
+    
+    render(){
 
         // handle classes attribute and hidden and size
         const classes: string = 'sft ' + this.component.getAttribute('classes', '');
@@ -1908,10 +1922,10 @@ export class SFT extends React.Component<any,any> {
             );
         }
 
-        return  (
+        return(
             <div
-                id={this.component.id + "_child"}
-                key={this.component.id + "_child"}
+                id={this.component.id}// + "_child"}
+                key={this.component.id}// + "_child"}
                 className={classes}
                 style={style}
                 onContextMenu={this.showContextMenu}
@@ -1939,7 +1953,5 @@ export class SFT extends React.Component<any,any> {
                 {this.footerElement}
             </div>
         );
-        
     }
-
 }

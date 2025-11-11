@@ -15,13 +15,26 @@ export default class SearchFilterTable extends FCMNew {
     
     
     componentDidMount() {
+        console.debug("TOP componentDidMount");
         this.loadModel(this.props);
+    }
+
+    /*
+    shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
+       //return true; //this.supressEvents <=0 ;
+       console.debug("shouldComponentUpdate");
+       return true;
+    }
+    */
+
+    componentWillUnmount(): void {
+        console.debug("TOP componentWillUnmount");
     }
     
     render() {
         return(
             <SFT 
-                key={this.id}
+                //key={this.id}
                 parent={this}
                 ref={(element: any) => {this.childComponent = element}} // here we are giving FCMCore a ref to our component
             />
@@ -37,12 +50,12 @@ export default class SearchFilterTable extends FCMNew {
         };
         switch (this.contentType) {
             case eContentType.ContentObject:
-                element.elementPartial.objectData = value.iFlowObjectDataArray();
+                //element.elementPartial.objectData = value.iFlowObjectDataArray();
                 element.elementPartial.selectedItems = element.elementPartial.objectData;
                 break;
             case eContentType.ContentList:
-                let items = (value as FlowObjectDataArray).iFlowObjectDataArray(false);
-                element.elementPartial.objectData = (value as FlowObjectDataArray).iFlowObjectDataArray();
+                //let items = (value as FlowObjectDataArray).iFlowObjectDataArray(false);
+                //element.elementPartial.objectData = (value as FlowObjectDataArray).iFlowObjectDataArray();
                 element.elementPartial.selectedItems = (value as FlowObjectDataArray).iFlowObjectDataArray().filter((item)=>{return item.isSelected});
                 break;
             case eContentType.ContentBoolean:
@@ -62,6 +75,7 @@ export default class SearchFilterTable extends FCMNew {
             element.elementPartial.attributes = attributes;
         }
         //this.props.selectItems(this.props.element.id, element.elementPartial.selectedItems, true);
+        console.debug("saving " + element.elementPartial.selectedItems.length + " items for comp " + this.developerName + "(" + this.id + ")");
         this.props.updateElement(element);
     }
 }

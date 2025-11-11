@@ -15,14 +15,10 @@
         <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/144x144.png" />
 
         <link href="assets/flow.css" rel="stylesheet" />
-        <link href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/19e6af1b-a269-440e-899f-9e811cfa8f71/PortalStylesNG.css" rel="stylesheet" />
-
-        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/navbar_ng.2.2.6.css"/>
-        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/sft_ng.2.2.5.css"/>
-        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/assetpicker_ng.css"/>
-        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/PortalStylesNG.css"/>
-        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/cmdesigner_ng.1.0.3.css"/>
-        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/filepicker_ng.2.2.0.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/navbar_ng.2.2.6.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/sft_ng.2.2.7.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/assetpicker_ng.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/PortalStylesNG.css"/>
         
         <style>
             html,
@@ -41,45 +37,148 @@
                 options.components = {
                     'searchfiltertable':"http://localhost:8080/sft_ng.js",
                     //"coredetails":"http://localhost:8080/coredetails_ng.js"
-                    'navigationmenu':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/navbar_ng.2.2.6.js",
-                    'assetpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/assetpicker_ng.2.2.0.js",
-                    'flowpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/ff2d18a1-9a02-45ec-a873-6ee8866401fe/flowpicker_ng.2.2.0.js",
+                    'navigationmenu':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/navbar_ng.2.2.6.js",
+                    'assetpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/assetpicker_ng.2.2.0.js",
+                    'flowpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/flowpicker_ng.2.2.0.js",
                     //'flowpicker':"http://localhost:8080/flowpicker_ng.js",
                     //'searchfiltertable':"http://localhost:8080/sft_ng.js",
                     
                 };
                 options.platformUri="https://gb.flow-prod.boomi.com";
-                options.tenantId="ff2d18a1-9a02-45ec-a873-6ee8866401fe";
+                options.tenantId="b8fcfba5-5aff-4622-a546-c513bd9bcfe6";
                 options.flowId="a7084208-b9ba-415a-a4a1-be965ccbbeb5";
                 //options.flowVersionId="31d76f66-2f44-4e8a-ae34-e862cd366a74";
-                options.environmentId="f4aff2be-c07c-4b8f-bbb7-71eb9360ef78";
+                options.environmentId="1fc805ef-fa03-4bca-a915-2283ab0edb01";
                 return options;
             }
             
         </script>
         <script id="flow-script" src="assets/flow.js" type="module" defer></script>
         <style>
-            .flow {
-            & .content{
+
+        .dsf-login{
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            
+            &>.container-content {
                 width: 100%;
+                height: 100%;
+                position: relative;
+                display: flex !important;
+                flex-direction: row;
+            }
+            
+            & .dsf-loginbox{
+                flex:  0 0 30vw;
+                padding: 3rem 6rem !important;
+                height: 100%;
+            }
+            
+            & .dsf-loginsplash {
+                flex:  1 0 auto;
+                background-color: var(--color-td-navy-med-high-contrast, #305d74 );
+                background-image: url(https://platform.boomi.com/login_background.jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position-x: center;
+                background-position-y: center;
+                height: 100%;
             }
         }
         
+       
+        
+        
+        
+        .dsf-loginbox-welcome{
+            font-size: 1.75rem;
+            line-height: 1.35em;
+            margin: 0 0 1.25rem 0;
+        }
+        
+        .dsf-logoimage img {
+            width: 16rem;
+            height: 5rem;
+            object-fit: contain !important;
+        }
+        
+        .dsf-logotitle h1 {
+            font-weight: 600 !important;
+            font-size: 2rem !important;
+        }
+        
+        
+        
+        .dsf-logininput {
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .dsf-logininput label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #000;
+        }
+        
+        .dsf-logininput input {
+            box-shadow: none !important;
+            border: 1px solid #ccc !important;
+            border-radius: 0.3rem !important;
+            padding: 0.7rem 0.5rem !important;
+            background-color: rgb(232, 240, 254) !important;
+            color: #000 !important;
+            width: 100% !important;
+        }
+        
+        .dsf-login-button {
+            background-color: #033d58 !important;
+            color: #fefefe !important;
+            border: none !important;
+            min-width: 6.5em !important;
+            padding: 4px 10px !important;
+            height: 46px !important;
+            font-size: 1rem !important;
+            border-radius: 0.3rem !important;
+            text-align: center !important;
+            display: inline-block !important;
+        }
+    </style>
+    <style>
         .page-component-searchfiltertable {
-            
-            border: 1px solid #ccc;
-            padding: 0 1rem;
-            display: flex !important;
-    
-            &>label {
-                display: none !important;    
-            }
-            
-            &>.outcome-group {
-                display: none !important;  
+            height: -webkit-fill-available;
+            max-width: 94vw
+        }
+    </style>
+    <style>
+        .flow {
+            & .content {
+                & .page {
+                    & > .container-content {
+                        &>.page-content {
+                            min-width: 1px;
+                        }
+                    }
+                }
             }
         }
-        </style>
+    </style>
+    <style>
+        .modal-frm-frm {
+            height: 60vh;
+        }
+    </style>
+    <style>
+        .flow {
+            & .button.button-outcome.mini{
+                background-image: url(https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/plus-square.png);
+                background-repeat: no-repeat;
+                border: none;
+                font-size: 0px;
+                width: 2rem;
+                float: right;
+            }
+        } 
+    </style>
     </head>
 
     <body>
