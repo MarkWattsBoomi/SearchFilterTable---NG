@@ -35291,6 +35291,7 @@ var SFT3 = class extends React23.Component {
     this.mounting = false;
     this.preLoaded = false;
     this.supressEvents = 0;
+    this.alreadySaved = false;
     this.modifiedRows = /* @__PURE__ */ new Map();
     this.attributes = JSON.parse(JSON.stringify(this.props.parent.attributes));
     this.component = this.props.parent;
@@ -35382,8 +35383,10 @@ var SFT3 = class extends React23.Component {
   }
   */
   componentWillUnmount() {
-    console.debug("componentWillUnmount - saving selected");
-    this.saveSelected();
+    if (this.alreadySaved === false) {
+      console.debug("componentWillUnmount - saving selected");
+      this.saveSelected();
+    }
   }
   async coreLoad() {
     this.mounting = true;
@@ -36467,6 +36470,7 @@ var SFT3 = class extends React23.Component {
     this.selectedRow = selectedItem?.externalId;
     console.debug("doOutcome - Save Selected");
     this.saveSelected();
+    this.alreadySaved = true;
     let rowLevelState = this.component.getAttribute("RowLevelState");
     let rowLevelStateObjData;
     if (rowLevelState && selectedItem) {
