@@ -35386,6 +35386,11 @@ var SFT3 = class extends React23.Component {
             break;
         }
         modObjData.items.forEach((od) => {
+          let clone = od.clone();
+          clone.externalId = od.externalId;
+          clone.internalId = od.internalId;
+          this.modifiedRows.set(clone.externalId, clone);
+          this.saveModified();
           for (let pos = 0; pos < this.component.objectData.items.length; pos++) {
             if (this.component.objectData.items[pos].externalId === od.externalId) {
               this.component.objectData.items[pos] = od;
@@ -35963,7 +35968,6 @@ var SFT3 = class extends React23.Component {
       this.rowMap = /* @__PURE__ */ new Map();
       this.selectedRowMap = /* @__PURE__ */ new Map();
       this.rows = /* @__PURE__ */ new Map();
-      this.modifiedRows = /* @__PURE__ */ new Map();
       model.items.forEach((item) => {
         if (stateSelectedItems) {
           if (stateSelectedItems.has(item.externalId) && stateSelectedItems.get(item.externalId).isSelected === true) {
@@ -35981,6 +35985,11 @@ var SFT3 = class extends React23.Component {
         });
         node.objectData = item;
         this.rowMap.set(node.id, node);
+      });
+      this.modifiedRows.forEach((od) => {
+        if (!this.rowMap.has(od.externalId)) {
+          this.modifiedRows.delete(od.externalId);
+        }
       });
     }
     let partition = this.component.getAttribute("partitionColumn");

@@ -318,6 +318,13 @@ export class SFT extends React.Component<any,any> {
                         break;
                 }
                 modObjData.items.forEach((od: FlowObjectData) => {
+                    // add to new modified items
+                    let clone: FlowObjectData = od.clone();
+                    clone.externalId = od.externalId;
+                    clone.internalId = od.internalId;
+                    this.modifiedRows.set(clone.externalId, clone);
+                    this.saveModified();
+                    // apply to main dataset
                     for(let pos = 0; pos < this.component.objectData.items.length ; pos++){
                         if(this.component.objectData.items[pos].externalId===od.externalId){
                             this.component.objectData.items[pos] = od;
@@ -1001,7 +1008,9 @@ export class SFT extends React.Component<any,any> {
             this.rowMap = new Map();
             this.selectedRowMap = new Map();
             this.rows = new Map();
-            this.modifiedRows = new Map();
+
+            
+            
             model.items.forEach((item: FlowObjectData) => {
                 
                 if (stateSelectedItems) {
@@ -1035,6 +1044,13 @@ export class SFT extends React.Component<any,any> {
                 this.rowMap.set(node.id, node);
             });
             //await this.saveSelected();
+
+            //remove any non existing items from modified items list
+            this.modifiedRows.forEach((od: FlowObjectData) => {
+                if(!this.rowMap.has(od.externalId)){
+                    this.modifiedRows.delete(od.externalId);
+                }
+            }); // = new Map();
         }
         let partition = this.component.getAttribute("partitionColumn");
         this.partitionedRowMaps= new Map();
