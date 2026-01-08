@@ -294,13 +294,37 @@ export class SFT extends React.Component<any,any> {
     }
 
     async componentDidMount() {
-        console.debug("componentDidMount");
+        console.debug("componentDidMount - " + this.component?.developerName);
         if(this.mounting === true || this.supressEvents > 0) {
             if(this.supressEvents > 0) {
                 this.supressEvents--;
             }
         }
         else {
+            this.component.loadModel(this.props.parent.props);
+
+            // merge in modified state if there is one
+            let modifiedState: any = this.component.getAttribute('ModifiedRowsState');
+            let modObjData: FlowObjectDataArray;
+            if(modifiedState){
+                switch(typeof(modifiedState)){
+                    case "string":
+                        let ms: FlowValue = await this.component.getValue(modifiedState);
+                        modObjData=ms.value as FlowObjectDataArray;
+                        break;
+
+                    case "object":
+                        modObjData = modifiedState;
+                        break;
+                }
+                modObjData.items.forEach((od: FlowObjectData) => {
+                    for(let pos = 0; pos < this.component.objectData.items.length ; pos++){
+                        if(this.component.objectData.items[pos].externalId===od.externalId){
+                            this.component.objectData.items[pos] = od;
+                        }
+                    }
+                });
+            }
             await this.coreLoad();
         }
     }
@@ -315,9 +339,10 @@ export class SFT extends React.Component<any,any> {
 
     componentWillUnmount(): void {
         if(this.alreadySaved === false){
-            console.debug("componentWillUnmount - saving selected");
+            console.debug("componentWillUnmount - saving selected - " + this.component?.developerName);
             this.saveSelected();
         }
+        this.supressEvents=0;
     }
 
     async coreLoad() {

@@ -14,10 +14,10 @@ export default class SearchFilterTable extends FCMNew {
     }
     
     
-    componentDidMount() {
-        console.debug("TOP componentDidMount");
-        this.loadModel(this.props);
-    }
+    //componentDidMount() {
+        //console.debug("TOP componentDidMount = " + this.props.element.developerName);
+        //this.loadModel(this.props);
+    //}
 
     /*
     shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
@@ -27,9 +27,9 @@ export default class SearchFilterTable extends FCMNew {
     }
     */
 
-    componentWillUnmount(): void {
-        console.debug("TOP componentWillUnmount");
-    }
+    //componentWillUnmount(): void {
+    //    console.debug("TOP componentWillUnmount = " + this.props.element.developerName);
+    //}
     
     render() {
         return(
@@ -68,14 +68,19 @@ export default class SearchFilterTable extends FCMNew {
                 element.elementPartial.contentValue = isNaN(value.getTime()) ? "" : value.toISOString();
                 break;
             default:
-                element.elementPartial.contentValue = "" + value;
+                //element.elementPartial.contentValue = "" + value;
                 break;
         }
         if(attributes){
             element.elementPartial.attributes = attributes;
         }
         //this.props.selectItems(this.props.element.id, element.elementPartial.selectedItems, true);
-        console.debug("saving " + element.elementPartial.selectedItems.length + " items for comp " + this.developerName + "(" + this.id + ")");
-        this.props.updateElement(element);
+        if(element.elementPartial.selectedItems || element.elementPartial.contentValue || element.elementPartial.attributes){
+            console.debug("saving " + element.elementPartial.selectedItems?.length + " items for comp " + this.developerName + "(" + this.id + ")");
+            this.props.updateElement(element);
+        }
+        else {
+            console.debug("not saving - no data or state type");
+        }
     }
 }
