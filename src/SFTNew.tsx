@@ -6,6 +6,8 @@ import { FlowObjectData } from "fcmlib/lib/FlowObjectData";
 
 //const React = (window as any).boomi.flow.React;
 
+const SftMemo = React.memo(SFT);
+
 export default class SearchFilterTable extends FCMNew {
      
     constructor(props: any) {
@@ -23,9 +25,10 @@ export default class SearchFilterTable extends FCMNew {
     shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): boolean {
        //return true; //this.supressEvents <=0 ;
        console.debug("shouldComponentUpdate");
-       return true;
+       return false;
     }
     */
+    
 
     //componentWillUnmount(): void {
     //    console.debug("TOP componentWillUnmount = " + this.props.element.developerName);
@@ -33,14 +36,21 @@ export default class SearchFilterTable extends FCMNew {
     
     render() {
         return(
-            <SFT 
-                //key={this.id}
+            <SftMemo 
+                key={this.id}
                 parent={this}
-                ref={(element: any) => {this.childComponent = element}} // here we are giving FCMCore a ref to our component
-            />
+                ref={(element: any) => {this.childComponent = element}}
+            />         
         );
     }
 
+    /*
+    <SFT 
+        //key={this.id}
+        parent={this}
+        ref={(element: any) => {this.childComponent = element}} // here we are giving FCMCore a ref to our component
+    />
+    */
     setStateValue(value: any, attributes?: any) {
         this.stateValue = value;
         let element: any = {

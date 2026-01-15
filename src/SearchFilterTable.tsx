@@ -34,6 +34,7 @@ import { SFTColumnFilter } from './ColumnFilter';
 import { SpreadsheetExporter } from './SpreadsheetExporter';
 import { SFTCSVFile, STFCSVImporter } from './CSVImporter';
 import { Workbook } from 'exceljs';
+import { createContext } from 'vm';
 
 // declare const manywho: IManywho;
 declare const manywho: any;
@@ -289,8 +290,6 @@ export class SFT extends React.Component<any,any> {
         }
         
         this.exportFileName=this.component.getAttribute("exportFileName","export");
-
-        //this.coreLoad();
     }
 
     async componentDidMount() {
@@ -342,14 +341,15 @@ export class SFT extends React.Component<any,any> {
        console.debug("shouldComponentUpdate");
        return false;
     }
-    */
+       */
+    
 
     componentWillUnmount(): void {
-        if(this.alreadySaved === false){
-            console.debug("componentWillUnmount - saving selected - " + this.component?.developerName);
-            this.saveSelected();
-        }
-        this.supressEvents=0;
+        //if(this.alreadySaved === false){
+        //    console.debug("componentWillUnmount - saving selected - " + this.component?.developerName);
+        //    this.saveSelected();
+        //}
+        //this.supressEvents=0;
     }
 
     async coreLoad() {
@@ -1265,7 +1265,7 @@ export class SFT extends React.Component<any,any> {
         this.rows.get(key).forceUpdate();
         this.buildRibbon();
         this.buildFooter();
-        //this.saveSelected();
+        this.saveSelected();
     }
 
     // store the selected items to state
@@ -1293,7 +1293,7 @@ export class SFT extends React.Component<any,any> {
     // load selected items from state
     async loadSelected(): Promise<Map<string, any>> {
         let stateSelected: Map<string, any>;
-        const selectedItems: FlowObjectDataArray = this.component.getStateValue() as FlowObjectDataArray;
+        const selectedItems: FlowObjectDataArray = this.component.objectData as FlowObjectDataArray;
         if (selectedItems && selectedItems.items) {
             stateSelected = new Map();
             for (let pos = 0 ; pos < selectedItems.items.length ; pos++) {

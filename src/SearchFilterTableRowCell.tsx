@@ -75,7 +75,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                 }
                 break;
             case "checkbox":
-                val=e.currentTarget.checked;
+                val=e.currentTarget.checked;//===true? "true" : "false";
                 break;
             case "number":
                 val=parseFloat(e.currentTarget.value);
@@ -417,23 +417,23 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                 );
                             }
                             else {
-                                if (((col as any).value as string) === '') {
-                                    result = (
-                                        <span
-                                            className="sft-table-cell-text"
-                                            onClick={onEdit}
-                                        />
-                                    );
-                                } else {
+                                //if (((col as any).value as string) === '') {
+                                //    result = (
+                                //        <span
+                                //            className="sft-table-cell-text"
+                                //            onClick={onEdit}
+                                //        />
+                                //    );
+                                //} else {
                                     result = (
                                         <span
                                             className="sft-table-cell-text"
                                             onClick={onEdit}
                                         >
-                                            {(col.value as string)}
+                                            {(col.value as string || "0")}
                                         </span>
                                     );
-                                }
+                                //}
                             }
                             break;
                         case eContentType.ContentBoolean:
