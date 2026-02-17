@@ -45,7 +45,8 @@
     "exportCSVSampleOutcome":"CSV Sample Export outcome name",
     "TopRowComponents":"JSON definition of search bar components",
     "exportFileName":"Name for exported file",
-    "exportFormat":"Export format - XLS* / CSV"
+    "exportFormat":"Export format - XLS* / CSV",
+    "supressedColumns":"Suppressed Columns. The name of a flow field containing a comma delimited string of columns that cannot be shown or chosen"
   },
   "configurationEditors": [
     "LABEL",

@@ -842,9 +842,27 @@ export class SFT extends React.Component<any,any> {
             // this.model.dataSource
         }
 
+        // this allows for the "forbidden columns" concept where a string holds a list of non-selectable or displayable columns
+        let supressedColumns: string[] = [];
+        let supressedColunsField: string = this.component.getAttribute("supressedColumns");
+        if(supressedColunsField && supressedColunsField.length>0){
+            const supressedFields: FlowValue = await this.component.getValue(supressedColunsField);
+            supressedColumns = (supressedFields.value as string).split(",");
+            if(supressedColumns && supressedColumns.length > 0){
+                supressedColumns.forEach((col: string) => {
+                    if(colMap.has(col.trim())){
+                        colMap.delete(col.trim());
+                    }
+                });
+            }
+        }
+
+
         if (this.dynamicColumns === true) {
             await this.loadUserColumns();
         }
+
+        
 
         const populateDefaults: boolean = this.dynamicColumns === false || (this.dynamicColumns === true && (this.userColumns.length === 0 || (this.userColumns.length === 1 && this.userColumns.indexOf('#BUTTONS#') >= 0)));
 
