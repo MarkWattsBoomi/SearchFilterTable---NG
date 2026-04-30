@@ -97,6 +97,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                 clone.internalId = objData.internalId;
                 root.modifiedRows.set(clone.externalId, clone);
             }
+            // @ts-ignore
             objData = root.modifiedRows.get(objData.externalId);
             objData.properties[this.props.fdc.developerName].value = val;
             root.saveModified();
@@ -116,6 +117,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
         const root: SFT = this.props.root;
         const row: SearchFilterTableRow = this.props.row;
         const objData: FlowObjectData = root.rowMap.get(row.props.id)?.objectData;
+        // @ts-ignore
         const modObjData: FlowObjectData = root.modifiedRows.get(row.props.id);
         const fdc: FlowDisplayColumn = this.props.fdc;
         modObjData.properties[fdc.developerName].value = objData.properties[fdc.developerName].value;
@@ -149,7 +151,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
         let result: any;
         let rowClass: string = "";
         let cellClass: string = "";
-        let col: FlowObjectDataProperty;
+        let col: FlowObjectDataProperty | null = null;
         let onEdit: any;
         if(fdc.isEditable){
             onEdit = this.editColumn;
@@ -178,6 +180,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                 let cname: string = c.properties[colName].value as string;
                 if(cname===fdc.developerName) {
                     let val: any = c.properties[colValue].value;
+                    // @ts-ignore
                     let colType: eContentType = root.colMap.get(fdc.developerName)?.contentType;
                     col=FlowObjectDataProperty.newInstance(cname,colType,c);
                 }
@@ -186,7 +189,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
         else {
             col = row?.properties[fdc.developerName]
         }
-        if (col && col.developerName) {
+        if (col !== null && col.developerName) {
             if (root.columnRules.has(col.developerName)) {
                 let ruleResult: any = root.columnRules.get(col.developerName)?.generateColumnContent(col, row, root,this.state.isEditing,this.updateValue, this.keyDown);
                 result = ruleResult.content;
@@ -276,7 +279,8 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                 case this.isXML(col.value as string) === true:
                                     result = (
                                         <button
-                                            onClick={(e: any) => {this.showXML(col.developerName, col.value as string); }}
+                                            // @ts-ignore
+                                            onClick={(e: any) => {this.showXML(col.developerName, col.value as string); }}      
                                         >
                                             {'View XML'}
                                         </button>
@@ -286,6 +290,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                 case this.isJSON(col.value as string) === true:
                                     result = (
                                         <button
+                                            // @ts-ignore
                                             onClick={(e: any) => {this.showJSON(col.developerName, col.value as string); }}
                                         >
                                             {'View JSON'}
@@ -296,6 +301,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                 case this.isContent(col.value as string) === true:
                                     result = (
                                         <button
+                                            // @ts-ignore
                                             onClick={(e: any) => {this.showContent(col.developerName, col.value as string); }}
                                         >
                                             {'View Content'}
@@ -345,6 +351,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                             result = (
                                                 <button
                                                     className="sft-table-cell-button"
+                                                    // @ts-ignore
                                                     onClick={(e: any) => {root.playVideo('Video', (col.value as string), mime); }}
                                                 >
                                                     Play Video
@@ -365,6 +372,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                 case root.maxColText > 0 && (col.value as string).length > root.maxColText:
                                     result = (
                                         <button
+                                            // @ts-ignore
                                             onClick={(e: any) => {this.showContent(col.developerName, col.value as string); }}
                                         >
                                             {'View Content'}
@@ -649,6 +657,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
         const root: SFT = this.props.root;
         const row: SearchFilterTableRow = this.props.row;
         const objData: FlowObjectData = root.rowMap.get(row.props.id)?.objectData;
+        // @ts-ignore
         const modObjData: FlowObjectData = root.modifiedRows.get(objData.externalId);
         const fdc: FlowDisplayColumn = this.props.fdc;
         let modified: boolean = false;

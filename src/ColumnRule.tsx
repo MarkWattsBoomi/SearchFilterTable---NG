@@ -90,26 +90,26 @@ export class ColumnRule {
         return colRule;
     }
 
-    columnName: string;
-    mode: string;
-    target: string;
-    url: string;
-    label: string;
-    cellClass: string;
-    parent: SFT;
-    dateFormat: string;
-    pastClass: string;
-    whiteSpace: string;
-    cssClass: string;
-    outcomeName: string;
-    lookupTable: Map<any,any>;
-    format: string;
-    currency: string;
-    condition: ColumnRuleCondition;
-    rowClass: string;
-    icon: string;
-    iconClass: string;
-    componentClass: string;
+    columnName: string = "";
+    mode: string = "";
+    target: string = "";
+    url: string = "";
+    label: string = "";
+    cellClass: string = "";;
+    parent!: SFT;
+    dateFormat: string = "";;
+    pastClass: string = "";;
+    whiteSpace: string = "";;
+    cssClass: string = "";;
+    outcomeName: string = "";;
+    lookupTable: Map<any,any> = new Map();
+    format: string = "";;
+    currency: string = "";
+    condition!: ColumnRuleCondition;
+    rowClass: string = "";;
+    icon: string = "";;
+    iconClass: string = "";;
+    componentClass: string = "";
     timeZone: boolean = true;
 
     getTextValue(property: FlowObjectDataProperty): string {
@@ -124,10 +124,10 @@ export class ColumnRule {
                 }
                 break;
             case eContentType.ContentNumber:
-                result = property.value.toString();
+                result = property?.value?.toString() || "";
                 break;
             default:
-                result = property.value as string;
+                result = property?.value as string || "";
                 break;
         }
         return result;
@@ -153,7 +153,8 @@ export class ColumnRule {
                     applyRule = value.value!==this.condition.value;
                     break;
                 case "gt":
-                    applyRule = value.value>this.condition.value;
+                    // @ts-ignore
+                    applyRule = value?.value>this.condition.value;
                     break;
             }
         }
@@ -171,7 +172,8 @@ export class ColumnRule {
             switch (this.mode) {
                 case 'outcome':
                     label = this.label || value.value as string;
-                    let show: boolean = SFTCommonFunctions.assessRowOutcomeRule(sft.component.outcomes[this.outcomeName],row,sft);
+                    // @ts-ignore
+                    let show: boolean = SFTCommonFunctions.assessRowOutcomeRule(sft?.component?.outcomes[this.outcomeName],row,sft);
                     
 
                     // use regex to find any {{}} tags in content and save them in matches
@@ -185,11 +187,13 @@ export class ColumnRule {
                         }
                     }
                     if(show) {
-                        let toolTip: string = sft.component.outcomes[this.outcomeName].label;
+                        // @ts-ignore
+                        let toolTip: string = sft?.component?.outcomes[this.outcomeName]?.label;
                         content = (
                             <span
                                 className="sft-table-cell-href"
-                                onClick={(e: any) => {sft.doOutcome(this.outcomeName,row)}}
+                                // @ts-ignore
+                                onClick={(e: any) => {sft?.doOutcome(this.outcomeName,row)}}
                                 title={toolTip}
                             >
                                 {label}
@@ -376,7 +380,7 @@ export class ColumnRule {
 }
 
 class ColumnRuleCondition{
-    comparator: string;
+    comparator: string = "";
     value: any;
     icon: any;
     cellClass: any;

@@ -155,6 +155,7 @@ export class SearchFilterTableRow extends React.Component<any, any> {
                     );
                 }
             } else {
+                // @ts-ignore
                 let col: FlowDisplayColumn = root.colMap.get(collName);
                 if (col) {
                     //let cellResult: any = this.formatValue(col, root, objData);
