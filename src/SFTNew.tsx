@@ -61,7 +61,7 @@ export default class SearchFilterTable extends FCMNew {
         switch (this.contentType) {
             case eContentType.ContentObject:
                 //element.elementPartial.objectData = value.iFlowObjectDataArray();
-                element.elementPartial.selectedItems = element.elementPartial.objectData;
+                element.elementPartial.selectedItems = value.iFlowObjectDataArray();
                 break;
             case eContentType.ContentList:
                 //let items = (value as FlowObjectDataArray).iFlowObjectDataArray(false);

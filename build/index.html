@@ -7,7 +7,7 @@
         <meta name="description" content="Boomi Flow Application" />
         <meta name="theme-color" content="#033d58" />
 
-        <base href="https://gb-assets.flow-prod.boomi.com/runtime/nextgen/" />
+        <base href="https://eu-assets.flow-prod.boomi.com/runtime/nextgen/" />
 
         <title>Flow</title>
 
@@ -15,11 +15,39 @@
         <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/144x144.png" />
 
         <link href="assets/flow.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/navbar_ng.2.2.6.css"/>
+
+    <link
+      rel="stylesheet"
+      href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/1b9ddb52-6e4f-4091-9eb6-330814de77e0/PortalStylesNG.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/1b9ddb52-6e4f-4091-9eb6-330814de77e0/NavBar_MM01.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/1b9ddb52-6e4f-4091-9eb6-330814de77e0/sft_ng.2.2.8.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/1b9ddb52-6e4f-4091-9eb6-330814de77e0/cmdesigner_ng.1.0.3.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/1b9ddb52-6e4f-4091-9eb6-330814de77e0/filepicker_ng.2.2.0.css"
+    />
+
+    <!--
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-central-1.s3.amazonaws.com/724842f1-7715-43a6-9925-58fb704b7f0d/navbar_ng.2.2.6.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-central-1.s3.amazonaws.com/724842f1-7715-43a6-9925-58fb704b7f0d/PortalStylesNG.css"/>
+        <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-central-1.s3.amazonaws.com/724842f1-7715-43a6-9925-58fb704b7f0d/PortalStyles_vodafone.css"/>
+    -->
+        
+    <!--
         <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/sft_ng.2.2.7.css"/>
         <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/assetpicker_ng.css"/>
         <link rel="stylesheet" href="https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/PortalStylesNG.css"/>
-        
+    -->
         <style>
             html,
             body,
@@ -32,24 +60,22 @@
         </style>
         <script>
             window.flowBaseUri = "https://gb.flow-prod.boomi.com";
-
+            var assets = "https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com" + "/" + "1b9ddb52-6e4f-4091-9eb6-330814de77e0" + "/";
             window.onbeforeflowstart = (options, starttype) => {
                 options.components = {
                     'searchfiltertable':"http://localhost:8080/sft_ng.js",
-                    //"coredetails":"http://localhost:8080/coredetails_ng.js"
-                    'navigationmenu':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/1b9ddb52-6e4f-4091-9eb6-330814de77e0/navbar_ng.2.2.6.js",
-                    'assetpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/assetpicker_ng.2.2.0.js",
-                    'flowpicker':"https://master-boomi-flow-assets-prod-eu-west-2.s3.amazonaws.com/b8fcfba5-5aff-4622-a546-c513bd9bcfe6/flowpicker_ng.2.2.0.js",
-                    //'flowpicker':"http://localhost:8080/flowpicker_ng.js",
-                    //'searchfiltertable':"http://localhost:8080/sft_ng.js",
-                    
+                    navigationmenu: assets + "navbar_ng.2.2.6.js",
+                    assetpicker: assets + "assetpicker_ng.2.2.0.js",
+                    flowpicker: assets + "flowpicker_ng.2.2.0.js",
+                    cmdesigner: assets + "cmdesigner_ng.1.0.3.js",
+                    filepicker: assets + "filepicker_ng.2.2.0.js"                    
                 };
                 options.platformUri="https://gb.flow-prod.boomi.com";
-                options.tenantId="19e6af1b-a269-440e-899f-9e811cfa8f71";
+                options.tenantId="1b9ddb52-6e4f-4091-9eb6-330814de77e0";
                 //options.flowId="222a2897-3dfe-4943-a82d-88f3d7bbf092"; //agronomist
-                options.flowId="195369f0-9637-47b8-9e31-b9273a4ac950"; // approver
+                options.flowId="a7084208-b9ba-415a-a4a1-be965ccbbeb5"; // approver
                 //options.flowVersionId="31d76f66-2f44-4e8a-ae34-e862cd366a74";
-                options.environmentId="8f56937e-c143-40cb-ae6a-8596528464a7";
+                //options.environmentId="8f56937e-c143-40cb-ae6a-8596528464a7";
                 return options;
             }
             

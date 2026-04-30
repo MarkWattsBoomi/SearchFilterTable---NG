@@ -9,6 +9,7 @@ import {FilterManagementForm} from './FilterManagementForm';
 import {ModelExporter} from './ModelExporter';
 import {MultiSelect} from './MultiSelect';
 import {RowItem} from './RowItem';
+// @ts-ignore
 import './SearchFilterTable.css';
 import {SearchFilterTableFooter} from './SearchFilterTableFooter';
 import {SearchFilterTableHeader} from './SearchFilterTableHeader';
@@ -33,8 +34,8 @@ import { FlowObjectDataProperty } from 'fcmlib/lib/FlowObjectDataProperty';
 import { SFTColumnFilter } from './ColumnFilter';
 import { SpreadsheetExporter } from './SpreadsheetExporter';
 import { SFTCSVFile, STFCSVImporter } from './CSVImporter';
-import { Workbook } from 'exceljs';
-import { createContext } from 'vm';
+//import { Workbook } from 'exceljs';
+//import { createContext } from 'vm';
 
 // declare const manywho: IManywho;
 declare const manywho: any;
@@ -49,14 +50,12 @@ export enum ePaginationMode {
 export class SFT extends React.Component<any,any> {
     version: string = '1.0.0';
     context: any;
-    currentMapElementId: string;
-
-    component: FCMCore;
-
+    currentMapElementId!: string;
     content: any;
+    component!: any;
 
-    contextMenu: FCMContextMenu;
-    messageBox: FCMModal;
+    contextMenu!: FCMContextMenu;
+    messageBox!: FCMModal;
     form: any;  // this is the form being shown by the message box
 
     // this contains the master copy of the model data, it doesn't change unless data reloaded
@@ -68,7 +67,7 @@ export class SFT extends React.Component<any,any> {
 
     // this contains the partitioned pages
     partitionedRowMaps: Map<string, Map<string, any>> = new Map();
-    selectedPartition: string;
+    selectedPartition!: string;
 
     // this holds the max items per page
     maxPageRows: number = 5;
@@ -86,7 +85,7 @@ export class SFT extends React.Component<any,any> {
     rows: Map<string, SearchFilterTableRow> = new Map();
 
     // these are the html child elements used in render.  Built from currentRowMap
-    rowElements: any[];
+    rowElements!: any[];
 
     // this is the column definition map, it doesn't change unless data reloaded
     colMap: Map<string, FlowDisplayColumn> = new Map();
@@ -98,7 +97,7 @@ export class SFT extends React.Component<any,any> {
     userColumns: string[] = [];
 
     // this is the table headers React component
-    headers: SearchFilterTableHeaders;
+    headers!: SearchFilterTableHeaders;
 
     // The title bar
     titleElement: any;
@@ -107,13 +106,13 @@ export class SFT extends React.Component<any,any> {
     headersElement: any;
 
     // this is the footer React component
-    ribbon: SearchFilterTableRibbon | SearchFilterTableRibbonSearch;
+    ribbon!: SearchFilterTableRibbon | SearchFilterTableRibbonSearch;
 
     // this is the ribbon html element
     ribbonElement: any;
 
     // this is the footer React component
-    footer: SearchFilterTableFooter | SearchFilterTableFooterNav;
+    footer!: SearchFilterTableFooter | SearchFilterTableFooterNav;
 
     // this is the footer html element
     footerElement: any;
@@ -122,13 +121,13 @@ export class SFT extends React.Component<any,any> {
     cols: Map<string, any> = new Map();
 
     // these are the html column header child elements used in render.  Built from colMap
-    colElements: any[];
+    colElements!: any[];
     
     // these are the filter & sort controllers
     filters: SFTColumnFilters = new SFTColumnFilters(this);
 
     // the scrolling element
-    scroller: HTMLDivElement;
+    scroller!: HTMLDivElement;
 
     // dynamic columns flag
     dynamicColumns: boolean = false;
@@ -148,25 +147,25 @@ export class SFT extends React.Component<any,any> {
     supressedOutcomes: Map<string,boolean> = new Map();;
 
     rowRememberColumn: string;
-    lastRememberedRow: string;
+    lastRememberedRow!: string;
     tableBody: any;
 
-    selectedRow: string;
+    selectedRow!: string;
 
     // flag to switch on / off all pagination
-    paginationMode: ePaginationMode;
-    previousPageOutcome: string;
-    nextPageOutcome: string;
+    paginationMode!: ePaginationMode;
+    previousPageOutcome!: string;
+    nextPageOutcome!: string;
 
     //icon suffix to allow optional per org icons
     iconSuffix: string;
 
     // field to tell us what page we are on
-    externalPage: string;
-    externalPaginationPage: number;
+    externalPage!: string;
+    externalPaginationPage!: number;
 
     //beta
-    db: GenericDB;
+    db!: GenericDB;
 
     // title value
     title: string;
@@ -185,10 +184,10 @@ export class SFT extends React.Component<any,any> {
     supressEvents: number = 0;
     alreadySaved: boolean = false;
 
-    oldModel: FlowObjectDataArray;
-    oldJSONState: string;
+    oldModel!: FlowObjectDataArray;
+    oldJSONState!: string;
 
-    outcomeIcons: Map<string,string>;
+    outcomeIcons!: Map<string,string>;
 
     exportFileName: string;
 
@@ -286,7 +285,7 @@ export class SFT extends React.Component<any,any> {
 
         this.rowRememberColumn = this.component.getAttribute("RetainRowColumn");
         if(this.rowRememberColumn){
-            this.lastRememberedRow = sessionStorage.getItem('sft-lastrow-' + this.component.id);
+            this.lastRememberedRow = sessionStorage.getItem('sft-lastrow-' + this.component.id) || '';
         }
         
         this.exportFileName=this.component.getAttribute("exportFileName","export");
@@ -304,7 +303,7 @@ export class SFT extends React.Component<any,any> {
 
             // merge in modified state if there is one
             let modifiedState: any = this.component.getAttribute('ModifiedRowsState');
-            let modObjData: FlowObjectDataArray;
+            let modObjData: FlowObjectDataArray = new FlowObjectDataArray([]);
             if(modifiedState){
                 switch(typeof(modifiedState)){
                     case "string":
@@ -358,8 +357,8 @@ export class SFT extends React.Component<any,any> {
         // will get this from a component attribute
         this.loaded=false;
         // build tree
-        this.maxPageRows = parseInt(localStorage.getItem('sft-max-' + this.component.id || this.component.getAttribute('PaginationSize', undefined) || '10'));
-        this.filters.loadFromStorage(localStorage.getItem('sft-filters-' + this.component.id));
+        this.maxPageRows = parseInt(localStorage.getItem('sft-max-' + this.component.id) || this.component.getAttribute('PaginationSize', undefined) || '10');
+        this.filters.loadFromStorage(localStorage.getItem('sft-filters-' + this.component.id) ||"[]");
 
         // calculate if we are in dynamic column mode
         if (this.component.attributes.UserColumnsValue) {
@@ -578,9 +577,9 @@ export class SFT extends React.Component<any,any> {
         localStorage.setItem('sft-filters-' + this.component.id, this.filters.getForStorage());
         switch (event) {
             case eFilterEvent.sort:
-                if (this.filters.get(key).sort !== eSortDirection.none) {
-                    const col: SearchFilterTableHeader = this.headers.headers.get(key);
-                }
+                //if (this.filters.get(key).sort !== eSortDirection.none) {
+                    //const col: SearchFilterTableHeader = this.headers.headers.get(key);
+                //}
                 this.sortRows();
                 this.bringColumnIntoView(key)
                 break;
@@ -973,7 +972,7 @@ export class SFT extends React.Component<any,any> {
         
 
         if(this.rowRememberColumn){
-            this.lastRememberedRow = sessionStorage.getItem('sft-lastrow-' + this.component.id);
+            this.lastRememberedRow = sessionStorage.getItem('sft-lastrow-' + this.component.id) || '';
         }
 
         //await this.loadModelData();
@@ -996,7 +995,7 @@ export class SFT extends React.Component<any,any> {
         
         let JSONStateName: string = this.component.getAttribute('JSONModelValue');
         let modelTypeName: string = this.component.getAttribute('ModelTypeName',"GetOpportunities RESPONSE - Opportunity");
-        let model: FlowObjectDataArray;
+        let model: FlowObjectDataArray = new FlowObjectDataArray([]);
         if(JSONStateName) {
             let jsonString: string;
 
@@ -1054,7 +1053,7 @@ export class SFT extends React.Component<any,any> {
 
                 this.colMap.forEach((col: FlowDisplayColumn) => {
                     node.columns.set(col.developerName, new CellItem(col.developerName, item.properties[col.developerName]?.value as any));
-                    this.colValMap.get(col.developerName).set(item.properties[col.developerName]?.value, item.properties[col.developerName]?.value);
+                    this.colValMap.get(col.developerName)?.set(item.properties[col.developerName]?.value, item.properties[col.developerName]?.value);
                 });
 
                 node.objectData = item;
@@ -1074,11 +1073,11 @@ export class SFT extends React.Component<any,any> {
         this.partitionedRowMaps= new Map();
         if(partition && this.colMap.has(partition)){
             this.rowMap.forEach((row: RowItem) => {
-                let div: CellItem = row.columns.get(partition);
-                if(!this.partitionedRowMaps.has(div.originalValue)){
-                    this.partitionedRowMaps.set(div.originalValue, new Map());
+                let div: CellItem | undefined = row.columns.get(partition);
+                if(!this.partitionedRowMaps.has(div?.originalValue)){
+                    this.partitionedRowMaps.set(div?.originalValue, new Map());
                 }
-                this.partitionedRowMaps.get(div.originalValue).set(row.id, row.id);
+                this.partitionedRowMaps.get(div?.originalValue)?.set(row.id, row.id);
             });
         }
     }
@@ -1161,7 +1160,7 @@ export class SFT extends React.Component<any,any> {
 
         this.currentRowMap.forEach((item: RowItem, key: string) => {
             let objData: FlowObjectData = this.rowMap.get(key).objectData;
-            let objKey: string;
+            let objKey: string | undefined = undefined;
             if(this.lastRememberedRow) {
                 objKey = "" + objData.properties[this.rowRememberColumn]?.value as string;
             }
@@ -1280,7 +1279,7 @@ export class SFT extends React.Component<any,any> {
         } else {
             this.selectedRowMap.delete(key);
         }
-        this.rows.get(key).forceUpdate();
+        this.rows?.get(key)?.forceUpdate();
         this.buildRibbon();
         this.buildFooter();
         this.saveSelected();
@@ -1310,7 +1309,7 @@ export class SFT extends React.Component<any,any> {
 
     // load selected items from state
     async loadSelected(): Promise<Map<string, any>> {
-        let stateSelected: Map<string, any>;
+        let stateSelected: Map<string, any> = new Map();
         const selectedItems: FlowObjectDataArray = this.component.objectData as FlowObjectDataArray;
         if (selectedItems && selectedItems.items) {
             stateSelected = new Map();
@@ -1323,9 +1322,9 @@ export class SFT extends React.Component<any,any> {
 
     //gets the single selected item from rowlevelstate
     async loadSingleSelected(): Promise<any> {
-        this.selectedRow = undefined;
+        this.selectedRow = "";
         let rowLevelState: any = (this.component.getAttribute('RowLevelState') as any);
-        let rowLevelStateObjData: FlowObjectData;
+        let rowLevelStateObjData: FlowObjectData | undefined = undefined;
         if (rowLevelState) {
             switch(typeof(rowLevelState)){
                 case "string":
@@ -1515,10 +1514,10 @@ export class SFT extends React.Component<any,any> {
                     return 'False';
                 }
             case eContentType.ContentNumber:
-                return property.value.toString();
+                return property?.value?.toString() || "";
 
             default:
-                return property.value as string;
+                return property?.value as string || "";
         }
     }
 
@@ -1570,7 +1569,7 @@ export class SFT extends React.Component<any,any> {
 
         if(JSONState && (this.component.getAttribute("JSONModelUpdate","false").toLowerCase()==="true")){
             let foda: FlowObjectDataArray;
-            let JSONString: string;
+            let JSONString: string = "";
             if(this.oldJSONState) {
                 let JSONPrimaryKey: string = this.component.getAttribute('JSONModelPrimaryKey');
                 //turn it into a flowObjectDataArray
@@ -1580,7 +1579,7 @@ export class SFT extends React.Component<any,any> {
                         let od: FlowObjectData = SFTCommonFunctions.getObjectDataByExternalId(foda, objData.externalId);
                         if(od){
                             Object.values(objData.properties).forEach((prop: FlowObjectDataProperty) =>{
-                                let dc: FlowDisplayColumn = this.colMap.get(prop.developerName);
+                                let dc: FlowDisplayColumn | undefined = this.colMap.get(prop.developerName);
                                 if(dc?.isEditable){
                                     if(od.properties[prop.developerName].value !== prop.value){
                                         od.properties[prop.developerName].value = prop.value
@@ -1609,14 +1608,14 @@ export class SFT extends React.Component<any,any> {
         if(typeof selectedItem === 'string') {
             selectedItem = this.rowMap.get(selectedItem).objectData;
         }
-        this.selectedRow = selectedItem?.externalId;
+        this.selectedRow = selectedItem?.externalId || "";
         // save selected
         console.debug("doOutcome - Save Selected");
         this.saveSelected();
         this.alreadySaved=true;
         // if there's a row level state then set it
         let rowLevelState: any = this.component.getAttribute('RowLevelState');
-        let rowLevelStateObjData: FlowObjectData;
+        let rowLevelStateObjData!: FlowObjectData;
         if (rowLevelState && selectedItem) {
             switch(typeof(rowLevelState)){
                 case "string":
@@ -1659,7 +1658,7 @@ export class SFT extends React.Component<any,any> {
             }
             // save the last selected to storage
             if(this.rowRememberColumn){
-                sessionStorage.setItem('sft-lastrow-' + this.component.id, rowLevelStateObjData.properties[this.rowRememberColumn]?.value as string);
+                sessionStorage.setItem('sft-lastrow-' + this.component.id, rowLevelStateObjData?.properties[this.rowRememberColumn]?.value as string);
             }
         }
         /*
@@ -1820,6 +1819,7 @@ export class SFT extends React.Component<any,any> {
             cols = new Map();
             this.userColumns.forEach((cname: string) => {
                 if(this.colMap.has(cname)){
+                    // @ts-ignore
                     cols.set(cname, this.colMap.get(cname));
                 }
             });
@@ -1850,6 +1850,7 @@ export class SFT extends React.Component<any,any> {
             cols = new Map();
             this.userColumns.forEach((cname: string) => {
                 if(this.colMap.has(cname)){
+                    // @ts-ignore
                     cols.set(cname, this.colMap.get(cname));
                 }
             });

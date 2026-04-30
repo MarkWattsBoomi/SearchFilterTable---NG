@@ -430,7 +430,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                                             className="sft-table-cell-text"
                                             onClick={onEdit}
                                         >
-                                            {(col.value as string || "0")}
+                                            {(col.value as string || "")}
                                         </span>
                                     );
                                 //}
