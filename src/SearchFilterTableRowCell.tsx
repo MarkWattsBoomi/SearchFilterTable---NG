@@ -178,7 +178,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
                 let cname: string = c.properties[colName].value as string;
                 if(cname===fdc.developerName) {
                     let val: any = c.properties[colValue].value;
-                    let colType: eContentType = root.colMap.get(fdc.developerName).contentType;
+                    let colType: eContentType = root.colMap.get(fdc.developerName)?.contentType;
                     col=FlowObjectDataProperty.newInstance(cname,colType,c);
                 }
             });
@@ -188,7 +188,7 @@ export class SearchFilterTableRowCell extends React.Component<any,any> {
         }
         if (col && col.developerName) {
             if (root.columnRules.has(col.developerName)) {
-                let ruleResult: any = root.columnRules.get(col.developerName).generateColumnContent(col, row, root);
+                let ruleResult: any = root.columnRules.get(col.developerName)?.generateColumnContent(col, row, root,this.state.isEditing,this.updateValue, this.keyDown);
                 result = ruleResult.content;
                 rowClass = (ruleResult.rowClass? ruleResult.rowClass : "");
                 cellClass = (ruleResult.cellClass? ruleResult.cellClass : "");

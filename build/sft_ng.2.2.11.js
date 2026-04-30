@@ -31306,7 +31306,7 @@ var ColumnRule = class _ColumnRule {
     }
     return result;
   }
-  generateColumnContent(value, row, sft) {
+  generateColumnContent(value, row, sft, editable, onChange2, onKeyDown) {
     const style = {};
     let classes = "sft-table-cell-text";
     if (this.whiteSpace) {
@@ -31465,15 +31465,19 @@ var ColumnRule = class _ColumnRule {
           content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, res);
           break;
         case "currency":
-          var formatter = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: this.currency,
-            // These options are needed to round to whole numbers if that's what you want.
-            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-            maximumFractionDigits: 0
-            // (causes 2500.99 to be printed as $2,501)
-          });
-          let amt = formatter.format(value.value);
+          let amt = "";
+          if (value.value !== null && !isNaN(value.value)) {
+            var formatter = new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: this.currency,
+              // These options are needed to round to whole numbers if that's what you want.
+              minimumFractionDigits: 2,
+              // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+              maximumFractionDigits: 2
+              // (causes 2500.99 to be printed as $2,501)
+            });
+            amt = formatter.format(value.value);
+          }
           content = /* @__PURE__ */ React8.createElement("span", { className: classes, style }, amt);
           break;
         case "style":
@@ -33735,7 +33739,7 @@ var SearchFilterTableRowCell = class extends import_react3.default.Component {
         let cname = c2.properties[colName].value;
         if (cname === fdc.developerName) {
           let val = c2.properties[colValue].value;
-          let colType = root.colMap.get(fdc.developerName).contentType;
+          let colType = root.colMap.get(fdc.developerName)?.contentType;
           col = FlowObjectDataProperty.newInstance(cname, colType, c2);
         }
       });
@@ -33744,7 +33748,7 @@ var SearchFilterTableRowCell = class extends import_react3.default.Component {
     }
     if (col && col.developerName) {
       if (root.columnRules.has(col.developerName)) {
-        let ruleResult = root.columnRules.get(col.developerName).generateColumnContent(col, row, root);
+        let ruleResult = root.columnRules.get(col.developerName)?.generateColumnContent(col, row, root, this.state.isEditing, this.updateValue, this.keyDown);
         result = ruleResult.content;
         rowClass = ruleResult.rowClass ? ruleResult.rowClass : "";
         cellClass = ruleResult.cellClass ? ruleResult.cellClass : "";
